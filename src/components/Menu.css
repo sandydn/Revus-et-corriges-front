@@ -1,0 +1,20 @@
+.menuCss  {
+  color: rgb(0, 0, 0);
+  padding: 10vh;
+  list-style-type: none;
+  font-size: 3vh;
+  
+}
+
+a {
+size: 24px;
+font-family: 'Oswald', 'sans-serif';
+line-height: 2;
+color: black;
+text-decoration: none;
+text-decoration-style: solid;
+font-weight: normal;
+letter-spacing: .06em;
+
+
+}
