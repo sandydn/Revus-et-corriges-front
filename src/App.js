@@ -13,7 +13,7 @@ class App extends React.Component {
       <div>
         <Logo />
         <Switch>
-            <Route exact path="/login" component={Sign}/>
+            <Route exact path="/" component={Sign}/>
             <Route path="/select-form" component={SelectionForm} />
         </Switch>
       </div>
