@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Logo from './components/Logo';
 
 import './components/Logo.css';
 import './App.css'
 import Sign from './screen/Sign';
-import {Switch, Route} from 'react-router-dom'
+import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom'
+import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <div>
-        <Logo />
-        <Switch>
-            <Route exact path="/login" component={Sign}/>
+      <BrowserRouter>
+        <div>
+          <Logo />
+          <Switch>
+            <Route exact path="/" component={Calendar} />
+            <Route exact path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
-        </Switch>
-      </div>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
