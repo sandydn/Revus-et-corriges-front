@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom'
-import Calendar from './components/Calendar'
+import React from 'react';
+import Logo from './components/Logo';
 
-import './App.css';
+import './components/Logo.css';
+import './App.css'
+import Sign from './screen/Sign';
+import {Switch, Route} from 'react-router-dom'
+import SelectionForm from './screen/SelectionForm';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
-          <Switch>
-            <Route exact path="/" component={Calendar} />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    )
+      <div>
+        <Logo />
+        <Switch>
+            <Route exact path="/login" component={Sign}/>
+            <Route path="/select-form" component={SelectionForm} />
+        </Switch>
+      </div>
+    );
   }
 }
 
