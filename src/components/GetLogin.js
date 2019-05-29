@@ -14,7 +14,7 @@ class GetLogin extends Component {
     }
 
     render() {
-        if (this.state.recipe === null) {
+        if (this.state.auth === null) {
             return <p> loading... </p>
         }
         const tabAuth = this.state.auth.map((value, key) => {

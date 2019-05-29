@@ -4,7 +4,7 @@ import '../screen/SelectionForm.css'
 
 import { Link } from 'react-router-dom';
 
-export class SelectionForm extends Component {
+class SelectionForm extends Component {
   render() {
     return (
       <>
@@ -14,7 +14,7 @@ export class SelectionForm extends Component {
           <ButtonForm name="Cinéma" />
           <ButtonForm name="Vidéos" />
 
-          <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+          <Link to="/login" ><input type="submit" value="Retourner à l'accueil" /></Link>
         </div>
       </>
     )
