@@ -1,0 +1,9 @@
+.RcLogo {
+  height: 14vmin;
+  margin-top: 7vh;
+  margin-left: 3.2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
