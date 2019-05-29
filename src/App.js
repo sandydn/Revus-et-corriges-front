@@ -16,7 +16,7 @@ class App extends Component {
           <Logo />
           <Switch>
             <Route exact path="/" component={Calendar} />
-            <Route exact path="/login" component={Sign} />
+            <Route path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
           </Switch>
         </div>
