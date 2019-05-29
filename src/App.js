@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
           <Logo />
           <Switch>
             <Route exact path="/" component={Calendar} />
