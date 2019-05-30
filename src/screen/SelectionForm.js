@@ -12,7 +12,7 @@ class SelectionForm extends Component {
           <ButtonForm name="Revus et Corrigés" />
           <ButtonForm name="Evènements" />
           <Link to="/formcinema"><ButtonForm name="Cinéma" /></Link>
-          <ButtonForm name="Vidéos" />
+          <Link to="/formvideo"><ButtonForm name="Vidéos" /></Link>
           
           <Link to="/login" ><input type="submit" value="Retourner à l'accueil" /></Link>
         </div>
