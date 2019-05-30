@@ -1,13 +1,13 @@
 .menuCss  {
   color: rgb(0, 0, 0);
-  padding: 10vh;
+  padding: 9vh;
   list-style-type: none;
-  font-size: 3vh;
+  font-size: 2.8vh;
   
 }
 
 a {
-size: 24px;
+size: 20px;
 font-family: 'Oswald', 'sans-serif';
 line-height: 2;
 color: black;
@@ -16,5 +16,8 @@ text-decoration-style: solid;
 font-weight: normal;
 letter-spacing: .06em;
 
+}
 
+li :hover {
+  box-shadow: #fabc16 0 -12px inset; 
 }

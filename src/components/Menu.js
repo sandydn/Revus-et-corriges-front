@@ -8,12 +8,12 @@ render() {
         <div >
 
             <ul className="menuCss" >
-                <li> <a Target="_blank"  href="https://revusetcorriges.net/la-revue/" >   LA REVUE   </a>  </li>
-                <li Target="_blank" > <a href="https://revusetcorriges.net/la-revue/" >   BOUTIQUE   </a></li>      
-                <li Target="_blank" > <a href="https://revusetcorriges.net/la-revue/" >   QUI SOMMES-NOUS ? </a> </li>
-                <li Target="_blank" > <a href="https://revusetcorriges.net/la-revue/" >   LA REVUE EN LIGNE </a> </li>
-                <li Target="_blank" > <a href="https://revusetcorriges.net/la-revue/" >   CALENDRIER </a> </li>
-                <li Target="_blank" > <a href="https://revusetcorriges.net/la-revue/" >   CONTACT+ </a> </li>
+                <li><a href="https://revusetcorriges.net/la-revue/" >LA REVUE </a></li>
+                <li><a href="https://revusetcorriges.net/boutique/sabonner/" >BOUTIQUE </a></li>      
+                <li><a href="https://revusetcorriges.net/qui-sommes-nous/" >QUI SOMMES-NOUS ? </a></li>
+                <li><a href="https://revusetcorriges.net/revue-en-ligne/" >LA REVUE EN LIGNE </a></li>
+                <li><NavLink exact to="/" activeClassName="selected">CALENDRIER</NavLink> </li>
+                <li><a href="https://revusetcorriges.net/contact/nous-contacter/" >CONTACT+ </a></li>
             </ul>
 
         </div>

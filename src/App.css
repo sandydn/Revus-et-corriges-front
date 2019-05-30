@@ -1,3 +1,7 @@
+.dg {
+border: 15px solid  #2c4362;
+}
+
 .App {
   text-align: center;
 }
@@ -21,6 +25,13 @@
 
 .App-link {
   color: #61dafb;
+}
+
+img {
+  margin-top: 5%;
+  margin-left: 4%;
+  margin-bottom: -4%;
+  width: 16%;
 }
 
 @keyframes App-logo-spin {
