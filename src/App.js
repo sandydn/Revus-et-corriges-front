@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import Logo from './components/Logo';
+import Menu from './components/Menu'
+import RC from './pictures/RC.png'
 
 import './components/Logo.css';
 import './App.css'
 import Sign from './screen/Sign';
-import { Route, BrowserRouter, Switch, NavLink } from 'react-router-dom'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
+import FormCinema from './screen/FormCinema';
+import FormVideo from './screen/FormVideo'
+
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="dg">
+          <img src={RC} alt="logo revus et corrigés"/>
+          <Menu />
           {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
-          <Logo />
           <Switch>
             <Route exact path="/" component={Calendar} />
             <Route path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
+            <Route path="/formcinema" component={FormCinema} />
+            <Route path="/formvideo" component={FormVideo} />
           </Switch>
-        </div>
+          </div>
       </BrowserRouter>
     );
   }
