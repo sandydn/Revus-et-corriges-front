@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Logo from './components/Logo';
-
 import './components/Logo.css';
 import './App.css'
 import Sign from './screen/Sign';
@@ -14,7 +13,6 @@ class App extends Component {
       <BrowserRouter>
         <div>
           {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
-          <Logo />
           <Switch>
             <Route exact path="/" component={Calendar} />
             <Route path="/login" component={Sign} />

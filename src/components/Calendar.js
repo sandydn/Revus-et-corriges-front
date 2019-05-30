@@ -1,9 +1,13 @@
 import React, {Component} from 'react'
+import './calendar.css'
+import Weekly from "./Weekly"
 
 class Calendar extends Component{
     render(){
         return(
-            <h1>CALENDRIER</h1>
+            <div className='Calendar'>
+                <Weekly />
+            </div>
         )
     }
 }
