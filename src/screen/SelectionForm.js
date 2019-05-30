@@ -11,9 +11,9 @@ class SelectionForm extends Component {
         <div className='container-button'>
           <ButtonForm name="Revus et Corrigés" />
           <ButtonForm name="Evènements" />
-          <ButtonForm name="Cinéma" />
+          <Link to="/formcinema"><ButtonForm name="Cinéma" /></Link>
           <ButtonForm name="Vidéos" />
-
+          
           <Link to="/login" ><input type="submit" value="Retourner à l'accueil" /></Link>
         </div>
       </>
