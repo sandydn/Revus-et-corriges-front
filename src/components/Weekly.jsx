@@ -8,7 +8,7 @@ class Weekly extends Component {
         days:[]
     }
 
-    componentWillMount(){
+    componentDidMount(){
         this.setState({days: dataTest.filter((display)=> display.id <5)})
     }
 
