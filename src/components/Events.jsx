@@ -7,7 +7,8 @@ const Events = ({dataEvent}) => {
     return(
         dataEvent.map((one) => <Event title={one.title} 
                                      comment={one.comment}  
-                                     picture={one.picture} />)
+                                     picture={one.picture}
+                                     type={one.type} />)
     )
 }
 

@@ -6,22 +6,26 @@
             {
                 "title": "L'homme de Berlin",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "important"
             },
             {
                 "title": "La Baie Sanglante",
                 "comment": "Mario Ferrara(1981) Combo Blu-Ray +DVD + Livret",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "Festival: Videodrome",
                 "comment": "Rendez vous au cinéma Les 7 Batignolles pour une programmation inédites sur grand écran des sorties",
-                "picture": "https://revusetcorriges.files.wordpress.com/2019/05/55892340_2258955324379246_5749396191980814336_n.jpg?w=250"
+                "picture": "https://revusetcorriges.files.wordpress.com/2019/05/55892340_2258955324379246_5749396191980814336_n.jpg?w=250",
+                "type": "regular"
             },
             {
                 "title": "Mort sur le nil",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             }
         ]
     },
@@ -32,17 +36,20 @@
             {
                 "title": "Mort sur le nil",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "L'homme de Berlin",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "The Big Lebowski",
                 "comment": "Rediffusion VO commentée par les frères Cohen",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             }
         ]
     },
@@ -53,17 +60,20 @@
             {
                 "title": "Festival: Cannes Classics",
                 "comment": "Les 50 ans d'easy Rider, Shining en séance de minuit, hommages à Luis Bunuel, Lina Wertmüller, Milos Forman, et les 25 ans de La Cité de la Peur..",
-                "picture": "https://revusetcorriges.files.wordpress.com/2019/02/wilder-portrait-sunset.jpg?w=250"
+                "picture": "https://revusetcorriges.files.wordpress.com/2019/02/wilder-portrait-sunset.jpg?w=250",
+                "type": "regular"
             },
             {
                 "title": "La Baie Sanglante",
                 "comment": "Mario Ferrara(1981) Combo Blu-Ray +DVD + Livret",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "Badlands of Dakota",
                 "comment": "Alfred E. Green (1941) Blu Ray DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             }
         ]
     },
@@ -74,17 +84,20 @@
             {
                 "title": "Meurtre au Soleil",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "important"
             },
             {
                 "title": "Mort sur le nil",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "La Baie Sanglante",
                 "comment": "Mario Ferrara(1981) Combo Blu-Ray +DVD + Livret",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             }
         ]
     },
@@ -95,37 +108,44 @@
             {
                 "title": "Le Crabe Tambour",
                 "comment": "Mario Ferrara(1981) Combo Blu-Ray +DVD + Livret",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "Les Producteurs",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "Cotton Club",
                 "comment": "Alfred E. Green (1941) Blu Ray DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "La Baie Sanglante",
                 "comment": "Mario Ferrara(1981) Combo Blu-Ray +DVD + Livret",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "Le miroir se brisa",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "La Zizanie",
                 "comment": "Rediffusion restaurée couleur et son",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             },
             {
                 "title": "L'homme de Berlin",
                 "comment": "Carol Reed (1953) Combo Blu-Ray + DVD",
-                "picture": ""
+                "picture": "",
+                "type": "regular"
             }
         ]
     }
