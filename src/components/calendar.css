@@ -4,4 +4,34 @@ body{
 
 .Calendar{
     display: flex;
+    border: 18px solid rgb(44, 67, 98);
+
+}
+
+.navbar{
+    width: 17%;
+    border: 2px solid grey
+
+}
+
+.weekly{
+    width: 83%;
+    background: url(../pictures/background-test_00.png);
+    background-size: 140%;
+    
+}
+
+.weeklyHead{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.weeklyHead > h1{
+    background: white;
+    width: max-content;
+}
+
+.weeklyDisplay{
+    display: flex;
 }

@@ -6,6 +6,7 @@ class Calendar extends Component{
     render(){
         return(
             <div className='Calendar'>
+                <div className='navbar'><p>navbar</p></div>
                 <Weekly />
             </div>
         )

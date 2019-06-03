@@ -1,8 +1,30 @@
 .Day{
     width: 20%;
-    margin: 3px;
+    margin: 5px;
 }
 
-.Day img {
-    width: 100%;
+.Day > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48)
+}
+
+.event{
+    display: flex;
+    flex-direction: column;
+}
+.event > h2 {
+    font-size: .85em;
+}
+
+.event > p {
+    font-size: .75em;
+    margin: 0px;
+}
+
+.event > img {
+    width: 80%;
+    align-self: center;
+    margin: 5px;
 }

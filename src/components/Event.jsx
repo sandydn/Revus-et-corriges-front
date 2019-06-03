@@ -3,7 +3,7 @@ import React from 'react'
 const Event = ({title, comment, picture}) => {
     const picEvent =() =>{
 
-        if (picture == ""){
+        if (picture === ""){
             return ""
         } else {
             return {title}
