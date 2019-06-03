@@ -10,7 +10,9 @@ const Weekly = () => {
                 <h1>Agenda Mars 2019</h1>
             </div>
             <div className='weeklyDisplay'>
+                <div><i class="arrow left"></i></div>
                 {week}
+                <div><i class="arrow right"></i></div>
             </div>
         </div>
     )
