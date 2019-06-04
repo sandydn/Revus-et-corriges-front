@@ -10,7 +10,7 @@ class SelectionForm extends Component {
       <>
         <div className='container-button'>
           <ButtonForm name="Revus et Corrigés" />
-          <ButtonForm name="Evènements" />
+          <Link to="/formevent"><ButtonForm name="Evènements" /></Link>
           <ButtonForm name="Cinéma" />
           <ButtonForm name="Vidéos" />
 
