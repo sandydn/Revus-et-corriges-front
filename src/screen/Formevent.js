@@ -56,34 +56,6 @@ class Formevent extends Component {
               value={this.state.end}
               onChange={this.handleChange} />
 
-          <fieldset>
-              <legend>Type de l'évènement :</legend>
-              <div>
-              <input 
-              id="cinema" 
-              name="type" 
-              type="radio" 
-              value={this.state.type}
-              onChange={this.handleChange}/>
-              <label for="cinema">Cinéma</label>
-              </div>
-              
-              <div>
-              <input 
-              id="partner" 
-              name="type" 
-              type="radio" 
-              value={this.state.type}
-              onChange={this.handleChange} />
-              <label for="partner">Vidéos</label>
-              </div>
-              <div>
-                <input type="radio" id="general" name="type" value={this.state.type}
-              onChange={this.handleChange}/>
-                <label for="general">Evènements</label>
-              </div>
-              </fieldset>
-
 
               <fieldset>
               <legend>Importance de l'évènement :</legend>
