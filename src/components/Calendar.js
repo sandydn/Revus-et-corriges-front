@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import './calendar.css'
+// import './calendar.css'
+import './Monthly.css'
 // import Weekly from "./Weekly"
 import Monthly from "./Monthly"
 
