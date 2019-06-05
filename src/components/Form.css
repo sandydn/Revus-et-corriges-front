@@ -1,0 +1,48 @@
+.hiddenInput{
+  display:none;
+}
+
+.adminForm {
+  display: grid;
+  grid-template-columns: 40%;
+  grid-auto-rows: 50px;
+  grid-row-gap: 20px;
+  grid-template-areas:
+  "InputRelease"
+  "InputTitle"
+  "InputDirector"
+  "InputEditor"
+  "InputFormat"
+  "buttonPick"
+  "buttonUpload";
+  justify-content: center;
+}
+
+.InputRelease{
+  grid-area:InputRelease;
+}
+
+.InputTitle{
+  grid-area:InputTitle;
+}
+
+.InputDirector{
+  grid-area:InputDirector;
+}
+
+.InputEditor{
+  grid-area:InputEditor;
+}
+
+.InputFormat{
+  grid-area:InputFormat;
+}
+
+.buttonPick{
+  grid-area:buttonPick;
+}
+
+.buttonUpload{
+  grid-area:buttonUpload;
+}
+
