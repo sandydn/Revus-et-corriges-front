@@ -1,9 +1,12 @@
 .menuCss  {
   color: rgb(0, 0, 0);
-  padding: 9vh;
   list-style-type: none;
   font-size: 2.8vh;
-  
+  padding: 22px;
+}
+
+.logo{
+  width: 90%;
 }
 
 a {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './components/Logo.css';
 import './App.css'
 import Sign from './screen/Sign';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
@@ -7,7 +6,8 @@ import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
 import Formevent from './screen/Formevent';
 import FormCinema from './screen/FormCinema';
-import FormVideo from './screen/FormVideo'
+import FormVideo from './screen/FormVideo';
+
 
 
 class App extends Component {
@@ -22,8 +22,10 @@ class App extends Component {
             <Route path="/formevent" component={Formevent} />
             <Route path="/formcinema" component={FormCinema} />
             <Route path="/formvideo" component={FormVideo} />
+            
           </Switch>
       </BrowserRouter>
+      
     );
   }
 }
