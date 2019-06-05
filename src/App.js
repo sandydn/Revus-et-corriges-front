@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Menu from './components/Menu'
-import RC from './pictures/RC.png'
+
 
 import './components/Logo.css';
 import './App.css'
@@ -19,7 +19,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="dg">
         
-          <img src={RC} alt="logo revus et corrigés"/>
+          
           <Menu />
           
           {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
