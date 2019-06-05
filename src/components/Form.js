@@ -4,12 +4,14 @@ import "../components/Form.css"
 
 class Form extends Component {
   state = {
-    releaseDate: "",
-    priority: "",
-    title: "",
+    date: "",
+    importance: false,
+    name: "",
     director: "",
-    editor:"",
+    datecreation: "",
     format:"",
+    link: "", 
+    editor:"",
     selectedFile:null
   }
 
@@ -33,75 +35,94 @@ axios.post('/video', fd)
         
         <h1> FORMULAIRE VIDEO</h1>
         <div>
-                  
-          <div className="containerCheckbox">
-            <input id="toggle1" type="checkbox"/>
-            <label for="toggle1">High</label>
-
-            <input id="toggle2" type="checkbox"/>
-            <label for="toggle2">Mid</label>
-
-            <input id="toggle3" type="checkbox"/>
-            <label for="toggle3">Low</label>
-          </div>
-          
         
-          <form 
-            className="adminForm"
-            onSubmit={this.handleSubmit}
-          >
-            <input
-              className="inputRelease"
+          <form className="adminForm"
+            onSubmit={this.handleSubmit}>
+            Date de sortie :
+            <input className="inputRelease"
               type="text" 
-              name="releaseDate" 
+              name="date" 
               placeholder="JJ/MM/AAAA"
-              value={this.state.releaseDate}
-              onChange={this.handleChange}
-            />
+              value={this.state.date}
+              onChange={this.handleChange} />
 
+            <fieldset>
+              <legend>Importance de l'évènement :</legend>
+              <div>
+              <input type="radio" id="r-c" name="importance" value={this.state.importance }
+              onChange={this.handleChange}/>
+              <label for="r-c">Revus et Corrigés</label>
+              </div>
+              <div>
+              <input type="radio" id="partner" name="importance" value={this.state.importance }
+              onChange={this.handleChange} />
+              <label for="partner">Partenaires</label>
+              </div>
+              <div>
+                <input type="radio" id="general" name="importance" value={this.state.importance }
+              onChange={this.handleChange}/>
+                <label for="general">Général</label>
+              </div>
+              </fieldset>
 
+            Titre :
             <input 
               className="inputTitle"
               type="text" 
-              name="title" 
+              name="name" 
               placeholder="movie's title"
-              value={this.state.title}
-              onChange={this.handleChange}
-            />
-
+              value={this.state.name}
+              onChange={this.handleChange} />
+            
+            Réalisateur :
             <input 
               className="inputDirector"
               type="text" 
               name="director" 
               placeholder="directed by..."
               value={this.state.director}
-              onChange={this.handleChange}
-            />
-            
+              onChange={this.handleChange} />
+
+            Date de création :
+            <input className="dateCréation"
+                type="date"
+                name="datecreation"
+                placeholder="MM/AAAA"
+                value={this.state.datecreation}
+                onChange={this.handleChange} />
+
+            Editeur :
             <input
               className="inputEditor" 
               type="text" 
               name="editor" 
               placeholder="edited by..."
               value={this.state.editor}
-              onChange={this.handleChange}
-            />
-        
+              onChange={this.handleChange} />
+            
+            Format :
             <input 
               className="inputFormat" 
               type="text" 
               name="format" 
               placeholder="DVD/BLU-RAY..."
               value={this.state.format}
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange} />
+            
+            Link :
+            <input className="inputLink"
+                type="url"
+                name="link"
+                placeholde="lien"
+                value={this.state.link}
+                onChange={this.handleChange} />
             
             <input
               className='hiddenInput' 
               onChange={this.fileSelectedHandler}
               ref = {fileInput => this.fileInput=fileInput}      
-              type="file" 
-            />
+              type="file" />
+
             
             <button
               className='buttonPick' 

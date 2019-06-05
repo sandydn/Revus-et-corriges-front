@@ -13,27 +13,13 @@ import Formevent from './screen/Formevent';
 import FormCinema from './screen/FormCinema';
 import FormVideo from './screen/FormVideo'
 
+import Form from './components/Form'
+
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div className="dg">
-          <img src={RC} alt="logo revus et corrigés"/>
-          <Menu />
-          {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
-          <Switch>
-            <Route exact path="/" component={Calendar} />
-            <Route path="/login" component={Sign} />
-            <Route path="/select-form" component={SelectionForm} />
-            <Route path="/formevent" component={Formevent} />
-            <Route path="/formcinema" component={FormCinema} />
-            <Route path="/formvideo" component={FormVideo} />
-
-          </Switch>
-          </div>
-      </BrowserRouter>
-    );
+      <Form />)
   }
 }
 

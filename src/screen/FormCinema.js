@@ -73,6 +73,8 @@ class FormCinema extends Component {
                     placeholder="Lien externes"
                     value={this.state.link}
                     onChange={this.handleChange}/>
+
+                <h3> </h3>
                 
                 <Link to="/" ><input type="submit" value="Submit" /></Link>
                 </form>
