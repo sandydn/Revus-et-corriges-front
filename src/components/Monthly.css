@@ -40,7 +40,9 @@ body{
 }
 
 .monthlyDisplay{
-    display: initial;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 50% 10%;
 }
 
 
