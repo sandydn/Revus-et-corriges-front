@@ -1,0 +1,11 @@
+.boutonLoupe {
+    height: 30px;
+    justify-content: center;
+    position: absolute;
+}
+.loupe{
+    width: 18px;
+    position: absolute;
+    right: 3%;
+    top: -1%;
+}
