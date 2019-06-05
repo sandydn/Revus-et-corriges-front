@@ -1,0 +1,67 @@
+html{
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+}
+
+body{
+    margin: 0px;
+}
+
+
+.Calendar{
+    height:95vh;
+    display: flex;
+    border: 18px solid rgb(44, 67, 98);
+}
+
+.navbar{
+    width: 17%;
+    border: 2px solid grey
+
+}
+
+.weekly{
+    width: 83%;
+    background: url(../pictures/background-test_00.png);
+    background-size: 140%;
+    
+}
+
+.weeklyHead{
+    display: flex;
+    justify-content: center;
+    margin: -5px;
+}
+
+.weeklyHead > h1{
+    background: white;
+    width: max-content;
+}
+
+.weeklyDisplay{
+    display: flex;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-top: 0px;
+    cursor: pointer;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-right: 10px;
+    margin-left: 2px;
+  }
+  
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    margin-right: 2px;
+    margin-left: 10px;
+  }
