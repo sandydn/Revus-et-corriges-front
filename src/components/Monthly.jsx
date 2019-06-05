@@ -29,9 +29,9 @@ class Monthly extends Component {
                     <h1>Agenda Mars 2019</h1>
                 </div>
                 <div className='monthlyDisplay'>
-                    {/* <div onClick={this.previousMonth}><i class="arrow left"></i></div> */}
+                    <div onClick={this.previousMonth}><i class="arrow left"></i></div>
                     <WeekOfMonth dataDays={this.state.days} />
-                    {/* <div onClick={this.nextMonth}><i class="arrow right"></i></div> */}
+                    <div onClick={this.nextMonth}><i class="arrow right"></i></div>
                 </div>
             </div>
         )

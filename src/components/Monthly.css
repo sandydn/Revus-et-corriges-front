@@ -55,7 +55,7 @@ i {
     cursor: pointer;
   }
   
-  /* .right {
+   .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     margin-right: 10px;
@@ -67,4 +67,4 @@ i {
     -webkit-transform: rotate(135deg);
     margin-right: 2px;
     margin-left: 10px;
-  } */
+  } 
