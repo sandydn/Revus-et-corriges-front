@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Week from './Week'
 import Day from './Day'
-import dataTestMonth from "./dataTestMonth.json"
+import dataTestMonth1 from "./dataTestMonth1.json"
 
 class Monthly extends Component {
     state= {
@@ -9,7 +9,7 @@ class Monthly extends Component {
     }
 
     componentDidMount(){
-        this.setState({days: dataTestMonth})
+      this.setState({days: dataTestMonth1})
     }
 
     // previousMonth = () => {
