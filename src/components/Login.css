@@ -1,0 +1,31 @@
+.adminForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 2%;
+    width: 90%;
+    margin-left: 30%;
+    margin-top: -8%;
+    margin-bottom: 9%;
+    max-width: 322px;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+.iconLogin{
+    width: 150px;
+    margin-bottom: 5%;
+    position: relative;
+}
+
+.iconUser{
+    width: 12%;
+    margin-top: -10.9%;
+    margin-left: 0.6%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 50%;
+    border: 3px solid black;
+}
