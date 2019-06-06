@@ -42,13 +42,20 @@ body{
 .dayzOfWeek {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    font-size: 7px;
+    grid-gap: 50% 5%;
+    font-size: 0.6em;
+    
+}
+
+.dayzOfWeek > h1 {
+    font-style: oblique;
 }
 
 .monthlyDisplay{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 50% 10%;
+    grid-gap: 53% 13%;
+    
 }
 
 
