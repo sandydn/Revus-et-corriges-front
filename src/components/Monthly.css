@@ -39,6 +39,12 @@ body{
     width: max-content;
 }
 
+.dayzOfWeek {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    font-size: 7px;
+}
+
 .monthlyDisplay{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
