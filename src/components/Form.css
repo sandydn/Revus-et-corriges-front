@@ -9,7 +9,7 @@ Form {
   width: 50vw;
   margin: auto;
   padding-bottom: 5%;
-  background-color: rgba(211, 232, 237, .5);
+  background-color: rgba(211, 232, 237, .7);
 
 }
 
@@ -18,17 +18,6 @@ Form {
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* .container::after {
-  content:"";
-  background: url ("https://trello-attachments.s3.amazonaws.com/5cf68039ee406a2dd9efa70d/650x336/0e0089c31f03a7e42611754c7c283920/94580db71e1a349.jpg");
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-} */ */
 .hiddenInput{
   display:none;
 }
@@ -42,12 +31,17 @@ border-left-style: none;
 border-bottom-style:none;
 background-color: #d3e8ed;
 padding-top:2%;
-box-shadow: -1px 2px 6px 2px rgba(0, 0, 0, 0.3) inset;
+box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
 }
+
 fieldset {
 width: 40VW;
 margin-top: 2%;
 margin-bottom: 2%;
+}
+.checkradio {
+  display: flex;
+  justify-content: space-evenly;
 }
 .button-selectform {
     border: 1px solid black;

@@ -42,20 +42,16 @@ class Form extends Component {
           <form className="videoForm"
             onSubmit={this.handleSubmit}>
 
-            <fieldset>
+            <fieldset >
               <legend>Importance de l'évènement :</legend>
-              <div>
-                <input type="radio" id="r-c" name="importance" value={this.state.importance}
+              <div className="checkradio">
+                <input className="buttonradio" type="radio" id="r-c" name="importance" value={this.state.importance}
                   onChange={this.handleChange} />
                 <label for="r-c">Revus et Corrigés</label>
-              </div>
-              <div>
-                <input type="radio" id="partner" name="importance" value={this.state.importance}
+                <input className="buttonradio" type="radio" id="partner" name="importance" value={this.state.importance}
                   onChange={this.handleChange} />
                 <label for="partner">Partenaires</label>
-              </div>
-              <div>
-                <input type="radio" id="general" name="importance" value={this.state.importance}
+                <input className="buttonradio" type="radio" id="general" name="importance" value={this.state.importance}
                   onChange={this.handleChange} />
                 <label for="general">Général</label>
               </div>
@@ -88,7 +84,7 @@ class Form extends Component {
               onChange={this.handleChange} />
 
             Date de création :
-            <input className="date-form"
+            <input className="input-form"
               type="date"
               name="datecreation"
               placeholder="MM/AAAA"

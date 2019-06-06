@@ -120,19 +120,6 @@ class Formevent extends Component {
               value={this.state.description}
               onChange={this.handleChange} />
 
-            <input className='hiddenInput'
-              onChange={this.fileSelectedHandler}
-              ref={fileInput => this.fileInput = fileInput}
-              type="file" />
-
-            <button className='buttonPick'
-              onClick={() => this.fileInput.click()}>
-              Pick File </button>
-
-            <button className="buttonUpload"
-              onClick={this.fileUploadhandler}>
-              Upload </button>
-
             
             <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
           </form>
