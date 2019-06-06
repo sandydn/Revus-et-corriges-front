@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 import "../components/Form.css"
 
 class Form extends Component {
@@ -12,7 +13,8 @@ class Form extends Component {
     format:"",
     link: "", 
     editor:"",
-    selectedFile:null
+    selectedFile:null,
+    success: false
   }
 
   handleChange = event => {
@@ -31,13 +33,15 @@ axios.post('/video', fd)
 
   render() {
     return (
-      <div>
+      <div className="container">
+      <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
         
         <h1> FORMULAIRE VIDEO</h1>
         <div>
         
-          <form className="adminForm"
+          <form className="videoForm"
             onSubmit={this.handleSubmit}>
+
             Date de sortie :
             <input className="inputRelease"
               type="text" 
@@ -135,8 +139,9 @@ axios.post('/video', fd)
               onClick={this.fileUploadhandler}>
                 Upload
             </button>
-
+            <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
           </form>
+          {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
 
       </div>

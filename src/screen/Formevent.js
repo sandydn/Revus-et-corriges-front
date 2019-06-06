@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import  {Link} from 'react-router-dom';
 import axios from "axios";
-import './Formevent.css'
+import '../components/Form.css'
 
 class Formevent extends Component {
   state = {
@@ -41,7 +41,7 @@ class Formevent extends Component {
       <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
-          
+
             Date de début :
             <input className="input-form"
               name="dateStart"
@@ -129,7 +129,7 @@ class Formevent extends Component {
 
             <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
           </form>
-          {this.state.success ? <p>Vous êtes connecté.</p> : null}
+          {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
         </div>
         )

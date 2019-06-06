@@ -1,48 +1,52 @@
+Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3em;
+  color:black;
+  border: 1px solid black;
+  border-radius: 10px 10px 10px 10px;
+  width: 50vw;
+  margin: auto;
+  background-color: #c0e2ea;
+}
+
+/* .container {
+  background-image: url("https://trello-attachments.s3.amazonaws.com/5cd7f83b61edae67f973f62b/5cef3fb685ca6344b8fa6124/c58714526b670aa011615523b89ef02d/EXPORT_SOMMAIRE_4.jpg");
+}
+.container::after {
+  content:"";
+  background: url("https://trello-attachments.s3.amazonaws.com/5cd7f83b61edae67f973f62b/5cef3fb685ca6344b8fa6124/c58714526b670aa011615523b89ef02d/EXPORT_SOMMAIRE_4.jpg");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+} */
 .hiddenInput{
   display:none;
 }
-
-.adminForm {
-  display: grid;
-  grid-template-columns: 40%;
-  grid-auto-rows: 50px;
-  grid-row-gap: 20px;
-  grid-template-areas:
-  "InputRelease"
-  "InputTitle"
-  "InputDirector"
-  "InputEditor"
-  "InputFormat"
-  "buttonPick"
-  "buttonUpload";
-  justify-content: center;
+.input-form {
+width: 41vw;
+border-bottom: 1px solid black;
 }
-
-.InputRelease{
-  grid-area:InputRelease;
+fieldset {
+width: 40VW;
 }
-
-.InputTitle{
-  grid-area:InputTitle;
+.button-selectform {
+    border: 1px solid black;
+    height: 5vh;
+    margin-left: 2%;
+    margin-top:2%;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
 }
-
-.InputDirector{
-  grid-area:InputDirector;
+.button-submit {
+    border: 1px solid black;
+    height: 5vh;
+    margin-top:5vh;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
 }
-
-.InputEditor{
-  grid-area:InputEditor;
-}
-
-.InputFormat{
-  grid-area:InputFormat;
-}
-
-.buttonPick{
-  grid-area:buttonPick;
-}
-
-.buttonUpload{
-  grid-area:buttonUpload;
-}
-

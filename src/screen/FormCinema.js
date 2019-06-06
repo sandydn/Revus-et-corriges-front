@@ -21,8 +21,8 @@ class FormCinema extends Component {
     //     event.preventDefault()
     //     axios.post(``,{
     //         email: event.target.email.value,
-    //         password: event.target.password.value
-    //     })
+    //         password: event.target.password.valu
+    //         })
     //     .then(() => {
     //         this.setState({ success: true })
     //     })
@@ -34,15 +34,15 @@ class FormCinema extends Component {
             <div >
                                 <Link to="/select-form" ><input type="submit" value="Retour formulaire" /></Link>
                 <form className="formCinema" onSubmit={this.handleSubmit}>
-                <h3>Nom</h3> 
+                titre :
                     <input
                     type="text" 
-                    name="name" 
+                    name="titre" 
                     placeholder="Nom Cinema"
                     value={this.state.name}
                     onChange={this.handleChange}/>
 
-                <h3>Date</h3> 
+                Date de sortie :
                     <input 
                     type="text"
                     name="date" 
@@ -50,7 +50,7 @@ class FormCinema extends Component {
                     value={this.state.date}
                     onChange={this.handleChange}/>
 
-                <h3>Description</h3> 
+                Description
                     <input 
                     type="text"
                     name="description" 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-
+import axios from "axios"
 import { Link } from 'react-router-dom';
-import './FormCinema.css'
+import '../components/Form.css'
 
-class FormCinema extends Component {
+class FormCine extends Component {
   state = {
     name: "",
     date: "",
-    importance: "",
+    importance: false,
     realisateur: "",
     datecreation: "",
     link: "",
@@ -48,8 +48,8 @@ axios.post('/video', fd)
 
       <div className="container">
         <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
-        <div className="form">
-          <form onSubmit={this.handleSubmit}>
+        <div className="formCine">
+          <form classname="FormCine" onSubmit={this.handleSubmit}>
 
             Titre
                   <input className="input-form"
@@ -150,11 +150,11 @@ axios.post('/video', fd)
 
             <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
           </form>
-          {this.state.success ? <p>Cinéma créer avec succés</p> : null}
+          {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
       </div>
     )
   }
 }
 
-export default FormCinema
+export default FormCine

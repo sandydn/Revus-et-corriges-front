@@ -10,16 +10,30 @@ import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
 
 import Formevent from './screen/Formevent';
-import FormCinema from './screen/FormCinema';
-import FormVideo from './screen/FormVideo'
-
-import Form from './components/Form'
+import FormCine from './screen/FormCine';
+import FormVideo from './components/FormVideo'
 
 
 class App extends Component {
   render() {
     return (
-      <Form />)
+      <BrowserRouter>
+        <div className="dg">
+          <img src={RC} alt="logo revus et corrigés"/>
+          <Menu />
+          {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
+          <Switch>
+            <Route exact path="/" component={Calendar} />
+            <Route path="/login" component={Sign} />
+            <Route path="/select-form" component={SelectionForm} />
+            <Route path="/formevent" component={Formevent} />
+            <Route path="/formcinema" component={FormCine} />
+            <Route path="/formvideo" component={FormVideo} />
+
+          </Switch>
+          </div>
+      </BrowserRouter>
+    );
   }
 }
 
