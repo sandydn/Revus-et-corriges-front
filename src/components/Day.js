@@ -8,7 +8,7 @@ const Day = ({date, dataEvent}) => {
         <div className='Day'>
             <h1>{date}</h1>
             <div className='line'></div>
-            <Events dataEvent={dataEvent}/>
+            {/* <Events dataEvent={dataEvent}/> */}
         </div>
     )
 }
