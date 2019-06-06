@@ -19,8 +19,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="dg">
-          <img src={RC} alt="logo revus et corrigés"/>
-          <Menu />
           {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
           <Switch>
             <Route exact path="/" component={Calendar} />

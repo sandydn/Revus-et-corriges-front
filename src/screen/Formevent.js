@@ -3,6 +3,7 @@ import  {Link} from 'react-router-dom';
 import axios from "axios";
 import '../components/Form.css'
 
+
 class Formevent extends Component {
   state = {
     dateStart: "",
@@ -36,28 +37,12 @@ class Formevent extends Component {
 
 
   render() {
-    return (
+    return ( 
+      <>
       <div className="container">
       <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
-
-            Date de début :
-            <input className="input-form"
-              name="dateStart"
-              type="date"
-              placeholder="JJ-MM-AAAA"
-              value={this.state.dateStart}
-              onChange={this.handleChange} />
-
-            Date de fin :
-            <input className="input-form"
-              name="dateEnd"
-              placeholder="JJ-MM-AAAA"
-              type="date"
-              value={this.state.dateEnd}
-              onChange={this.handleChange} />
-
 
               <fieldset>
               <legend>Importance de l'évènement :</legend>
@@ -77,6 +62,22 @@ class Formevent extends Component {
                 <label for="general">Général</label>
               </div>
               </fieldset>
+
+            Date de début :
+            <input className="input-form"
+              name="dateStart"
+              type="date"
+              placeholder="JJ-MM-AAAA"
+              value={this.state.dateStart}
+              onChange={this.handleChange} />
+
+            Date de fin :
+            <input className="input-form"
+              name="dateEnd"
+              placeholder="JJ-MM-AAAA"
+              type="date"
+              value={this.state.dateEnd}
+              onChange={this.handleChange} />
 
             Titre de l'évènement :
             <input className="input-form"
@@ -119,19 +120,26 @@ class Formevent extends Component {
               value={this.state.description}
               onChange={this.handleChange} />
 
-            Visuel :
-            <input className="input-form"
-              type="url"
-              name="src"
-              placheholder=""
-              value={this.state.src}
-              onChange={this.handleChange} />
+            <input className='hiddenInput'
+              onChange={this.fileSelectedHandler}
+              ref={fileInput => this.fileInput = fileInput}
+              type="file" />
 
+            <button className='buttonPick'
+              onClick={() => this.fileInput.click()}>
+              Pick File </button>
+
+            <button className="buttonUpload"
+              onClick={this.fileUploadhandler}>
+              Upload </button>
+
+            
             <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
         </div>
+        </>
         )
     }
 }
