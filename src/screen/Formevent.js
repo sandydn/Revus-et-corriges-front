@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import  {Link} from 'react-router-dom';
-import './Formevent.css'
+import axios from "axios";
+import '../components/Form.css'
+
 
 class Formevent extends Component {
   state = {
-    start: "",
-    end: "",
+    dateStart: "",
+    dateEnd: "",
     type:"",
-    importance:"",
-    titre:"",
-    lieu:"",
+    importance: false,
+    name:"",
+    adresse:"",
     dateinfo:"",
-    lien:"",
-    information:"",
-    visuel:"",
+    link:"",
+    description:"",
+    src:"",
     succes: false
   }
 
@@ -22,78 +24,90 @@ class Formevent extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-//   handleSubmit = event => {
-//     event.preventDefault()
-//   axios.post(`http://localhost:4242/adminform`,{
-//     email: event.target.email.value,
-//   password: event.target.password.value
-// })
-//   .then(() => {
-//     this.setState({ success: true })
-//   })
-// }
+  handleSubmit = event => {
+    event.preventDefault()
+  axios.post(`http://localhost:4242/adminform`,{
+    email: event.target.email.value,
+  password: event.target.password.value
+})
+  .then(() => {
+    this.setState({ success: true })
+  })
+}
 
 
   render() {
-    return (
+    return ( 
+      <>
       <div className="container">
       <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
-            Date de début :
-            <input className="input-event"
-              name="start"
-              type="date"
-              placeholder="JJ-MM-AAAA"
-              value={this.state.start}
-              onChange={this.handleChange} />
-
-            Date de fin :
-            <input className="input-event"
-              name="end"
-              placeholder="JJ-MM-AAAA"
-              type="date"
-              value={this.state.end}
-              onChange={this.handleChange} />
-
-
-              <fieldset>
+<h3>Formulaire event</h3>
+<fieldset >
               <legend>Importance de l'évènement :</legend>
-              <div>
-              <input type="radio" id="r-c" name="importance" value={this.state.importance }
-              onChange={this.handleChange}/>
-              <label for="r-c">Revus et Corrigés</label>
-              </div>
-              <div>
-              <input type="radio" id="partner" name="importance" value={this.state.importance }
-              onChange={this.handleChange} />
-              <label for="partner">Partenaires</label>
-              </div>
-              <div>
-                <input type="radio" id="general" name="importance" value={this.state.importance }
-              onChange={this.handleChange}/>
+              <div className="checkradio">
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="r-c" 
+                  value={this.state.importance}
+                />
+                <label for="r-c">Revus et Corrigés</label>
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="partner" 
+                  value={this.state.importance}
+                />
+                <label for="partner">Partenaires</label>
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="general" 
+                  value={this.state.importance}
+                />
                 <label for="general">Général</label>
               </div>
-              </fieldset>
+            </fieldset>
 
-            Titre de l'évènement :
-            <input className="input-event"
+            <p>Date de début :</p>
+            <input className="input-form"
+              name="dateStart"
+              type="date"
+              placeholder="JJ-MM-AAAA"
+              value={this.state.dateStart}
+              onChange={this.handleChange} />
+
+            <p>Date de fin :</p>
+            <input className="input-form"
+              name="dateEnd"
+              placeholder="JJ-MM-AAAA"
+              type="date"
+              value={this.state.dateEnd}
+              onChange={this.handleChange} />
+
+            <p>Titre de l'évènement :</p>
+            <input className="input-form"
               type="text"
-              name="titre"
+              name="name"
               placheholder="Ton titre"
-              value={this.state.titre}
+              value={this.state.name}
               onChange={this.handleChange} />
 
-            Lieu :
-            <input className="input-event"
+            <p>Lieu :</p>
+            <input className="input-form"
               type="text"
-              name="lieu"
+              name="adresse"
               placheholder="Adresse de l'évènement"
-              value={this.state.lieu}
+              value={this.state.adresse}
               onChange={this.handleChange} />
 
-            Date ( info-bulle ? ) :
-            <input className="input-event"
+            <p>Date ( info-bulle ? ) :</p>
+            <input className="input-form"
               type="date"
               name="dateinfo"
               placheholder="JJ-MM-AAAA "
@@ -101,35 +115,29 @@ class Formevent extends Component {
               onChange={this.handleChange} />
 
 
-            Lien externe :
-            <input className="input-event"
+            <p>Lien externe :</p>
+            <input className="input-form"
               type="url"
-              name="lien"
+              name="link"
               placeholder=""
-              value={this.state.lien}
+              value={this.state.link}
               onChange={this.handleChange} />
 
-            Informations (info-bulle ?) :
-            <input className="input-event"
+            <p>Informations (info-bulle ?) :</p>
+            <input className="input-form"
               type="text"
-              name="information"
+              name="description"
               placeholder="infos"
-              value={this.state.information}
+              value={this.state.description}
               onChange={this.handleChange} />
 
-            Visuel :
-            <input className="input-event"
-              type="url"
-              name="visuel"
-              placheholder=""
-              value={this.state.visuel}
-              onChange={this.handleChange} />
-
+            
             <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
           </form>
-          {this.state.success ? <p>Vous êtes connecté.</p> : null}
+          {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
         </div>
+        </>
         )
     }
 }
