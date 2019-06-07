@@ -49,10 +49,10 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='login'>
+					<img className="iconUser" src={RC} alt="icone-user" />
 				<form className="adminForm" onSubmit={this.handleSubmit}>
 					{/*<img className="iconLogin" src={iconLogin} alt="icone-login" /> */}
-					<img className="iconUser" src={RC} alt="icone-user" />
 					<p className="titleLogin">Login</p>
 					<TextField
 						margin="normal"
