@@ -95,13 +95,14 @@ class Login extends React.Component {
 						variant="contained"
 						color="primary"
 					>Connexion</Button>
+					
+					{this.state.success ? <p>Vous êtes connecté.</p> : null}
 
 					<Link to="" variant="body2">
 						{"Mot de passe oublié ?"}
 					</Link>
 
 				</form>
-				{this.state.success ? <p>Vous êtes connecté.</p> : null}
 			</div>
 		)
 	}
