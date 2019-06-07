@@ -36,12 +36,12 @@ class Form extends Component {
       <div className="container">
         <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
 
-        <h1> FORMULAIRE VIDEO</h1>
+        
         <div>
 
           <form className="videoForm"
             onSubmit={this.handleSubmit}>
-
+<h3> FORMULAIRE VIDEO</h3>
             <fieldset >
               <legend>Importance de l'évènement :</legend>
               <div className="checkradio">
@@ -57,7 +57,7 @@ class Form extends Component {
               </div>
             </fieldset>
 
-            Date de sortie :
+            <p>Date de sortie :</p>
             <input className="input-form"
               type="text"
               name="date"
@@ -65,7 +65,7 @@ class Form extends Component {
               value={this.state.date}
               onChange={this.handleChange} />
 
-            Titre :
+            <p>Titre :</p>
             <input
               className="input-form"
               type="text"
@@ -74,7 +74,7 @@ class Form extends Component {
               value={this.state.name}
               onChange={this.handleChange} />
 
-            Réalisateur :
+            <p>Réalisateur :</p>
             <input
               className="input-form"
               type="text"
@@ -83,7 +83,7 @@ class Form extends Component {
               value={this.state.director}
               onChange={this.handleChange} />
 
-            Date de création :
+            <p>Date de création :</p>
             <input className="input-form"
               type="date"
               name="datecreation"
@@ -91,7 +91,7 @@ class Form extends Component {
               value={this.state.datecreation}
               onChange={this.handleChange} />
 
-            Editeur :
+            <p>Editeur :</p>
             <input
               className="input-form"
               type="text"
@@ -100,7 +100,7 @@ class Form extends Component {
               value={this.state.editor}
               onChange={this.handleChange} />
 
-            Format :
+            <p></p>Format :
             <input
               className="input-form"
               type="text"
@@ -109,7 +109,7 @@ class Form extends Component {
               value={this.state.format}
               onChange={this.handleChange} />
 
-            Link :
+            <p></p>Link :
             <input className="input-form"
               type="url"
               name="link"

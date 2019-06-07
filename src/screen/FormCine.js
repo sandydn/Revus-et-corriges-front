@@ -49,8 +49,8 @@ axios.post('/video', fd)
       <div className="container">
         <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
         <div className="formCine">
-          <form classname="FormCine" onSubmit={this.handleSubmit}>
-
+          <form classname="FormCine" onSubmit={this.handleSubmit} />
+                <h3> Formulaire Cinéma </h3>
           <fieldset>
               <legend>Importance de l'évènement :</legend>
               <div>
@@ -70,7 +70,7 @@ axios.post('/video', fd)
               </div>
               </fieldset>
 
-            Titre
+            <p>Titre</p>
           <input className="input-form"
               name="name"
               type="text"
@@ -78,7 +78,7 @@ axios.post('/video', fd)
               value={this.state.name}
               onChange={this.handleChange} />
 
-            Date de sortie :
+            <p>Date de sortie :</p>
           <input className="input-form"
               name="date"
               placeholder="JJ-MM-AAAA"
@@ -86,7 +86,7 @@ axios.post('/video', fd)
               value={this.state.date}
               onChange={this.handleChange} />
 
-            Réalisateur :
+            <p>Réalisateur :</p>
           <input className="input-form"
               type="text"
               name="realisateur"
@@ -94,7 +94,7 @@ axios.post('/video', fd)
               value={this.state.realisateur}
               onChange={this.handleChange} />
 
-            Date de création :
+            <p>Date de création :</p>
           <input className="input-form"
               type="date"
               name="datecreation"
@@ -102,7 +102,7 @@ axios.post('/video', fd)
               value={this.state.datecreation}
               onChange={this.handleChange} />
 
-            Lien externe :
+            <p>Lien externe :</p>
           <input className="input-form"
               type="url"
               name="link"
@@ -110,7 +110,7 @@ axios.post('/video', fd)
               value={this.state.link}
               onChange={this.handleChange} />
 
-            Distributeur :
+            <p>Distributeur :</p>
           <input className="input-form"
               type="text"
               name="distributeur"
@@ -118,7 +118,7 @@ axios.post('/video', fd)
               value={this.state.distributeur}
               onChange={this.handleChange} />
 
-            Description (info-bulle) :
+            <p>Description (info-bulle) :</p>
           <input className="input-form"
               type="text"
               name="description"

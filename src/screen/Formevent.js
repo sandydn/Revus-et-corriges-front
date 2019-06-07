@@ -43,7 +43,7 @@ class Formevent extends Component {
       <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
-
+<h3>Formulaire event</h3>
               <fieldset>
               <legend>Importance de l'évènement :</legend>
               <div>
@@ -63,7 +63,7 @@ class Formevent extends Component {
               </div>
               </fieldset>
 
-            Date de début :
+            <p>>Date de début :</p>
             <input className="input-form"
               name="dateStart"
               type="date"
@@ -71,7 +71,7 @@ class Formevent extends Component {
               value={this.state.dateStart}
               onChange={this.handleChange} />
 
-            Date de fin :
+            <p>Date de fin :</p>
             <input className="input-form"
               name="dateEnd"
               placeholder="JJ-MM-AAAA"
@@ -79,7 +79,7 @@ class Formevent extends Component {
               value={this.state.dateEnd}
               onChange={this.handleChange} />
 
-            Titre de l'évènement :
+            <p>Titre de l'évènement :</p>
             <input className="input-form"
               type="text"
               name="name"
@@ -87,7 +87,7 @@ class Formevent extends Component {
               value={this.state.name}
               onChange={this.handleChange} />
 
-            Lieu :
+            <p>Lieu :</p>
             <input className="input-form"
               type="text"
               name="adresse"
@@ -95,7 +95,7 @@ class Formevent extends Component {
               value={this.state.adresse}
               onChange={this.handleChange} />
 
-            Date ( info-bulle ? ) :
+            <p>Date ( info-bulle ? ) :</p>
             <input className="input-form"
               type="date"
               name="dateinfo"
@@ -104,7 +104,7 @@ class Formevent extends Component {
               onChange={this.handleChange} />
 
 
-            Lien externe :
+            <p>Lien externe :</p>
             <input className="input-form"
               type="url"
               name="link"
@@ -112,7 +112,7 @@ class Formevent extends Component {
               value={this.state.link}
               onChange={this.handleChange} />
 
-            Informations (info-bulle ?) :
+            <p>Informations (info-bulle ?) :</p>
             <input className="input-form"
               type="text"
               name="description"
