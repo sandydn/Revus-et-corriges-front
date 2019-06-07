@@ -6,14 +6,14 @@ import "../components/Form.css"
 class Form extends Component {
   state = {
     date: "",
-    importance: false,
-    name: "",
-    director: "",
     datecreation: "",
-    format: "",
-    link: "",
+    director: "",
     editor: "",
-    selectedFile: null,
+    format: "",
+    importance: false,
+    link: "",
+    name: "",
+    src: "",
     success: false
   }
 
@@ -21,122 +21,153 @@ class Form extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  fileSelectedHandler = event => {
-    this.setState({ selectedFile: event.target.files[0] })
-  }
-
-  fileUploadhandler = e => {
-    const fd = new FormData()
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-    axios.post('/video', fd)
-  }
+  handleSubmit = event => {
+    event.preventDefault()
+    axios.post(`http://localhost:4242/adminform`,{
+    email: event.target.email.value,
+    password: event.target.password.value
+  })
+  .then(() => {
+    this.setState({ success: true })
+  })
+}
 
   render() {
     return (
       <div className="container">
-        <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
+        <Link to="/select-form" >
+          <input 
+            className="button-selectform" 
+            type="submit" 
+            value="Choisir un autre formulaire" 
+          />
+        </Link>
 
         
         <div>
 
-          <form className="videoForm"
+          <form 
+            className="videoForm"
             onSubmit={this.handleSubmit}>
-<h3> FORMULAIRE VIDEO</h3>
+            <h3> FORMULAIRE VIDEO</h3>
             <fieldset >
               <legend>Importance de l'évènement :</legend>
               <div className="checkradio">
-                <input className="buttonradio" type="radio" id="r-c" name="importance" value={this.state.importance}
-                  onChange={this.handleChange} />
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="r-c" 
+                  value={this.state.importance}
+                />
                 <label for="r-c">Revus et Corrigés</label>
-                <input className="buttonradio" type="radio" id="partner" name="importance" value={this.state.importance}
-                  onChange={this.handleChange} />
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="partner" 
+                  value={this.state.importance}
+                />
                 <label for="partner">Partenaires</label>
-                <input className="buttonradio" type="radio" id="general" name="importance" value={this.state.importance}
-                  onChange={this.handleChange} />
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="general" 
+                  value={this.state.importance}
+                />
                 <label for="general">Général</label>
               </div>
             </fieldset>
 
             <p>Date de sortie :</p>
             <input className="input-form"
-              type="text"
               name="date"
+              onChange={this.handleChange} 
               placeholder="JJ/MM/AAAA"
+              type="text"
               value={this.state.date}
-              onChange={this.handleChange} />
+            />
 
             <p>Titre :</p>
             <input
               className="input-form"
-              type="text"
               name="name"
+              onChange={this.handleChange} 
               placeholder="movie's title"
+              type="text"
               value={this.state.name}
-              onChange={this.handleChange} />
+            />
 
             <p>Réalisateur :</p>
             <input
               className="input-form"
-              type="text"
               name="director"
+              onChange={this.handleChange} 
               placeholder="directed by..."
+              type="text"
               value={this.state.director}
-              onChange={this.handleChange} />
+            />
 
             <p>Date de création :</p>
-            <input className="input-form"
-              type="date"
+            <input 
+              className="input-form"
               name="datecreation"
+              onChange={this.handleChange} 
               placeholder="MM/AAAA"
+              type="date"
               value={this.state.datecreation}
-              onChange={this.handleChange} />
+            />
 
             <p>Editeur :</p>
             <input
               className="input-form"
-              type="text"
               name="editor"
+              onChange={this.handleChange} 
               placeholder="edited by..."
+              type="text"
               value={this.state.editor}
-              onChange={this.handleChange} />
+            />
 
-            <p></p>Format :
+            <p>Format :</p>
             <input
               className="input-form"
-              type="text"
               name="format"
+              onChange={this.handleChange} 
               placeholder="DVD/BLU-RAY..."
+              type="text"
               value={this.state.format}
-              onChange={this.handleChange} />
+            />
 
-            <p></p>Link :
-            <input className="input-form"
-              type="url"
+            <p>Link :</p>
+            <input 
+              className="input-form"
               name="link"
-              placeholde="lien"
+              onChange={this.handleChange} 
+              placeholder="lien"
+              type="url"
               value={this.state.link}
-              onChange={this.handleChange} />
+            />
 
-            <input
-              className='hiddenInput'
-              onChange={this.fileSelectedHandler}
-              ref={fileInput => this.fileInput = fileInput}
-              type="file" />
+            <p>Image :</p>
+            <input 
+              className="input-form"
+              name="src"
+              onChange={this.handleChange} 
+              placeholder="lien"
+              type="url"
+              value={this.state.src}
+            />
 
+            
 
-            <button
-              className='buttonPick'
-              onClick={() => this.fileInput.click()}>
-              Pick File
-            </button>
-
-            <button
-              className="buttonUpload"
-              onClick={this.fileUploadhandler}>
-              Upload
-            </button>
-
-            <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
+            <Link to="/select-form" >
+              <input 
+                className="button-selectform" 
+                type="submit" 
+                value="Choisir un autre formulaire" 
+              />
+            </Link>
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>

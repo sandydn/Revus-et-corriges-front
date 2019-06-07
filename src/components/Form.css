@@ -18,9 +18,7 @@ Form {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.hiddenInput{
-  display:none;
-}
+
 .input-form {
 width: 41vw;
 height: 5vh;

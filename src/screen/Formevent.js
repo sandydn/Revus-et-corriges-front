@@ -44,26 +44,37 @@ class Formevent extends Component {
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
 <h3>Formulaire event</h3>
-              <fieldset>
+<fieldset >
               <legend>Importance de l'évènement :</legend>
-              <div>
-              <input type="radio" id="r-c" name="importance" value={this.state.importance }
-              onChange={this.handleChange}/>
-              <label for="r-c">Revus et Corrigés</label>
-              </div>
-              <div>
-              <input type="radio" id="partner" name="importance" value={this.state.importance }
-              onChange={this.handleChange} />
-              <label for="partner">Partenaires</label>
-              </div>
-              <div>
-                <input type="radio" id="general" name="importance" value={this.state.importance }
-              onChange={this.handleChange}/>
+              <div className="checkradio">
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="r-c" 
+                  value={this.state.importance}
+                />
+                <label for="r-c">Revus et Corrigés</label>
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="partner" 
+                  value={this.state.importance}
+                />
+                <label for="partner">Partenaires</label>
+                <input 
+                  className="buttonradio" 
+                  name="importance" 
+                  onChange={this.handleChange} 
+                  type="radio" id="general" 
+                  value={this.state.importance}
+                />
                 <label for="general">Général</label>
               </div>
-              </fieldset>
+            </fieldset>
 
-            <p>>Date de début :</p>
+            <p>Date de début :</p>
             <input className="input-form"
               name="dateStart"
               type="date"
