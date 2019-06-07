@@ -9,7 +9,6 @@ import FormCinema from './screen/FormCinema';
 import FormVideo from './screen/FormVideo';
 
 
-
 class App extends Component {
   render() {
     return (
@@ -21,8 +20,7 @@ class App extends Component {
             <Route path="/select-form" component={SelectionForm} />
             <Route path="/formevent" component={Formevent} />
             <Route path="/formcinema" component={FormCinema} />
-            <Route path="/formvideo" component={FormVideo} />
-            
+            <Route path="/formvideo" component={FormVideo} />            
           </Switch>
       </BrowserRouter>
       
