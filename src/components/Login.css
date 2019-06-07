@@ -1,3 +1,9 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .adminForm{
     display: flex;
     flex-direction: column;
@@ -7,10 +13,7 @@
     background: #fff;
     padding: 4%;
     width: 90%;
-    margin-left: 31%;
-    margin-top: 25%;
     height: 185px;
-    margin-bottom: -53%;
     max-width: 262px;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
 }
@@ -19,13 +22,13 @@
     width: 150px;
     margin-bottom: 5%;
     position: relative;
+    align-self: center;
 }
     
 .iconUser{
-    width: 32%;
-    margin-top: -25%;
+    width: 40%;
+    margin-bottom: 200px;
     margin-left: 2%;
-    position: absolute;
 }
 
 .titleLogin{
