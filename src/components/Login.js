@@ -38,8 +38,8 @@ class Login extends React.Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		axios.post(`http://localhost:4242/a6/adminform/`, {
-			admin_email: event.target.email.value,
-			admin_password: event.target.password.value
+			email: event.target.email.value,
+			password: event.target.password.value
 		})
 			.then(() => {
 				this.setState({ success: true })
