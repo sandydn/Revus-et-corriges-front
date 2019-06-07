@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import WeekOfMonth from './weekOfMonth'
 import DaysOfMonth from './DaysOfMonth'
 import dataTestMonth1 from "./dataTestMonth1.json"
+import moment from "moment"
 
 class Monthly extends Component {
     state= {
