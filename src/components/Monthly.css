@@ -49,6 +49,7 @@ body{
 
 .dayzOfWeek > h1 {
     font-style: oblique;
+    background-color: aliceblue;
 }
 
 .monthlyDisplay{
