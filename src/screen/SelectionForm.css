@@ -1,4 +1,8 @@
 .container-button {
     display:flex;
+    flex-direction: column;
     justify-content: space-around;
+    background-color: black;
+    height:100vh;
+    width: 15vw;
    }

@@ -2,6 +2,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import "../components/Form.css"
 
 class FormVideo extends Component {
@@ -24,27 +26,29 @@ class FormVideo extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    axios.post(`http://localhost:4242/adminform`,{
-    email: event.target.email.value,
-    password: event.target.password.value
-  })
+    axios.post(`http://localhost:4242/a24`,{
+      date: event.target.date.value,
+      format: event.target.format.value,
+      name: event.target.name.value,
+      src: event.target.src.value,
+      link: event.target.link.value,
+      datecreation: event.target.datecrea.value,
+    })
+    axios.post(`http://localhost:4242/a23`, {
+      director: event.target.name.value,
+    })
+    axios.post(`http://localhost:4242/a12`, {
+      editor: event.target.name.value
+    })
   .then(() => {
     this.setState({ success: true })
   })
+
 }
 
   render() {
     return (
       <div className="container">
-        <Link to="/select-form" >
-          <input 
-            className="button-selectform" 
-            type="submit" 
-            value="Choisir un autre formulaire" 
-          />
-        </Link>
-
-        
         <div>
 
           <form 
@@ -152,13 +156,11 @@ class FormVideo extends Component {
               value={this.state.src}
             />
             
-            <Link to="/select-form" >
-              <input 
-                className="button-selectform" 
-                type="submit" 
-                value="Choisir un autre formulaire" 
-              />
-            </Link>
+            <div className="button-choice">
+            <FontAwesomeIcon icon={faLongArrowAltLeft} className="arrow-back" />
+            <Link to="/select-form"><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
+            <Link to="/" ><input type="submit" value="Valider" className="button-submit" /></Link>
+            </div>
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
