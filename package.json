@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "react": "^16.8.6",
+    "react-alert": "^5.5.0",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1"
@@ -29,5 +30,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.1.1",
+    "@material-ui/icons": "^4.2.0"
   }
 }
