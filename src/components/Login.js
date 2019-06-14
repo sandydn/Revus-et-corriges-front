@@ -19,93 +19,97 @@ import RC from '../pictures/RC.png'
 import './Login.css'
 
 class Login extends React.Component {
-	state = {
-		email: "",
-		password: "",
-		showPassword: false,
-		success: false
-	}
+  state = {
+    email: "",
+    password: "",
+    showPassword: false,
+    success: false
+  }
 
-	toggleShow = () => {
-		this.setState({ showPassword: !this.state.showPassword })
-	}
+  toggleShow = () => {
+    this.setState({ showPassword: !this.state.showPassword })
+  }
 
-	handleChange = event => {
-		this.setState({ [event.target.name]: event.target.value })
-		console.log("this state", this.state)
-	}
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value })
+    console.log("this state", this.state)
+  }
 
-	handleSubmit = event => {
-		event.preventDefault()
-		axios.post(`http://localhost:4242/a6/adminform/`, {
-			admin_email: event.target.email.value,
-			admin_password: event.target.password.value
-		})
-			.then(() => {
-				this.setState({ success: true })
-			})
-	}
-	// ON SUBMIT - rediriger avec le routeur sur la page d'appel de formulaire
+  handleUploadImage = () => {
+    alert("Your file is being uploaded!")
+  }
 
-	render() {
-		return (
-			<div>
-				<form className="adminForm" onSubmit={this.handleSubmit}>
-					{/*<img className="iconLogin" src={iconLogin} alt="icone-login" /> */}
-					<img className="iconUser" src={RC} alt="icone-user" />
-					<p className="titleLogin">Login</p>
-					<TextField
-						margin="normal"
-						fullWidth
-						id="email"
-						label="Email"
-						name="email"
-						value={this.state.email}
-						onChange={this.handleChange}
-						autoComplete="email"
-						autoFocus
-					/>
+  handleSubmit = event => {
+    event.preventDefault()
+    axios.post(`http://localhost:4242/auth/login/`, {
+      admin_email: event.target.email.value,
+      admin_password: event.target.password.value
+    })
+      .then(() => {
+        this.setState({ success: true })
+      })
+  }
+  // ON SUBMIT - rediriger avec le routeur sur la page d'appel de formulaire
 
-					<FormControl className="">
-						<InputLabel htmlFor="adornment-password">Password</InputLabel>
-						<Input
-							id="password"
-							name="password"
-							fullWidth
-							type={this.state.showPassword ? 'text' : 'password'}
-							value={this.state.password}
-							onChange={this.handleChange}
-							endAdornment={
-								<InputAdornment position="end">
-									<IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-										{this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-									</IconButton>
-								</InputAdornment>} />
-					</FormControl>
+  render() {
+    return (
+      <div>
+        <form className="adminForm" onSubmit={this.handleSubmit}>
+          {/*<img className="iconLogin" src={iconLogin} alt="icone-login" /> */}
+          <img className="iconUser" src={RC} alt="icone-user" />
+          <p className="titleLogin">Login</p>
+          <TextField
+            margin="normal"
+            fullWidth
+            id="email"
+            label="Email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            autoComplete="email"
+            autoFocus
+          />
 
-					<FormControlLabel
-						control={<Checkbox value="remember" color="primary" />}
-						label="Remember me"
-					/>
+          <FormControl className="">
+            <InputLabel htmlFor="adornment-password">Password</InputLabel>
+            <Input
+              id="password"
+              name="password"
+              fullWidth
+              type={this.state.showPassword ? 'text' : 'password'}
+              value={this.state.password}
+              onChange={this.handleChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>} />
+          </FormControl>
 
-					<Button
-						type="submit"
-						value="Submit"
-						fullWidth
-						variant="contained"
-						color="primary"
-					>Connexion</Button>
-					
-					{this.state.success ? <p>Vous êtes connecté.</p> : null}
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
 
-					<Link to="" variant="body2">
-						{"Mot de passe oublié ?"}
-					</Link>
+          <Button
+            type="submit"
+            value="Submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >Connexion</Button>
 
-				</form>
-			</div>
-		)
-	}
+          {this.state.success ? <p>Vous êtes connecté.</p> : null}
+
+          <Link to="" variant="body2">
+            {"Mot de passe oublié ?"}
+          </Link>
+
+        </form>
+      </div>
+    )
+  }
 }
 
 export default Login;
