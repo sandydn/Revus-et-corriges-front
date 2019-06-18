@@ -225,6 +225,7 @@ class Monthly extends Component {
     
    render() {
 
+    
     let weekdayshortname = this.weekdayshort.map(day => {
       return <div key={day}>{day}</div>;
     });
@@ -270,7 +271,7 @@ class Monthly extends Component {
     });
 
     return (
-      <div className="">
+      <div className="monthly">
         <div className="">
           <span
             onClick={e => {
@@ -307,7 +308,7 @@ class Monthly extends Component {
         </div>
 
         {this.state.showDateTable && (
-          <div>
+          <div className="">
                <h1 className="monthlyDisplay">{weekdayshortname}</h1>
               
               <div className="dayzOfWeek">{daysinmonth}</div>
