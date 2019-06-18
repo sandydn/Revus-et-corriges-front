@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import WeekOfMonth from './weekOfMonth'
 import DaysOfMonth from './DaysOfMonth'
-import dataTestMonth1 from "./dataTestMonth1.json"
 import moment from "moment"
-import { range } from "moment-range";
+import { range } from "moment-range"
 
 
 
@@ -25,7 +24,7 @@ class Monthly extends Component {
 
 
     componentDidMount(){
-      this.setState({days: dataTestMonth1})
+      // this.setState({days: dataTestMonth1})
     }
 
     // previousMonth = () => {
@@ -77,15 +76,15 @@ class Monthly extends Component {
       let months = [];
       props.data.map(data => {
         months.push(
-          <td
+          <div
             key={data}
-            className="calendar-month"
+            className=""
             onClick={e => {
               this.setMonth(data);
             }}
           >
             <span>{data}</span>
-          </td>
+          </div>
         );
       });
       let rows = [];
@@ -102,18 +101,14 @@ class Monthly extends Component {
       });
       rows.push(cells);
       let monthlist = rows.map((d, i) => {
-        return <tr>{d}</tr>;
+        return <div>{d}</div>;
       });
   
       return (
-        <table className="calendar-month">
-          <thead>
-            <tr>
-              <th colSpan="4">Select a Month</th>
-            </tr>
-          </thead>
-          <tbody>{monthlist}</tbody>
-        </table>
+        <div className="Calendar">                     
+          <h1>{monthlist}</h1>
+          </div>
+      
       );
     };
     showYearTable = e => {
@@ -179,15 +174,15 @@ class Monthly extends Component {
   
       tenyear.map(data => {
         months.push(
-          <td
+          <div
             key={data}
-            className="calendar-month"
+            className=""
             onClick={e => {
               this.setYear(data);
             }}
           >
             <span>{data}</span>
-          </td>
+          </div>
         );
       });
       let rows = [];
@@ -204,18 +199,14 @@ class Monthly extends Component {
       });
       rows.push(cells);
       let yearlist = rows.map((d, i) => {
-        return <tr>{d}</tr>;
+        return <div>{d}</div>;
       });
   
       return (
-        <table className="calendar-month">
-          <thead>
-            <tr>
-              <th colSpan="4">Select a Yeah</th>
-            </tr>
-          </thead>
-          <tbody>{yearlist}</tbody>
-        </table>
+
+        <div className="">
+              {yearlist}
+        </div>
       );
     };
     onDayClick = (e, d) => {
@@ -225,7 +216,7 @@ class Monthly extends Component {
         },
         () => {
           console.log("SELECTED DAY: ", this.state.selectedDay);
-        }
+        }  
       );
     };
     
@@ -233,25 +224,25 @@ class Monthly extends Component {
    render() {
 
     let weekdayshortname = this.weekdayshort.map(day => {
-      return <th key={day}>{day}</th>;
+      return <div key={day}>{day}</div>;
     });
     let blanks = [];
     for (let i = 0; i < this.firstDayOfMonth(); i++) {
-      blanks.push(<td className="calendar-day empty">{""}</td>);
+      blanks.push(<div className=" ">{""}</div>);
     }
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let currentDay = d == this.currentDay() ? "today" : "";
       daysInMonth.push(
-        <td key={d} className={`calendar-day ${currentDay}`}>
-          <span
+        <div key={d} className={` ${currentDay}`}>
+          <h3
             onClick={e => {
               this.onDayClick(e, d);
             }}
           >
             {d}
-          </span>
-        </td>
+          </h3>
+        </div>
       );
     }
     var totalSlots = [...blanks, ...daysInMonth];
@@ -273,40 +264,40 @@ class Monthly extends Component {
     });
 
     let daysinmonth = rows.map((d, i) => {
-      return <tr>{d}</tr>;
+      return <h3>{d}</h3>;
     });
 
     return (
-      <div className="tail-datetime-calendar">
-        <div className="calendar-navi">
+      <div className="">
+        <div className="">
           <span
             onClick={e => {
               this.onPrev();
             }}
-            class="calendar-button button-prev"
+            class=" button-prev"
           />
           {!this.state.showMonthTable && (
             <span
               onClick={e => {
                 this.showMonth();
               }}
-              class="calendar-label"
+              class=""
             >
               {this.month()}
             </span>
           )}
-          <span className="calendar-label" onClick={e => this.showYearTable()}>
+          <span className="" onClick={e => this.showYearTable()}>
             {this.year()}
           </span>
            <span
           onClick={e => {
             this.onNext();
           }}
-          className="calendar-button button-next"
+          className=" "
         />
         </div>
        
-        <div className="calendar-date">
+        <div className="">
           {this.state.showYearTable && <this.YearTable props={this.year()} />}
           {this.state.showMonthTable && (
             <this.MonthList data={moment.months()} />
@@ -314,31 +305,27 @@ class Monthly extends Component {
         </div>
 
         {this.state.showDateTable && (
-          <div className="calendar-date">
-            <table className="calendar-day">
-              <thead>
-                <tr>{weekdayshortname}</tr>
-              </thead>
-              <tbody>{daysinmonth}</tbody>
-            </table>
+          <div>
+               <h1 className="monthlyDisplay">{weekdayshortname}</h1>
+              
+              <div className="dayzOfWeek">{daysinmonth}</div>
+          
           </div>
-        )}
-      </div>
-    );
+        
+      
+    )
   }
-}
+
+  
+  
+
+
 
 
   
 
-        // return (
 
-    //         <div className='monthly'>
-    //             <div className='monthlyHead'>
-    //                 <h1>Agenda Mars 2019</h1>
-    //             </div>
-
-    //             {/* <div className="dayzOfWeek">
+                {/* <div className="dayzOfWeek">
     //               <h1>LUNDI</h1>
     //               <h1>MARDI</h1>
     //               <h1>MERCREDI</h1>
@@ -348,21 +335,19 @@ class Monthly extends Component {
     //               <h1>DIMANCHE</h1>
     //             </div>
 
-    //             <div  className='monthlyDisplay'> */}
-    //             {/* <table className="calendar-day">
+    //             <div  className='calendar'> */}
+              {/* <table className="">
     //         <thead>
     //           <tr>{weekdayshortname}</tr>
     //         </thead>
     //         <tbody>{daysinmonth}</tbody>
     //       </table> */}
-    //                 {/* <div onClick={this.previousMonth}><i class="arrow left"></i></div> */}
-    //                 {/* <WeekOfMonth dataDays={this.state.days}  /> */}
-    //                 {/* <div onClick={this.nextMonth}><i class="arrow right"></i></div> */}
-    //             </div>
-    //         </div>
-    //     )
-    // }
-// }
+                    {/* <div onClick={this.previousMonth}><i class="arrow left"></i></div> */}
+           
+             </div>
+         )
+     }
+ }
 
 
 

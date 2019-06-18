@@ -39,18 +39,16 @@ body{
     width: max-content;
 }
 
-.dayzOfWeek {
+.dayzOfWeek > h3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-gap: 50% 5%;
     font-size: 0.6em;
     
 }
 
-.dayzOfWeek > h1 {
-    font-style: oblique;
-    background-color: aliceblue;
-}
+
 
 .monthlyDisplay{
     display: grid;
