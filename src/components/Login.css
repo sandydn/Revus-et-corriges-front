@@ -5,21 +5,14 @@
     align-items: center;
     border-radius: 10px 10px 10px 10px;
     background: #fff;
-    padding: 4%;
-    width: 90%;
+    padding: 5%;
     margin-left: 31%;
-    margin-top: 25%;
-    height: 185px;
-    margin-bottom: -53%;
+    margin-top: 22%;
+    height: 190px;
     max-width: 262px;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
 }
-    
-.iconLogin{
-    width: 150px;
-    margin-bottom: 5%;
-    position: relative;
-}
+
     
 .iconUser{
     width: 32%;
@@ -29,5 +22,16 @@
 }
 
 .titleLogin{
-    background-color: grey;
-}
+    display: flex;
+    justify-content: center;
+    background: rgba(3, 31, 190, 0.856);
+    padding: 17px;
+    width: 124.5%;
+    height: 11%;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: -30px;
+    margin-bottom: 5%;
+    border-radius: 9px 5px 0px 0px;
+}   
