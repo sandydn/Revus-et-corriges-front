@@ -48,7 +48,18 @@ body{
     
 }
 
+.month {
+    font-size: 25px;
+}
 
+.year {
+    font-size: 25px;
+}
+
+.monthAndYear {
+    display: flex;
+    justify-content: space-between;
+}
 
 .monthlyDisplay{
     display: grid;

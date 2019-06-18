@@ -272,7 +272,7 @@ class Monthly extends Component {
 
     return (
       <div className="monthly">
-        <div className="">
+        <div className="monthAndYear">
           <span
             onClick={e => {
               this.onPrev();
@@ -280,18 +280,18 @@ class Monthly extends Component {
             class=" button-prev"
           />
           {!this.state.showMonthTable && (
-            <span
+            <div
               onClick={e => {
                 this.showMonth();
               }}
-              class=""
+              class="month"
             >
               {this.month()}
-            </span>
+            </div>
           )}
-          <span className="" onClick={e => this.showYearTable()}>
+          <div className="year" onClick={e => this.showYearTable()}>
             {this.year()}
-          </span>
+          </div>
            <span
           onClick={e => {
             this.onNext();
