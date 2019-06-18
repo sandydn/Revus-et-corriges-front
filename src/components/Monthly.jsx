@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
-import WeekOfMonth from './weekOfMonth'
-import DaysOfMonth from './DaysOfMonth'
+// import WeekOfMonth from './weekOfMonth'
+// import DaysOfMonth from './DaysOfMonth'
 import moment from "moment"
-import { range } from "moment-range"
+import 'moment/locale/fr';
+import 'moment-timezone';
+// import { range } from "moment-range"
 
 
 
