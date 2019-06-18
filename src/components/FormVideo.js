@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import "../components/Form.css"
 
-class FormVideo extends Component {
+class Form extends Component {
   state = {
     date: "",
     datecreation: "",
@@ -80,6 +79,7 @@ class FormVideo extends Component {
                 <label for="general">Général</label>
               </div>
             </fieldset>
+
             <p>Date de sortie :</p>
             <input className="input-form"
               name="date"
@@ -88,6 +88,7 @@ class FormVideo extends Component {
               type="text"
               value={this.state.date}
             />
+
             <p>Titre :</p>
             <input
               className="input-form"
@@ -97,6 +98,7 @@ class FormVideo extends Component {
               type="text"
               value={this.state.name}
             />
+
             <p>Réalisateur :</p>
             <input
               className="input-form"
@@ -106,6 +108,7 @@ class FormVideo extends Component {
               type="text"
               value={this.state.director}
             />
+
             <p>Date de création :</p>
             <input 
               className="input-form"
@@ -115,6 +118,7 @@ class FormVideo extends Component {
               type="date"
               value={this.state.datecreation}
             />
+
             <p>Editeur :</p>
             <input
               className="input-form"
@@ -124,6 +128,7 @@ class FormVideo extends Component {
               type="text"
               value={this.state.editor}
             />
+
             <p>Format :</p>
             <input
               className="input-form"
@@ -133,6 +138,7 @@ class FormVideo extends Component {
               type="text"
               value={this.state.format}
             />
+
             <p>Link :</p>
             <input 
               className="input-form"
@@ -142,6 +148,7 @@ class FormVideo extends Component {
               type="url"
               value={this.state.link}
             />
+
             <p>Image :</p>
             <input 
               className="input-form"
@@ -151,7 +158,9 @@ class FormVideo extends Component {
               type="url"
               value={this.state.src}
             />
+
             
+
             <Link to="/select-form" >
               <input 
                 className="button-selectform" 
@@ -162,8 +171,11 @@ class FormVideo extends Component {
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
+
       </div>
     )
   }
 }
-export default FormVideo
+
+export default Form
+

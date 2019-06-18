@@ -5,9 +5,10 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
 import Formevent from './screen/Formevent';
-import FormCinema from './screen/FormCinema';
+import FormCine from './screen/FormCine';
 import FormVideo from './screen/FormVideo';
-
+import Weekly from './components/Weekly'
+import Monthly from './components/Monthly'
 
 
 class App extends Component {
@@ -16,13 +17,13 @@ class App extends Component {
       <BrowserRouter>
           {/* <NavLink exact to="/" activeClassName="selected"> Calendrier </NavLink> */}
           <Switch>
-            <Route exact path="/" component={Calendar} />
+            <Route exact path="/" component={Weekly} />
+            <Route path="/month" component={Monthly} />
             <Route path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
             <Route path="/formevent" component={Formevent} />
-            <Route path="/formcinema" component={FormCinema} />
-            <Route path="/formvideo" component={FormVideo} />
-            
+            <Route path="/formcinema" component={FormCine} />
+            <Route path="/formvideo" component={FormVideo} />            
           </Switch>
       </BrowserRouter>
       

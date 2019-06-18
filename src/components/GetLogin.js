@@ -7,13 +7,14 @@ class GetLogin extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:4242/adminform`).then(result => {
-            console.log(result.data)
+        axios.get(`http://localhost:4242/admin/adminform`)
+        .then(result => {
             this.setState({ auth: result.data })
         })
     }
 
     render() {
+
         if (this.state.auth === null) {
             return <p> loading... </p>
         }
@@ -29,4 +30,4 @@ class GetLogin extends Component {
     }
 }
 
-export default Getlogin
+export default GetLogin
