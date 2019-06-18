@@ -9,14 +9,16 @@
 }
 
 .boutonLoupe{
-    width: 25px;
-    height: 100%;
+    height: 2.9vh;
     background: rgb(250,188,22);
     border: none;
-    position: relative;
-    left:-16.5%
+    position: absolute;
+    left: 15.9vmax;
+    bottom: 18vmax;
+    border-radius: 15%;
 }
 
 .loupe{
     width: 12px;
 }
+
