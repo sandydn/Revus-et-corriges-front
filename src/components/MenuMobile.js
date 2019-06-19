@@ -16,7 +16,13 @@ class MenuMobile extends Component {
                          
                          </a>
                          <a href="#" id="close">×</a>
-      
+                         
+                          <a href="#"  id="close" >LA REVUE</a>
+                          <a href="#"  id="close" >BOUTIQUE</a>
+                          <a href="#"  id="close" >QUI SOMMES-NOUS ?</a>
+                          <a href="#"  id="close" >LA REVUE EN LIGNE</a>
+                          <a href="#"  id="close" >CALENDRIER</a>
+                          <a href="#"  id="close" >CONTACT+</a>
       
                         </nav>
                 </header>

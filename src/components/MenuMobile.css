@@ -72,6 +72,12 @@
     height: 34px;
     width: 34px;
   }
+
+ #close {
+    background-color: white;
+    width: 30vw
+ }
+
  
 }
 @media screen and (min-width : 1024px)  {
