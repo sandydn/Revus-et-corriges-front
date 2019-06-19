@@ -1,37 +1,46 @@
 .adminForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 5%;
-    margin-left: 31%;
-    margin-top: 22%;
-    height: 190px;
-    max-width: 262px;
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 10px 10px;
+  background: rgb(240, 232, 232);
+  padding: 5%;
+  margin-left: 31%;
+  margin-top: 22%;
+  height: 30vh;
+  max-width: 40vw;
+  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
 }
-
-    
+   
 .iconUser{
-    width: 32%;
-    margin-top: -25%;
-    margin-left: 2%;
-    position: absolute;
+  width: 32%;
+  margin-top: -25%;
+  margin-left: 2%;
+  position: absolute;
 }
 
-.titleLogin{
-    display: flex;
-    justify-content: center;
-    background: rgba(3, 31, 190, 0.856);
-    padding: 17px;
-    width: 124.5%;
-    height: 11%;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-top: -30px;
-    margin-bottom: 5%;
-    border-radius: 9px 5px 0px 0px;
-}   
+.FormTitle{
+  min-height: 40px;
+}
+
+.FormTitle__Link:hover{
+  color: #707C8B;
+  font-size: 1.3em;
+  margin: 0 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  transition: 1s ease-in-out;
+}
+
+.FormTitle__Link--Active{
+  color: black;
+  border-bottom: 1px solid #199087;
+  transform: translateX(30px);
+  transition: 1s ease-in-out;
+  font-size: 20px;
+}
+
+.btnSignUp{
+  margin-top: 3vh;
+}

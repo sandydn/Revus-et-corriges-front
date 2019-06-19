@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
@@ -13,6 +13,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
 
 import RC from '../pictures/RC.png'
 import './Login.css'
@@ -49,7 +50,7 @@ class Login extends React.Component {
       .then(() => {
         this.setState({ success: true }, () => {
           setTimeout(() => this.setState({ success: false }), 1400);
-          setTimeout(() => this.setState({ redirect: true }), 1400);  
+          setTimeout(() => this.setState({ redirect: true }), 1400);
         });
       });
   };
@@ -57,73 +58,82 @@ class Login extends React.Component {
 
   render() {
     const { formData, success, redirect } = this.state;
-      if (redirect){
-        return <Redirect to='/select-form'/>
-      }
+    if (redirect) {
+      return <Redirect to='/select-form' />
+    }
 
     return (
-        <form className="adminForm" onSubmit={this.handleSubmit}>
+    
+      <div className="adminForm" >
 
-          <img className="iconUser" src={RC} alt="icone-user" />
-          {/* <p className="titleLogin">Login</p> */}
+        <img className="iconUser" src={RC} alt="icone-user" />
+        <div className="FormTitle">
+      <NavLink to="/signin" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
+      <span> or </span> 
+      <NavLink exact to="/signup" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+    </div>
+       <div className="test">
+       <ValidatorForm
+          ref="form"
+          onSubmit={this.handleSubmit}
+        >
+          <TextValidator
+            fullWidth
+            label="Email"
+            onChange={this.handleChange}
+            name="email"
+            value={formData.email}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'Email non valide.']}
+          />
 
-          <ValidatorForm
-            ref="form"
-            onSubmit={this.handleSubmit}
-          >
-            <TextValidator 
-              fullWidth
-              label="Email"
+          <FormControl fullWidth >
+            <InputLabel htmlFor="adornment-password">Password</InputLabel>
+            <Input
+              label="Password"
+              name="password"
+              type={this.state.showPassword ? 'text' : 'password'}
+              value={formData.password}
               onChange={this.handleChange}
-              name="email"
-              value={formData.email}
-              validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'Email non valide.']}
-            />
+              validators={['required']}
+              errorMessages={['this field is required']}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>} />
+          </FormControl>
 
-            <FormControl>
-              <InputLabel htmlFor="adornment-password">Password</InputLabel>
-              <Input
-                label="Password"
-                name="password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                value={formData.password}
-                onChange={this.handleChange}
-                validators={['required']}
-                errorMessages={['this field is required']}
-                endAdornment={ 
-                  <InputAdornment position="end">
-                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>} />
-            </FormControl>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
 
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+          <Button
+            type="submit"
+            value="Submit"
+            color="primary"
+            variant="contained"
+            disabled={success}
+            fullWidth
+          >
+            {
+              (success && 'Vous êtes connécté.')
+              || (!success && 'Submit')
+            }
+          </Button>
 
-            <Button
-              type="submit"
-              value="Submit"
-              color="primary"
-              variant="contained"
-              disabled={success}
-              fullWidth
-            >
-              {
-                (success && 'Vous êtes connécté.')
-                || (!success && 'Submit')
-              }
-            </Button>
-          </ValidatorForm>
+        </ValidatorForm>
+       </div>
 
-          <Link to="" variant="body2">
-            {"Mot de passe oublié ?"}
-          </Link>
+       <br/>
 
-        </form>
+        <Link to="" variant="body2">
+          {"Mot de passe oublié ?"}
+        </Link>
+
+      </div>
     );
   };
 };
