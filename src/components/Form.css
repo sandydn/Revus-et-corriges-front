@@ -9,12 +9,12 @@ Form {
   width: 50vw;
   margin: auto;
   padding-bottom: 5%;
-  background-color: rgba(211, 232, 237, .7);
+  background-color:rgba(196, 200, 206, .7);
 
 }
 
 .container {
-  background-image: url(./assets/bgback.jpg);
+  background-image: url("https://images.unsplash.com/photo-1511184150666-9bb7d41a88f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -27,7 +27,7 @@ border-top-style: none;
 border-right-style: none;
 border-left-style: none;
 border-bottom-style:none;
-background-color: #d3e8ed;
+background-color:rgb(232, 236, 242);
 padding-top:2%;
 box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
 }
@@ -41,13 +41,24 @@ margin-bottom: 2%;
   display: flex;
   justify-content: space-evenly;
 }
+.button-choice {
+  display: flex;
+  flex-direction: row;
+  width: 38vw;
+  justify-content: space-evenly;
+} 
+.arrow-back {
+  height: 10vh;
+  width: 10vh;
+  margin-top:3vh;
+  padding-left:5vw;
+}
 .button-selectform {
-    border: 1px solid black;
+    border: none;
     height: 5vh;
-    margin-left: 2%;
-    margin-top:2%;
-    border-radius: 5px 5px 5px 5px;
-    background-color: white;
+    margin-left: -5vw;;
+    margin-top:5vh;
+    background: none;
 }
 .button-submit {
     border: 1px solid black;
