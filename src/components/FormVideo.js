@@ -35,15 +35,6 @@ class Form extends Component {
   render() {
     return (
       <div className="container">
-        <Link to="/select-form" >
-          <input 
-            className="button-selectform" 
-            type="submit" 
-            value="Choisir un autre formulaire" 
-          />
-        </Link>
-
-        
         <div>
 
           <form 
@@ -161,7 +152,7 @@ class Form extends Component {
 
             
 
-            <Link to="/select-form" >
+            <Link to="/admin" >
               <input 
                 className="button-selectform" 
                 type="submit" 

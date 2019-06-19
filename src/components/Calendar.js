@@ -12,7 +12,7 @@ class Calendar extends Component {
             <div className='Calendar'>
                 <div className='navbar'>
                     <Menu />
-                    <Link to="/select-form" ><input type="submit" value="Admin" /></Link>
+                    <Link to="/admin" ><input type="submit" value="Admin" /></Link>
                     <Link to="/login" ><input type="submit" value="Login" /></Link></div>
                 <Weekly />
             </div>
