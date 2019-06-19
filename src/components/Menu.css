@@ -24,3 +24,23 @@ letter-spacing: .06em;
 li :hover {
   box-shadow: #fabc16 0 -12px inset; 
 }
+
+@media screen and (min-width: 10px) and (max-width: 1024px) {
+  a {
+    display: none;
+    
+}
+
+.responsiveDisplay{
+  width: 50vw
+}
+
+.logo{
+  
+  width: 70%;
+  margin-left: 65%;
+  margin-right: 35%
+}
+}
+
+

@@ -3,11 +3,14 @@ import './Menu.css'
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import RC from '../pictures/RC.png'
+import MenuMobile from './MenuMobile';
 
 export class Menu extends Component {
 render() {
     return (
-        <div >
+        
+        <div className='responsiveDisplay' >
+            <MenuMobile/>
            <img src={RC} alt="logo revus et corrigés" className='logo'/>
             <ul className="menuCss" >
                 <li><a href="https://revusetcorriges.net/la-revue/" >LA REVUE </a></li>
