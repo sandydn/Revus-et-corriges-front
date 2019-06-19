@@ -9,6 +9,8 @@ import FormCine from './screen/FormCine';
 import FormVideo from './screen/FormVideo';
 import Weekly from './components/Weekly'
 import Monthly from './components/Monthly'
+import Login from './components/Login';
+import RegisterLogin from './components/RegisterLogin';
 
 
 class App extends Component {
@@ -22,8 +24,10 @@ class App extends Component {
             <Route path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
             <Route path="/formevent" component={Formevent} />
-            <Route path="/formcinema" component={FormCine} />
-            <Route path="/formvideo" component={FormVideo} />            
+            <Route path="/formcinema" component={FormCinema} />
+            <Route path="/formvideo" component={FormVideo} />
+            <Route exact path="/signin" component={Login} />
+            <Route path="/signup" component={RegisterLogin} />      
           </Switch>
       </BrowserRouter>
       
