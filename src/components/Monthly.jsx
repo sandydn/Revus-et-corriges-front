@@ -55,9 +55,11 @@ class Monthly extends Component {
         .format("d"); // Day of week 0...1..5...6
       return firstDay;
     };
+    
     month = () => {
       return this.state.dateObject.format("MMMM");
     };
+   
     showMonth = (e, month) => {
       this.setState({
         showMonthTable: !this.state.showMonthTable,
@@ -309,6 +311,9 @@ class Monthly extends Component {
 
         {this.state.showDateTable && (
           <div className="">
+              <div onClick={this.previousMonth}><i class="arrow left"></i></div>   <div onClick={this.nextMonth}><i class="arrow right"></i></div>
+
+
                <h1 className="monthlyDisplay">{weekdayshortname}</h1>
               
               <div className="dayzOfWeek">{daysinmonth}</div>
@@ -345,7 +350,6 @@ class Monthly extends Component {
     //         </thead>
     //         <tbody>{daysinmonth}</tbody>
     //       </table> */}
-                    {/* <div onClick={this.previousMonth}><i class="arrow left"></i></div> */}
            
              </div>
          )
