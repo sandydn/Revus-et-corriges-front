@@ -1,4 +1,30 @@
 .container-button {
     display:flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(127, 127, 127);
+    height:100vh;
+    width: 19vw;
    }
+.event-managment {
+    margin-top: -10vh;
+}
+.event-button {
+    font-size:0.9em;
+}
+.deco-managment {
+    margin-top: -10vh;
+}
+h4 {
+    color: white;
+    text-decoration-line: underline;
+    padding-left: 1vw;
+}
+a {
+    padding-left: 2vw;
+    font-size:1em;
+}
+a:hover {
+    text-decoration-line: underline;
+}
+a:

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import '../components/Form.css'
+import SelectionForm from '../screen/SelectionForm';
 
 class FormCine extends Component {
   state = {
@@ -21,16 +24,6 @@ class FormCine extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-    fileSelectedHandler = event => {
-    this.setState({selectedFile: event.target.files[0]})
-  }
-
-  fileUploadhandler = e => {
-const fd = new FormData()
-fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-axios.post('/video', fd)
-  }
-
   handleSubmit = event => {
       event.preventDefault()
       axios.post(``,{
@@ -45,12 +38,9 @@ axios.post('/video', fd)
 
   render() {
     return (
-
+<>
+      <SelectionForm />
       <div className="container">
-        <Link to="/select-form" >
-          <input 
-          type="submit" 
-          value="Choisir un autre formulaire" className="button-selectform" /></Link>
         <div className="formCine">
           <form classname="FormCine" onSubmit={this.handleSubmit} >
                 <h3> Formulaire Cinéma </h3>
@@ -132,7 +122,7 @@ axios.post('/video', fd)
               value={this.state.distributeur}
               onChange={this.handleChange} />
 
-            <p>Description (info-bulle) :</p>
+            <p>Description:</p>
           <input className="input-form"
               type="text"
               name="description"
@@ -140,11 +130,16 @@ axios.post('/video', fd)
               value={this.state.description}
               onChange={this.handleChange} />
 
-            <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
+            <div className="button-choice">
+            <FontAwesomeIcon icon={faLongArrowAltLeft} className="arrow-back" />
+            <Link to="/admin" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
+            <Link to="/" ><input type="submit" value="Valider" className="button-submit" /></Link>
+            </div>
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
       </div>
+      </>
     )
   }
 }

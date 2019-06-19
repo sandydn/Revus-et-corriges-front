@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import "../screen/SelectionForm.css"
 
-export class ButtonForm extends Component {
+export class LinkForm extends Component {
 
   render() {
     return (
       <>
         <div>
-          <button className='buttonform'
+          <a className='buttonform'
             type="button">
             {this.props.name}
-          </button>
+          </a>
         </div>
       </>
     )
   }
 }
 
-export default ButtonForm
+export default LinkForm

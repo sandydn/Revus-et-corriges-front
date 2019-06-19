@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import  {Link} from 'react-router-dom';
 import axios from "axios";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import '../components/Form.css'
 
 
@@ -26,7 +29,7 @@ class Formevent extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-  axios.post(`http://localhost:4242/adminform`,{
+  axios.post(`http://localhost:4242/a13`,{
     email: event.target.email.value,
   password: event.target.password.value
 })
@@ -40,11 +43,10 @@ class Formevent extends Component {
     return ( 
       <>
       <div className="container">
-      <Link to="/select-form" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
-<h3>Formulaire event</h3>
-<fieldset >
+            <h3>Formulaire event</h3>
+              <fieldset >
               <legend>Importance de l'évènement :</legend>
               <div className="checkradio">
                 <input 
@@ -130,9 +132,11 @@ class Formevent extends Component {
               placeholder="infos"
               value={this.state.description}
               onChange={this.handleChange} />
-
-            
-            <Link to="/" ><input type="submit" value="Valider le formulaire" className="button-submit" /></Link>
+            <div className="button-choice">
+            <FontAwesomeIcon icon={faLongArrowAltLeft} className="arrow-back" />
+            <Link to="/admin" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
+            <Link to="/" ><input type="submit" value="Valider" className="button-submit" /></Link>
+            </div>
           </form>
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
