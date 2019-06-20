@@ -25,6 +25,14 @@ body{
     justify-content: center;
 }
 
+.calendar-day :hover {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 h3 {
     display: flex;
     justify-content: center;

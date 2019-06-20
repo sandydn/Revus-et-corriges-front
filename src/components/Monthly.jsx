@@ -4,13 +4,14 @@ import React, {Component} from 'react'
 import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
-// import { range } from "moment-range"
+import { range } from "moment-range"
 
 
 
 class Monthly extends Component {
 
   weekdayshort = moment.weekdaysShort();
+  
 
     state= {
         days:[],
@@ -26,6 +27,7 @@ class Monthly extends Component {
 
 
     componentDidMount(){
+      
       // this.setState({days: dataTestMonth1})
     }
 
@@ -39,6 +41,7 @@ class Monthly extends Component {
 
     // week = this.state.days.map((day) => <DaysOfMonth date={day.date} dataEvent={day.data} />)
 
+    
     daysInMonth = () => {
       return this.state.dateObject.daysInMonth();
     };
@@ -274,6 +277,7 @@ class Monthly extends Component {
     });
 
     return (
+      
       <div className="monthly">
         <div className="monthAndYear">
           <span
