@@ -15,6 +15,21 @@ body{
     border: 18px solid rgb(44, 67, 98);
 }
 
+.today > h3 {
+    border: 3px;
+    border-color: rebeccapurple;
+    border-style: double;
+    border-radius: 30%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
 .navbar{
     width: 17%;
     border: 2px solid grey
@@ -44,21 +59,22 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-gap: 50% 12%;
-    font-size: 1.2em;
+    font-size: 1.1em;
     
 }
 
 .month {
-    font-size: 25px;
+    font-size: 1.5em;
+    font-style: oblique;
 }
 
 .year {
-    font-size: 25px;
+    font-size: 1.5em;
 }
 
 .monthAndYear {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .monthlyDisplay{
@@ -91,3 +107,10 @@ i {
     margin-right: 2px;
     margin-left: 10px;
   } 
+
+  .arrows {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  

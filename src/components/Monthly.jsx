@@ -48,6 +48,7 @@ class Monthly extends Component {
     currentDay = () => {
       return this.state.dateObject.format("D");
     };
+
     firstDayOfMonth = () => {
       let dateObject = this.state.dateObject;
       let firstDay = moment(dateObject)
@@ -239,7 +240,7 @@ class Monthly extends Component {
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let currentDay = d == this.currentDay() ? "today" : "";
       daysInMonth.push(
-        <div key={d} className={` ${currentDay}`}>
+        <div key={d} className={`calendar-day ${currentDay}`}>
           <h3
             onClick={e => {
               this.onDayClick(e, d);
@@ -311,8 +312,9 @@ class Monthly extends Component {
 
         {this.state.showDateTable && (
           <div className="">
-              <div onClick={this.previousMonth}><i class="arrow left"></i></div>   <div onClick={this.nextMonth}><i class="arrow right"></i></div>
-
+              <div className="arrows">
+                <div className="leftArrow" onClick={this.previousMonth}><i class="arrow left"></i></div>   <div className="rightArrow" onClick={this.nextMonth}><i class="arrow right"></i></div>
+              </div>
 
                <h1 className="monthlyDisplay">{weekdayshortname}</h1>
               
