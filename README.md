@@ -1,3 +1,6 @@
+### 'rm -rf node_modules package-lock.json && npm i && npm start'
+In case of bug when launching the dev server : try the folowing command to reinstall node_modules after reinitializing package-lock.json
+
 # paris-0219-js-revusEtCorriges-front
 
 ## Available Scripts
