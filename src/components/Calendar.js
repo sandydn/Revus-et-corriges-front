@@ -24,15 +24,7 @@ class Calendar extends Component {
     render() {
         return (
 
-<<<<<<< HEAD
             
-=======
-            <div className='Calendar'>
-                <div className='navbar'>
-                    <Menu />
-                    <Link to="/admin" ><input type="submit" value="Admin" /></Link>
-                    <Link to="/login" ><input type="submit" value="Login" /></Link></div>
->>>>>>> 2d4ae5703ca692cec5f1ce6b649ff45afbf0d4af
                 <Weekly />
             
         )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import  {Link} from 'react-router-dom';
 import axios from "axios";
+import SelectionForm from "../screen/SelectionForm"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
@@ -42,6 +43,7 @@ class Formevent extends Component {
   render() {
     return ( 
       <>
+      <SelectionForm />
       <div className="container">
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>

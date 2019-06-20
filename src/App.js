@@ -25,12 +25,14 @@ class App extends Component {
             <Route path="/month" component={Monthly} />
             <Route path="/login" component={Sign} />
             <Route path="/admin" component={Admin} />
+            <Route path="/formcine" component={FormCine} />
+            <Route path="/formevent" component={Formevent} />
             <Route path="/admin-events" component={Events} />
             <Route path="/admin-cinema" component={Cinema} />
             <Route path="/admin-videos" component={Videos} />
-            <Route path="/formevent" component={Formevent} />
-            <Route path="/formcinema" component={FormCine} />
-            <Route path="/formvideo" component={FormVideo} />            
+            {/* <Route path="/formevent" component={Formevent} /> */}
+            {/* <Route path="/formcinema" component={FormCine} /> */}
+            {/* <Route path="/formvideo" component={FormVideo} />             */}
           </Switch>
       </BrowserRouter>
       

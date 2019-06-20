@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom';
 class SelectionForm extends Component {
   render() {
     return (
-<>
         <div className='container-button'>
-          <h4>Gérer les évènements</h4>
+          <h4 className="title-managment">Gérer les évènements</h4>
           <div className="event-managment">
           <Link to="/admin-events" className="event-button"><LinkForm name="Evènements" /></Link>
           <Link to="/admin-cinema" className="event-button"><LinkForm name="Cinéma" /></Link>
@@ -16,7 +15,7 @@ class SelectionForm extends Component {
           <LinkForm name="Rétrospective" />
 
           </div>
-          <h4>Apparence du Calendrier</h4>
+          <h4 className="title-managment"> Apparence du Calendrier</h4>
           <div className="deco-managment">
             <LinkForm name="Fond d'écran" />
             <LinkForm name="Couleur de la police" />
@@ -25,10 +24,6 @@ class SelectionForm extends Component {
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
         </div>
-
-
-       
-</>
     )
   }
 }
