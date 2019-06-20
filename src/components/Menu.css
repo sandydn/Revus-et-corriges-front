@@ -9,6 +9,8 @@
   width: 90%;
 }
 
+ 
+
 a {
 size: 20px;
 font-family: 'Oswald', 'sans-serif';
@@ -21,8 +23,9 @@ letter-spacing: .06em;
 
 }
 
-li :hover {
-  box-shadow: #fabc16 0 -12px inset; 
+.liDesckop :hover {
+  box-shadow: #bc33e9 0 -12px inset; 
+  list-style-type: none;
 }
 
 @media screen and (min-width: 10px) and (max-width: 1024px) {

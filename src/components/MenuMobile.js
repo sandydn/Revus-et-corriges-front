@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './MenuMobile.css'
+import { NavLink } from 'react-router-dom';
 
 class MenuMobile extends Component {
     render() {
@@ -10,19 +11,19 @@ class MenuMobile extends Component {
                         <nav class="nav">
                          <a href="#wrap" id="open">
                          
-                         <rect fill="#FFFFFF" width="34" height="4"/>
+                         {/* <rect fill="#FFFFFF" width="34" height="4"/>
                          <rect y="11" fill="#FFFFFF" width="34" height="4"/>
-                         <rect y="23" fill="#FFFFFF" width="34" height="4"/>
+                         <rect y="23" fill="#FFFFFF" width="34" height="4"/> */}
                          
                          </a>
                          <a href="#" id="close">×</a>
                          
-                          <a href="#"  id="close" >LA REVUE</a>
-                          <a href="#"  id="close" >BOUTIQUE</a>
-                          <a href="#"  id="close" >QUI SOMMES-NOUS ?</a>
-                          <a href="#"  id="close" >LA REVUE EN LIGNE</a>
-                          <a href="#"  id="close" >CALENDRIER</a>
-                          <a href="#"  id="close" >CONTACT+</a>
+                         <li className='liResponsive'><a className='shadowBox'  href="https://revusetcorriges.net/la-revue/"  id='close' >LA REVUE </a></li>
+                         <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/boutique/sabonner/" id='close' >BOUTIQUE </a></li>      
+                         <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/qui-sommes-nous/" id='close' >QUI SOMMES-NOUS ? </a></li>
+                         <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/revue-en-ligne/" id='close' >LA REVUE EN LIGNE </a></li>
+                         <li className='liResponsive'><NavLink exact to="/" activeClassName="selected" className='shadowBox' id='close'>CALENDRIER</NavLink> </li>
+                         <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/contact/nous-contacter/" id='close' >CONTACT+ </a></li>
       
                         </nav>
                 </header>

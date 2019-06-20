@@ -7,11 +7,13 @@
     line-height: 1.6;
     margin-left: 0;
     display: flex;
-    color: #f00;
+    
     transition: transform .4s cubic-bezier(.25, .1, .25, 1);
     position: fixed;
     top: 23px; left: 363px;
     z-index: 8;
+    text-decoration: none;
+    text-decoration-style: solid;
 
 
     /* left: 50vw;
@@ -31,9 +33,9 @@
   #open,
   #close {
     height: 44px;
-    text-align: right;
+    text-align: left ;
     display: block;
-    margin-right: -35%;
+    margin-left: -35%;
   }
   
   #wrap:target #open,
@@ -46,6 +48,8 @@
   }
   
   .nav a {
+    
+    text-decoration-style: solid;
     color: black;
     text-decoration: none;
     display: block;
@@ -75,13 +79,30 @@
 
  #close {
     background-color: white;
-    width: 30vw
+    width: 101vw;
+    height: 18vh;
+    margin-left: -17.34em;
+    margin-top: -4vh;
  }
+
+ .liResponsive :hover {
+    
+    list-style-type: none;
+ }
+
+ .shadowBox:hover {
+  box-shadow: #bc33e9 310px -21px inset;
+ }
+
+ .liResponsive {
+  
+  list-style-type: none;
+}
 
  
 }
 @media screen and (min-width : 1024px)  {
-#close {
+#close, .liResponsive {
     display: none
 }
 }
