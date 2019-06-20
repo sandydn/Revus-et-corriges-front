@@ -24,7 +24,7 @@ class App extends Component {
             <Route path="/login" component={Sign} />
             <Route path="/select-form" component={SelectionForm} />
             <Route path="/formevent" component={Formevent} />
-            <Route path="/formcinema" component={FormCinema} />
+            <Route path="/formcinema" component={FormCine} />
             <Route path="/formvideo" component={FormVideo} />
             <Route exact path="/signin" component={Login} />
             <Route path="/signup" component={RegisterLogin} />      
