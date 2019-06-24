@@ -10,6 +10,7 @@ import '../components/Form.css'
 
 class Formevent extends Component {
   state = {
+    table: [],
     dateStart: "",
     dateEnd: "",
     type:"",
@@ -25,19 +26,37 @@ class Formevent extends Component {
 
 
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    event.preventDefault()
+    console.log(this.state)
+    this.setState({ [event.target.name]: event.target.value },
+    )
   }
 
-  handleSubmit = event => {
+  
+  handleSubmit = event => { 
     event.preventDefault()
-  axios.post(`http://localhost:4242/a13`,{
-    email: event.target.email.value,
-  password: event.target.password.value
-})
+    const results = JSON.stringify.this.state
+    
+  axios.post(`http://localhost:4000/a13`, {
+    results
+  } 
   .then(() => {
     this.setState({ success: true })
   })
+)
 }
+
+  // handleSubmit = e => {
+  //   e.preventDefault()
+  //   const url = "http://localhost:4000/a13;
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then( data => {
+  //       this.setState({
+  //         table : data
+  //       })
+  //     })
+  // }
 
 
   render() {
@@ -47,6 +66,7 @@ class Formevent extends Component {
       <div className="container">
             <div className="form-event">
           <form onSubmit={this.handleSubmit}>
+
             <h3>Formulaire event</h3>
               <fieldset >
               <legend>Importance de l'évènement :</legend>

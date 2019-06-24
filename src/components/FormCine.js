@@ -27,8 +27,8 @@ class FormCine extends Component {
   handleSubmit = event => {
       event.preventDefault()
       axios.post(``,{
-          email: event.target.email.value,
-          password: event.target.password.valu
+          name: this.state.name,
+         date: this.state.date
       })
       .then(() => {
           this.setState({ success: true })

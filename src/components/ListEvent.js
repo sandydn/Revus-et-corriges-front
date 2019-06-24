@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
-import './dataTestMonth.json';
-import Event from './Event'
+import React, { Component } from 'react';
+import dataTestMonth from './dataTestMonth.json';
 
+class ListEvent extends Component {
+    state = {
+        event: "",
 
-const ListEvent = ({dataEvent}) => {
-
-        return (
-            <div>
-                 dataEvent.map((one) => <Event title={one.title} 
-                                     comment={one.comment}  
-                                     picture={one.picture}
-                                     type={one.type} />)
-            </div>
-
-        )
     }
+    render() {
+        return (
+            <div></div>
+            // dataTestMonth.map(data => <Event dataEvents={data.data}/>)
+                
+        ) 
+    }
+}
 
 export default ListEvent
