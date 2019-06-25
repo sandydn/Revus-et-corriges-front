@@ -10,7 +10,6 @@ import '../components/Form.css'
 
 class Formevent extends Component {
   state = {
-    table: [],
     dateStart: "",
     dateEnd: "",
     type:"",
@@ -37,7 +36,7 @@ class Formevent extends Component {
     event.preventDefault()
     const results = JSON.stringify.this.state
     
-  axios.post(`http://localhost:4000/a13`, {
+  axios.post(`http://localhost:4000/a13/events`, {
     results
   } 
   .then(() => {
@@ -61,7 +60,7 @@ class Formevent extends Component {
 
   render() {
     return ( 
-      <>
+      <div className="screen-form">
       <SelectionForm />
       <div className="container">
             <div className="form-event">
@@ -130,7 +129,7 @@ class Formevent extends Component {
               value={this.state.adresse}
               onChange={this.handleChange} />
 
-            <p>Date ( info-bulle ? ) :</p>
+            <p>Date :</p>
             <input className="input-form"
               type="date"
               name="dateinfo"
@@ -147,7 +146,7 @@ class Formevent extends Component {
               value={this.state.link}
               onChange={this.handleChange} />
 
-            <p>Informations (info-bulle ?) :</p>
+            <p>Informations :</p>
             <input className="input-form"
               type="text"
               name="description"
@@ -163,7 +162,7 @@ class Formevent extends Component {
           {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
         </div>
         </div>
-        </>
+      </div>
         )
     }
 }
