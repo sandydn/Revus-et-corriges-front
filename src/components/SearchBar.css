@@ -9,12 +9,12 @@
 }
 
 .boutonLoupe{
-    height: 2.9vh;
+    height: 50%;
     background: #bc33e9;
     border: none;
-    position: absolute;
-    left: 21.5vmax;
-    bottom: 15.67vmax;
+    /* position: absolute; */
+    margin-left: -2.13em;
+    margin-top: 0.72em;
     border-radius: 15%;
 }
 

@@ -34,9 +34,11 @@ handleChange = event => {
 
 <div className="searchForm">
                 <form>
+                    <div>
                     <input type="text" id="filter" placeholder="Recherche..." ref={input => leshow.map = input}  onChange={this.handleChange} value={ this.state.input}/>
+                    {/* <input  type="submit" className="boutonLoupe"   src="https://image.flaticon.com/icons/png/128/54/54527.png" alt='Recherche'  /> */}
                     <button  type="submit" className="boutonLoupe" ><img className="loupe" src="https://image.flaticon.com/icons/png/128/54/54527.png" alt='Recherche' ></img> </button>
-
+                    </div>
                 </form>
                 
                 

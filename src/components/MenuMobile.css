@@ -75,6 +75,7 @@
     /* background-position-x: 90%; */
     height: 34px;
     width: 34px;
+   
   }
 
  #close {
@@ -92,7 +93,13 @@
 
  .shadowBox:hover {
   box-shadow: #bc33e9 310px -21px inset;
+  
  }
+
+.shadowBox{
+  padding-left: 2em;
+}
+
 
  .liResponsive {
   

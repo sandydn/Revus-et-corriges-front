@@ -7,13 +7,11 @@ class MenuMobile extends Component {
         return (
             <div id="wrap" >
                 
-                <header class="header">
-                        <nav class="nav">
+                <header className="header">
+                        <nav className="nav">
                          <a href="#wrap" id="open">
                          
-                         {/* <rect fill="#FFFFFF" width="34" height="4"/>
-                         <rect y="11" fill="#FFFFFF" width="34" height="4"/>
-                         <rect y="23" fill="#FFFFFF" width="34" height="4"/> */}
+                         
                          
                          </a>
                          <a href="#" id="close">×</a>
