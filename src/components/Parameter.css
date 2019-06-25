@@ -1,0 +1,29 @@
+ .wheelButton{
+  height :3%;
+  width : 3%;
+  background-image: url("https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png") no-repeat;
+  /*animation  : example 1s linear 0s infinite;*/  
+}
+
+.wheelButton:hover{
+  /* animation-play-state: paused ; */
+  cursor: pointer;  
+} 
+
+/* @keyframes example {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}    */
+
+.showing {
+  visibility: hidden;
+
+}	
+
+.notShowing {
+  visibility: visible;
+}
+
+
+
+
