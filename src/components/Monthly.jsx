@@ -5,6 +5,7 @@ import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
 import { range } from "moment-range"
+import Axios from 'axios';
 
 
 
@@ -33,6 +34,12 @@ class Monthly extends Component {
 
 
     componentDidMount(){
+
+      getData = event => {
+        Axios.get('')
+        .then( event => event.json()
+        })
+      }
       
       // this.setState({days: dataTestMonth1})
     }
