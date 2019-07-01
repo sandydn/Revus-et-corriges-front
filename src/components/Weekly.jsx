@@ -3,7 +3,7 @@ import Week from './Week'
 import Day from './Day'
 import dataTest from "./dataTest.json"
 import Menu from './Menu'
-import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Weekly extends Component {
     state= {

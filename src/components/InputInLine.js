@@ -1,28 +1,29 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const input = {
+const styleBase = {
     input: {
-        color: "blue",
-        backgroundColor: "blue",
-        border: "0px, Opx, Opx, 1px",
+        border: "none",
+        borderBottom: "2px solid silver",
+        outline: "none",
+        fontSize: "1em",
+        padding: "5px"
     },
     span : {
-        fontSize: "3em"
+        padding: "6px",
+        borderBottom: "2px solid silver",
+        fontSize: "1em"
     }
 }
 
 const InputInLine = ({keyState, title, style, funct, value}) => {
     return <div>
-
-        <span>
-            {title || "nothing"}
+        <span style={styleBase.span}>
+            {title + " :" || "nothing :"}
         </span>
         <input 
-            style={input}
+            style={{...styleBase.input, ...style}}
             onChange={(e) => funct && funct(keyState, e)}
             value={value || "" } 
-
         /> 
     </div>
 }
