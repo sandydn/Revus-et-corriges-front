@@ -17,9 +17,7 @@ class SelectionForm extends Component {
           </div>
           <h4 className="title-managment"> Apparence du Calendrier</h4>
           <div className="deco-managment">
-            <LinkForm name="Fond d'écran" />
-            <LinkForm name="Couleur de la police" />
-            <LinkForm name="Taille de la police" />
+            <LinkForm name="Paramètres" />
           </div>
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
