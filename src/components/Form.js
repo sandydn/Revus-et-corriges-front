@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
 import Checkboxline from './CheckboxLine';
-import Dropdown from './Dropdown';
 import './Form.css';
 import Dropdown from './Dropdown';
 import InputWithCalendar from './InputWithCalendar'
@@ -46,7 +45,13 @@ class Form extends Component {
             lieu,
             date,
             lien,
-            information
+            information,
+            realisateur,
+            datefilm,
+            distributeur,
+            format,
+            editeur,
+            visuel,
         } = this.state
         console.log(this.state)
         return (
