@@ -42,6 +42,11 @@ body{
     display: flex;
 }
 
+.weeklyDisplayMobile{
+    display:flex;
+    flex-direction: column;
+}
+
 i {
     border: solid black;
     border-width: 0 3px 3px 0;

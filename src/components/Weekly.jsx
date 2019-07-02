@@ -1,50 +1,91 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Week from './Week'
-import Day from './Day'
 import dataTest from "./dataTest.json"
 import Menu from './Menu'
-import { Link } from 'react-router-dom'
+import MobileWeek from './MobileWeek'
+import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
+import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
 
 class Weekly extends Component {
-    state= {
-        days:[]
+    state = {
+        days: [],
+        dayEvent: [],
+        dayDate: ''
     }
 
-    componentDidMount(){
-        this.setState({days: dataTest.filter((display)=> display.id <5)})
-        
+    
+
+    componentDidMount() {
+        this.setState({ days: dataTest.filter((display) => display.id < 5) })
+        const day = dataTest.filter((display)=> display.id == 1)
+        const dayArr = day[0]
+        this.setState({ dayEvent : dayArr.data })
+        this.setState({ dayDate : dayArr.date })
+
     }
 
     previousDays = () => {
-        this.setState({days: dataTest.filter((display)=> display.id <5)})
+        this.setState({ days: dataTest.filter((display) => display.id < 5) })
     }
 
-    nextDays = () => {
-        this.setState({days: dataTest.filter((display)=> display.id >4)})
+    nextDays = () => {
+        this.setState({ days: dataTest.filter((display) => display.id > 4) })
     }
 
-    week = this.state.days.map((day) => <Day date={day.date} dataEvent={day.data} />)
-    
+
+
     render() {
+        console.log(this.state.dayEvent)
         return (
-            <div className='Calendar'>
-            <div className='navbar'>
-            <Menu />
-            <Link to="/admin" ><input type="submit" value="Admin" /></Link>
-            <Link to="/login" ><input type="submit" value="Login" /></Link>
-            <Link to="/month"><input type="submit" value="Monthly" /></Link>
-        </div>
-            <div className='weekly'>
-                <div className='weeklyHead'>
-                    <h1>Agenda Mars 2019</h1>
-                </div>
-                <div className='weeklyDisplay'>
-                    <div onClick={this.previousDays}><i class="arrow left"></i></div>
-                    <Week dataDays={this.state.days} />
-                    <div onClick={this.nextDays}><i class="arrow right"></i></div>
-                </div>
-            </div>
-            </div>
+            <>
+                <BrowserView>
+                    <div className='Calendar'>
+
+                        <div className='navbar'>
+                            <Menu />
+                            <Link to="/select-form" ><input type="submit" value="Admin" /></Link>
+                            <Link to="/login" ><input type="submit" value="Login" /></Link>
+                            <Link to="/month"><input type="submit" value="Monthly" /></Link>
+                        </div>
+
+                        <div className='weekly'>
+
+                            <div className='weeklyHead'>
+                                <h1>Agenda Mars 2019</h1>
+                            </div>
+
+                            <div className='weeklyDisplay'>
+                                <div onClick={this.previousDays}><i class="arrow left"></i></div>
+
+                                <Week dataDays={this.state.days} />
+
+                                <div onClick={this.nextDays}><i class="arrow right"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </BrowserView>
+
+                <MobileView>
+
+                    <div className='weekly'>
+
+                        <div className='weeklyHead'>
+                            <h1>Agenda Mars 2019</h1>
+                        </div>
+
+                        <div className='weeklyDisplayMobile'>
+                            <div onClick={this.previousDays}><i class="arrow left"></i></div>
+
+                            <MobileWeek dataDays={this.state.days} date={this.state.dayDate} dataEvent={this.state.dayEvent} />
+
+                            <div onClick={this.nextDays}><i class="arrow right"></i></div>
+                        </div>
+
+                    </div>
+
+                </MobileView>
+            </>
         )
     }
 }
