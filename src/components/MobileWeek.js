@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import DaySelector from './DaySelector';
 import Day from './Day';
 
 
-
 const MobileWeek = ({ dataDays, dataEvent, date }) => {
-
 
     return (
         <div>

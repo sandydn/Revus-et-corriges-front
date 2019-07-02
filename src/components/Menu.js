@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './Menu.css'
 import { NavLink } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import RC from '../pictures/RC.png'
 import MenuMobile from './MenuMobile';
+
+import './css/Menu.css'
+import RC from '../pictures/RC.png'
 
 
 export class Menu extends Component {

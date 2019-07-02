@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import Menu from './Menu'
 import Weekly from "./Weekly"
 import Monthly from "./Monthly"
-import './calendar.css'
+
+import './css/calendar.css'
 import './Monthly.css'
 
-import { Link } from 'react-router-dom';
 
 class Calendar extends Component {
 
@@ -22,10 +23,10 @@ class Calendar extends Component {
     }
 
     render() {
+
         return (
 
-            
-            <div className='Calendar'>
+            <div className='calendar'>
                 <div className='navbar'>
                     <Menu />
                     <Link to="/select-form" ><input type="submit" value="Admin" /></Link>

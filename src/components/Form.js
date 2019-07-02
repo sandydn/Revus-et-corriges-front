@@ -4,6 +4,7 @@ import Checkboxline from './CheckboxLine';
 import './Form.css';
 
 class Form extends Component {
+    
     state = {
         date1: null,
         date2: null,

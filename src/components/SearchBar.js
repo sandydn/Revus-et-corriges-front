@@ -1,22 +1,15 @@
 import React from 'react'
-import './SearchBar.css'
+import './css/SearchBar.css'
 import show from './dataTest.json'
 
 class SearchBar extends React.Component {
     
-
-        
-    
-state = { input:" " };
-
-handleChange = event => {
-  this.setState({ input: event.target.value });
-};
+    state = { input:" " };
 
 
-
-
-
+    handleChange = event => {
+    this.setState({ input: event.target.value });
+    };
     
     render() {
         
@@ -27,35 +20,20 @@ handleChange = event => {
 
         return (
             
-
-
-    
-
-
-<div className="searchForm">
+            <div className="searchForm">
                 <form>
                     <div>
                     <input type="text" id="filter" placeholder="Recherche..." ref={input => leshow.map = input}  onChange={this.handleChange} value={ this.state.input}/>
-                    {/* <input  type="submit" className="boutonLoupe"   src="https://image.flaticon.com/icons/png/128/54/54527.png" alt='Recherche'  /> */}
                     <button  type="submit" className="boutonLoupe" ><img className="loupe" src="https://image.flaticon.com/icons/png/128/54/54527.png" alt='Recherche' ></img> </button>
                     </div>
                 </form>
                 
-                
-                
-            </div>
-
-
-
-
-        
+            </div>        
 
         )
         
     }
 
 }
-
-console.log(); 
 
 export default SearchBar;

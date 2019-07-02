@@ -1,6 +1,7 @@
 import React from 'react'
 
 const styleBase = {
+    
     input: {
         border: "none",
         borderBottom: "2px solid silver",
@@ -16,6 +17,7 @@ const styleBase = {
 }
 
 const InputInLine = ({keyState, title, style, funct, value}) => {
+
     return <div>
         <span style={styleBase.span}>
             {title + " :" || "nothing :"}

@@ -1,28 +1,20 @@
 html{
     height: 100vh;
     width: 100vw;
-    margin: 0px;
 }
 
-body{
-    margin: 0px;
-}
-
-
-.Calendar{
-    
+.calendar{
     display: flex;
     border: 18px solid rgb(44, 67, 98);
 }
 
 .navbar{
     width: 20%;
-
 }
 
 .weekly{
     width: 100%;
-    background: url(../pictures/backg.png);
+    background: url(../../pictures/backg.png);
     background-size: 140%;
     
 }
@@ -47,33 +39,33 @@ body{
     flex-direction: column;
 }
 
-i {
+.arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
     margin-top: 0px;
     cursor: pointer;
-  }
+}
   
-  .right {
+.right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     margin-right: 10px;
     margin-left: 2px;
-  }
-  
-  .left {
+}
+
+.left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     margin-right: 2px;
     margin-left: 10px;
-  }
+}
 
 
-  @media screen and (min-width: 10px) and (max-width: 1024px) {
+@media screen and (min-width: 10px) and (max-width: 1024px) {
+
     .Calendar {
-     display: block;
-      
-  }
-  }
+        display: block;
+    }
+}

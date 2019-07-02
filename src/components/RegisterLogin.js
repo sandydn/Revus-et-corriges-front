@@ -9,9 +9,10 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import RC from '../pictures/RC.png'
-import './Login.css'
+import './css/Login.css'
 
 class RegisterLogin extends React.Component {
+	
 	state = {
 		formData: {
 			name: '',

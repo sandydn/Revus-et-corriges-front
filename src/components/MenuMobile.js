@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import './MenuMobile.css'
 import { NavLink } from 'react-router-dom';
+import './css/MenuMobile.css'
 
 class MenuMobile extends Component {
     render() {
@@ -10,11 +10,9 @@ class MenuMobile extends Component {
                 <header className="header">
                         <nav className="nav">
                          <a href="#wrap" id="open">
-                         
-                         
-                         
+                             
                          </a>
-                         <a href="#" id="close">×</a>
+                         <a href="/" id="close">×</a>
                          
                          <li className='liResponsive'><a className='shadowBox'  href="https://revusetcorriges.net/la-revue/"  id='close' >LA REVUE </a></li>
                          <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/boutique/sabonner/" id='close' >BOUTIQUE </a></li>      

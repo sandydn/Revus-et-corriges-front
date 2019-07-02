@@ -5,6 +5,7 @@ import './DaysOfMonth.css'
 
 const DaysOfMonth = ({date, dataEvent}) => {
     return(
+        
         <div className='DayzDisplay'>
             <h1>{date}</h1>
             <div className='line'></div>

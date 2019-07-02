@@ -12,7 +12,6 @@ const Event = ({title, comment, picture, type}) => {
     
     const typeEvent = `event ${type}`
     
-    
     return( 
         <div className={typeEvent}>
         <h2>{title}</h2>

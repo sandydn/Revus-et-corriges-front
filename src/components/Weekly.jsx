@@ -3,8 +3,9 @@ import Week from './Week'
 import dataTest from "./dataTest.json"
 import Menu from './Menu'
 import MobileWeek from './MobileWeek'
-import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
-import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
+import { Link } from 'react-router-dom'
+import { BrowserView, MobileView } from "react-device-detect";
+import "./css/calendar.css"
 
 class Weekly extends Component {
     state = {
@@ -17,7 +18,7 @@ class Weekly extends Component {
 
     componentDidMount() {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
-        const day = dataTest.filter((display)=> display.id == 1)
+        const day = dataTest.filter((display)=> display.id === 1)
         const dayArr = day[0]
         this.setState({ dayEvent : dayArr.data })
         this.setState({ dayDate : dayArr.date })
@@ -35,11 +36,12 @@ class Weekly extends Component {
 
 
     render() {
-        console.log(this.state.dayEvent)
+        // console.log(this.state.dayEvent)
+
         return (
             <>
                 <BrowserView>
-                    <div className='Calendar'>
+                    <div className='calendar'>
 
                         <div className='navbar'>
                             <Menu />
@@ -55,11 +57,11 @@ class Weekly extends Component {
                             </div>
 
                             <div className='weeklyDisplay'>
-                                <div onClick={this.previousDays}><i class="arrow left"></i></div>
+                                <div onClick={this.previousDays}><i className="arrow left"></i></div>
 
                                 <Week dataDays={this.state.days} />
 
-                                <div onClick={this.nextDays}><i class="arrow right"></i></div>
+                                <div onClick={this.nextDays}><i className="arrow right"></i></div>
                             </div>
                         </div>
 
