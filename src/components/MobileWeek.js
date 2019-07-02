@@ -4,15 +4,20 @@ import Day from './Day';
 
 
 
-const MobileWeek = ({ dataDays, dataEvent, date }) => {
+const MobileWeek = ({ dataDays, dataEvent, date, previous, next, selector }) => {
 
 
     return (
         <div>
             <div className='daySelector'>
-                <DaySelector dataDays={dataDays} />
+                <div onClick={previous} className='previousMobile'><i class="arrow left"></i></div>
+
+                <DaySelector dataDays={dataDays} selector={selector} />
+
+                <div onClick={next} className='nextMobile'><i class="arrow right"></i></div>
             </div>
-            <Day date={date} dataEvent={dataEvent} />
+
+            <Day date={date} dataEvent={dataEvent} stateClass='Mobile' />
 
         </div>
     )

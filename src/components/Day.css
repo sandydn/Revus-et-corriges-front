@@ -1,11 +1,11 @@
-.Day{
+.dayDesktop{
     width: 20%;
     margin-right: 4px;
     margin-left: 4px;
     margin-top: 0px;
 }
 
-.Day > h1 {
+.dayDesktop > h1 {
     background: white;  
     text-transform: uppercase;
     font-size: 1.2em;
@@ -14,12 +14,52 @@
 
 }
 
-.Day > .line {
+.dayDesktop > .line {
     width: 100%;
     height: 1px;
     background: grey;
     margin-top: 8px;
     margin-bottom: 4px;
+}
+
+.dayMobile {
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 0px;
+}
+
+.dayMobile > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48);
+    margin: 0px;
+
+}
+
+.dayMobile > .line {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.days{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.days h1{
+    cursor: pointer;
+}
+
+.daySelector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .event{

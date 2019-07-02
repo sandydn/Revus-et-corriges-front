@@ -20,7 +20,7 @@ body{
 
 }
 
-.weekly{
+.weeklyDesktop{
     width: 100%;
     background: url(../pictures/backg.png);
     background-size: 140%;
@@ -45,6 +45,16 @@ body{
 .weeklyDisplayMobile{
     display:flex;
     flex-direction: column;
+}
+
+.nextMobile{
+    height: 22px;
+    margin-left: 4px;
+}
+
+.previousMobile{
+    height: 22px;
+    margin-right: 4px;
 }
 
 i {
