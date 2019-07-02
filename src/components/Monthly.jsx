@@ -4,8 +4,8 @@ import React, {Component} from 'react'
 import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
-import { range } from "moment-range"
-import Axios from 'axios';
+// import { range } from "moment-range"
+import axios from 'axios';
 
 
 
@@ -27,20 +27,24 @@ class Monthly extends Component {
         showDateTable: true,
         dateObject: moment(),
         allmonths: moment.months(),
-        selectedDay: null
+        selectedDay: null,
+        eventDate: []
     }
 
-    
+    getData = async () => {
+      const resultat = await axios.get('http://localhost:4000/a5/event')
+      // console.log(resultat);
+      
+      this.setState({eventDate: resultat.data}, () => {
+
+        // console.log(this.state.eventDate)
+      })
+    }
 
 
     componentDidMount(){
-
-      getData = event => {
-        Axios.get('')
-        .then( event => event.json()
-        })
-      }
       
+      this.getData()
       // this.setState({days: dataTestMonth1})
     }
 
@@ -185,10 +189,10 @@ class Monthly extends Component {
     };
     
     getDates(startDate, stopDate) {
-      var dateArray = [];
-      var currentDate = moment(startDate);
-      var stopDate = moment(stopDate);
-      while (currentDate <= stopDate) {
+      let dateArray = [];
+      let currentDate = moment(startDate);
+      let dateStop = moment(stopDate);
+      while (currentDate <= dateStop) {
         dateArray.push(moment(currentDate).format("YYYY"));
         currentDate = moment(currentDate).add(1, "year");
       }
@@ -270,17 +274,30 @@ class Monthly extends Component {
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let currentDay = d == this.currentDay() ? "today" : "";
       let dayEvent = false
-      this.events.map( event => {
-        const dateEvent = moment(event.date,"D DD")
-        if (d === dateEvent) {
-          return dayEvent = true;
+
+      this.state.eventDate.map( event => {
+        // console.log(event);
+        const eventDateStart = moment(event.dateStart).format("D")
+        console.log(eventDateStart, 'eventDateStart');
+        
+        if (d == eventDateStart) {
+          return dayEvent = true
         } else {
           return dayEvent = false;
         }
+        // event.moment(event.dateStart,"D DD")
+        // if (d === event.dateStart) {
+        //   return dayEvent = true;
+        // } else {
+        //   return dayEvent = false;
+        // }
         }
       )
+      const calendarDay = dayEvent ? 'calendar-day' : 'calendar-day-not-event'
+      console.log(dayEvent, calendarDay);
+      
       daysInMonth.push(
-        <div key={d} className = {dayEvent ? 'calendar-day':'calendar-day-no-event' `${currentDay}`}>
+        <div key={d} className = { `${calendarDay} ${currentDay}`} >
         {/* // <div key={d} className={`calendar-day ${currentDay}`}> */}
           <h3
             onClick={e => {
@@ -293,12 +310,11 @@ class Monthly extends Component {
       )
     }
 
-    var totalSlots = [...blanks, ...daysInMonth];
+    let totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
     let cells = [];
 
     totalSlots.forEach((row, i) => {
-      console.log('totalSlots', totalSlots)
       if (i % 7 !== 0) {
         cells.push(row);
       } else {
@@ -313,7 +329,6 @@ class Monthly extends Component {
     });
 
     let daysinmonth = rows.map((d, i) => {
-      console.log('rows', rows)
       return <h3>{d}</h3>;
     });
 
@@ -370,33 +385,6 @@ class Monthly extends Component {
       
     )
   }
-
-  
-  
-
-
-
-
-  
-
-
-                {/* <div className="dayzOfWeek">
-    //               <h1>LUNDI</h1>
-    //               <h1>MARDI</h1>
-    //               <h1>MERCREDI</h1>
-    //               <h1>JEUDI</h1>
-    //               <h1>VENDREDI</h1>
-    //               <h1>SAMEDI</h1>
-    //               <h1>DIMANCHE</h1>
-    //             </div>
-
-    //             <div  className='calendar'> */}
-              {/* <table className="">
-    //         <thead>
-    //           <tr>{weekdayshortname}</tr>
-    //         </thead>
-    //         <tbody>{daysinmonth}</tbody>
-    //       </table> */}
            
              </div>
          )

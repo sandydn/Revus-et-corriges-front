@@ -40,6 +40,19 @@ body{
     justify-content: center;
 }
 
+.calendar-day {
+    border: 3px;
+    border-color: rebeccapurple;
+    border-style: double;
+    border-radius: 30%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+.calendar-day-not-event {
+border:none;
+}
+
 .calendar-day :hover {
     border: 1px;
     border-color: black;
