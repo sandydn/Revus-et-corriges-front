@@ -22,6 +22,44 @@ body{
 
     }
 }
+.calendar-month {
+  width: 50%;
+  padding: 5px;
+  line-height: 25px;
+  display: block;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+
+
+
+
+.today > h3 {
+    border: 3px;
+    border-color: rebeccapurple;
+    border-style: double;
+    border-radius: 30%;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-day :hover {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
 .navbar{
     width: 25%;
 
@@ -44,22 +82,33 @@ body{
     width: max-content;
 }
 
-.dayzOfWeek {
+.dayzOfWeek > h3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 50% 5%;
-    font-size: 0.6em;
+    grid-template-rows: auto;
+    grid-gap: 50% 12%;
+    font-size: 1.1em;
     
 }
 
-.dayzOfWeek > h1 {
+.month {
+    font-size: 1.5em;
     font-style: oblique;
+}
+
+.year {
+    font-size: 1.5em;
+}
+
+.monthAndYear {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .monthlyDisplay{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 53% 13%;
+    grid-gap: 53% 7%;
     
 }
 
@@ -86,3 +135,10 @@ i {
     margin-right: 2px;
     margin-left: 10px;
   } 
+
+  .arrows {
+      display: flex;
+      justify-content: space-around;
+  }
+
+  
