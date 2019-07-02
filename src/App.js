@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import Calendar from './components/Calendar'
+import Menu from './components/Menu'
+
+import './components/Logo.css';
 import './App.css'
 import Sign from './screen/Sign';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
 import Weekly from './components/Weekly'
 import Monthly from './components/Monthly'
