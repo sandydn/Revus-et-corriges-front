@@ -55,3 +55,8 @@ margin-bottom: 2%;
     border-radius: 5px 5px 5px 5px;
     background-color: white;
 }
+.checkbox {
+    display:flex;
+    justify-content: space-around;
+    width: 40vw;
+}

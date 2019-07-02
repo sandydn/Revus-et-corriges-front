@@ -4,9 +4,6 @@ import Sign from './screen/Sign';
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Calendar from './components/Calendar'
 import SelectionForm from './screen/SelectionForm';
-import Formevent from './screen/Formevent';
-import FormCine from './screen/FormCine';
-import FormVideo from './screen/FormVideo';
 import Weekly from './components/Weekly'
 import Monthly from './components/Monthly'
 import Login from './components/Login';

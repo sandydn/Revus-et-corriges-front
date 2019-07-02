@@ -3,7 +3,7 @@ import Week from './Week'
 import Day from './Day'
 import dataTest from "./dataTest.json"
 import Menu from './Menu'
-import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Weekly extends Component {
     state= {
@@ -30,7 +30,7 @@ class Weekly extends Component {
             <div className='Calendar'>
             <div className='navbar'>
             <Menu />
-            <Link to="/select-form" ><input type="submit" value="Admin" /></Link>
+            <Link to="/admin" ><input type="submit" value="Admin" /></Link>
             <Link to="/login" ><input type="submit" value="Login" /></Link>
             <Link to="/month"><input type="submit" value="Monthly" /></Link>
         </div>
