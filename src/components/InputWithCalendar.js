@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
   
-class inputWithCalendar extends Component {
+class InputWithCalendar extends Component {
 
 
   render() {
@@ -26,4 +26,4 @@ class inputWithCalendar extends Component {
     )
   }
 }
-export default inputWithCalendar
+export default InputWithCalendar
