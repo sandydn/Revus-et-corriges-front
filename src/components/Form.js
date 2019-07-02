@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
+import Checkboxline from './CheckboxLine';
+import './Form.css';
 
 class Form extends Component {
     state = {
@@ -26,13 +28,7 @@ class Form extends Component {
             lien,
             information
         } = this.state
-        console.log(date1)
-        console.log(date2)
-        console.log(titre)
-        console.log(lieu)
-        console.log(date)
-        console.log(lien)
-        console.log(information)
+        console.log(this.state)
         return (
             <div>
                 <InputInLine
@@ -77,7 +73,12 @@ class Form extends Component {
                 value={information}
                 funct={this.handleChangeInput}
             />
+            <div className="checkbox">
+            <Checkboxline title="r&c"/>
+            <Checkboxline title="partenaires" />
+            <Checkboxline title="général"/>
             </div>
+        </div>
         )
     }
 }
