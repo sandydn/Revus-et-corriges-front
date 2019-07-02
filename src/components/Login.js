@@ -4,9 +4,7 @@ import { Link, NavLink, Redirect } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -63,71 +61,68 @@ class Login extends React.Component {
     }
 
     return (
-    
-      <div className="adminForm" >
+
+      <div className="adminFormIn" >
 
         <img className="iconUser" src={RC} alt="icone-user" />
-        <div className="FormTitle">
-      <NavLink to="/signin" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
-      <span> or </span> 
-      <NavLink exact to="/signup" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
-    </div>
-       <div className="test">
-       <ValidatorForm
-          ref="form"
-          onSubmit={this.handleSubmit}
-        >
-          <TextValidator
-            fullWidth
-            label="Email"
-            onChange={this.handleChange}
-            name="email"
-            value={formData.email}
-            validators={['required', 'isEmail']}
-            errorMessages={['this field is required', 'Email non valide.']}
-          />
 
-          <FormControl fullWidth >
-            <InputLabel htmlFor="adornment-password">Password</InputLabel>
-            <Input
-              label="Password"
-              name="password"
-              type={this.state.showPassword ? 'text' : 'password'}
-              value={formData.password}
-              onChange={this.handleChange}
-              validators={['required']}
-              errorMessages={['this field is required']}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-                    {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>} />
-          </FormControl>
+        <div className="FormTitleIn">
+          <NavLink to="/signin" activeClassName="FormTitleIn__Link--Active" className="FormTitleIn__Link">Connexion</NavLink>
+          <NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+        </div>
 
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-
-          <Button
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-            disabled={success}
-            fullWidth
+        <div>
+          <ValidatorForm
+            ref="form"
+            onSubmit={this.handleSubmit}
           >
-            {
-              (success && 'Vous êtes connécté.')
-              || (!success && 'Submit')
-            }
-          </Button>
 
-        </ValidatorForm>
-       </div>
+            <TextValidator
+              fullWidth
+              label="Email"
+              onChange={this.handleChange}
+              name="email"
+              value={formData.email}
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'Email non valide.']}
+            />
 
-       <br/>
+            <FormControl fullWidth >
+              <InputLabel htmlFor="adornment-password">Password</InputLabel>
+              <Input
+                label="Password"
+                name="password"
+                type={this.state.showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={this.handleChange}
+                validators={['required']}
+                errorMessages={['this field is required']}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>} />
+            </FormControl>
+
+            <div className="btnSignUp"></div>
+
+            <Button
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+              disabled={success}
+              fullWidth
+            >
+              {
+                (success && 'Vous êtes connécté.')
+                || (!success && 'Connexion')
+              }
+            </Button>
+
+          </ValidatorForm>
+        </div>
 
         <Link to="" variant="body2">
           {"Mot de passe oublié ?"}

@@ -1,4 +1,4 @@
-Form {
+.videoForm .formCine .form-event{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,6 @@ Form {
   margin: auto;
   padding-bottom: 5%;
   background-color: rgba(211, 232, 237, .7);
-
 }
 
 .container {

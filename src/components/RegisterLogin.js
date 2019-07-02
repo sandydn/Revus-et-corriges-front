@@ -38,41 +38,41 @@ class RegisterLogin extends React.Component {
 			admin_email: event.target.email.value,
 			admin_password: event.target.password.value,
 		})
-		.then(() => {
-			this.setState({ success: true }, () => {
-				setTimeout(() => this.setState({ success: false }), 1400);
-				setTimeout(() => this.setState({ redirect: true }), 1400);
+			.then(() => {
+				this.setState({ success: true }, () => {
+					setTimeout(() => this.setState({ success: false }), 1400);
+					setTimeout(() => this.setState({ redirect: true }), 1400);
+				});
 			});
-		});
-};
+	};
 
 	componentDidMount() {
 		// custom rule will have name 'isPasswordMatch'
 		ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
-				const { formData } = this.state;
-				if (value !== formData.password) {
-						return false;
-				}
-				return true;
+			const { formData } = this.state;
+			if (value !== formData.password) {
+				return false;
+			}
+			return true;
 		});
-}
+	}
 
 	render() {
 		const { formData, success, redirect } = this.state;
-    if (redirect) {
-      return <Redirect to='/signin' />
-    }
+		if (redirect) {
+			return <Redirect to='/signin' />
+		}
 
 		return (
-			
-			<div className="adminForm" >
+
+			<div className="adminFormUp" >
 
 				<img className="iconUser" src={RC} alt="icone-user" />
 
-				<div className="FormTitle">
-					<NavLink to="/signin" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
-					<span> or </span>
-					<NavLink exact to="/signup" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+				<div className="FormTitleUp">
+					<NavLink to="/signin" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Connexion</NavLink>
+					
+					<NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
 				</div>
 
 				<div>
@@ -83,7 +83,7 @@ class RegisterLogin extends React.Component {
 
 						<TextValidator
 							fullWidth
-							label="Nom et Prénom"
+							label="Nom, Prénom"
 							onChange={this.handleChange}
 							name="name"
 							value={formData.name}
@@ -100,7 +100,7 @@ class RegisterLogin extends React.Component {
 						/>
 
 						<FormControl fullWidth>
-							<InputLabel htmlFor="adornment-password">Password</InputLabel>
+							<InputLabel htmlFor="adornment-password">Mot de Passe</InputLabel>
 							<Input
 								label="Password"
 								name="password"
@@ -113,18 +113,18 @@ class RegisterLogin extends React.Component {
 						</FormControl>
 
 						<TextValidator fullWidth
-              label="Confirmer Password"
-              onChange={this.handleChange}
-              name="repeatPassword"
-              type="password"
-              validators={['isPasswordMatch', 'required']}
-              errorMessages={['Les mots de passe ne correspondent pas.', 'this field is required']}
-              value={formData.repeatPassword}
+							label="Confirmer Mot de Passe"
+							onChange={this.handleChange}
+							name="repeatPassword"
+							type="password"
+							validators={['isPasswordMatch', 'required']}
+							errorMessages={['Les mots de passe ne correspondent pas.', 'this field is required']}
+							value={formData.repeatPassword}
 						/>
 
 						<div className="btnSignUp"></div>
 
-						<Button 
+						<Button
 							type="submit"
 							value="Submit"
 							color="primary"
