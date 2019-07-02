@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
 import Checkboxline from './CheckboxLine';
+import Dropdown from './Dropdown';
 import './Form.css';
 
 class Form extends Component {
@@ -73,10 +74,13 @@ class Form extends Component {
                 value={information}
                 funct={this.handleChangeInput}
             />
+
+            <Dropdown />
+
             <div className="checkbox">
-            <Checkboxline title="r&c"/>
-            <Checkboxline title="partenaires" />
-            <Checkboxline title="général"/>
+                <Checkboxline title="r&c"/>
+                <Checkboxline title="partenaires" />
+                <Checkboxline title="général"/>
             </div>
         </div>
         )
