@@ -9,14 +9,24 @@
 }
 
 .boutonLoupe{
-    width: 25px;
-    height: 100%;
-    background: rgb(250,188,22);
+    height: 50%;
+    background: #bc33e9;
     border: none;
-    position: relative;
-    left:-16.5%
+    /* position: absolute; */
+    margin-left: -2.13em;
+    margin-top: 0.72em;
+    border-radius: 15%;
 }
 
 .loupe{
     width: 12px;
+}
+
+
+
+@media screen and (min-width: 10px) and (max-width: 1024px) {
+        .searchForm {
+          display: none;
+          
+      }
 }

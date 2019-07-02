@@ -10,7 +10,7 @@ body{
 
 
 .Calendar{
-    height:95vh;
+    
     display: flex;
     border: 18px solid rgb(44, 67, 98);
 }
@@ -63,4 +63,12 @@ i {
     -webkit-transform: rotate(135deg);
     margin-right: 2px;
     margin-left: 10px;
+  }
+
+
+  @media screen and (min-width: 10px) and (max-width: 1024px) {
+    .Calendar {
+     display: block;
+      
+  }
   }
