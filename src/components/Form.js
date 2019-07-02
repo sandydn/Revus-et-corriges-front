@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
 import Checkboxline from './CheckboxLine';
+import Dropdown from './Dropdown';
 import './Form.css';
 import Dropdown from './Dropdown';
+import InputWithCalendar from './InputWithCalendar'
+
 
 class Form extends Component {
     state = {
@@ -19,9 +22,11 @@ class Form extends Component {
         format: null,
         editeur: null,
         visuel: null,
+        date: new Date()
     }
 
     handleChangeInput = (keyState, evt) => {
+        console.log("keyState",keyState, "evt",evt.target.value)
         this.setState({ [keyState] : evt.target.value })
     }
 
@@ -29,6 +34,10 @@ class Form extends Component {
         this.setState({ [keyState] : evt.target.value})
     }
     
+
+    onChangeDate = date => this.setState({ date })
+
+
     render() {
         const {
             date1,
@@ -41,43 +50,53 @@ class Form extends Component {
         } = this.state
         console.log(this.state)
         return (
-            <div className="Form">
-                <InputInLine
+            <div>
+
+
+            <InputWithCalendar  date={this.state.date} onChangeDate={this.onChangeDate} />
+                
+            <InputInLine
                 keyState="date1"
                 title="Date de début"
                 value={date1}
                 funct={this.handleChangeInput}
             />
+            
             <InputInLine
                 keyState="date2"
                 title="Date de début"
                 value={date2}
                 funct={this.handleChangeInput}
             />
-            {/* <InputInLine
+            
+            <InputInLine
                 keyState="titre"
                 title="Titre"
                 value={titre}
                 funct={this.handleChangeInput}
-            /> */}
+            />
+            
             <InputInLine
                 keyState="lieu"
                 title="Lieu"
                 value={lieu}
                 funct={this.handleChangeInput}
             />
+            
             <InputInLine
                 keyState="date"
                 title="Date"
                 value={date}
                 funct={this.handleChangeInput}
             />
+            
             <InputInLine
                 keyState="lien"
                 title="lien externe"
                 value={lien}
                 funct={this.handleChangeInput}
             />
+            
             <InputInLine
                 keyState="information"
                 title="information"
@@ -121,18 +140,13 @@ class Form extends Component {
                 funct={this.handleChangeInput}
             />
 
-            <div className="checkbox">
-            <Checkboxline title="r&c"/>
-            <Checkboxline title="partenaires" />
-            <Checkboxline title="général"/>
-            </div>
+            {/* <Dropdown /> */}
 
-            <Dropdown 
-                keyState="titre"
-                title="titre du film" 
-                value={titre}
-                funct={this.handleChangeDropdown}
-            />
+            <div className="checkbox">
+                <Checkboxline title="r&c"/>
+                <Checkboxline title="partenaires" />
+                <Checkboxline title="général"/>
+            </div>
         </div>
         )
     }
