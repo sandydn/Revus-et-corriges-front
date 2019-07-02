@@ -60,7 +60,7 @@ export class Parameter extends Component {
         </div> */}
 
         <DatePicker
-          selected={this.state.startDate}
+          selected={this.state.date}
           onChange={this.onChangeDate}
           showTimeSelect
           timeFormat="HH:mm"
