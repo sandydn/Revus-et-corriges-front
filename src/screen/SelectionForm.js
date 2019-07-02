@@ -15,9 +15,11 @@ class SelectionForm extends Component {
           <LinkForm name="Rétrospective" />
 
           </div>
-          <h4 className="title-managment"> Apparence du Calendrier</h4>
+          <h4 className="title-managment"> Gestion administrateur</h4>
           <div className="deco-managment">
             <LinkForm name="Paramètres" />
+            <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
+
           </div>
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
