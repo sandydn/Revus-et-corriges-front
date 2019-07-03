@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
-// import WeekOfMonth from './weekOfMonth'
-// import DaysOfMonth from './DaysOfMonth'
 import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
-import { range } from "moment-range"
 import axios from 'axios';
 
 
@@ -13,12 +10,6 @@ class Monthly extends Component {
 
   weekdayshort = moment.weekdaysShort();
 
-  // europeWeek = moment.updateLocale("fr", { week: {
-  //   dow: 1, // First day of week is Monday
-  //   doy: 4  // First week of year must contain 4 January (7 + 1 - 4)
-  // }});
-  
-  
 
     state= {
         showYearTable: false,
@@ -30,32 +21,18 @@ class Monthly extends Component {
         eventDate: []
     }
 
+
     getData = async () => {
       const resultat = await axios.get('http://localhost:4000/a5/event')
-      // console.log(resultat);
-      
       this.setState({eventDate: resultat.data}, () => {
-
-        // console.log(this.state.eventDate)
       })
     }
 
 
     componentDidMount(){
-      
+
       this.getData()
-      // this.setState({days: dataTestMonth1})
     }
-
-    // previousMonth = () => {
-    //     this.setState({days: dataTest.filter((display)=> display.id <5)})
-    // }
-
-    // nextMonth = () => {
-    //     this.setState({days: dataTest.filter((display)=> display.id >4)})
-    // }
-
-    // week = this.state.days.map((day) => <DaysOfMonth date={day.date} dataEvent={day.data} />)
 
     
     daysInMonth = () => {
@@ -68,6 +45,7 @@ class Monthly extends Component {
       return this.state.dateObject.format("D");
     };
 
+
     firstDayOfMonth = () => {
       let dateObject = this.state.dateObject;
       let firstDay = moment(dateObject)
@@ -76,16 +54,19 @@ class Monthly extends Component {
       return firstDay;
     };
     
+
     month = () => {
       return this.state.dateObject.format("MMMM");
     };
    
+
     showMonth = (e, month) => {
       this.setState({
         showMonthTable: !this.state.showMonthTable,
        showDateTable: !this.state.showDateTable
       });
     };
+
 
     setMonth = month => {
       let monthNo = this.state.allmonths.indexOf(month);
@@ -98,17 +79,12 @@ class Monthly extends Component {
       });
     };
 
+
     MonthList = props => {
       let months = [];
       props.data.map(data => {
         months.push(
-          <div
-            key={data}
-            className="calendar-month"
-            onClick={e => {
-              this.setMonth(data);
-            }}
-          >
+          <div key={data} className="calendar-month" onClick={e => {this.setMonth(data)}}>         
             <span>{data}</span>
           </div>
         );
@@ -135,10 +111,10 @@ class Monthly extends Component {
       return (
         <div className="calendar-month">                     
           <h1>{monthlist}</h1>
-          </div>
-      
+          </div>     
       );
     };
+
 
     showYearTable = e => {
       this.setState({
@@ -154,6 +130,7 @@ class Monthly extends Component {
       } else {
         curr = "month";
       }
+
       this.setState({
         dateObject: this.state.dateObject.subtract(1, curr)
       });
@@ -166,6 +143,7 @@ class Monthly extends Component {
       } else {
         curr = "month";
       }
+
       this.setState({
         dateObject: this.state.dateObject.add(1, curr)
       });
@@ -208,14 +186,8 @@ class Monthly extends Component {
   
       tenyear.map(data => {
         months.push(
-          <div
-            key={data}
-            className="yearTable"
-            onClick={e => {
-              this.setYear(data);
-            }}
-          >
-            <span>{data}</span>
+          <div key={data} className="yearTable" onClick={e => {this.setYear(data)}}>
+            <span>{data}</span>           
           </div>
         );
       });
@@ -232,6 +204,7 @@ class Monthly extends Component {
           cells.push(row);
         }
       });
+
       rows.push(cells);
       let yearlist = rows.map((d, i) => {
         return <div>{d}</div>;
@@ -276,29 +249,19 @@ class Monthly extends Component {
       this.state.eventDate.forEach( event => {
         console.log(this.state.eventDate);
         const eventDateStart = moment(event.dateStart).format("D")
-        // console.log(d, eventDateStart);
         
         if (d == eventDateStart) {
           console.log('true', d, eventDateStart);
-          
           return dayEvent = true
         }
-        
       })
 
       const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'
       console.log(d, dayEvent, calendarDay);
       
       daysInMonth.push(
-        <div key={d} className = { `${calendarDay} ${currentDay}`} >
-        {/* // <div key={d} className={`calendar-day ${currentDay}`}> */}
-          <h3
-            onClick={e => {
-              this.onDayClick(e, d);
-            }}
-          >
-            {d}
-          </h3>
+        <div key={d} className = { `${calendarDay} ${currentDay}`}>
+          <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
         </div>
       )
     }
@@ -315,9 +278,9 @@ class Monthly extends Component {
         cells = [];
         cells.push(row);
       }
+
       if (i === totalSlots.length - 1) {
-        let insertRow = cells.slice();
-        rows.push(cells);
+         rows.push(cells);
       }
     });
 
@@ -329,37 +292,21 @@ class Monthly extends Component {
       
       <div className="monthly">
         <div className="monthAndYear">
-          <span
-            onClick={e => {
-              this.onPrev();
-            }}
-            class=" button-prev"
-          />
+          <span onClick={e => {this.onPrev()}} class=" button-prev"/>         
           {!this.state.showMonthTable && (
-            <div
-              onClick={e => {
-                this.showMonth();
-              }}
-              class="month"
-            >
-              {this.month()}
-            </div>
+            <div onClick={e => {this.showMonth()}} class="month">{this.month()}              
+          </div>
           )}
+
           <div className="year" onClick={e => this.showYearTable()}>
             {this.year()}
           </div>
-           <span
-          onClick={e => {
-            this.onNext();
-          }}
-          className=" "
-        />
-        </div>
+           <span onClick={e => {this.onNext()}} className=" "/>    
+          </div>
        
         <div className="calendar-date">
           {this.state.showYearTable && <this.YearTable props={this.year()} />}
-          {this.state.showMonthTable && (
-            <this.MonthList data={moment.months()} />
+          {this.state.showMonthTable && (<this.MonthList data={moment.months()} />
           )}
         </div>
 
@@ -371,23 +318,16 @@ class Monthly extends Component {
                 <div className="yearList" onClick={this.showYearTable}><p> Select a year </p></div>
                 <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
               </div>
-
-               <h1 className="monthlyDisplay">{weekdayshortname}</h1>
               
-              <div className="dayzOfWeek">{daysinmonth}</div>
-          
-          </div>
-        
-      
+               <h1 className="monthlyDisplay">{weekdayshortname}</h1>             
+              <div className="dayzOfWeek">{daysinmonth}</div>         
+          </div>              
     )
-  }
-           
+  }           
              </div>
          )
      }
  }
-
-
 
 
 
