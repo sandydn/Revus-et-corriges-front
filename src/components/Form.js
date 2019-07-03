@@ -12,7 +12,6 @@ class Form extends Component {
         date2: null,
         titre: null,
         lieu: null,
-        date: null,
         lien: null,
         information: null,
         realisateur: null,
@@ -145,7 +144,7 @@ class Form extends Component {
                 funct={this.handleChangeInput}
             />
 
-            {/* <Dropdown /> */}
+             <Dropdown /> 
 
             <div className="checkbox">
                 <Checkboxline title="r&c"/>

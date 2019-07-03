@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Menu from './Menu'
 import Weekly from "./Weekly"
-import Monthly from "./Monthly"
 import './calendar.css'
 import './Monthly.css'
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import Monthly from "./Monthly"
+// import Menu from './Menu'
 
 class Calendar extends Component {
 
@@ -23,10 +23,7 @@ class Calendar extends Component {
 
     render() {
         return (
-
-            
                 <Weekly />
-            
         )
     }
 }

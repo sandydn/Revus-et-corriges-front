@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import SelectionForm from './SelectionForm';
-import ButtonForm from '../components/ButtonForm'
 import {Link} from 'react-router-dom'
+
+import ButtonForm from '../components/ButtonForm'
+import SelectionForm from './SelectionForm';
 import '../screen/Events.css'
+
 // import ListEvent from '../components/ListEvent';
-import InputInLine from '../components/InputInLine';
-import Form from '../components/Form';
+// import InputInLine from '../components/InputInLine';
+// import Form from '../components/Form';
 
 class Events extends Component {
 
