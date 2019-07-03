@@ -13,7 +13,7 @@ const styleBase = {
     }
 }
 
-const InputInLine = ({keyState, title, style, funct, value}) => {
+const CheckboxLine = ({keyState, title, style, funct, value}) => {
     return <div>
         <span style={styleBase.span}>
             {title + " :" || "nothing :"}
@@ -28,4 +28,4 @@ const InputInLine = ({keyState, title, style, funct, value}) => {
     </div>
 }
 
-export default InputInLine
+export default CheckboxLine
