@@ -37,12 +37,16 @@ class Weekly extends Component {
 
     handleSelector = (event) =>{
         this.selectDay(event.target.innerHTML)
+        const selected = document.getElementById('selected')
+        if (selected){
+            selected.id = ''
+        }
+        event.target.id = 'selected'
     }
 
 
 
     render() {
-        console.log(this.state.dayEvent)
         return (
             <>
                 <BrowserView>

@@ -51,6 +51,14 @@
     margin: 8px;
 }
 
+.selector {
+    padding:5px;
+}
+
+#selected {
+    background: rgba(180, 180, 180, 0.45);
+}
+
 .dayMobile > .important{
     background: rgba(180, 180, 180, 0.45);
 }
@@ -66,7 +74,7 @@
 
 .days{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
