@@ -316,7 +316,7 @@ class Monthly extends Component {
         cells.push(row);
       }
       if (i === totalSlots.length - 1) {
-        // let insertRow = cells.slice();
+        let insertRow = cells.slice();
         rows.push(cells);
       }
     });
