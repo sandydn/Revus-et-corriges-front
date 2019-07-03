@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
-// import { range } from "moment-range"
+import { range } from "moment-range"
 import axios from 'axios';
 
 
@@ -13,15 +13,14 @@ class Monthly extends Component {
 
   weekdayshort = moment.weekdaysShort();
 
-  europeWeek = moment.updateLocale("fr", { week: {
-    dow: 1, // First day of week is Monday
-    doy: 4  // First week of year must contain 4 January (7 + 1 - 4)
-  }});
+  // europeWeek = moment.updateLocale("fr", { week: {
+  //   dow: 1, // First day of week is Monday
+  //   doy: 4  // First week of year must contain 4 January (7 + 1 - 4)
+  // }});
   
   
 
     state= {
-        days:[],
         showYearTable: false,
         showMonthTable: false,
         showDateTable: true,
@@ -60,7 +59,7 @@ class Monthly extends Component {
 
     
     daysInMonth = () => {
-      return this.state.dateObject.daysInMonth();
+      return this.state.dateObject.daysInMonth("D");
     };
     year = () => {
       return this.state.dateObject.format("Y");
@@ -274,26 +273,21 @@ class Monthly extends Component {
       let currentDay = d == this.currentDay() ? "today" : "";
       let dayEvent = false
 
-      this.state.eventDate.map( event => {
-        // console.log(event);
+      this.state.eventDate.forEach( event => {
+        console.log(this.state.eventDate);
         const eventDateStart = moment(event.dateStart).format("D")
-        console.log(eventDateStart, 'eventDateStart');
+        // console.log(d, eventDateStart);
         
         if (d == eventDateStart) {
+          console.log('true', d, eventDateStart);
+          
           return dayEvent = true
-        } else {
-          return dayEvent = false;
         }
-        // event.moment(event.dateStart,"D DD")
-        // if (d === event.dateStart) {
-        //   return dayEvent = true;
-        // } else {
-        //   return dayEvent = false;
-        // }
-        }
-      )
+        
+      })
+
       const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'
-      console.log(dayEvent, calendarDay);
+      console.log(d, dayEvent, calendarDay);
       
       daysInMonth.push(
         <div key={d} className = { `${calendarDay} ${currentDay}`} >
