@@ -7,17 +7,17 @@ import InputWithCalendar from './InputWithCalendar'
 
 
 class Form extends Component {
-    state = {
+    state = {  
         dateCreation: null,
         dateEnd: null,
-        dateStart: new Date(),
+        dateStart: null,
         format: null,
         information: null,
         lien: null,
         lieu: null,
-        titre: null,
         nom: null,
         prenom: null,
+        titre: null,
         visuel: null,
 
     }
@@ -31,33 +31,62 @@ class Form extends Component {
         this.setState({ [keyState] : evt.target.value})
     }
     
+    onChangeDateStart = dateStart => {
+        if (dateStart > this.state.dateEnd && this.state.dateEnd){
+            return console.log('error')
+        }
+        console.log('test');
+        
+        this.setState ({ dateStart })
+    }
 
-    onChangeDateStart = dateStart => this.setState({ dateStart })
-    onChangeDateEnd = dateEnd => this.setState({ dateEnd })
+    onChangeDateEnd = dateEnd => {
+        if (dateEnd < this.state.dateStart ){
+            return console.log('error')
+        }
+        console.log('test');
+        
+        this.setState ({ dateEnd })
+    }
+    
+    componentDidMount() {
+        console.log('didmount',this.state);
+        
+    }
+    
 
     render() {
         const {
-        dateCreation,
-        dateEnd,
-        dateStart,
-        format,
-        information,
-        lien,
-        lieu,
-        titre,
-        nom,
-        prenom,
-        visuel,
+            dateCreation,
+            dateEnd,
+            dateStart,
+            format,
+            information,
+            lien,
+            lieu,
+            nom,
+            prenom,
+            titre,
+            visuel,
+            //date,
         } = this.state
         console.log(this.state)
         return (
             <div className="Form">
 
+            <p>Date de debut</p>
+            <InputWithCalendar  
+                date={dateStart} 
+                onChangeDate={this.onChangeDateStart} 
+            />
 
-            <p>Date de début</p><InputWithCalendar  date={dateStart} onChangeDate={this.onChangeDateStart} />
-            <p>Date de fin</p><InputWithCalendar  date={dateEnd} onChangeDate={this.onChangeDateEnd} />  
-
-            {/* <InputInLine
+            <p>Date de fin</p>
+            <InputWithCalendar  
+                date={dateEnd} 
+                onChangeDate={this.onChangeDateEnd} 
+            />
+{/*                 
+            <InputInLine
                 keyState="dateStart"
                 title="Date de début"
                 value={dateStart}
@@ -127,6 +156,7 @@ class Form extends Component {
                 value={format}
                 funct={this.handleChangeInput}
             />
+
             <InputInLine    
                 keyState="visuel"
                 title="visuel"
