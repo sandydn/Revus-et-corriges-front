@@ -3,6 +3,7 @@ import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
 import './Form.css';
 import Dropdown from './Dropdown';
+import {Link} from 'react-router-dom';
 import InputWithCalendar from './InputWithCalendar'
 
 
@@ -178,7 +179,13 @@ class Form extends Component {
                 <CheckboxLine title="général"/>
             </div>
 
-
+            <Link to="/admin">
+                <input 
+                    className="button-submit" 
+                    type="submit" 
+                    value="Valider le formulaire" 
+                />
+            </Link>
         </div>
         )
     }

@@ -2,7 +2,6 @@ import React from 'react'
 
 const styleBase = {
     input: {
-        // border: "none",
         outline: "none",
         fontSize: "1em",
         padding: "5px",

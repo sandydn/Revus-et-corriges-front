@@ -24,3 +24,6 @@
     align-items: center;
     padding-top: 3%;
 }
+.button-submit {
+    border-radius: 5px 5px 5px 5px;
+}
