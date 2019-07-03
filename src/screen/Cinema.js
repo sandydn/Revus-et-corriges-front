@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import SelectionForm from './SelectionForm';
-import ButtonForm from '../components/ButtonForm';
-import './Cinema.css'
 import {Link} from 'react-router-dom';
+import ButtonForm from '../components/ButtonForm';
+import SelectionForm from './SelectionForm';
+import './Cinema.css'
 
 
 class Cinema extends Component {

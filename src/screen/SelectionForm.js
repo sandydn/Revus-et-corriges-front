@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import LinkForm from '../components/LinkForm'
 import '../screen/SelectionForm.css'
 
-import { Link } from 'react-router-dom';
 class SelectionForm extends Component {
   render() {
     return (
