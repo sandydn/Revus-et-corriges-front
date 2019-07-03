@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
-import Checkboxline from './CheckboxLine';
+import CheckboxLine from './CheckboxLine';
 import './Form.css';
 import Dropdown from './Dropdown';
 import InputWithCalendar from './InputWithCalendar'
@@ -8,20 +8,18 @@ import InputWithCalendar from './InputWithCalendar'
 
 class Form extends Component {
     state = {
-        date1: null,
-        date2: null,
-        titre: null,
-        lieu: null,
-        date: null,
-        lien: null,
-        information: null,
-        realisateur: null,
-        datefilm: null,
-        distributeur: null,
+        dateCreation: null,
+        dateEnd: null,
+        dateStart: new Date(),
         format: null,
-        editeur: null,
+        information: null,
+        lien: null,
+        lieu: null,
+        titre: null,
+        nom: null,
+        prenom: null,
         visuel: null,
-        date: new Date()
+
     }
 
     handleChangeInput = (keyState, evt) => {
@@ -34,45 +32,44 @@ class Form extends Component {
     }
     
 
-    onChangeDate = date => this.setState({ date })
-
+    onChangeDateStart = dateStart => this.setState({ dateStart })
+    onChangeDateEnd = dateEnd => this.setState({ dateEnd })
 
     render() {
         const {
-            date1,
-            date2,
-            titre,
-            lieu,
-            date,
-            lien,
-            information,
-            realisateur,
-            datefilm,
-            distributeur,
-            format,
-            editeur,
-            visuel,
+        dateCreation,
+        dateEnd,
+        dateStart,
+        format,
+        information,
+        lien,
+        lieu,
+        titre,
+        nom,
+        prenom,
+        visuel,
         } = this.state
         console.log(this.state)
         return (
             <div>
 
 
-            <InputWithCalendar  date={this.state.date} onChangeDate={this.onChangeDate} />
-                
-            <InputInLine
-                keyState="date1"
+            <p>Date de début</p><InputWithCalendar  date={dateStart} onChangeDate={this.onChangeDateStart} />
+            <p>Date de fin</p><InputWithCalendar  date={dateEnd} onChangeDate={this.onChangeDateEnd} />  
+
+            {/* <InputInLine
+                keyState="dateStart"
                 title="Date de début"
-                value={date1}
+                value={dateStart}
                 funct={this.handleChangeInput}
             />
             
             <InputInLine
-                keyState="date2"
-                title="Date de début"
-                value={date2}
+                keyState="dateEnd"
+                title="Date de fin"
+                value={dateEnd}
                 funct={this.handleChangeInput}
-            />
+            /> */}
             
             <InputInLine
                 keyState="titre"
@@ -89,13 +86,6 @@ class Form extends Component {
             />
             
             <InputInLine
-                keyState="date"
-                title="Date"
-                value={date}
-                funct={this.handleChangeInput}
-            />
-            
-            <InputInLine
                 keyState="lien"
                 title="lien externe"
                 value={lien}
@@ -108,34 +98,38 @@ class Form extends Component {
                 value={information}
                 funct={this.handleChangeInput}
             />
-            <InputInLine
-                keyState="realisateur"
-                title="réalisateur"
-                value={realisateur}
+
+            <div className="contact">
+                <InputInLine
+                keyState="prenom"
+                title="prénom"
+                value={prenom}
                 funct={this.handleChangeInput}
-            />
+                />
+                <InputInLine
+                keyState="nom"
+                title="nom"
+                value={nom}
+                funct={this.handleChangeInput}
+                />
+                <CheckboxLine title="Acteur"/>
+                <CheckboxLine title="Distributeur"/>
+                <CheckboxLine title="Editeur"/>
+                <CheckboxLine title="Réalisateur"/>
+            </div>
+
+
             <InputInLine
-                keyState="datefilm"
+                keyState="dateCreation"
                 title="Date du film"
-                value={datefilm}
+                value={dateCreation}
                 funct={this.handleChangeInput}
             />
-            <InputInLine
-                keyState="distributeur"
-                title="Distributeur"
-                value={distributeur}
-                funct={this.handleChangeInput}
-            />
+
             <InputInLine
                 keyState="format"
                 title="format"
                 value={format}
-                funct={this.handleChangeInput}
-            />
-            <InputInLine
-                keyState="editeur"
-                title="éditeur"
-                value={editeur}
                 funct={this.handleChangeInput}
             />
             <InputInLine    
@@ -148,9 +142,9 @@ class Form extends Component {
             {/* <Dropdown /> */}
 
             <div className="checkbox">
-                <Checkboxline title="r&c"/>
-                <Checkboxline title="partenaires" />
-                <Checkboxline title="général"/>
+                <CheckboxLine title="r&c"/>
+                <CheckboxLine title="partenaires" />
+                <CheckboxLine title="général"/>
             </div>
         </div>
         )
