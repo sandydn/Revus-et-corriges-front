@@ -45,6 +45,25 @@
     margin-bottom: 4px;
 }
 
+.dayMobile > .event{
+    border: .2px solid grey;
+    border-radius: 15px;
+    margin: 8px;
+}
+
+.dayMobile > .important{
+    background: rgba(180, 180, 180, 0.45);
+}
+
+.dayMobile > h1{
+    display: none;
+}
+
+.dayMobile > .line{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
 .days{
     display: flex;
     justify-content: space-between;
@@ -53,6 +72,7 @@
 
 .days h1{
     cursor: pointer;
+    font-size: 1.2em;
 }
 
 .daySelector{
@@ -71,6 +91,10 @@
     font-size: .85em;
 }
 
+.dayMobile > .event > h2 {
+    text-transform: uppercase;
+}
+
 .event > p {
     font-size: .75em;
     margin: 0px;
@@ -83,6 +107,6 @@
 }
 
 .important{
-    background: rgba(168, 168, 168, 0.45);
+    background: rgba(255, 255, 255, 0.45);
     border-radius: 15px;
 }

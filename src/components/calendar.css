@@ -24,7 +24,10 @@ body{
     width: 100%;
     background: url(../pictures/backg.png);
     background-size: 140%;
-    
+}
+
+.weeklyDisplayMobile{
+    margin: 25px;
 }
 
 .weeklyHead{
@@ -36,6 +39,15 @@ body{
 .weeklyHead > h1{
     background: white;
     width: max-content;
+}
+
+.weeklyHeadMobile{
+    display: flex;
+    justify-content: center;
+}
+
+.weeklyHeadMobile > h1{
+    font-size: 1.6em;
 }
 
 .weeklyDisplay{

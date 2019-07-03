@@ -75,9 +75,9 @@ class Weekly extends Component {
 
                 <MobileView>
 
-                    <div className='weekly'>
+                    <div className='weeklyMobile'>
 
-                        <div className='weeklyHead'>
+                        <div className='weeklyHeadMobile'>
                             <h1>Agenda Mars 2019</h1>
                         </div>
 
