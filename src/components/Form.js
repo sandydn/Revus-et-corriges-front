@@ -51,7 +51,7 @@ class Form extends Component {
         } = this.state
         console.log(this.state)
         return (
-            <div>
+            <div className="Form">
 
 
             <p>Date de début</p><InputWithCalendar  date={dateStart} onChangeDate={this.onChangeDateStart} />
@@ -91,13 +91,6 @@ class Form extends Component {
                 value={lien}
                 funct={this.handleChangeInput}
             />
-            
-            <InputInLine
-                keyState="information"
-                title="information"
-                value={information}
-                funct={this.handleChangeInput}
-            />
 
             <div className="contact">
                 <InputInLine
@@ -112,10 +105,12 @@ class Form extends Component {
                 value={nom}
                 funct={this.handleChangeInput}
                 />
-                <CheckboxLine title="Acteur"/>
-                <CheckboxLine title="Distributeur"/>
-                <CheckboxLine title="Editeur"/>
-                <CheckboxLine title="Réalisateur"/>
+                <div className="type-contact">
+                    <CheckboxLine title="Acteur"/>
+                    <CheckboxLine title="Distributeur"/>
+                    <CheckboxLine title="Editeur"/>
+                    <CheckboxLine title="Réalisateur"/>
+                </div>    
             </div>
 
 
@@ -138,6 +133,12 @@ class Form extends Component {
                 value={visuel}
                 funct={this.handleChangeInput}
             />
+            <InputInLine
+                keyState="information"
+                title="information"
+                value={information}
+                funct={this.handleChangeInput}
+            />
 
             {/* <Dropdown /> */}
 
@@ -146,6 +147,8 @@ class Form extends Component {
                 <CheckboxLine title="partenaires" />
                 <CheckboxLine title="général"/>
             </div>
+
+
         </div>
         )
     }

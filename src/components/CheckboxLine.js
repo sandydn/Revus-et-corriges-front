@@ -5,7 +5,7 @@ const styleBase = {
         // border: "none",
         outline: "none",
         fontSize: "1em",
-        padding: "5px"
+        padding: "5px",
     },
     span : {
         padding: "6px",
