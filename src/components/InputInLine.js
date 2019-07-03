@@ -6,12 +6,13 @@ const styleBase = {
         borderBottom: "2px solid silver",
         outline: "none",
         fontSize: "1em",
-        padding: "5px"
+        padding: "5px",
+        width: "30vw",
     },
     span : {
         padding: "6px",
         borderBottom: "2px solid silver",
-        fontSize: "1em"
+        fontSize: "1em",
     }
 }
 

@@ -3,15 +3,13 @@ import React from 'react'
 const styleBase = {
     
     input: {
-        border: "none",
-        borderBottom: "2px solid silver",
+        // border: "none",
         outline: "none",
         fontSize: "1em",
         padding: "5px"
     },
     span : {
         padding: "6px",
-        borderBottom: "2px solid silver",
         fontSize: "1em"
     }
 }
@@ -25,6 +23,7 @@ const InputInLine = ({keyState, title, style, funct, value}) => {
         <input 
             style={{...styleBase.input, ...style}}
             type="radio"
+            id={title}
             onChange={(e) => funct && funct(keyState, e)}
             value={value || "" } 
         /> 
