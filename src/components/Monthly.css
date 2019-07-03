@@ -31,29 +31,27 @@ body{
 
 
 .today > h3 {
-    border: 3px;
-    border-color: rebeccapurple;
-    border-style: double;
-    border-radius: 30%;
-    background-color: whitesmoke;
+    color: rgb(211, 24, 24);
     display: flex;
     justify-content: center;
 }
 
-.calendar-day {
+.calendar-day-event {
     border: 3px;
     border-color: rebeccapurple;
     border-style: double;
     border-radius: 30%;
-    background-color: whitesmoke;
+    background: rgba( 245, 228, 2280, 0.1); 
     display: flex;
     justify-content: center;
 }
+
 .calendar-day-not-event {
 border:none;
+opacity: 0.5;
 }
 
-.calendar-day :hover {
+.calendar-day-not-event :hover {
     border: 1px;
     border-color: black;
     border-style: solid;

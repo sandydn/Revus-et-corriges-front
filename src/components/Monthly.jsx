@@ -293,7 +293,7 @@ class Monthly extends Component {
         // }
         }
       )
-      const calendarDay = dayEvent ? 'calendar-day' : 'calendar-day-not-event'
+      const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'
       console.log(dayEvent, calendarDay);
       
       daysInMonth.push(
@@ -373,7 +373,7 @@ class Monthly extends Component {
         {this.state.showDateTable && (
           <div className="calendar-date">
               <div className="arrows">
-                <div className="leftArrow" onClick={this.previousMonth}><i class="arrow left"></i></div>   <div className="rightArrow" onClick={this.nextMonth}><i class="arrow right"></i></div>
+                <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>   <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
               </div>
 
                <h1 className="monthlyDisplay">{weekdayshortname}</h1>
