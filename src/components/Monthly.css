@@ -15,18 +15,26 @@ body{
     border: 18px solid rgb(44, 67, 98);
 }
 
-.calendar-month {
-  width: 50%;
-  padding: 5px;
-  line-height: 25px;
-  display: block;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
+.monthList {
+    cursor: pointer;
 }
 
+.yearList {
+    cursor: pointer;
+}
+
+.calendar-month > span {
+  width: 100%;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+.yearTable {
+  width: 100%;
+  line-height: 50px;
+  font-size: x-large;
+  cursor: pointer;
+}
 
 
 
@@ -37,10 +45,10 @@ body{
 }
 
 .calendar-day-event {
-    border: 3px;
+    border: 4px;
     border-color: rebeccapurple;
     border-style: double;
-    border-radius: 30%;
+    border-radius: 40%;
     background: rgba( 245, 228, 2280, 0.1); 
     display: flex;
     justify-content: center;
@@ -51,11 +59,7 @@ border:none;
 opacity: 0.5;
 }
 
-.calendar-day-not-event :hover {
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    border-radius: 50%;
+.calendar-day-event :hover {
     cursor: pointer;
 }
 
@@ -98,12 +102,12 @@ h3 {
 }
 
 .month {
-    font-size: 1.5em;
+    font-size: 2.0em;
     font-style: oblique;
 }
 
 .year {
-    font-size: 1.5em;
+    font-size: 2.0em;
 }
 
 .monthAndYear {
@@ -135,13 +139,13 @@ i {
     margin-left: 2px;
   }
   
-  .left {
+  .left {  
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     margin-right: 2px;
     margin-left: 10px;
-  } 
-
+  }
+  
   .arrows {
       display: flex;
       justify-content: space-around;

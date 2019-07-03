@@ -135,7 +135,6 @@ class Monthly extends Component {
   
       return (
         <div className="calendar-month">                     
-          <div colSpan="4">Select a Month</div>
           <h1>{monthlist}</h1>
           </div>
       
@@ -212,7 +211,7 @@ class Monthly extends Component {
         months.push(
           <div
             key={data}
-            className=""
+            className="yearTable"
             onClick={e => {
               this.setYear(data);
             }}
@@ -373,7 +372,10 @@ class Monthly extends Component {
         {this.state.showDateTable && (
           <div className="calendar-date">
               <div className="arrows">
-                <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>   <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
+                <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>
+                <div className="monthList" onClick={this.showMonth}><p> Select a month </p></div>
+                <div className="yearList" onClick={this.showYearTable}><p> Select a year </p></div>
+                <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
               </div>
 
                <h1 className="monthlyDisplay">{weekdayshortname}</h1>
