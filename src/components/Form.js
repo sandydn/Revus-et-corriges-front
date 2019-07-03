@@ -19,9 +19,7 @@ class Form extends Component {
         prenom: null,
         titre: null,
         visuel: null,
-        //date: null,
-         //dateStart: null,
-        //dateEnd: null
+
     }
 
     handleChangeInput = (keyState, evt) => {
@@ -116,13 +114,6 @@ class Form extends Component {
                 funct={this.handleChangeInput}
             />
             
-            {/* <InputInLine
-                keyState="date"
-                title="Date"
-                value={date}
-                funct={this.handleChangeInput}
-            /> */}
-            
             <InputInLine
                 keyState="lien"
                 title="lien externe"
@@ -136,28 +127,26 @@ class Form extends Component {
                 value={information}
                 funct={this.handleChangeInput}
             />
-            
-            <div>
-                <InputInLine
-                    keyState="prenom"
-                    title="prenom"
-                    value={prenom}
-                    funct={this.handleChangeInput}
-                />
 
+            <div className="contact">
                 <InputInLine
-                    keyState="nom"
-                    title="nom"
-                    value={nom}
-                    funct={this.handleChangeInput}
+                keyState="prenom"
+                title="prénom"
+                value={prenom}
+                funct={this.handleChangeInput}
                 />
-               
-                <CheckboxLine title="Acteur" />
-                <CheckboxLine title="Distributeur" />
-                <CheckboxLine title="Editeur" />
-                <CheckboxLine title="Realisateur" />
-            
+                <InputInLine
+                keyState="nom"
+                title="nom"
+                value={nom}
+                funct={this.handleChangeInput}
+                />
+                <CheckboxLine title="Acteur"/>
+                <CheckboxLine title="Distributeur"/>
+                <CheckboxLine title="Editeur"/>
+                <CheckboxLine title="Réalisateur"/>
             </div>
+
 
             <InputInLine
                 keyState="dateCreation"
@@ -182,6 +171,11 @@ class Form extends Component {
 
             {/* <Dropdown /> */}
 
+            <div className="checkbox">
+                <CheckboxLine title="r&c"/>
+                <CheckboxLine title="partenaires" />
+                <CheckboxLine title="général"/>
+            </div>
         </div>
         )
     }
