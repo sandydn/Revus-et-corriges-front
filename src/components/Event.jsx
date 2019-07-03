@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserView, MobileView} from "react-device-detect";
 
 const Event = ({title, comment, picture, type}) => {
     const picEvent =() =>{
@@ -12,7 +11,7 @@ const Event = ({title, comment, picture, type}) => {
     }
     
     const typeEvent = `event ${type}`
-    const mobileTypeEvent = `mobile event ${type}`
+
     
     
     return( 

@@ -26,6 +26,10 @@ class Weekly extends Component {
         this.selectDay(0)
     }
 
+    componentDidUpdate() {
+        this.displaySelector(this.state.dayDate)
+    }
+
 
     previousDays = () => {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
@@ -35,16 +39,25 @@ class Weekly extends Component {
         this.setState({ days: dataTest.filter((display) => display.id > 4) })
     }
 
-    handleSelector = (event) =>{
-        this.selectDay(event.target.innerHTML)
+    displaySelector = (select) => {
+        const selection = document.getElementsByClassName(select)
+        const accurateSelec = selection[0]
         const selected = document.getElementById('selected')
-        if (selected){
-            selected.id = ''
-        }
-        event.target.id = 'selected'
+        if (selected) { selected.id = '' }
+        if (accurateSelec) {
+            const clasSelect = accurateSelec.className
+            if (clasSelect) {
+                accurateSelec.id = 'selected'
+            }
+        } 
     }
 
+    handleSelector = (event) =>{
+        this.selectDay(event.target.innerHTML)
+        this.displaySelector(event.target.className)
+    }
 
+    
 
     render() {
         return (
