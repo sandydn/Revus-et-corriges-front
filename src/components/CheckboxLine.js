@@ -20,7 +20,7 @@ const CheckboxLine = ({keyState, title, style, funct, value}) => {
         </span>
         <input 
             style={{...styleBase.input, ...style}}
-            type="radio"
+            type="checkbox"
             id={title}
             onChange={(e) => funct && funct(keyState, e)}
             value={value || "" } 
