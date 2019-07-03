@@ -1,24 +1,24 @@
 import React from 'react'
 
-const Event = ({title, comment, picture, type}) => {
-    const picEvent =() =>{
+const Event = ({ title, comment, picture, type }) => {
+    const picEvent = () => {
 
-        if (picture === ""){
+        if (picture === "") {
             return ""
         } else {
-            return {title}
+            return { title }
         }
     }
-    
+
     const typeEvent = `event ${type}`
 
-    
-    
-    return( 
+
+
+    return (
         <div className={typeEvent}>
-        <h2>{title}</h2>
-        <p>{comment}</p>
-        <img src={picture} alt={picEvent} />
+            <h2>{title}</h2>
+            <p>{comment}</p>
+            <img src={picture} alt={picEvent} />
         </div>
     )
 }

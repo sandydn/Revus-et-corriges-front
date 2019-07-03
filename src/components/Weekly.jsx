@@ -3,8 +3,8 @@ import Week from './Week'
 import dataTest from "./dataTest.json"
 import Menu from './Menu'
 import MobileWeek from './MobileWeek'
-import { Route, BrowserRouter, Switch, Link } from 'react-router-dom'
-import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
+import { Link } from 'react-router-dom'
+import { BrowserView, MobileView } from "react-device-detect";
 
 class Weekly extends Component {
     state = {
@@ -13,13 +13,13 @@ class Weekly extends Component {
         dayDate: ''
     }
 
-    selectDay(i){
-        const day = dataTest.filter((display)=> display.date.includes(i))
+    selectDay(i) {
+        const day = dataTest.filter((display) => display.date.includes(i))
         const dayArr = day[0]
-        this.setState({ dayEvent : dayArr.data })
-        this.setState({ dayDate : dayArr.date })
+        this.setState({ dayEvent: dayArr.data })
+        this.setState({ dayDate: dayArr.date })
     }
-    
+
 
     componentDidMount() {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
@@ -29,7 +29,6 @@ class Weekly extends Component {
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
     }
-
 
     previousDays = () => {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
@@ -43,21 +42,20 @@ class Weekly extends Component {
         const selection = document.getElementsByClassName(select)
         const accurateSelec = selection[0]
         const selected = document.getElementById('selected')
+
         if (selected) { selected.id = '' }
         if (accurateSelec) {
             const clasSelect = accurateSelec.className
-            if (clasSelect) {
-                accurateSelec.id = 'selected'
-            }
-        } 
+            if (clasSelect) { accurateSelec.id = 'selected' }
+        }
     }
 
-    handleSelector = (event) =>{
+    handleSelector = (event) => {
         this.selectDay(event.target.innerHTML)
         this.displaySelector(event.target.className)
     }
 
-    
+
 
     render() {
         return (
@@ -81,7 +79,7 @@ class Weekly extends Component {
                             <div className='weeklyDisplay'>
                                 <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
 
-                                <Week dataDays={this.state.days}/>
+                                <Week dataDays={this.state.days} />
 
                                 <div onClick={this.nextDays} className='nextDesktop'><i className="arrow right"></i></div>
                             </div>
@@ -99,14 +97,14 @@ class Weekly extends Component {
                         </div>
 
                         <div className='weeklyDisplayMobile'>
-                            
 
-                            <MobileWeek dataDays={this.state.days} 
-                                        date={this.state.dayDate} 
-                                        dataEvent={this.state.dayEvent} 
-                                        previous={this.previousDays} 
-                                        next={this.nextDays}
-                                        selector={this.handleSelector}/>
+
+                            <MobileWeek dataDays={this.state.days}
+                                date={this.state.dayDate}
+                                dataEvent={this.state.dayEvent}
+                                previous={this.previousDays}
+                                next={this.nextDays}
+                                selector={this.handleSelector} />
 
                         </div>
 
