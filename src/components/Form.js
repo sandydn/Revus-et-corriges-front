@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import InputInLine from './InputInLine';
-import Checkboxline from './CheckboxLine';
+import CheckboxLine from './CheckboxLine';
 import './Form.css';
 import Dropdown from './Dropdown';
+import {Link} from 'react-router-dom';
 import InputWithCalendar from './InputWithCalendar'
 
 
 class Form extends Component {
-    
-    state = {
-        date1: null,
-        date2: null,
-        titre: null,
-        lieu: null,
-        date: null,
-        lien: null,
-        information: null,
-        realisateur: null,
-        datefilm: null,
-        distributeur: null,
+    state = {  
+        dateCreation: null,
+        dateEnd: null,
+        dateStart: null,
         format: null,
-        editeur: null,
+        information: null,
+        lien: null,
+        lieu: null,
+        nom: null,
+        prenom: null,
+        titre: null,
         visuel: null,
-        date: new Date()
+
     }
 
     handleChangeInput = (keyState, evt) => {
@@ -34,46 +32,74 @@ class Form extends Component {
         this.setState({ [keyState] : evt.target.value})
     }
     
+    onChangeDateStart = dateStart => {
+        if (dateStart > this.state.dateEnd && this.state.dateEnd){
+            return console.log('error')
+        }
+        console.log('test');
+        
+        this.setState ({ dateStart })
+    }
 
-    onChangeDate = date => this.setState({ date })
-
+    onChangeDateEnd = dateEnd => {
+        if (dateEnd < this.state.dateStart ){
+            return console.log('error')
+        }
+        console.log('test');
+        
+        this.setState ({ dateEnd })
+    }
+    
+    componentDidMount() {
+        console.log('didmount',this.state);
+        
+    }
+    
 
     render() {
         const {
-            date1,
-            date2,
-            titre,
-            lieu,
-            date,
-            lien,
-            information,
-            realisateur,
-            datefilm,
-            distributeur,
+            dateCreation,
+            dateEnd,
+            dateStart,
             format,
-            editeur,
+            information,
+            lien,
+            lieu,
+            nom,
+            prenom,
+            titre,
             visuel,
+            //date,
         } = this.state
         console.log(this.state)
         return (
-            <div>
+            <div className="Form">
 
+            <p>Date de debut</p>
+            <InputWithCalendar  
+                date={dateStart} 
+                onChangeDate={this.onChangeDateStart} 
+            />
 
-            <InputWithCalendar  date={this.state.date} onChangeDate={this.onChangeDate} />
-                
+            <p>Date de fin</p>
+            <InputWithCalendar  
+                date={dateEnd} 
+                onChangeDate={this.onChangeDateEnd} 
+            />
+{/*                 
             <InputInLine
-                keyState="date1"
+                keyState="dateStart"
                 title="Date de début"
-                value={date1}
+                value={dateStart}
                 funct={this.handleChangeInput}
             />
             
             <InputInLine
-                keyState="date2"
-                title="Date de début"
-                value={date2}
+                keyState="dateEnd"
+                title="Date de fin"
+                value={dateEnd}
                 funct={this.handleChangeInput}
-            />
+            /> */}
             
             <InputInLine
                 keyState="titre"
@@ -90,69 +116,76 @@ class Form extends Component {
             />
             
             <InputInLine
-                keyState="date"
-                title="Date"
-                value={date}
-                funct={this.handleChangeInput}
-            />
-            
-            <InputInLine
                 keyState="lien"
                 title="lien externe"
                 value={lien}
                 funct={this.handleChangeInput}
             />
-            
-            <InputInLine
-                keyState="information"
-                title="information"
-                value={information}
+
+            <div className="contact">
+                <InputInLine
+                keyState="prenom"
+                title="prénom"
+                value={prenom}
                 funct={this.handleChangeInput}
-            />
-            <InputInLine
-                keyState="realisateur"
-                title="réalisateur"
-                value={realisateur}
+                />
+                <InputInLine
+                keyState="nom"
+                title="nom"
+                value={nom}
                 funct={this.handleChangeInput}
-            />
+                />
+                <div className="type-contact">
+                    <CheckboxLine title="Acteur"/>
+                    <CheckboxLine title="Distributeur"/>
+                    <CheckboxLine title="Editeur"/>
+                    <CheckboxLine title="Réalisateur"/>
+                </div>    
+            </div>
+
+
             <InputInLine
-                keyState="datefilm"
+                keyState="dateCreation"
                 title="Date du film"
-                value={datefilm}
+                value={dateCreation}
                 funct={this.handleChangeInput}
             />
-            <InputInLine
-                keyState="distributeur"
-                title="Distributeur"
-                value={distributeur}
-                funct={this.handleChangeInput}
-            />
+
             <InputInLine
                 keyState="format"
                 title="format"
                 value={format}
                 funct={this.handleChangeInput}
             />
-            <InputInLine
-                keyState="editeur"
-                title="éditeur"
-                value={editeur}
-                funct={this.handleChangeInput}
-            />
+
             <InputInLine    
                 keyState="visuel"
                 title="visuel"
                 value={visuel}
                 funct={this.handleChangeInput}
             />
+            <InputInLine
+                keyState="information"
+                title="information"
+                value={information}
+                funct={this.handleChangeInput}
+            />
 
-            {/* <Dropdown /> */}
+            <Dropdown />
 
             <div className="checkbox">
-                <Checkboxline title="r&c"/>
-                <Checkboxline title="partenaires" />
-                <Checkboxline title="général"/>
+                <CheckboxLine title="r&c"/>
+                <CheckboxLine title="partenaires" />
+                <CheckboxLine title="général"/>
             </div>
+
+            <Link to="/admin">
+                <input 
+                className="button-submit" 
+                type="submit" 
+                value="Valider le formulaire" 
+                />
+            </Link>
         </div>
         )
     }

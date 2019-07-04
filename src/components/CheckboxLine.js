@@ -3,10 +3,9 @@ import React from 'react'
 const styleBase = {
     
     input: {
-        // border: "none",
         outline: "none",
         fontSize: "1em",
-        padding: "5px"
+        padding: "5px",
     },
     span : {
         padding: "6px",
@@ -14,15 +13,14 @@ const styleBase = {
     }
 }
 
-const InputInLine = ({keyState, title, style, funct, value}) => {
-
+const CheckboxLine = ({keyState, title, style, funct, value}) => {
     return <div>
         <span style={styleBase.span}>
             {title + " :" || "nothing :"}
         </span>
         <input 
             style={{...styleBase.input, ...style}}
-            type="radio"
+            type="checkbox"
             id={title}
             onChange={(e) => funct && funct(keyState, e)}
             value={value || "" } 
@@ -30,4 +28,4 @@ const InputInLine = ({keyState, title, style, funct, value}) => {
     </div>
 }
 
-export default InputInLine
+export default CheckboxLine

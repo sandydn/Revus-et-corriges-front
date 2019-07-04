@@ -7,12 +7,15 @@ const styleBase = {
         outline: "none",
         fontSize: "1em",
         padding: "5px",
-        width: "30vw",
+        width: "40vw",
+        paddingTop: "2%",
     },
     span : {
-        padding: "6px",
+        // padding: "6px",
         borderBottom: "2px solid silver",
         fontSize: "1em",
+        paddingTop: "55%",
+
     }
 }
 
