@@ -1,6 +1,6 @@
 import React from 'react'
 import Events from './Events'
-import './DaysOfMonth.css'
+// import './DaysOfMonth.css'
 
 
 const DaysOfMonth = ({date, dataEvent}) => {

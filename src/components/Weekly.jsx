@@ -14,19 +14,22 @@ class Weekly extends Component {
         dayDate: ''
     }
 
-    selectDay(i){
-        const day = dataTest.filter((display)=> display.date.includes(i))
+    selectDay(i) {
+        const day = dataTest.filter((display) => display.date.includes(i))
         const dayArr = day[0]
-        this.setState({ dayEvent : dayArr.data })
-        this.setState({ dayDate : dayArr.date })
+        this.setState({ dayEvent: dayArr.data })
+        this.setState({ dayDate: dayArr.date })
     }
-    
+
 
     componentDidMount() {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
         this.selectDay(0)
     }
 
+    componentDidUpdate() {
+        this.displaySelector(this.state.dayDate)
+    }
 
     previousDays = () => {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
@@ -36,15 +39,26 @@ class Weekly extends Component {
         this.setState({ days: dataTest.filter((display) => display.id > 4) })
     }
 
-    handleSelector = (event) =>{
+    displaySelector = (select) => {
+        const selection = document.getElementsByClassName(select)
+        const accurateSelec = selection[0]
+        const selected = document.getElementById('selected')
+
+        if (selected) { selected.id = '' }
+        if (accurateSelec) {
+            const clasSelect = accurateSelec.className
+            if (clasSelect) { accurateSelec.id = 'selected' }
+        }
+    }
+
+    handleSelector = (event) => {
         this.selectDay(event.target.innerHTML)
+        this.displaySelector(event.target.className)
     }
 
 
 
     render() {
-        // console.log(this.state.dayEvent)
-
         return (
             <>
                 <BrowserView>
@@ -66,7 +80,7 @@ class Weekly extends Component {
                             <div className='weeklyDisplay'>
                                 <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
 
-                                <Week dataDays={this.state.days}/>
+                                <Week dataDays={this.state.days} />
 
                                 <div onClick={this.nextDays} className='nextDesktop'><i className="arrow right"></i></div>
                             </div>
@@ -77,21 +91,21 @@ class Weekly extends Component {
 
                 <MobileView>
 
-                    <div className='weekly'>
+                    <div className='weeklyMobile'>
 
-                        <div className='weeklyHead'>
+                        <div className='weeklyHeadMobile'>
                             <h1>Agenda Mars 2019</h1>
                         </div>
 
                         <div className='weeklyDisplayMobile'>
-                            
 
-                            <MobileWeek dataDays={this.state.days} 
-                                        date={this.state.dayDate} 
-                                        dataEvent={this.state.dayEvent} 
-                                        previous={this.previousDays} 
-                                        next={this.nextDays}
-                                        selector={this.handleSelector}/>
+
+                            <MobileWeek dataDays={this.state.days}
+                                date={this.state.dayDate}
+                                dataEvent={this.state.dayEvent}
+                                previous={this.previousDays}
+                                next={this.nextDays}
+                                selector={this.handleSelector} />
 
                         </div>
 
