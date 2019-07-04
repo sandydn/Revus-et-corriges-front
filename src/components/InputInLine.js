@@ -15,6 +15,7 @@ const styleBase = {
         borderBottom: "2px solid silver",
         fontSize: "1em",
         paddingTop: "55%",
+        padding: "6px",
 
     }
 }
