@@ -11,7 +11,6 @@ const styleBase = {
         paddingTop: "2%",
     },
     span : {
-        // padding: "6px",
         borderBottom: "2px solid silver",
         fontSize: "1em",
         paddingTop: "55%",

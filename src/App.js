@@ -11,6 +11,7 @@ import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
 import Admin from './screen/Admin';
 import Formevent from './components/Formevent';
+import FormVideos from './components/FormVideos';
 
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
             <Route path="/form-event" component={Formevent} />
             {/* <Route path="/formevent" component={Formevent} /> */}
             {/* <Route path="/formcinema" component={FormCine} /> */}
-            {/* <Route path="/formvideo" component={FormVideo} />             */}
+            <Route path="/formvideo" component={FormVideos} />            
           </Switch>
       </BrowserRouter>
       

@@ -6,21 +6,23 @@ import { Link } from 'react-router-dom';
 
 import './Form.css';
 
-class Formevent extends Component {
+class FormVideos extends Component {
   state = {
-    adresse: null,
-    dateEnd: null,
+    dateCreation: null,
     dateStart: null,
+    // Editeur: [nom, prenom, type],
+    nom: null,
+    prenom:null,
+    type:null,
+    format: null,
     général: null,
-    information: null,
     lien: null,
-    nomLieu: null,
     partenaires: null,
     rc: null,
+    // Realisateur: [nom, prenom, type ],
     titre: null,
     visuel: null,
   }
-
 
   handleChangeInput = (keyState, evt) => {
     console.log("keyState", keyState, "evt", evt.target.value)
@@ -60,31 +62,28 @@ class Formevent extends Component {
 
   render() {
     const {
-      adresse,
-      dateEnd,
+      dateCreation,
       dateStart,
+      // Editeur: [nom, prenom, type ],
+      nom,
+      prenom,
+      type,
+      format,
       général,
-      information,
       lien,
-      nomLieu,
       partenaires,
       rc,
+      // Realisateur: [ nomreal, prenomreal, typereal ],
       titre,
       visuel,
     } = this.state
 
     return (
-      <div className="Formevent">
+      <div className="Formvideos">
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
-        />
-
-        <p>Date de fin :</p>
-        <InputWithCalendar
-          date={dateEnd}
-          onChangeDate={this.onChangeDateEnd}
         />
 
         <div className="importance">
@@ -102,30 +101,67 @@ class Formevent extends Component {
         />
 
         <InputInLine
-          keyState="nomLieu"
-          title="nom du Lieu"
-          value={nomLieu}
+          keyState="dateCreation"
+          title="Date du film"
+          value={dateCreation}
           funct={this.handleChangeInput}
         />
 
         <InputInLine
-          keyState="adresse"
-          title="Adresse"
-          value={adresse}
+          keyState="format"
+          title="format"
+          value={format}
           funct={this.handleChangeInput}
         />
+
+        <div className="contact">
+          <p className="Role-contact">Réalisateur</p>
+          <InputInLine
+            keyState="prenom"
+            title="prénom"
+            value={prenom}
+            funct={this.handleChangeInput}
+          />
+          <InputInLine
+            keyState="nom"
+            title="nom"
+            value={nom}
+            funct={this.handleChangeInput}
+          />
+          <div className="type-contact">
+            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+          </div>
+        </div>
+
+        <div className="contact">
+          <p className="Role-contact">Editeur</p>
+          <InputInLine
+            keyState="prenom"
+            title="prénom"
+            value={prenom}
+            funct={this.handleChangeInput}
+          />
+          <InputInLine
+            keyState="nom"
+            title="nom"
+            value={nom}
+            funct={this.handleChangeInput}
+          />
+          <div className="type-contact">
+            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+          </div>
+        </div>
 
         <InputInLine
           keyState="lien"
           title="lien externe"
           value={lien}
-          funct={this.handleChangeInput}
-        />
-
-        <InputInLine
-          keyState="information"
-          title="information"
-          value={information}
           funct={this.handleChangeInput}
         />
 
@@ -148,4 +184,4 @@ class Formevent extends Component {
   }
 }
 
-export default Formevent
+export default FormVideos
