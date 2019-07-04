@@ -171,7 +171,7 @@ class Form extends Component {
                 funct={this.handleChangeInput}
             />
 
-            {/* <Dropdown /> */}
+            <Dropdown />
 
             <div className="checkbox">
                 <CheckboxLine title="r&c"/>
@@ -181,9 +181,9 @@ class Form extends Component {
 
             <Link to="/admin">
                 <input 
-                    className="button-submit" 
-                    type="submit" 
-                    value="Valider le formulaire" 
+                className="button-submit" 
+                type="submit" 
+                value="Valider le formulaire" 
                 />
             </Link>
         </div>
