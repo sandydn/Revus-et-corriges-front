@@ -4,7 +4,7 @@ import Day from './Day'
 const Week = ({dataDays}) => {
     
     return(
-         dataDays.map((day) =>  <Day key={day.data.id} date={day.data.date} dataEvent={day.data} />)
+        dataDays.map((day) => <Day date={day.date} dataEvent={day.data} stateClass='Desktop' />)
     )
 }
 

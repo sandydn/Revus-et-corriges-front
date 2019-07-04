@@ -12,7 +12,7 @@ html{
     width: 20%;
 }
 
-.weekly{
+.weeklyDesktop{
     width: 100%;
     background: url(../../pictures/backg.png);
     background-size: 140%;
@@ -39,7 +39,20 @@ html{
     flex-direction: column;
 }
 
-.arrow {
+/* .arrow {
+} */
+
+.nextMobile{
+    height: 22px;
+    margin-left: 4px;
+}
+
+.previousMobile{
+    height: 22px;
+    margin-right: 4px;
+}
+
+i {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
