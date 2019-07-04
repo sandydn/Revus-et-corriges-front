@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import moment from "moment"
-import 'moment/locale/fr';
-import 'moment-timezone';
 import axios from 'axios';
 
+import 'moment/locale/fr';
+import 'moment-timezone';
 
+import './css/Monthly.css'
 
 class Monthly extends Component {
 
@@ -94,7 +95,7 @@ class Monthly extends Component {
       let cells = [];
   
       months.forEach((row, i) => {
-        if (i % 3 !== 0 || i === 0) {
+        if (i % 3 !== 0 || i == 0) {
           cells.push(row);
         } else {
           rows.push(cells);
@@ -196,7 +197,7 @@ class Monthly extends Component {
       let cells = [];
   
       months.forEach((row, i) => {
-        if (i % 3 !== 0 || i === 0) {
+        if (i % 3 !== 0 || i == 0) {
           cells.push(row);
         } else {
           rows.push(cells);
@@ -243,7 +244,7 @@ class Monthly extends Component {
 
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
-      let currentDay = d === this.currentDay() ? "today" : "";
+      let currentDay = d == this.currentDay() ? "today" : "";
       let dayEvent = false
 
       this.state.eventDate.forEach( event => {
@@ -285,7 +286,7 @@ class Monthly extends Component {
     });
 
     let daysinmonth = rows.map((d, i) => {
-      return <h3>{d}</h3>;
+      return <h3 className="centerDay">{d}</h3>;
     });
 
     return (
@@ -312,7 +313,7 @@ class Monthly extends Component {
 
         {this.state.showDateTable && (
           <div className="calendar-date">
-              <div className="arrows">
+              <div className="arrow">
                 <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>
                 <div className="monthList" onClick={this.showMonth}><p> Select a month </p></div>
                 <div className="yearList" onClick={this.showYearTable}><p> Select a year </p></div>

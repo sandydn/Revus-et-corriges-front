@@ -5,7 +5,7 @@ import Weekly from "./Weekly"
 import Monthly from "./Monthly"
 
 import './css/calendar.css'
-import './Monthly.css'
+import 'src/components/css/Monthly.css'
 
 
 class Calendar extends Component {
@@ -33,6 +33,7 @@ class Calendar extends Component {
                     <Link to="/login" ><input type="submit" value="Login" /></Link>
                 </div>
                 <Weekly />
+                <Monthly />
             </div>
         )
     }
