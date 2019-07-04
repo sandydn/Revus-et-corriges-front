@@ -1,0 +1,29 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:40vw;
+    margin-left: 5%;
+}
+.checkbox {
+    display:flex;
+    justify-content: space-around;
+    width: 40vw;
+    padding-top: 3%;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    width:40vw;
+}
+.type-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3%;
+}
+.button-submit {
+    border-radius: 5px 5px 5px 5px;
+}

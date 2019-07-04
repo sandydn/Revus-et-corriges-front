@@ -1,65 +1,138 @@
-import React from 'react'
-import axios from 'axios'
-import icon from '../pictures/eye.png'
-import {Link} from 'react-router-dom';
-// import SelectionForm from './SelectionForm'
+import React from 'react';
+import axios from 'axios';
+import { Link, NavLink, Redirect } from 'react-router-dom';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-// import '../App.css'
+import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+
+import RC from '../pictures/RC.png'
+import './css/Login.css'
 
 class Login extends React.Component {
-    state = {
-        email: "",
-        password: "",
-        showPassword: false,
-        success: false
+
+  state = {
+    formData: {
+      email: '',
+      password: '',
+    },
+    showPassword: false,
+    success: false,
+    redirect: false
+  };
+
+  // Show password or not (icon-eye) //
+  toggleShow = () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
+
+  handleChange = event => {
+    const { formData } = this.state;
+    formData[event.target.name] = event.target.value;
+    this.setState({ formData });
+  };
+
+  // ON SUBMIT - rediriger avec le routeur sur la page d'appel de formulaire
+  handleSubmit = event => {
+    event.preventDefault()
+    axios.post(`http://localhost:4242/auth/login/`, {
+      admin_email: event.target.email.value,
+      admin_password: event.target.password.value
+    })
+      .then(() => {
+        this.setState({ success: true }, () => {
+          setTimeout(() => this.setState({ success: false }), 1400);
+          setTimeout(() => this.setState({ redirect: true }), 1400);
+        });
+      });
+  };
+
+
+  render() {
+    
+    const { formData, success, redirect } = this.state;
+    if (redirect) {
+      return <Redirect to='/select-form' />
     }
 
-    toggleShow = event => {
-        this.setState({ showPassword: !this.state.showPassword })
-    }
+    return (
 
-    handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value })
-    }
+      <div className="adminFormIn" >
 
-    handleSubmit = event => {
-        event.preventDefault()
-        axios.post(`http://localhost:4242/adminform`,{
-            email: event.target.email.value,
-            password: event.target.password.value
-        })
-        .then(() => {
-            this.setState({ success: true })
-        })
-    }
-// ON SUBMIT - rediriger avec le routeur sur la page d'appel de formulaire
+        <img className="iconUser" src={RC} alt="icone-user" />
 
-    render() {
-        return (
-            <div className="adminForm">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                    type="text" 
-                    name="email" 
-                    placeholder="@"
-                    value={this.state.email}
-                    onChange={this.handleChange}/>
+        <div className="FormTitleIn">
+          <NavLink to="/signin" activeClassName="FormTitleIn__Link--Active" className="FormTitleIn__Link">Connexion</NavLink>
+          <NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+        </div>
 
-                    <input 
-                    type= {this.state.showPassword ? "password" : "text"}
-                    name="password" 
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.handleChange}/>
-                    <img src={icon} className="iceye" onClick={this.toggleShow} alt="eye"/>
+        <div>
+          <ValidatorForm
+            ref="form"
+            onSubmit={this.handleSubmit}
+          >
 
-                    <Link to="/select-form" ><input type="submit" value="Submit" /></Link>
-                </form>
-                {this.state.success ? <p>Vous êtes connecté.</p> : null}
-            </div>
-        )
-    }
-}
+            <TextValidator
+              fullWidth
+              label="Email"
+              onChange={this.handleChange}
+              name="email"
+              value={formData.email}
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'Email non valide.']}
+            />
+
+            <FormControl fullWidth >
+              <InputLabel htmlFor="adornment-password">Password</InputLabel>
+              <Input
+                label="Password"
+                name="password"
+                type={this.state.showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={this.handleChange}
+                validators={['required']}
+                errorMessages={['this field is required']}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>} />
+            </FormControl>
+
+            <div className="btnSignUp"></div>
+
+            <Button
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+              disabled={success}
+              fullWidth
+            >
+              {
+                (success && 'Vous êtes connécté.')
+                || (!success && 'Connexion')
+              }
+            </Button>
+
+          </ValidatorForm>
+        </div>
+
+        <Link to="" variant="body2">
+          {"Mot de passe oublié ?"}
+        </Link>
+
+      </div>
+    );
+  };
+};
 
 export default Login;
-

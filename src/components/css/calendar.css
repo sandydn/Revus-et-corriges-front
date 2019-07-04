@@ -1,31 +1,25 @@
 html{
     height: 100vh;
     width: 100vw;
-    margin: 0px;
 }
 
-body{
-    margin: 0px;
-}
-
-
-.Calendar{
-    height:95vh;
+.calendar{
     display: flex;
     border: 18px solid rgb(44, 67, 98);
 }
 
 .navbar{
-    width: 17%;
-    border: 2px solid grey
-
+    width: 20%;
 }
 
-.weekly{
-    width: 83%;
-    background: url(../pictures/background-test_00.png);
+.weeklyDesktop{
+    width: 100%;
+    background: url(../../pictures/backg.png);
     background-size: 140%;
-    
+}
+
+.weeklyDisplayMobile{
+    margin: 20px;
 }
 
 .weeklyHead{
@@ -39,8 +33,35 @@ body{
     width: max-content;
 }
 
+.weeklyHeadMobile{
+    display: flex;
+    justify-content: center;
+}
+
+.weeklyHeadMobile > h1{
+    font-size: 1.6em;
+}
+
 .weeklyDisplay{
     display: flex;
+}
+
+.weeklyDisplayMobile{
+    display:flex;
+    flex-direction: column;
+}
+
+/* .arrow {
+} */
+
+.nextMobile{
+    height: 22px;
+    margin-left: 4px;
+}
+
+.previousMobile{
+    height: 22px;
+    margin-right: 4px;
 }
 
 i {
@@ -50,18 +71,26 @@ i {
     padding: 3px;
     margin-top: 0px;
     cursor: pointer;
-  }
+}
   
-  .right {
+.right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     margin-right: 10px;
     margin-left: 2px;
-  }
-  
-  .left {
+}
+
+.left {
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     margin-right: 2px;
     margin-left: 10px;
-  }
+}
+
+
+@media screen and (min-width: 10px) and (max-width: 1024px) {
+
+    .Calendar {
+        display: block;
+    }
+}
