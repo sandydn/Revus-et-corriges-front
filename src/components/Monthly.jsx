@@ -94,7 +94,7 @@ class Monthly extends Component {
       let cells = [];
   
       months.forEach((row, i) => {
-        if (i % 3 !== 0 || i == 0) {
+        if (i % 3 !== 0 || i === 0) {
           cells.push(row);
         } else {
           rows.push(cells);
@@ -196,7 +196,7 @@ class Monthly extends Component {
       let cells = [];
   
       months.forEach((row, i) => {
-        if (i % 3 !== 0 || i == 0) {
+        if (i % 3 !== 0 || i === 0) {
           cells.push(row);
         } else {
           rows.push(cells);
@@ -243,14 +243,14 @@ class Monthly extends Component {
 
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
-      let currentDay = d == this.currentDay() ? "today" : "";
+      let currentDay = d === this.currentDay() ? "today" : "";
       let dayEvent = false
 
       this.state.eventDate.forEach( event => {
         console.log(this.state.eventDate);
         const eventDateStart = moment(event.dateStart).format("D")
         
-        if (d == eventDateStart) {
+        if (d === eventDateStart) {
           console.log('true', d, eventDateStart);
           return dayEvent = true
         }
