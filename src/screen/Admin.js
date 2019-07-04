@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import SelectionForm from './SelectionForm';
+import MenuAdmin from './MenuAdmin';
 
 class Admin extends Component {
     render() {
         return (
             <div>
-                <SelectionForm />
+                <MenuAdmin />
             </div>
         )
     }

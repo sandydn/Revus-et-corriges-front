@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import LinkForm from '../components/LinkForm'
-import '../screen/SelectionForm.css'
+import '../screen/MenuAdmin.css'
 
 import { Link } from 'react-router-dom';
-class SelectionForm extends Component {
+class MenuAdmin extends Component {
   render() {
     return (
         <div className='container-button'>
@@ -26,4 +26,4 @@ class SelectionForm extends Component {
   }
 }
 
-export default SelectionForm
+export default MenuAdmin
