@@ -171,7 +171,7 @@ class Form extends Component {
                 funct={this.handleChangeInput}
             />
 
-            <Dropdown />
+             <Dropdown /> 
 
             <div className="checkbox">
                 <CheckboxLine title="r&c"/>
