@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MenuAdmin from './MenuAdmin';
 import ButtonForm from '../components/ButtonForm';
-import './Events.css'
+import '../screen/Events.css'
 import {Link} from 'react-router-dom';
 
 

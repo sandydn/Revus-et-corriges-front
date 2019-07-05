@@ -16,12 +16,12 @@ class FormVideos extends Component {
     type:null,
     format: null,
     général: null,
-    lien: null,
+    link: null,
     partenaires: null,
     rc: null,
     // Realisateur: [nom, prenom, type ],
     titre: null,
-    visuel: null,
+    cover: null,
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -70,12 +70,12 @@ class FormVideos extends Component {
       type,
       format,
       général,
-      lien,
+      link,
       partenaires,
       rc,
       // Realisateur: [ nomreal, prenomreal, typereal ],
       titre,
-      visuel,
+      cover,
     } = this.state
 
     return (
@@ -159,16 +159,16 @@ class FormVideos extends Component {
         </div>
 
         <InputInLine
-          keyState="lien"
+          keyState="link"
           title="lien externe"
-          value={lien}
+          value={link}
           funct={this.handleChangeInput}
         />
 
         <InputInLine
-          keyState="visuel"
-          title="visuel"
-          value={visuel}
+          keyState="cover"
+          title="cover"
+          value={cover}
           funct={this.handleChangeInput}
         />
 

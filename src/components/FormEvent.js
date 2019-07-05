@@ -13,12 +13,12 @@ class FormEvent extends Component {
     dateStart: null,
     général: null,
     information: null,
-    lien: null,
+    link: null,
     nomLieu: null,
     partenaires: null,
     rc: null,
     titre: null,
-    visuel: null,
+    cover: null,
   }
 
 
@@ -65,12 +65,12 @@ class FormEvent extends Component {
       dateStart,
       général,
       information,
-      lien,
+      link,
       nomLieu,
       partenaires,
       rc,
       titre,
-      visuel,
+      cover,
     } = this.state
 
     return (
@@ -116,9 +116,9 @@ class FormEvent extends Component {
         />
 
         <InputInLine
-          keyState="lien"
+          keyState="link"
           title="lien externe"
-          value={lien}
+          value={link}
           funct={this.handleChangeInput}
         />
 
@@ -130,9 +130,9 @@ class FormEvent extends Component {
         />
 
         <InputInLine
-          keyState="visuel"
+          keyState="cover"
           title="visuel"
-          value={visuel}
+          value={cover}
           funct={this.handleChangeInput}
         />
 

@@ -14,11 +14,11 @@ class FormRetro extends Component {
     nom: null,
     prenom: null,
     type: null,
-    lien: null,
+    link: null,
     partenaires: null,
     rc: null,
     titre: null,
-    visuel: null,
+    cover: null,
     // Distributeur : [nom, prenom, type ],
   }
 
@@ -67,11 +67,11 @@ class FormRetro extends Component {
         nom,
         prenom,
         type,
-        lien,
+        link,
         partenaires,
         rc,
         titre,
-        visuel,
+        cover,
         // Distributeur : [nom, prenom, type ],
     } = this.state
 
@@ -142,16 +142,16 @@ class FormRetro extends Component {
         </div>
 
         <InputInLine
-          keyState="lien"
+          keyState="link"
           title="lien externe"
-          value={lien}
+          value={link}
           funct={this.handleChangeInput}
         />
 
         <InputInLine
-          keyState="visuel"
-          title="visuel"
-          value={visuel}
+          keyState="cover"
+          title="cover"
+          value={cover}
           funct={this.handleChangeInput}
         />
 

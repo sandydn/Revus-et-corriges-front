@@ -15,12 +15,12 @@ class FormCinema extends Component {
     prenom:null,
     type:null,
     général: null,
-    lien: null,
+    link: null,
     partenaires: null,
     rc: null,
     // Realisateur: [nom, prenom, type ],
     titre: null,
-    visuel: null,
+    cover: null,
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -54,10 +54,13 @@ class FormCinema extends Component {
     this.setState({ dateEnd })
   }
 
-  componentDidMount() {
-    console.log('didmount', this.state);
-
-  }
+  // componentDidMount() {
+  //   console.log('didmount', this.state);
+  //     axios.post(`http://localhost:4000/a5/event`)
+  //     .then(result => {
+  //         this.setState({ titre: result.data.titre, dateStart: result.data.dateStart, cover: result.data.cover, link: result.data.link })
+  //     })
+  // }
 
   render() {
     const {
@@ -68,12 +71,12 @@ class FormCinema extends Component {
         prenom,
         type,
         général,
-        lien,
+        link,
         partenaires,
         rc,
         // Realisateur: [nom, prenom, type ],
         titre,
-        visuel,
+        cover,
     } = this.state
 
     return (
@@ -150,16 +153,16 @@ class FormCinema extends Component {
         </div>
 
         <InputInLine
-          keyState="lien"
+          keyState="link"
           title="lien externe"
-          value={lien}
+          value={link}
           funct={this.handleChangeInput}
         />
 
         <InputInLine
-          keyState="visuel"
-          title="visuel"
-          value={visuel}
+          keyState="cover"
+          title="cover"
+          value={cover}
           funct={this.handleChangeInput}
         />
 
