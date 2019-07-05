@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import React, {Component} from 'react';
-import moment from "moment";
-import 'moment/locale/fr';
-import 'moment-timezone';
-import axios from 'axios';
-
-=======
 import React, {Component} from 'react'
 import moment from "moment"
 import axios from 'axios';
@@ -14,11 +6,13 @@ import 'moment/locale/fr';
 import 'moment-timezone';
 
 import './css/Monthly.css'
+import Menu from './Menu.js'
+import './css/calendar.css'
 
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637
 class Monthly extends Component {
 
-  weekdayshort = moment.weekdaysShort();
+  weekdayshort = moment.weekdays();
+  
 
   state= {
     showYearTable: false,
@@ -91,8 +85,10 @@ class Monthly extends Component {
     let months = [];
     props.data.map(data => {
       months.push(
-        <div key={data} className="calendar-month" onClick={e => {this.setMonth(data)}}>         
+        <div key={data} className="calendar-month" onClick={e => {this.setMonth(data)}}>       
+
           <span>{data}</span>
+
         </div>
       );
     });
@@ -116,10 +112,11 @@ class Monthly extends Component {
       return <div>{d}</div>;
     });
 
-<<<<<<< HEAD
     return (
-      <div className="calendar-month">                     
+      <div className="calendar-month">  
+
         <h1>{monthlist}</h1>
+
         </div>     
     );
   };
@@ -169,38 +166,6 @@ class Monthly extends Component {
       showYearTable: !this.state.showYearTable
     });
   };
-=======
-      this.setState({
-        dateObject: this.state.dateObject.add(1, curr)
-      });
-    };
-
-    setYear = year => {
-      // alert(year)
-      let dateObject = Object.assign({}, this.state.dateObject);
-      dateObject = moment(dateObject).set("year", year);
-      this.setState({
-        dateObject: dateObject,
-        showMonthTable: !this.state.showMonthTable,
-        showYearTable: !this.state.showYearTable
-      });
-    };
-
-    onYearChange = e => {
-      this.setYear(e.target.value);
-    };
-    
-    getDates(startDate, stopDate) {
-      let dateArray = [];
-      let currentDate = moment(startDate);
-      let dateStop = moment(stopDate);
-      while (currentDate <= dateStop) {
-        dateArray.push(moment(currentDate).format("YYYY"));
-        currentDate = moment(currentDate).add(1, "year");
-      }
-      return dateArray;
-    };
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637
 
   onYearChange = e => {
     this.setYear(e.target.value);
@@ -234,34 +199,10 @@ class Monthly extends Component {
 
           <span>{data}</span>     
 
-<<<<<<< HEAD
-=======
-    let daysInMonth = [];
-    for (let d = 1; d <= this.daysInMonth(); d++) {
-      let currentDay = d == this.currentDay() ? "today" : "";
-      let dayEvent = false
-
-      this.state.eventDate.forEach( event => {
-        console.log(this.state.eventDate);
-        const eventDateStart = moment(event.dateStart).format("D")
-        
-        if (d === eventDateStart) {
-          console.log('true', d, eventDateStart);
-          return dayEvent = true
-        }
-      })
-
-      const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'
-      console.log(d, dayEvent, calendarDay);
-      
-      daysInMonth.push(
-        <div key={d} className = { `${calendarDay} ${currentDay}`}>
-          <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637
         </div>
-      );
-    });
-
+      )
+    })
+  
     let rows = [];
     let cells = [];
 
@@ -275,21 +216,16 @@ class Monthly extends Component {
       }
     });
 
-<<<<<<< HEAD
     rows.push(cells);
     let yearlist = rows.map((d, i) => {
 
       return <div>{d}</div>;
-=======
-    let daysinmonth = rows.map((d, i) => {
-      return <h3 className="centerDay">{d}</h3>;
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637
     });
 
     return (
       <div> {yearlist} </div>
     );
-  };
+  }
   //END OF FUNCTION
 
   //FUNCTION FOR CLICK ON EVENT
@@ -367,58 +303,41 @@ class Monthly extends Component {
   });
 
   return (
-    
-    <div className="monthly">
-      <div className="monthAndYear">
-        <span onClick={e => {this.onPrev()}} class=" button-prev"/>         
-        {!this.state.showMonthTable && (
-          <div onClick={e => {this.showMonth()}} class="month">{this.month()}              
-          </div>
-        )}
+    <div className="calendar">
 
-        <div className="year" onClick={e => this.showYearTable()}>
-          {this.year()}
-        </div>
-          <span onClick={e => {this.onNext()}} className=" "/>    
-        </div>
-      
-      <div className="calendar-date">
-        {this.state.showYearTable && <this.YearTable props={this.year()}/>}
-        {this.state.showMonthTable && (<this.MonthList data={moment.months()}/>
-        )}
+      <div className="navbar">
+      <Menu />
       </div>
+      <div className="monthly">
+        <div className="monthAndYear">
+          <span onClick={e => {this.onPrev()}} class=" button-prev"/>         
+          {!this.state.showMonthTable && (
+            <div onClick={e => {this.showMonth()}} class="month">{this.month()}              
+            </div>
+          )}
 
-<<<<<<< HEAD
-      {this.state.showDateTable && (
+          <div className="year" onClick={e => this.showYearTable()}>
+          {this.year()}
+          </div>
+            <span onClick={e => {this.onNext()}} className=" "/>    
+          </div>
+      
         <div className="calendar-date">
+          {this.state.showYearTable && <this.YearTable props={this.year()}/>}
+          {this.state.showMonthTable && (<this.MonthList data={moment.months()}/>
+          )}
+        </div>
+
+        {this.state.showDateTable && (
+          <div className="calendar-date">
 
             <div className="arrow">
 
               <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>
-=======
-        {this.state.showDateTable && (
-          <div className="calendar-date">
-              <div className="arrow">
-                <div className="leftArrow" onClick={this.onPrev}><i class="arrow left"></i></div>
-                <div className="monthList" onClick={this.showMonth}><p> Select a month </p></div>
-                <div className="yearList" onClick={this.showYearTable}><p> Select a year </p></div>
-                <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
-              </div>
-              
-               <h1 className="monthlyDisplay">{weekdayshortname}</h1>             
-              <div className="dayzOfWeek">{daysinmonth}</div>         
-          </div>              
-    )
-  }           
-             </div>
-         )
-     }
- }
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637
 
-              <div className="monthList" onClick={this.showMonth}><p> Select a month </p></div>
+              <div className="monthList" onClick={this.showMonth}><p> Changer de mois </p></div>
 
-              <div className="yearList" onClick={this.showYearTable}><p> Select a year </p></div>
+              <div className="yearList" onClick={this.showYearTable}><p> Changer d'année </p></div>
 
               <div className="rightArrow" onClick={this.onNext}><i class="arrow right"></i></div>
 
@@ -432,8 +351,11 @@ class Monthly extends Component {
   )
 }           
             </div>
+
+            </div>
         )
     }
-}
+  }
+
 
 export default Monthly

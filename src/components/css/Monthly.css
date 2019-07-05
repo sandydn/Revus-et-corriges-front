@@ -1,18 +1,14 @@
-<<<<<<< HEAD:src/components/Monthly.css
-.Calendar {
+html {
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.calendar {
 
   height:95vh;
   display: flex;
   border: 18px solid rgb(44, 67, 98);
-=======
-html{
-    height: 100vh;
-    width: 100vw;
-}
-
-.Calendar{
-    border: 18px solid rgb(44, 67, 98);
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637:src/components/css/Monthly.css
 }
 
 .monthList {
@@ -68,7 +64,6 @@ html{
 
 .calendar-day-event :hover {
 
-<<<<<<< HEAD:src/components/Monthly.css
   cursor: pointer;
 }
 
@@ -79,25 +74,9 @@ html{
 }
 
 .monthly {
-=======
-.centerDay {
-    display: flex;
-    justify-content: center;
-}
-
-.navbar{
-    width: 25%;
-}
-
-.monthly{
-    width: 83%;
-    background: url(../../pictures/backg.png);
-    background-size: 140%;
-}
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637:src/components/css/Monthly.css
 
   width: 83%;
-  background: url(../pictures/background-test_00.png);
+  background: url(../../pictures/backg.png);
   background-size: 140%;
 }
 
@@ -109,20 +88,12 @@ html{
 }
 
 .dayzOfWeek > h3 {
-<<<<<<< HEAD:src/components/Monthly.css
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 50% 12%;
   font-size: 1.1em;
-=======
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 50% 12%;
-    font-size: 1.1em;
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637:src/components/css/Monthly.css
 }
 
 .month {
@@ -149,67 +120,15 @@ html{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 53% 7%;  
+  font-size: 1.5em;
+
 }
-
-i {
-<<<<<<< HEAD:src/components/Monthly.css
-
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  margin-top: 0px;
-  cursor: pointer;
-  }
-  
-.right {
-
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  margin-right: 10px;
-  margin-left: 2px;
-  }
-  
-.left {
-
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  margin-right: 2px;
-  margin-left: 10px;
-  }
-  
+   
 .arrow {
 
   display: flex;
   justify-content: space-around;
+
   }
-=======
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-top: 0px;
-    cursor: pointer;
-}
-  
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    margin-right: 10px;
-    margin-left: 2px;
-}
-
-.left {  
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-    margin-right: 2px;
-    margin-left: 10px;
-}
-
-.arrows {
-    display: flex;
-    justify-content: space-around;
-}
->>>>>>> 1fd41f8b06dfbeafe85a5fe3452e7c2aa486d637:src/components/css/Monthly.css
 
   
