@@ -3,6 +3,7 @@ import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import { Link } from 'react-router-dom';
+import MenuAdmin from '../screen/MenuAdmin';
 
 import './Form.css';
 
@@ -27,9 +28,9 @@ class FormEvent extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  // handleChangeCheckbox = (keyState, evt) => {
-  //   this.setState({ [keyState]: evt.target.value})
-  // }
+  handleChangeCheckbox = (keyState, evt) => {
+    this.setState({ [keyState]: evt.target.value})
+  }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -74,6 +75,8 @@ class FormEvent extends Component {
     } = this.state
 
     return (
+      <div className="screen">
+      <MenuAdmin />
       <div className="Formevent">
         <p>Date de debut :</p>
         <InputWithCalendar
@@ -143,6 +146,7 @@ class FormEvent extends Component {
             value="Valider le formulaire"
           />
         </Link>
+      </div>
       </div>
     )
   }

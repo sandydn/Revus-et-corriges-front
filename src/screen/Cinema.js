@@ -10,7 +10,7 @@ class Cinema extends Component {
         return (
             <div className='screenCinema'>
                 <MenuAdmin />
-                <Link to="/form-cinema"><ButtonForm name="Ajouter un cinéma" /></Link>
+                <Link to="/admin-cinema-form"><ButtonForm name="Ajouter un cinéma" /></Link>
             </div>
         )
     }

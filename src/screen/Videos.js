@@ -4,14 +4,14 @@ import ButtonForm from '../components/ButtonForm'
 import {Link} from 'react-router-dom';
 import '../screen/Events.css'
 import ListVideo from '../components/ListVideo';
+import FormVideos from '../components/FormVideos';
 
 class Videos extends Component {
     render() {
         return (
             <div className='screenVideo'>
                 <MenuAdmin />
-                <ListVideo />
-                <Link to="/form-video"><ButtonForm name="Ajouter une vidéo" /></Link>
+                <ButtonForm name="Ajouter une vidéo" />
             </div>
         )
     }

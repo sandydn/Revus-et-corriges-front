@@ -9,7 +9,7 @@ class Retro extends Component {
         return (
             <div className='screenRetro'>
                 <MenuAdmin />
-                <Link to="/form-retro"><ButtonForm name="Ajouter une rétrospective" /></Link>
+                <Link to="/admin-retro-form"><ButtonForm name="Ajouter une rétrospective" /></Link>
             </div>
         )
     }

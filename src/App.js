@@ -48,10 +48,10 @@ class App extends Component {
             <Route path="/admin-cinema" component={Cinema} />
             <Route path="/admin-videos" component={Videos} />
             <Route path="/admin-retro" component={Retro} />
-            <Route path="/form-event" component={FormEvent} />
-            <Route path="/form-cinema" component={FormCinema} />
-            <Route path="/form-video" component={FormVideos} />   
-            <Route path="/form-retro" component={FormRetro} />         
+            <Route path="/admin-events-form" component={FormEvent} />
+            <Route path="/admin-cinema-form" component={FormCinema} />
+            <Route path="/admin-videos-form" component={FormVideos} />   
+            <Route path="/admin-retro-form" component={FormRetro} />         
           </Switch>
       </BrowserRouter>
       

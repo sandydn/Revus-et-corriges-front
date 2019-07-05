@@ -5,6 +5,7 @@ import InputWithCalendar from './InputWithCalendar'
 import { Link } from 'react-router-dom';
 
 import './Form.css';
+import MenuAdmin from '../screen/MenuAdmin';
 
 class FormVideos extends Component {
   state = {
@@ -79,6 +80,8 @@ class FormVideos extends Component {
     } = this.state
 
     return (
+      <div className="screen">
+      <MenuAdmin />
       <div className="Formvideos">
         <p>Date de debut :</p>
         <InputWithCalendar
@@ -179,6 +182,7 @@ class FormVideos extends Component {
             value="Valider le formulaire"
           />
         </Link>
+      </div>
       </div>
     )
   }

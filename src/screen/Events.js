@@ -12,7 +12,7 @@ class Events extends Component {
         return (
             <div className='screenEvent'>
             <MenuAdmin />
-            <Link to="/form-event"><ButtonForm name="Ajouter un évenement" /></Link>
+            <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
 
         </div>
         )

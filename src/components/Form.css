@@ -1,3 +1,7 @@
+.screen {
+    display: flex;
+    flex-direction: row;
+}
 .Formevent,
 .Formvideos,
 .Formcinema, 

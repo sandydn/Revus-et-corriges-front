@@ -3,6 +3,7 @@ import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import { Link } from 'react-router-dom';
+import MenuAdmin from '../screen/MenuAdmin';
 
 import './Form.css';
 
@@ -80,6 +81,8 @@ class FormCinema extends Component {
     } = this.state
 
     return (
+      <div className="screen">
+      <MenuAdmin />
       <div className="Formcinema">
         <p>Date de debut :</p>
         <InputWithCalendar
@@ -173,6 +176,7 @@ class FormCinema extends Component {
             value="Valider le formulaire"
           />
         </Link>
+      </div>
       </div>
     )
   }
