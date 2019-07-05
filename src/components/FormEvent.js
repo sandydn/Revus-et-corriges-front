@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import './Form.css';
 
-class Formevent extends Component {
+class FormEvent extends Component {
   state = {
     adresse: null,
     dateEnd: null,
@@ -148,4 +148,4 @@ class Formevent extends Component {
   }
 }
 
-export default Formevent
+export default FormEvent

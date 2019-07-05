@@ -4,3 +4,15 @@
     justify-content: space-between;
     flex-wrap: nowrap;
 }
+.screenCinema{
+    display: flex;
+    justify-content: space-between;
+}
+.screenVideo{
+    display: flex;
+    justify-content: space-between;
+}
+.screenRetro{
+    display: flex;
+    justify-content: space-between;
+}

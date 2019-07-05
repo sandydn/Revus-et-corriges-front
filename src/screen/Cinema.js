@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MenuAdmin from './MenuAdmin';
 import ButtonForm from '../components/ButtonForm';
-import './Cinema.css'
+import './Events.css'
 import {Link} from 'react-router-dom';
 
 
@@ -10,7 +10,7 @@ class Cinema extends Component {
         return (
             <div className='screenCinema'>
                 <MenuAdmin />
-                <Link to="/formcine"><ButtonForm name="Ajouter un cinéma" /></Link>
+                <Link to="/form-cinema"><ButtonForm name="Ajouter un cinéma" /></Link>
             </div>
         )
     }

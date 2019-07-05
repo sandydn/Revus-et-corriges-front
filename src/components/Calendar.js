@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import Menu from './Menu'
 import Weekly from "./Weekly"
-import Monthly from "./Monthly"
 
 import './css/calendar.css'
-import './Monthly.css'
 
 
 class Calendar extends Component {

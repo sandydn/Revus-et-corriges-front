@@ -4,15 +4,15 @@ import ButtonForm from '../components/ButtonForm'
 import {Link} from 'react-router-dom';
 import '../screen/Events.css'
 
-class Videos extends Component {
+class Retro extends Component {
     render() {
         return (
-            <div className='screenVideo'>
+            <div className='screenRetro'>
                 <MenuAdmin />
-                <Link to="/form-video"><ButtonForm name="Ajouter une vidéo" /></Link>
+                <Link to="/form-retro"><ButtonForm name="Ajouter une rétrospective" /></Link>
             </div>
         )
     }
 }
 
-export default Videos
+export default Retro
