@@ -246,7 +246,7 @@ class Monthly extends Component {
   //DISPLAY DAYS  
   let weekdayshortname = this.weekdayshort.map(day => {
 
-    return <div key={day}>{day}</div>;
+    return <div className="weekDisplay" key={day}>{day}</div>;
     
   });
   //END OF DISPLAY

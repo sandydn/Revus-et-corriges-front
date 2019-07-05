@@ -13,12 +13,30 @@ html {
 
 .monthList {
 
+  margin-right: -70px;
   cursor: pointer;
+  font-size: smaller;
+  border: 2px;
+  border-style: solid;
+  border-color: pink;
+  border-radius: 40%;
+  box-shadow: 1px 1px 1px 1px;
 }
 
 .yearList {
 
   cursor: pointer;
+  font-size: smaller;
+  border: 2px;
+  border-style: solid;
+  border-color: rebeccapurple;
+  border-radius: 40%;
+  box-shadow: 1px 1px 1px 1px;
+}
+
+.calendar-month {
+
+  box-shadow: 0px 4px
 }
 
 .calendar-month > span {
@@ -34,6 +52,7 @@ html {
   line-height: 50px;
   font-size: x-large;
   cursor: pointer;
+  box-shadow: 0px 4px;
 }
 
 .today > h3 {
@@ -87,6 +106,12 @@ html {
   margin: -5px;
 }
 
+.weekDisplay {
+  
+  font-style: oblique;
+  font-weight: 400;
+}
+
 .dayzOfWeek > h3 {
 
   display: grid;
@@ -120,15 +145,13 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 53% 7%;  
-  font-size: 1.5em;
-
+  font-size: 1.5em; 
 }
    
 .arrow {
 
   display: flex;
   justify-content: space-around;
-
   }
 
   
