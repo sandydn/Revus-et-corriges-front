@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+
 import ButtonForm from '../components/ButtonForm';
 import MenuAdmin from './MenuAdmin';
 import './Cinema.css'

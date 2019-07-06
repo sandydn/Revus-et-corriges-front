@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
-import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import fr from 'date-fns/locale/fr';
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css"
 registerLocale('fr', fr)
   
 class InputWithCalendar extends Component {

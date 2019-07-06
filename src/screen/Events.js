@@ -6,8 +6,7 @@ import MenuAdmin from './MenuAdmin';
 import '../screen/Events.css'
 
 // import ListEvent from '../components/ListEvent';
-// import InputInLine from '../components/InputInLine';
-// import Form from '../components/Form';
+import Form from '../components/Form';
 
 class Events extends Component {
 
