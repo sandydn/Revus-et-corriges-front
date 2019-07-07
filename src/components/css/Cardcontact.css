@@ -1,0 +1,7 @@
+.contact {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 28vw;
+    border: 1px solid black;
+}

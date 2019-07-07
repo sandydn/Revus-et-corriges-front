@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import InputContact from './InputContact';
+import CheckboxContact from './CheckboxContact';
 import { Link } from 'react-router-dom';
 
 import './Form.css';
 import MenuAdmin from '../screen/MenuAdmin';
+import Cardcontact from './Cardcontact';
+import './css/Cardcontact.css'
 
 class FormVideos extends Component {
   state = {
@@ -114,50 +118,57 @@ class FormVideos extends Component {
           value={format}
           funct={this.handleChangeInput}
         />
+{/* 
+      <Cardcontact />
 
-        <div className="contact">
-          <p className="Role-contact">Réalisateur</p>
-          <InputInLine
+      <Cardcontact /> */}
+
+          <div className="contact">
+          <p className="Role-contact"></p>
+          <InputContact
             keyState="prenom"
             title="prénom"
             value={prenom}
             funct={this.handleChangeInput}
           />
-          <InputInLine
+          <InputContact
             keyState="nom"
             title="nom"
             value={nom}
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxContact title="Acteur" keyState="type" value={0} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Editeur" keyState="type" value={2} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput}/>
           </div>
-        </div>
+                
+            </div>
 
-        <div className="contact">
-          <p className="Role-contact">Editeur</p>
-          <InputInLine
+            <div className="contact">
+          <p className="Role-contact"></p>
+          <InputContact
             keyState="prenom"
             title="prénom"
             value={prenom}
             funct={this.handleChangeInput}
           />
-          <InputInLine
+          <InputContact
             keyState="nom"
             title="nom"
             value={nom}
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxContact title="Acteur" keyState="type" value={0} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Editeur" keyState="type" value={2} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput}/>
           </div>
-        </div>
+                
+            </div>
+
 
         <InputInLine
           keyState="link"
