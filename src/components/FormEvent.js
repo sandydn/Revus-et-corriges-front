@@ -13,12 +13,13 @@ class FormEvent extends Component {
     adresse: null,
     dateEnd: null,
     dateStart: null,
-    général: null,
+    importance: null,
+    // général: null,
     information: null,
     link: null,
     nomLieu: null,
-    partenaires: null,
-    rc: null,
+    // partenaires: null,
+    // rc: null,
     titre: null,
     cover: null,
   }
@@ -27,10 +28,6 @@ class FormEvent extends Component {
   handleChangeInput = (keyState, evt) => {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
-  }
-
-  handleChangeCheckbox = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value})
   }
 
   handleChangeDropdown = (keyState, evt) => {
@@ -65,12 +62,12 @@ class FormEvent extends Component {
       adresse,
       dateEnd,
       dateStart,
-      général,
+      // général,
       information,
       link,
       nomLieu,
-      partenaires,
-      rc,
+      // partenaires,
+      // rc,
       titre,
       cover,
     } = this.state
@@ -93,9 +90,9 @@ class FormEvent extends Component {
 
         <div className="importance">
           <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="rc" value={rc} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="partenaires" keyState="partenaires" value={partenaires} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="général" keyState="général" value={général} funct={this.handleChangeCheckbox} />
+          <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
         </div>
 
         <InputInLine

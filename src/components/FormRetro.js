@@ -11,14 +11,15 @@ import './Form.css';
 class FormRetro extends Component {
   state = {
     dateStart: null,
-    général: null,
+    // général: null,
     // Realisateur: [nom, prenom, type ],
     nom: null,
     prenom: null,
     type: null,
     link: null,
-    partenaires: null,
-    rc: null,
+    importance: null,
+    // partenaires: null,
+    // rc: null,
     titre: null,
     cover: null,
     // Distributeur : [nom, prenom, type ],
@@ -64,14 +65,14 @@ class FormRetro extends Component {
   render() {
     const {
         dateStart,
-        général,
+        // général,
         // Realisateur: [nom, prenom, type ],
         nom,
         prenom,
         type,
         link,
-        partenaires,
-        rc,
+        // partenaires,
+        // rc,
         titre,
         cover,
         // Distributeur : [nom, prenom, type ],
@@ -89,9 +90,9 @@ class FormRetro extends Component {
 
         <div className="importance">
           <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="rc" value={rc} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="partenaires" keyState="partenaires" value={partenaires} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="général" keyState="général" value={général} funct={this.handleChangeCheckbox} />
+          <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
         </div>
 
         <InputInLine

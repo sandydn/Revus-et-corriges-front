@@ -12,7 +12,7 @@ class Videos extends Component {
         return (
             <div className='screenVideo'>
                 <MenuAdmin />
-                <ButtonForm name="Ajouter une vidéo" />
+                <Link to="/admin-videos-form"><ButtonForm name="Ajouter une vidéo" /></Link>
             </div>
         )
     }

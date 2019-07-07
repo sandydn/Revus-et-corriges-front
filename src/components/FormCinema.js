@@ -16,10 +16,11 @@ class FormCinema extends Component {
     nom: null,
     prenom:null,
     type:null,
-    général: null,
+    // général: null,
+    importance: null,
     link: null,
-    partenaires: null,
-    rc: null,
+    // partenaires: null,
+    // rc: null,
     // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
@@ -72,10 +73,10 @@ class FormCinema extends Component {
         nom,
         prenom,
         type,
-        général,
+        // général,
         link,
-        partenaires,
-        rc,
+        // partenaires,
+        // rc,
         // Realisateur: [nom, prenom, type ],
         titre,
         cover,
@@ -93,9 +94,9 @@ class FormCinema extends Component {
 
         <div className="importance">
           <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="rc" value={rc} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="partenaires" keyState="partenaires" value={partenaires} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="général" keyState="général" value={général} funct={this.handleChangeCheckbox} />
+          <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput}/>
+          <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput}/>
+          <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
         </div>
 
         <InputInLine
