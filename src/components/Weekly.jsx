@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import Week from './Week'
-import dataTest from "./dataTest.json"
+import { BrowserView, MobileView } from "react-device-detect";
+import { Link } from 'react-router-dom'
+
 import Menu from './Menu'
 import MobileWeek from './MobileWeek'
-import { Link } from 'react-router-dom'
-import { BrowserView, MobileView } from "react-device-detect";
+import Week from './Week'
+
+import dataTest from "./dataTest.json"
 import "./css/calendar.css"
 
 class Weekly extends Component {
@@ -66,7 +68,7 @@ class Weekly extends Component {
 
                         <div className='navbar'>
                             <Menu />
-                            <Link to="/select-form" ><input type="submit" value="Admin" /></Link>
+                            <Link to="/menu-admin" ><input type="submit" value="Admin" /></Link>
                             <Link to="/login" ><input type="submit" value="Login" /></Link>
                             <Link to="/month"><input type="submit" value="Monthly" /></Link>
                         </div>

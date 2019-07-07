@@ -8,23 +8,22 @@ import MenuAdmin from '../screen/MenuAdmin';
 
 import './Form.css';
 
-class FormVideos extends Component {
+class FormRetro extends Component {
   state = {
-    dateCreation: null,
     dateStart: null,
-    // Editeur: [nom, prenom, type],
-    nom: null,
-    prenom:null,
-    type:null,
-    format: null,
     général: null,
+    // Realisateur: [nom, prenom, type ],
+    nom: null,
+    prenom: null,
+    type: null,
     link: null,
     partenaires: null,
     rc: null,
-    // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
+    // Distributeur : [nom, prenom, type ],
   }
+
 
   handleChangeInput = (keyState, evt) => {
     console.log("keyState", keyState, "evt", evt.target.value)
@@ -64,26 +63,24 @@ class FormVideos extends Component {
 
   render() {
     const {
-      dateCreation,
-      dateStart,
-      // Editeur: [nom, prenom, type ],
-      nom,
-      prenom,
-      type,
-      format,
-      général,
-      link,
-      partenaires,
-      rc,
-      // Realisateur: [ nomreal, prenomreal, typereal ],
-      titre,
-      cover,
+        dateStart,
+        général,
+        // Realisateur: [nom, prenom, type ],
+        nom,
+        prenom,
+        type,
+        link,
+        partenaires,
+        rc,
+        titre,
+        cover,
+        // Distributeur : [nom, prenom, type ],
     } = this.state
 
     return (
       <div className="screen">
       <MenuAdmin />
-      <div className="Formvideos">
+      <div className="Formretro">
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -104,22 +101,8 @@ class FormVideos extends Component {
           funct={this.handleChangeInput}
         />
 
-        <InputInLine
-          keyState="dateCreation"
-          title="Date du film"
-          value={dateCreation}
-          funct={this.handleChangeInput}
-        />
-
-        <InputInLine
-          keyState="format"
-          title="format"
-          value={format}
-          funct={this.handleChangeInput}
-        />
-
         <div className="contact">
-          <p className="Role-contact">Réalisateur</p>
+          <p className="Role-contact">Distributeur</p>
           <InputInLine
             keyState="prenom"
             title="prénom"
@@ -133,15 +116,15 @@ class FormVideos extends Component {
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
           </div>
         </div>
 
         <div className="contact">
-          <p className="Role-contact">Editeur</p>
+          <p className="Role-contact">Réalisateur</p>
           <InputInLine
             keyState="prenom"
             title="prénom"
@@ -189,4 +172,4 @@ class FormVideos extends Component {
   }
 }
 
-export default FormVideos
+export default FormRetro

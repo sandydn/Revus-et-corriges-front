@@ -12,6 +12,7 @@ export class ButtonForm extends Component {
             className='buttonform'
             type="button">
             {this.props.name}
+            {this.props.funct}
           </button>
         </div>
       </>

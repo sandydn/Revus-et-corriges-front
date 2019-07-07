@@ -73,6 +73,8 @@ class Form extends Component {
       //date,
     } = this.state
     console.log(this.state)
+
+    
     return (
       <div className="Form">
 

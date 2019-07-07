@@ -1,6 +1,6 @@
 import React from 'react'
-import './css/SearchBar.css'
 import show from './dataTest.json'
+import './css/SearchBar.css'
 
 class SearchBar extends React.Component {
     

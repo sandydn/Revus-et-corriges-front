@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 
 import ButtonForm from '../components/ButtonForm';
 import MenuAdmin from './MenuAdmin';
-import './Cinema.css'
+import '../screen/Events.css'
+// import './Cinema.css'
 
 
 class Cinema extends Component {
@@ -11,7 +12,7 @@ class Cinema extends Component {
         return (
             <div className='screenCinema'>
                 <MenuAdmin />
-                <Link to="/formcine"><ButtonForm name="Ajouter un cinéma" /></Link>
+                <Link to="/admin-cinema-form"><ButtonForm name="Ajouter un cinéma" /></Link>
             </div>
         )
     }

@@ -1,5 +1,11 @@
+.screen {
+    display: flex;
+    flex-direction: row;
+}
 .Formevent,
-.Formvideos {
+.Formvideos,
+.Formcinema, 
+.Formretro {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

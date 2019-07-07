@@ -8,15 +8,14 @@ import MenuAdmin from '../screen/MenuAdmin';
 
 import './Form.css';
 
-class FormVideos extends Component {
+class FormCinema extends Component {
   state = {
     dateCreation: null,
     dateStart: null,
-    // Editeur: [nom, prenom, type],
+    // Distributeur: [nom, prenom, type],
     nom: null,
     prenom:null,
     type:null,
-    format: null,
     général: null,
     link: null,
     partenaires: null,
@@ -57,33 +56,35 @@ class FormVideos extends Component {
     this.setState({ dateEnd })
   }
 
-  componentDidMount() {
-    console.log('didmount', this.state);
-
-  }
+  // componentDidMount() {
+  //   console.log('didmount', this.state);
+  //     axios.post(`http://localhost:4000/a5/event`)
+  //     .then(result => {
+  //         this.setState({ titre: result.data.titre, dateStart: result.data.dateStart, cover: result.data.cover, link: result.data.link })
+  //     })
+  // }
 
   render() {
     const {
-      dateCreation,
-      dateStart,
-      // Editeur: [nom, prenom, type ],
-      nom,
-      prenom,
-      type,
-      format,
-      général,
-      link,
-      partenaires,
-      rc,
-      // Realisateur: [ nomreal, prenomreal, typereal ],
-      titre,
-      cover,
+        dateCreation,
+        dateStart,
+        // Distributeur: [nom, prenom, type],
+        nom,
+        prenom,
+        type,
+        général,
+        link,
+        partenaires,
+        rc,
+        // Realisateur: [nom, prenom, type ],
+        titre,
+        cover,
     } = this.state
 
     return (
       <div className="screen">
       <MenuAdmin />
-      <div className="Formvideos">
+      <div className="Formcinema">
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -111,13 +112,6 @@ class FormVideos extends Component {
           funct={this.handleChangeInput}
         />
 
-        <InputInLine
-          keyState="format"
-          title="format"
-          value={format}
-          funct={this.handleChangeInput}
-        />
-
         <div className="contact">
           <p className="Role-contact">Réalisateur</p>
           <InputInLine
@@ -141,7 +135,7 @@ class FormVideos extends Component {
         </div>
 
         <div className="contact">
-          <p className="Role-contact">Editeur</p>
+          <p className="Role-contact">Distributeur</p>
           <InputInLine
             keyState="prenom"
             title="prénom"
@@ -189,4 +183,4 @@ class FormVideos extends Component {
   }
 }
 
-export default FormVideos
+export default FormCinema

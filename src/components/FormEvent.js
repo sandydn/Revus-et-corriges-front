@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
-import InputInLine from './InputInLine';
-import CheckboxLine from './CheckboxLine';
-import InputWithCalendar from './InputWithCalendar'
 import { Link } from 'react-router-dom';
+
+import CheckboxLine from './CheckboxLine';
+import InputInLine from './InputInLine';
+import InputWithCalendar from './InputWithCalendar'
+import MenuAdmin from '../screen/MenuAdmin';
 
 import './Form.css';
 
-class Formevent extends Component {
+class FormEvent extends Component {
   state = {
     adresse: null,
     dateEnd: null,
     dateStart: null,
     général: null,
     information: null,
-    lien: null,
+    link: null,
     nomLieu: null,
     partenaires: null,
     rc: null,
     titre: null,
-    visuel: null,
+    cover: null,
   }
 
 
@@ -27,9 +29,9 @@ class Formevent extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  // handleChangeCheckbox = (keyState, evt) => {
-  //   this.setState({ [keyState]: evt.target.value})
-  // }
+  handleChangeCheckbox = (keyState, evt) => {
+    this.setState({ [keyState]: evt.target.value})
+  }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -65,15 +67,17 @@ class Formevent extends Component {
       dateStart,
       général,
       information,
-      lien,
+      link,
       nomLieu,
       partenaires,
       rc,
       titre,
-      visuel,
+      cover,
     } = this.state
 
     return (
+      <div className="screen">
+      <MenuAdmin />
       <div className="Formevent">
         <p>Date de debut :</p>
         <InputWithCalendar
@@ -116,9 +120,9 @@ class Formevent extends Component {
         />
 
         <InputInLine
-          keyState="lien"
+          keyState="link"
           title="lien externe"
-          value={lien}
+          value={link}
           funct={this.handleChangeInput}
         />
 
@@ -130,9 +134,9 @@ class Formevent extends Component {
         />
 
         <InputInLine
-          keyState="visuel"
+          keyState="cover"
           title="visuel"
-          value={visuel}
+          value={cover}
           funct={this.handleChangeInput}
         />
 
@@ -144,8 +148,9 @@ class Formevent extends Component {
           />
         </Link>
       </div>
+      </div>
     )
   }
 }
 
-export default Formevent
+export default FormEvent
