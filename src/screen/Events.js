@@ -4,7 +4,6 @@ import ButtonForm from '../components/ButtonForm'
 import {Link} from 'react-router-dom'
 import '../screen/Events.css'
 // import ListEvent from '../components/ListEvent';
-import Form from '../components/Form';
 
 class Events extends Component {
 

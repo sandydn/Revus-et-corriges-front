@@ -16,10 +16,11 @@ class FormVideos extends Component {
     prenom:null,
     type:null,
     format: null,
-    général: null,
+    importance: null,
+    // général: null,
     link: null,
-    partenaires: null,
-    rc: null,
+    // partenaires: null,
+    // rc: null,
     // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
@@ -29,10 +30,6 @@ class FormVideos extends Component {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
-
-  // handleChangeCheckbox = (keyState, evt) => {
-  //   this.setState({ [keyState]: evt.target.value})
-  // }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -70,10 +67,11 @@ class FormVideos extends Component {
       prenom,
       type,
       format,
-      général,
+      // importance,
+      // général,
       link,
-      partenaires,
-      rc,
+      // partenaires,
+      // rc,
       // Realisateur: [ nomreal, prenomreal, typereal ],
       titre,
       cover,
@@ -91,9 +89,9 @@ class FormVideos extends Component {
 
         <div className="importance">
           <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="rc" value={rc} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="partenaires" keyState="partenaires" value={partenaires} funct={this.handleChangeCheckbox}/>
-          <CheckboxLine title="général" keyState="général" value={général} funct={this.handleChangeCheckbox} />
+          <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput}/>
+          <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
         </div>
 
         <InputInLine
