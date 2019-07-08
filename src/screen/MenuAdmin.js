@@ -1,9 +1,34 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
+
 import LinkForm from '../components/LinkForm'
 import '../screen/MenuAdmin.css'
 
 class MenuAdmin extends Component {
+
+  state = {
+    results: {},
+    isLoading: true,
+    errors: null
+  };
+
+
+getevent() {
+    axios
+      .get("http://localhost:4000/a5/event")
+      .then(results => { 
+        console.log('je suis la')
+        return results.json()
+      .catch(error => this.setState({ error, isLoading: false }));
+      })
+}
+
+
+componentDidMount() {
+    this.getevent()
+}
+
   render() {
     return (
         <div className='container-button'>
@@ -19,7 +44,6 @@ class MenuAdmin extends Component {
           <div className="deco-managment">
             <LinkForm name="Paramètres" />
             <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
-
           </div>
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
