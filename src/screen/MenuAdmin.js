@@ -1,32 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+// import axios from 'axios'
 
 import LinkForm from '../components/LinkForm'
 import '../screen/MenuAdmin.css'
 
 class MenuAdmin extends Component {
 
-  state = {
-    results: {},
-    isLoading: false,
-    errors: null
-  };
+//   state = {
+//     results: {},
+//     isLoading: false,
+//     errors: null
+//   };
 
 
-getevent() {
-    axios
-      .get("http://localhost:4000/a5/event")
-      .then(results => { 
-        this.setState({results: results.data, isLoading: true}) 
-        console.log('je suis la', this.state)
-      })
-}
+// getevent() {
+//     axios
+//       .get("http://localhost:4000/a5/event")
+//       .then(results => { 
+//         this.setState({results: results.data, isLoading: true}) 
+//         console.log('je suis la', this.state)
+//       })
+// }
 
 
-componentDidMount() {
-    this.getevent()
-}
+// componentDidMount() {
+//     this.getevent()
+// }
 
   render() {
     return (
@@ -52,7 +52,7 @@ componentDidMount() {
       </div>
 
       <div>
-        <div className="getdata">
+        {/* <div className="getdata">
           {this.state.isLoading && this.state.results.map(event => 
           <p>
             {(event.titre)}
@@ -65,7 +65,7 @@ componentDidMount() {
           </img>
           </p>
           )}
-        </div>
+        </div> */}
       </div>
       
       </div>

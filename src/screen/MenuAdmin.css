@@ -1,12 +1,10 @@
-
-
 .container-button {
     display:flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(127, 127, 127);
     height:100vh;
-    width: 75%;
+    width: 20vw;
    }
 .event-managment {
     margin-top: -10vh;
@@ -21,8 +19,11 @@
 
 .all {
     display: flex;
+    background-image: url(https://revusetcorriges.files.wordpress.com/2018/03/rc.gif);
+    background-size: cover;
+    background-position-x: 8vw;
 }
-
+/* 
 .getdata {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,7 +47,7 @@ img {
     max-width:14vw;
     height:auto;
 
-}
+} */
 
 h4 {
     color: white;
