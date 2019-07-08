@@ -33,7 +33,7 @@ class RegisterLogin extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		axios.post(`http://localhost:4242/auth/register/`, {
+		axios.post(`http://localhost:4000/auth/register/`, {
 			name: event.target.name.value,
 			admin_email: event.target.email.value,
 			admin_password: event.target.password.value,
