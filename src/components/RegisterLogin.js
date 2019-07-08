@@ -9,9 +9,10 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
 import RC from '../pictures/RC.png'
-import './Login.css'
+import './css/Login.css'
 
 class RegisterLogin extends React.Component {
+	
 	state = {
 		formData: {
 			name: '',
@@ -70,8 +71,6 @@ class RegisterLogin extends React.Component {
 				<img className="iconUser" src={RC} alt="icone-user" />
 
 				<div className="FormTitleUp">
-					<NavLink to="/signin" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Connexion</NavLink>
-					
 					<NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
 				</div>
 

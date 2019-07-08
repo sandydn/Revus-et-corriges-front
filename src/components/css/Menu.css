@@ -18,9 +18,28 @@ text-decoration: none;
 text-decoration-style: solid;
 font-weight: normal;
 letter-spacing: .06em;
+}
+
+.liDesckop :hover {
+  box-shadow: #bc33e9 0 -12px inset; 
+  list-style-type: none;
+}
+
+@media screen and (min-width: 10px) and (max-width: 1024px) {
+  a {
+    display: none;
+  }
+
+  .responsiveDisplay{
+    width: 50vw
+  }
+
+  .logo{
+    width: 70%;
+    margin-left: 65%;
+    margin-right: 35%
+  }
 
 }
 
-li :hover {
-  box-shadow: #fabc16 0 -12px inset; 
-}
+

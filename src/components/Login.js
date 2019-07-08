@@ -13,9 +13,10 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import RC from '../pictures/RC.png'
-import './Login.css'
+import './css/Login.css'
 
 class Login extends React.Component {
+
   state = {
     formData: {
       email: '',
@@ -54,6 +55,7 @@ class Login extends React.Component {
 
 
   render() {
+    
     const { formData, success, redirect } = this.state;
     if (redirect) {
       return <Redirect to='/select-form' />
