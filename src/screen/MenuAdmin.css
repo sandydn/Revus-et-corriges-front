@@ -12,13 +12,38 @@
 .event-button {
     font-size:0.9em;
 }
+
 .deco-managment {
     margin-top: -10vh;
 }
 
+.all {
+    display: flex;
+    z-index: 2;
+}
+
 .getdata {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-gap: 2vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
+
+}
+
+.data {
     display: flex;
     justify-content: center;
+}
+
+p {
+    display: flex;
+}
+
+img {
+    max-width:15vw;
+    height:auto;
 }
 
 h4 {
