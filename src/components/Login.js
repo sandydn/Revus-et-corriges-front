@@ -55,79 +55,76 @@ class Login extends React.Component {
 
 
   render() {
-    
+
     const { formData, success, redirect } = this.state;
     if (redirect) {
-      return <Redirect to='/select-form' />
+      return <Redirect to='/menu-admin' />
     }
 
     return (
+      <div className="ball bubble">
+        <div className="adminFormIn" >
 
-      <div className="adminFormIn" >
+          <img className="iconUser" src={RC} alt="icone-user" />
 
-        <img className="iconUser" src={RC} alt="icone-user" />
+          <div className="FormTitleIn">
+            <p to="/signin" className="FormTitleIn__Link">Connexion</p>
+          </div>
 
-        <div className="FormTitleIn">
-          <p to="/signin" className="FormTitleIn__Link">Connexion</p>
-        </div>
-
-        <div>
-          <ValidatorForm
-            ref="form"
-            onSubmit={this.handleSubmit}
-          >
-
-            <TextValidator
-              fullWidth
-              label="Email"
-              onChange={this.handleChange}
-              name="email"
-              value={formData.email}
-              validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'Email non valide.']}
-            />
-
-            <FormControl fullWidth >
-              <InputLabel htmlFor="adornment-password">Password</InputLabel>
-              <Input
-                label="Password"
-                name="password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                value={formData.password}
-                onChange={this.handleChange}
-                validators={['required']}
-                errorMessages={['this field is required']}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>} />
-            </FormControl>
-
-            <div className="btnSignUp"></div>
-
-            <Button
-              type="submit"
-              value="Submit"
-              color="primary"
-              variant="contained"
-              disabled={success}
-              fullWidth
+          <div>
+            <ValidatorForm
+              ref="form"
+              onSubmit={this.handleSubmit}
             >
-              {
-                (success && 'Vous êtes connécté.')
-                || (!success && 'Connexion')
-              }
-            </Button>
 
-          </ValidatorForm>
+              <TextValidator
+                fullWidth
+                label="Email"
+                onChange={this.handleChange}
+                name="email"
+                value={formData.email}
+                validators={['required', 'isEmail']}
+                errorMessages={['this field is required', 'Email non valide.']}
+              />
+
+              <FormControl fullWidth >
+                <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                <Input
+                  label="Password"
+                  name="password"
+                  type={this.state.showPassword ? 'text' : 'password'}
+                  value={formData.password}
+                  onChange={this.handleChange}
+                  validators={['required']}
+                  errorMessages={['this field is required']}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                        {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>} />
+              </FormControl>
+
+              <div className="btnSignUp"></div>
+
+              <Button
+                type="submit"
+                value="Submit"
+                color="primary"
+                variant="contained"
+                disabled={success}
+                fullWidth
+              >
+                {
+                  (success && 'Vous êtes connécté.')
+                  || (!success && 'Connexion')
+                }
+              </Button>
+
+            </ValidatorForm>
+          </div>
+
         </div>
-
-        <Link to="" variant="body2">
-          {"Mot de passe oublié ?"}
-        </Link>
-
       </div>
     );
   };
