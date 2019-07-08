@@ -9,7 +9,7 @@ class MenuAdmin extends Component {
 
   state = {
     results: {},
-    isLoading: true,
+    isLoading: false,
     errors: null
   };
 
@@ -18,9 +18,8 @@ getevent() {
     axios
       .get("http://localhost:4000/a5/event")
       .then(results => { 
-        console.log('je suis la')
-        return results.json()
-      .catch(error => this.setState({ error, isLoading: false }));
+        this.setState({results: results.data, isLoading: true}) 
+        console.log('je suis la', this.state)
       })
 }
 
@@ -47,6 +46,11 @@ componentDidMount() {
           </div>
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+
+          <div className="getdata">
+            {this.state.isLoading && this.state.results.map(event => <p>{event.description}</p>)}
+          </div>
+
         </div>
     )
   }
