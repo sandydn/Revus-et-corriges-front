@@ -15,6 +15,12 @@
 .deco-managment {
     margin-top: -10vh;
 }
+
+.getdata {
+    display: flex;
+    justify-content: center;
+}
+
 h4 {
     color: white;
     text-decoration-line: underline;
