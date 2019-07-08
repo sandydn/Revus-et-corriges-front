@@ -71,7 +71,7 @@ class RegisterLogin extends React.Component {
 				<img className="iconUser" src={RC} alt="icone-user" />
 
 				<div className="FormTitleUp">
-					<NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+					<p exact to="/signup" className="FormTitleUp__Link">Enregistrement</p>
 				</div>
 
 				<div>

@@ -68,8 +68,7 @@ class Login extends React.Component {
         <img className="iconUser" src={RC} alt="icone-user" />
 
         <div className="FormTitleIn">
-          <NavLink to="/signin" activeClassName="FormTitleIn__Link--Active" className="FormTitleIn__Link">Connexion</NavLink>
-          <NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+          <p to="/signin" className="FormTitleIn__Link">Connexion</p>
         </div>
 
         <div>
