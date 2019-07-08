@@ -47,10 +47,11 @@ componentDidMount() {
           </div>
 
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+
+          <div className="getdata">
+            {this.state.isLoading && this.state.results.map(event => <p>{event.description}</p>)}
+          </div>
           
-        <div className="getdata">
-          {this.state.isLoading && this.state.results.map(event => <p>{event.description}</p>)}
-        </div>
         </div>
     )
   }
