@@ -20,7 +20,6 @@ getevent() {
       .then(results => { 
         this.setState({results: results.data, isLoading: true}) 
         console.log('je suis la', this.state)
-      // .catch(error => this.setState({ error, isLoading: false }));
       })
 }
 
@@ -51,7 +50,7 @@ componentDidMount() {
           <div className="getdata">
             {this.state.isLoading && this.state.results.map(event => <p>{event.description}</p>)}
           </div>
-          
+
         </div>
     )
   }
