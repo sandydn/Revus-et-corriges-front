@@ -81,7 +81,7 @@ class FormRetro extends Component {
     return (
       <div className="screen">
       <MenuAdmin />
-      <div className="Formretro">
+      <form className="Formretro">
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -160,14 +160,14 @@ class FormRetro extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Link to="/admin">
+
           <input
             className="button-submit"
             type="submit"
             value="Valider le formulaire"
           />
-        </Link>
-      </div>
+
+      </form>
       </div>
     )
   }

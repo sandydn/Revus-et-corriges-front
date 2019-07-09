@@ -75,7 +75,7 @@ class FormEvent extends Component {
     return (
       <div className="screen">
       <MenuAdmin />
-      <div className="Formevent">
+      <form className="Formevent">
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -137,14 +137,14 @@ class FormEvent extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Link to="/admin">
+
           <input
             className="button-submit"
             type="submit"
             value="Valider le formulaire"
           />
-        </Link>
-      </div>
+
+      </form>
       </div>
     )
   }
