@@ -183,6 +183,7 @@ class FormCinema extends Component {
           />
 
           <button
+            className="button-submit"
             type="submit"
             value="Submit"
             color="primary"
