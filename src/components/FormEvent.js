@@ -11,16 +11,19 @@ import Button from '@material-ui/core/Button';
 import './Form.css';
 
 class FormEvent extends Component {
-  state = {
-    lieux_idlieux: null,
+
+  state = { 
+    //generatreur d'input
+    lieux_idlieux: [],
     dateEnd: null,
     dateStart: null,
-    importance: null,
+    importance: 0,
     description: null,
     link: null,
-    // nomLieu: null,
     titre: null,
     cover: null,
+    video_idvideo: [],
+    contact_idcontact: []
   }
 
 
