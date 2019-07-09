@@ -89,83 +89,84 @@ class FormEvent extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formevent" onSubmit={this.handleSubmit} >
-          <p>Date de debut :</p>
-          {/* <InputWithCalendar
-          date={dateStart}
-          onChangeDate={this.onChangeDateStart}
-          keyState="dateStart"
-          value={dateStart}
-        /> */}
+        <div className="cssevent">
+          <form className="Formevent" onSubmit={this.handleSubmit} >
+            <p>Date de debut :</p>
+            {/* <InputWithCalendar
+            date={dateStart}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          /> */}
 
-          {/* <p>Date de fin :</p>
-        <InputWithCalendar
-          date={dateEnd}
-          onChangeDate={this.onChangeDateEnd}
-          keyState="dateEnd"
-          value={dateEnd}
-          funct={this.handleChangeInput}
-        /> */}
-
-          <div className="importance">
-            <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
-          </div>
-
-          <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
+            {/* <p>Date de fin :</p>
+          <InputWithCalendar
+            date={dateEnd}
+            onChangeDate={this.onChangeDateEnd}
+            keyState="dateEnd"
+            value={dateEnd}
             funct={this.handleChangeInput}
-          />
-          {/* 
-        <InputInLine
-          keyState="nomLieu"
-          title="nom du Lieu"
-          value={nomLieu}
-          funct={this.handleChangeInput}
-        /> */}
+          /> */}
 
+            <div className="importance">
+              <p>Importance </p>
+              <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput} />
+              <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput} />
+              <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
+            </div>
+
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              funct={this.handleChangeInput}
+            />
+            {/* 
           <InputInLine
-            keyState="adresse"
-            title="Adresse"
-            value={adresse}
+            keyState="nomLieu"
+            title="nom du Lieu"
+            value={nomLieu}
             funct={this.handleChangeInput}
-          />
+          /> */}
 
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="adresse"
+              title="Adresse"
+              value={adresse}
+              funct={this.handleChangeInput}
+            />
 
-          <InputInLine
-            keyState="description"
-            title="information"
-            value={description}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="link"
+              title="lien externe"
+              value={link}
+              funct={this.handleChangeInput}
+            />
 
-          <InputInLine
-            keyState="cover"
-            title="visuel"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="description"
+              title="information"
+              value={description}
+              funct={this.handleChangeInput}
+            />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          > Envoyer le formulaire
-          </button>
-        </form>
+            <InputInLine
+              keyState="cover"
+              title="visuel"
+              value={cover}
+              funct={this.handleChangeInput}
+            />
 
+            <button
+              className="button-submit"
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            > Envoyer le formulaire
+            </button>
+          </form>
+        </div>
       </div>
     )
   }

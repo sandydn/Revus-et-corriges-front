@@ -96,111 +96,113 @@ class FormVideos extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formvideos" onSubmit={this.handleSubmit}>
-          <p>Date de debut :</p>
-          <InputWithCalendar
-            date={dateStart}
-            onChangeDate={this.onChangeDateStart}
-          />
-
-          <div className="importance">
-            <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
-          </div>
-
-          <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
-            funct={this.handleChangeInput}
-          />
-
-          <InputInLine
-            keyState="dateCreation"
-            title="Date du film"
-            value={dateCreation}
-            funct={this.handleChangeInput}
-          />
-
-          <InputInLine
-            keyState="format"
-            title="format"
-            value={format}
-            funct={this.handleChangeInput}
-          />
-
-          <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomreal"
-              title="prénom"
-              value={prenomreal}
-              funct={this.handleChangeInput}
+        <div className="cssvideo">
+          <form className="Formvideos" onSubmit={this.handleSubmit}>
+            <p>Date de debut :</p>
+            <InputWithCalendar
+              date={dateStart}
+              onChangeDate={this.onChangeDateStart}
             />
-            <InputContact
-              keyState="nomreal"
-              title="nom"
-              value={nomreal}
-              funct={this.handleChangeInput}
-            />
-            <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typereal" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typereal" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typereal" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typereal" value={3} funct={this.handleChangeInput} />
+
+            <div className="importance">
+              <p>Importance </p>
+              <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput} />
+              <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
             </div>
 
-          </div>
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              funct={this.handleChangeInput}
+            />
 
-          <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomedit"
-              title="prénom"
-              value={prenomedit}
+            <InputInLine
+              keyState="dateCreation"
+              title="Date du film"
+              value={dateCreation}
               funct={this.handleChangeInput}
             />
-            <InputContact
-              keyState="nomedit"
-              title="nom"
-              value={nomedit}
+
+            <InputInLine
+              keyState="format"
+              title="format"
+              value={format}
               funct={this.handleChangeInput}
             />
-            <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typeedit" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typeedit" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typeedit" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typeedit" value={3} funct={this.handleChangeInput} />
+
+            <div className="contact">
+              <p className="Role-contact"></p>
+              <InputContact
+                keyState="prenomreal"
+                title="prénom"
+                value={prenomreal}
+                funct={this.handleChangeInput}
+              />
+              <InputContact
+                keyState="nomreal"
+                title="nom"
+                value={nomreal}
+                funct={this.handleChangeInput}
+              />
+              <div className="type-contact">
+                <CheckboxContact title="Acteur" keyState="typereal" value={0} funct={this.handleChangeInput} />
+                <CheckboxContact title="Distributeur" keyState="typereal" value={1} funct={this.handleChangeInput} />
+                <CheckboxContact title="Editeur" keyState="typereal" value={2} funct={this.handleChangeInput} />
+                <CheckboxContact title="Réalisateur" keyState="typereal" value={3} funct={this.handleChangeInput} />
+              </div>
+
             </div>
 
-          </div>
+            <div className="contact">
+              <p className="Role-contact"></p>
+              <InputContact
+                keyState="prenomedit"
+                title="prénom"
+                value={prenomedit}
+                funct={this.handleChangeInput}
+              />
+              <InputContact
+                keyState="nomedit"
+                title="nom"
+                value={nomedit}
+                funct={this.handleChangeInput}
+              />
+              <div className="type-contact">
+                <CheckboxContact title="Acteur" keyState="typeedit" value={0} funct={this.handleChangeInput} />
+                <CheckboxContact title="Distributeur" keyState="typeedit" value={1} funct={this.handleChangeInput} />
+                <CheckboxContact title="Editeur" keyState="typeedit" value={2} funct={this.handleChangeInput} />
+                <CheckboxContact title="Réalisateur" keyState="typeedit" value={3} funct={this.handleChangeInput} />
+              </div>
+
+            </div>
 
 
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="link"
+              title="lien externe"
+              value={link}
+              funct={this.handleChangeInput}
+            />
 
-          <InputInLine
-            keyState="cover"
-            title="cover"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="cover"
+              title="cover"
+              value={cover}
+              funct={this.handleChangeInput}
+            />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          >Envoyer le formulaire
-          </button>
-        </form>
+            <button
+              className="button-submit"
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >Envoyer le formulaire
+            </button>
+          </form>
+        </div>
       </div>
     )
   }
