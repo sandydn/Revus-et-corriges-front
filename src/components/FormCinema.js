@@ -96,20 +96,19 @@ class FormCinema extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <div className="csscinema">
-          <form className="Formcinema" onSubmit={this.handleSubmit}>
-            <p>Date de debut :</p>
-            <InputWithCalendar
-              date={dateStart}
-              onChangeDate={this.onChangeDateStart}
-            />
+        <form className="Formcinema" onSubmit={this.handleSubmit}>
+          <p>Date de debut :</p>
+          <InputWithCalendar
+            date={dateStart}
+            onChangeDate={this.onChangeDateStart}
+          />
 
-            <div className="importance">
-              <p>Importance </p>
-              <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput} />
-              <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput} />
-              <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
-            </div>
+          <div className="importance">
+            <p>Importance </p>
+            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
+          </div>
 
             <InputInLine
               keyState="titre"
@@ -193,7 +192,6 @@ class FormCinema extends Component {
             </button>
           </form>
         </div>
-      </div>
     )
   }
 }

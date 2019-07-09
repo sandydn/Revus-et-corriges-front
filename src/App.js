@@ -19,7 +19,7 @@ import FormEvent from './components/FormEvent';
 import FormVideos from './components/FormVideos';
 import FormCinema from './components/FormCinema';
 import FormRetro from './components/FormRetro';
-
+import Ajout from './screen/Ajout'
 
 class App extends Component {
 
@@ -48,6 +48,7 @@ class App extends Component {
             <Route path="/admin-cinema" component={Cinema} /> 
             <Route path="/admin-videos" component={Videos} />
             <Route path="/admin-retro" component={Retro} />
+            <Route path="/admin-ajout" component={Ajout} />
             <Route path="/admin-events-form" component={FormEvent} />
             <Route path="/admin-cinema-form" component={FormCinema} />
             <Route path="/admin-videos-form" component={FormVideos} />   

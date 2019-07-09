@@ -11,35 +11,47 @@ import Button from '@material-ui/core/Button';
 import './Form.css';
 
 class FormEvent extends Component {
-  state = {
-    lieux_idlieux: null,
+
+  state = { 
+    //generatreur d'input
+    lieux_idlieux: [],
     dateEnd: null,
     dateStart: null,
-    importance: null,
+    importance: 0,
     description: null,
     link: null,
-    // nomLieu: null,
     titre: null,
     cover: null,
+    video_idvideo: [],
+    contact_idcontact: []
   }
 
 
   handleChangeInput = (keyState, evt) => {
-    console.log("keyState", keyState, "evt", evt.target.value)
-    this.setState({ [keyState]: evt.target.value })
+    // console.log("keyState", keyState, "evt", evt.target.value)
+    this.setState({ [keyState]: evt.target.value }, () => {
+      console.log(this.state);
+      
+    })
   }
 
   handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+    this.setState({ [keyState]: evt.target.value }, () => {
+      console.log(this.state);
+      
+    })
   }
 
-  onChangeDateStart = (keyState, dateStart, evt) => {
+  onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test');
+    console.log('test', dateStart);
 
-    this.setState({ [keyState]: evt.target.value })
+    this.setState({dateStart: dateStart }, () => {
+      console.log(this.state);
+      
+    })
   }
 
   onChangeDateEnd = dateEnd => {
@@ -48,7 +60,10 @@ class FormEvent extends Component {
     }
     console.log(dateEnd);
 
-    this.setState({ dateEnd })
+    this.setState({ dateEnd: dateEnd}, () => {
+      console.log(this.state);
+      
+    })
   }
 
   // componentDidMount() {
@@ -59,16 +74,15 @@ class FormEvent extends Component {
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(e)
     axios.post(`http://localhost:4000/a5/event`, {
-      // dateStart: e.target.dateStart.value,
-      // dateEnd: e.target.dateEnd.value,
-      importance: e.target.importance.value,
-      description: e.target.description.value,
-      link: e.target.link.value,
-      cover: e.target.cover.value,
-      titre: e.target.titre.value,
-      lieux_idlieux: e.target.adresse.value,
+      //dateStart: this.state.dateStart,
+      //dateEnd: this.state.dateEnd,
+      importance: this.state.importance,
+      description: this.state.description,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+      //lieux_idlieux: this.state.adresse,
 
     })
   }
@@ -77,11 +91,14 @@ class FormEvent extends Component {
   render() {
     const {
       adresse,
-      // dateEnd,
-      // dateStart,
+      dateEnd,
+      dateStart,
       description,
       link,
       // nomLieu,
+      rc,
+      partenaires,
+      general,
       titre,
       cover,
     } = this.state
