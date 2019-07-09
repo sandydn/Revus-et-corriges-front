@@ -13,7 +13,7 @@ import './Form.css';
 class FormEvent extends Component {
 
   state = { 
-    //generatreur d'input
+    //generateur d'input
     lieux_idlieux: [],
     dateEnd: null,
     dateStart: null,
