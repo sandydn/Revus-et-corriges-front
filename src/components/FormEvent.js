@@ -162,7 +162,7 @@ class FormEvent extends Component {
             value="Submit"
             color="primary"
             variant="contained"
-          >
+          > Envoyer le formulaire
           </button>
         </form>
 
