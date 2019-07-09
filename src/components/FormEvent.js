@@ -6,21 +6,19 @@ import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
 
 import './Form.css';
 
 class FormEvent extends Component {
   state = {
-    lieux_idlieux: null,
-    dateEnd: null,
-    dateStart: null,
+  //   dateEnd: null,
+  //  dateStart: null,
     importance: null,
     description: null,
     link: null,
-    // nomLieu: null,
     titre: null,
     cover: null,
+    lieux_idlieux: null,
   }
 
 
@@ -28,14 +26,14 @@ class FormEvent extends Component {
     // console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
-      
+
     })
   }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
-      
+
     })
   }
 
@@ -45,9 +43,9 @@ class FormEvent extends Component {
     }
     console.log('test', dateStart);
 
-    this.setState({dateStart: dateStart }, () => {
+    this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
-      
+
     })
   }
 
@@ -57,9 +55,9 @@ class FormEvent extends Component {
     }
     console.log(dateEnd);
 
-    this.setState({ dateEnd: dateEnd}, () => {
+    this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
-      
+
     })
   }
 
@@ -72,14 +70,14 @@ class FormEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      //dateStart: this.state.dateStart,
-      //dateEnd: this.state.dateEnd,
+      dateStart: this.state.dateStart,
+       dateEnd: this.state.dateEnd,
       importance: this.state.importance,
       description: this.state.description,
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
-      //lieux_idlieux: this.state.adresse,
+      lieux_idlieux: this.state.lieux_idlieux,
 
     })
   }
@@ -87,30 +85,27 @@ class FormEvent extends Component {
 
   render() {
     const {
-      adresse,
-      dateEnd,
-      dateStart,
+       dateEnd,
+       dateStart,
       description,
       link,
-      // nomLieu,
-      rc,
-      partenaires,
-      general,
       titre,
       cover,
+      lieux_idlieux,
     } = this.state
 
     return (
       <div className="screen">
         <MenuAdmin />
-       
+
         <form className="Formevent" onSubmit={this.handleSubmit} >
-          <p>Date de debut :</p>
+           {/* <p>Date de debut :</p>
            <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
           keyState="dateStart"
           value={dateStart}
+          funct={this.handleChangeInput}
         /> 
 
            <p>Date de fin :</p>
@@ -120,7 +115,7 @@ class FormEvent extends Component {
           keyState="dateEnd"
           value={dateEnd}
           funct={this.handleChangeInput}
-        /> 
+        />   */}
 
           <div className="importance">
             <p>Importance </p>
@@ -135,18 +130,10 @@ class FormEvent extends Component {
             value={titre}
             funct={this.handleChangeInput}
           />
-          {/* 
-        <InputInLine
-          keyState="nomLieu"
-          title="nom du Lieu"
-          value={nomLieu}
-          funct={this.handleChangeInput}
-        /> */}
-
           <InputInLine
-            keyState="adresse"
+            keyState="lieux_idlieux"
             title="Adresse"
-            value={adresse}
+            value={lieux_idlieux}
             funct={this.handleChangeInput}
           />
 
@@ -177,10 +164,10 @@ class FormEvent extends Component {
             value="Submit"
             color="primary"
             variant="contained"
-          > 
-          Envoyer le formulaire
+          >
+            Envoyer le formulaire
           </button>
-        
+
         </form>
 
       </div>
