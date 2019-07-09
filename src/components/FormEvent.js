@@ -25,21 +25,30 @@ class FormEvent extends Component {
 
 
   handleChangeInput = (keyState, evt) => {
-    console.log("keyState", keyState, "evt", evt.target.value)
-    this.setState({ [keyState]: evt.target.value })
+    // console.log("keyState", keyState, "evt", evt.target.value)
+    this.setState({ [keyState]: evt.target.value }, () => {
+      console.log(this.state);
+      
+    })
   }
 
   handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+    this.setState({ [keyState]: evt.target.value }, () => {
+      console.log(this.state);
+      
+    })
   }
 
-  onChangeDateStart = (keyState, dateStart, evt) => {
+  onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test');
+    console.log('test', dateStart);
 
-    this.setState({ [keyState]: evt.target.value })
+    this.setState({dateStart: dateStart }, () => {
+      console.log(this.state);
+      
+    })
   }
 
   onChangeDateEnd = dateEnd => {
@@ -48,7 +57,10 @@ class FormEvent extends Component {
     }
     console.log(dateEnd);
 
-    this.setState({ dateEnd })
+    this.setState({ dateEnd: dateEnd}, () => {
+      console.log(this.state);
+      
+    })
   }
 
   // componentDidMount() {
@@ -60,15 +72,15 @@ class FormEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      // dateStart: e.target.dateStart.value,
-      // dateEnd: e.target.dateEnd.value,
+      //dateStart: this.state.dateStart,
+      //dateEnd: this.state.dateEnd,
       importance: this.state.importance,
       description: this.state.description,
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
-      lieux_idlieux: this.state.adresse,
-      
+      //lieux_idlieux: this.state.adresse,
+
     })
   }
 
@@ -76,8 +88,8 @@ class FormEvent extends Component {
   render() {
     const {
       adresse,
-      // dateEnd,
-      // dateStart,
+      dateEnd,
+      dateStart,
       description,
       link,
       // nomLieu,
@@ -91,23 +103,24 @@ class FormEvent extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
+       
         <form className="Formevent" onSubmit={this.handleSubmit} >
-          {/* <p>Date de debut :</p>
-          <InputWithCalendar
+          <p>Date de debut :</p>
+           <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
           keyState="dateStart"
           value={dateStart}
-        /> */}
+        /> 
 
-          {/* <p>Date de fin :</p>
+           <p>Date de fin :</p>
         <InputWithCalendar
           date={dateEnd}
           onChangeDate={this.onChangeDateEnd}
           keyState="dateEnd"
           value={dateEnd}
           funct={this.handleChangeInput}
-        /> */}
+        /> 
 
           <div className="importance">
             <p>Importance </p>
@@ -164,8 +177,10 @@ class FormEvent extends Component {
             value="Submit"
             color="primary"
             variant="contained"
-          > Envoyer le formulaire
+          > 
+          Envoyer le formulaire
           </button>
+        
         </form>
 
       </div>
