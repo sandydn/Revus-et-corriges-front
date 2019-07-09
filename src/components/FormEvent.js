@@ -11,8 +11,8 @@ import './Form.css';
 
 class FormEvent extends Component {
   state = {
-  //   dateEnd: null,
-  //  dateStart: null,
+    //dateEnd: null,
+    //dateStart: null,
     importance: null,
     description: null,
     link: null,
@@ -61,17 +61,12 @@ class FormEvent extends Component {
     })
   }
 
-  // componentDidMount() {
-  //   console.log('didmount', this.state);
-
-  // }
-
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      dateStart: this.state.dateStart,
-       dateEnd: this.state.dateEnd,
+      //dateStart: this.state.dateStart,
+      //dateEnd: this.state.dateEnd,
       importance: this.state.importance,
       description: this.state.description,
       link: this.state.link,
@@ -85,8 +80,8 @@ class FormEvent extends Component {
 
   render() {
     const {
-       dateEnd,
-       dateStart,
+     // dateEnd,
+     // dateStart,
       description,
       link,
       titre,
@@ -99,7 +94,7 @@ class FormEvent extends Component {
         <MenuAdmin />
 
         <form className="Formevent" onSubmit={this.handleSubmit} >
-           {/* <p>Date de debut :</p>
+          {/* <p>Date de debut :</p>
            <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
