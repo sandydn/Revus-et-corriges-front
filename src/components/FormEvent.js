@@ -59,17 +59,16 @@ class FormEvent extends Component {
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(e)
     axios.post(`http://localhost:4000/a5/event`, {
       // dateStart: e.target.dateStart.value,
       // dateEnd: e.target.dateEnd.value,
-      importance: e.target.importance.value,
-      description: e.target.description.value,
-      link: e.target.link.value,
-      cover: e.target.cover.value,
-      titre: e.target.titre.value,
-      lieux_idlieux: e.target.adresse.value,
-
+      importance: this.state.importance,
+      description: this.state.description,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+      lieux_idlieux: this.state.adresse,
+      
     })
   }
 
@@ -82,6 +81,9 @@ class FormEvent extends Component {
       description,
       link,
       // nomLieu,
+      rc,
+      partenaires,
+      general,
       titre,
       cover,
     } = this.state
@@ -90,8 +92,8 @@ class FormEvent extends Component {
       <div className="screen">
         <MenuAdmin />
         <form className="Formevent" onSubmit={this.handleSubmit} >
-          <p>Date de debut :</p>
-          {/* <InputWithCalendar
+          {/* <p>Date de debut :</p>
+          <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
           keyState="dateStart"
@@ -109,9 +111,9 @@ class FormEvent extends Component {
 
           <div className="importance">
             <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
+            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
           </div>
 
           <InputInLine

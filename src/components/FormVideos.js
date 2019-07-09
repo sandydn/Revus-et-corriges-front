@@ -105,9 +105,9 @@ class FormVideos extends Component {
 
           <div className="importance">
             <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
           </div>
 
           <InputInLine
