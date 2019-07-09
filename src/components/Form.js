@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
 import './Form.css';
-import Dropdown from './Dropdown';
+//import Dropdown from './Dropdown';
 import { Link } from 'react-router-dom';
 import InputWithCalendar from './InputWithCalendar'
 
@@ -72,8 +72,11 @@ class Form extends Component {
       //date,
     } = this.state
     console.log(this.state)
+    
     return (
       <div className="Form">
+
+
 
         <p>Date de debut</p>
         <InputWithCalendar
@@ -171,7 +174,9 @@ class Form extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Dropdown />
+        {/* <Dropdown /> */}
+
+
 
         <div className="importance">
           <CheckboxLine title="r&c" />

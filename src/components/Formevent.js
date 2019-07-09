@@ -3,6 +3,7 @@ import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import { Link } from 'react-router-dom';
+import DropdownCustom from "./DropdownCustom"
 
 import './Form.css';
 
@@ -58,6 +59,7 @@ class Formevent extends Component {
 
   }
 
+
   render() {
     const {
       adresse,
@@ -71,10 +73,15 @@ class Formevent extends Component {
       rc,
       titre,
       visuel,
+      items
     } = this.state
 
     return (
+
+      
       <div className="Formevent">
+
+
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -134,15 +141,19 @@ class Formevent extends Component {
           title="visuel"
           value={visuel}
           funct={this.handleChangeInput}
-        />
+        /> 
 
         <Link to="/admin">
-          <input
+           <input
             className="button-submit"
             type="submit"
             value="Valider le formulaire"
-          />
+          /> 
         </Link>
+
+
+
+          <DropdownCustom />
       </div>
     )
   }
