@@ -1,0 +1,37 @@
+.screenEvent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
+    background-size: cover;
+    background-position-x: 18vw;
+}
+.screenCinema{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-image: url(https://pbs.twimg.com/media/D-nSD28WkAAZi3Q.jpg);
+    background-size: cover;
+    background-position-y: -1vh;
+    background-position-x: 3vw;
+}
+.screenVideo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-image: url(https://revusetcorriges.files.wordpress.com/2017/12/sceno-la-planete-des-vampires.png?w=1024);
+    background-size: cover;
+    background-position-x: 8vw;
+}
+.screenRetro{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-image: url(https://revusetcorriges.files.wordpress.com/2018/08/dorothy-arzner-et-clara-bow-sur-le-tournage-de-the-wild-party-1929-recadrc3a9e.jpg);
+    background-size: cover;
+    background-position-x: 12vw;
+}

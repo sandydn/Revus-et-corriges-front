@@ -1,57 +1,40 @@
-.videoForm .formCine .form-event{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.3em;
-  /* color:black;
-  border: 1px solid black; */
-  border-radius: 10px 10px 10px 10px;
-  width: 50vw;
-  margin: auto;
-  padding-bottom: 5%;
-  background-color: rgba(211, 232, 237, .7);
+.screen {
+    display: flex;
+    flex-direction: row;
+}
+.Formevent,
+.Formvideos,
+.Formcinema, 
+.Formretro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width:40vw;
+    margin-left: 5%;
 }
 
-.container {
-  background-image: url(./assets/bgback.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+.checkbox {
+    display:flex;
+    justify-content: space-around;
+    width: 40vw;
+    padding-top: 3%;
 }
-
-.input-form {
-width: 41vw;
-height: 5vh;
-border-bottom: 1px solid black;
-border-top-style: none;
-border-right-style: none;
-border-left-style: none;
-border-bottom-style:none;
-background-color: #d3e8ed;
-padding-top:2%;
-box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
+.contact {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    width:40vw;
 }
-
-fieldset {
-width: 40VW;
-margin-top: 2%;
-margin-bottom: 2%;
+.type-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 3%;
 }
-.checkradio {
-  display: flex;
-  justify-content: space-evenly;
-}
-.button-selectform {
-    border: 1px solid black;
-    height: 5vh;
-    margin-left: 2%;
-    margin-top:2%;
-    border-radius: 5px 5px 5px 5px;
-    background-color: white;
+.Role-contact {
+    text-decoration: underline cadetblue;
 }
 .button-submit {
-    border: 1px solid black;
-    height: 5vh;
-    margin-top:5vh;
     border-radius: 5px 5px 5px 5px;
-    background-color: white;
 }
