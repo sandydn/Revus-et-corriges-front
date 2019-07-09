@@ -8,24 +8,21 @@ import { Link } from 'react-router-dom';
 
 import './Form.css';
 import MenuAdmin from '../screen/MenuAdmin';
-import Cardcontact from './Cardcontact';
 import './css/Cardcontact.css'
 
 class FormVideos extends Component {
   state = {
     dateCreation: null,
     dateStart: null,
-    // Editeur: [nom, prenom, type],
-    nom: null,
-    prenom:null,
-    type:null,
+    nomreal: null,
+    prenomreal: null,
+    typereal: null,
+    nomedit: null,
+    prenomedit: null,
+    typeedit:null,
     format: null,
     importance: null,
-    // général: null,
     link: null,
-    // partenaires: null,
-    // rc: null,
-    // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
   }
@@ -66,17 +63,12 @@ class FormVideos extends Component {
     const {
       dateCreation,
       dateStart,
-      // Editeur: [nom, prenom, type ],
-      nom,
-      prenom,
-      type,
+      nomreal,
+      nomedit,
+      prenomreal,
+      prenomedit,
       format,
-      // importance,
-      // général,
       link,
-      // partenaires,
-      // rc,
-      // Realisateur: [ nomreal, prenomreal, typereal ],
       titre,
       cover,
     } = this.state
@@ -118,30 +110,26 @@ class FormVideos extends Component {
           value={format}
           funct={this.handleChangeInput}
         />
-{/* 
-      <Cardcontact />
-
-      <Cardcontact /> */}
 
           <div className="contact">
           <p className="Role-contact"></p>
           <InputContact
-            keyState="prenom"
+            keyState="prenomreal"
             title="prénom"
-            value={prenom}
+            value={prenomreal}
             funct={this.handleChangeInput}
           />
           <InputContact
-            keyState="nom"
+            keyState="nomreal"
             title="nom"
-            value={nom}
+            value={nomreal}
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxContact title="Acteur" keyState="type" value={0} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Editeur" keyState="type" value={2} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Acteur" keyState="typereal" value={0} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Distributeur" keyState="typereal" value={1} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Editeur" keyState="typereal" value={2} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Réalisateur" keyState="typereal" value={3} funct={this.handleChangeInput}/>
           </div>
                 
             </div>
@@ -149,22 +137,22 @@ class FormVideos extends Component {
             <div className="contact">
           <p className="Role-contact"></p>
           <InputContact
-            keyState="prenom"
+            keyState="prenomedit"
             title="prénom"
-            value={prenom}
+            value={prenomedit}
             funct={this.handleChangeInput}
           />
           <InputContact
-            keyState="nom"
+            keyState="nomedit"
             title="nom"
-            value={nom}
+            value={nomedit}
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxContact title="Acteur" keyState="type" value={0} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Editeur" keyState="type" value={2} funct={this.handleChangeInput}/>
-            <CheckboxContact title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Acteur" keyState="typeedit" value={0} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Distributeur" keyState="typeedit" value={1} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Editeur" keyState="typeedit" value={2} funct={this.handleChangeInput}/>
+            <CheckboxContact title="Réalisateur" keyState="typeedit" value={3} funct={this.handleChangeInput}/>
           </div>
                 
             </div>
