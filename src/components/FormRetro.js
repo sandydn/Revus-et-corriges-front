@@ -11,18 +11,13 @@ import './Form.css';
 class FormRetro extends Component {
   state = {
     dateStart: null,
-    // général: null,
-    // Realisateur: [nom, prenom, type ],
     nom: null,
     prenom: null,
     type: null,
     link: null,
     importance: null,
-    // partenaires: null,
-    // rc: null,
     titre: null,
     cover: null,
-    // Distributeur : [nom, prenom, type ],
   }
 
 
@@ -30,10 +25,6 @@ class FormRetro extends Component {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
-
-  // handleChangeCheckbox = (keyState, evt) => {
-  //   this.setState({ [keyState]: evt.target.value})
-  // }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -65,17 +56,12 @@ class FormRetro extends Component {
   render() {
     const {
         dateStart,
-        // général,
-        // Realisateur: [nom, prenom, type ],
         nom,
         prenom,
         type,
         link,
-        // partenaires,
-        // rc,
         titre,
         cover,
-        // Distributeur : [nom, prenom, type ],
     } = this.state
 
     return (
@@ -90,9 +76,9 @@ class FormRetro extends Component {
 
         <div className="importance">
           <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput}/>
-          <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput}/>
-          <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
+          <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput}/>
+          <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput}/>
+          <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
         </div>
 
         <InputInLine
@@ -117,10 +103,10 @@ class FormRetro extends Component {
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
           </div>
         </div>
 
@@ -139,10 +125,10 @@ class FormRetro extends Component {
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
           </div>
         </div>
 
