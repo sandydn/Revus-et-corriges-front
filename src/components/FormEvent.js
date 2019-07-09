@@ -157,13 +157,7 @@ class FormEvent extends Component {
         />
 
     
-          {/* <input
-            className="button-submit"
-            type="submit"
-            value="Valider le formulaire"
-            funct={this.handleSubmit}            
-            /> */}
-          {/* <button className="button-submit" type="submit" value="Submit">Valider le formulaire</button> */}
+
           <button
               type="submit"
               value="Submit"

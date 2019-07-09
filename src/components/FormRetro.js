@@ -53,6 +53,25 @@ class FormRetro extends Component {
 
   }
 
+
+
+    // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+    // handleSubmit = (e) => {
+    //   e.preventDefault()
+    //   console.log(e)
+    //   axios.post(`http://localhost:4000/a5/event`, {
+    //     // dateStart: e.target.dateStart.value,
+    //     // dateEnd: e.target.dateEnd.value,
+    //     importance: e.target.importance.value,
+    //     description: e.target.description.value,
+    //     link: e.target.link.value,
+    //     cover: e.target.cover.value,
+    //     titre: e.target.titre.value,
+    //     lieux_idlieux: e.target.adresse.value,
+
+    //   })
+    // }
+
   render() {
     const {
         dateStart,
@@ -67,7 +86,7 @@ class FormRetro extends Component {
     return (
       <div className="screen">
       <MenuAdmin />
-      <form className="Formretro">
+      <form className="Formretro" onSubmit={this.handleSubmit}>
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -145,13 +164,13 @@ class FormRetro extends Component {
           value={cover}
           funct={this.handleChangeInput}
         />
-
-
-          <input
-            className="button-submit"
-            type="submit"
-            value="Valider le formulaire"
-          />
+          <button
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >
+            </button>
 
       </form>
       </div>

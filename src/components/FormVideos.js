@@ -60,6 +60,25 @@ class FormVideos extends Component {
 
   }
 
+
+
+    // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+    // handleSubmit = (e) => {
+    //   e.preventDefault()
+    //   console.log(e)
+    //   axios.post(`http://localhost:4000/a5/event`, {
+    //     // dateStart: e.target.dateStart.value,
+    //     // dateEnd: e.target.dateEnd.value,
+    //     importance: e.target.importance.value,
+    //     description: e.target.description.value,
+    //     link: e.target.link.value,
+    //     cover: e.target.cover.value,
+    //     titre: e.target.titre.value,
+    //     lieux_idlieux: e.target.adresse.value,
+
+    //   })
+    // }
+
   render() {
     const {
       dateCreation,
@@ -76,8 +95,8 @@ class FormVideos extends Component {
 
     return (
       <div className="screen">
-      <MenuAdmin />
-      <div className="Formvideos">
+        <MenuAdmin />
+      <form className="Formvideos" onSubmit={this.handleSubmit}>
         <p>Date de debut :</p>
         <InputWithCalendar
           date={dateStart}
@@ -173,14 +192,14 @@ class FormVideos extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Link to="/admin">
-          <input
-            className="button-submit"
-            type="submit"
-            value="Valider le formulaire"
-          />
-        </Link>
-      </div>
+          <button
+        type="submit"
+        value="Submit"
+        color="primary"
+        variant="contained"
+        >
+        </button>
+      </form>
       </div>
     )
   }
