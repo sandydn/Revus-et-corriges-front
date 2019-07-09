@@ -5,7 +5,7 @@ import CheckboxLine from './CheckboxLine';
 import Dropdown from './Dropdown';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
-import './Form.css';
+import './css/Form.css';
 
 
 class Form extends Component {
