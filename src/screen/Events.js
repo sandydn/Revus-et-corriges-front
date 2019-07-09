@@ -39,6 +39,7 @@ class Events extends Component {
                 <MenuAdmin />
                 <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
             </div>
+            
             {/* <div className="getdata">
                 {this.state.isLoading && this.state.results.map(event => 
             <p>

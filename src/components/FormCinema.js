@@ -13,14 +13,11 @@ class FormCinema extends Component {
     dateCreation: null,
     dateStart: null,
     // Distributeur: [nom, prenom, type],
-    nom: null,
-    prenom:null,
-    type:null,
-    // général: null,
+    nom: [],
+    prenom:[],
+    type:[],
     importance: null,
     link: null,
-    // partenaires: null,
-    // rc: null,
     // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
@@ -30,10 +27,6 @@ class FormCinema extends Component {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
-
-  // handleChangeCheckbox = (keyState, evt) => {
-  //   this.setState({ [keyState]: evt.target.value})
-  // }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -128,10 +121,10 @@ class FormCinema extends Component {
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox}/>
+            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput}/>
+            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput}/>
+            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput}/>
+            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput}/>
           </div>
         </div>
 
@@ -150,10 +143,10 @@ class FormCinema extends Component {
             funct={this.handleChangeInput}
           />
           <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={type} funct={this.handleChangeCheckbox} />
+            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput} />
+            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput} />
+            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput} />
           </div>
         </div>
 
