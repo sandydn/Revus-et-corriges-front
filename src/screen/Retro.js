@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 // import axios from 'axios'
 
-import ButtonForm from '../components/ButtonForm';
 import MenuAdmin from './MenuAdmin';
+import ButtonForm from '../components/ButtonForm'
 import '../screen/Events.css'
-// import './Cinema.css'
 
-
-class Cinema extends Component {
+class Retro extends Component {
 
     // state = {
     //     results: {},
@@ -33,31 +31,29 @@ class Cinema extends Component {
 
     render() {
         return (
-          
         <div>
-            <div className='screenCinema'>
+            <div className='screenRetro'>
                 <MenuAdmin />
-                <Link to="/admin-cinema-form"><ButtonForm name="Ajouter un cinéma" /></Link>
+                <Link to="/admin-retro-form"><ButtonForm name="Ajouter une rétrospective" /></Link>
             </div>
 
-            {/* <div className="getdata">
-                {this.state.isLoading && this.state.results.map(event => 
-            <p>
-                {(event.titre)}
-                {(event.dateStart)}
-                {(event.dateEnd)}
-                {(event.description)}
-            <img 
-                src={(event.cover)} 
-                href={(event.link)}>
-            </img>
-            </p>
-            )}
-            </div> */}
-        </div>    
-
+             {/* <div className="getdata">
+             {this.state.isLoading && this.state.results.map(event => 
+             <p>
+               {(event.titre)}
+               {(event.dateStart)}
+               {(event.dateEnd)}
+               {(event.description)}
+             <img 
+               src={(event.cover)} 
+               href={(event.link)}>
+             </img>
+             </p>
+             )}
+           </div> */}
+        </div>
         )
     }
 }
 
-export default Cinema
+export default Retro

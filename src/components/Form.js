@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import InputInLine from './InputInLine';
+import { Link } from 'react-router-dom';
+
 import CheckboxLine from './CheckboxLine';
 import './Form.css';
 //import Dropdown from './Dropdown';
 import { Link } from 'react-router-dom';
+import Dropdown from './Dropdown';
+import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
+import './Form.css';
 
 
 class Form extends Component {
@@ -72,6 +76,7 @@ class Form extends Component {
       //date,
     } = this.state
     console.log(this.state)
+
     
     return (
       <div className="Form">

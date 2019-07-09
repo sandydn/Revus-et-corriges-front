@@ -7,8 +7,7 @@ export class LinkForm extends Component {
     return (
       <>
         <div>
-          <a className='buttonform'
-            type="button">
+          <a className='buttonform' href="link" type="button">
             {this.props.name}
           </a>
         </div>

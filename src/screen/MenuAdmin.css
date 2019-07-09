@@ -12,9 +12,43 @@
 .event-button {
     font-size:0.9em;
 }
+
 .deco-managment {
     margin-top: -10vh;
 }
+
+.all {
+    display: flex;
+    background-image: url(https://revusetcorriges.files.wordpress.com/2018/03/rc.gif);
+    background-size: cover;
+    background-position-x: 8vw;
+}
+/* 
+.getdata {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-gap: 2vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    padding-right: 4vw;
+}
+
+.data {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+}
+
+img {
+    max-width:14vw;
+    height:auto;
+
+} */
+
 h4 {
     color: white;
     text-decoration-line: underline;

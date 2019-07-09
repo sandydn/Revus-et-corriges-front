@@ -1,29 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-import CheckboxContact from './CheckboxContact';
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
-import InputContact from './InputContact';
 import MenuAdmin from '../screen/MenuAdmin';
 
-import './css/Cardcontact.css'
 import './Form.css';
 
-class FormVideos extends Component {
+class FormCinema extends Component {
   state = {
     dateCreation: null,
     dateStart: null,
-    nomreal: null,
-    prenomreal: null,
-    typereal: null,
-    nomedit: null,
-    prenomedit: null,
-    typeedit: null,
-    format: null,
+    // Distributeur: [nom, prenom, type],
+    nom: [],
+    prenom: [],
+    type: [],
     importance: null,
     link: null,
+    // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
   }
@@ -55,11 +50,13 @@ class FormVideos extends Component {
     this.setState({ dateEnd })
   }
 
-  componentDidMount() {
-    console.log('didmount', this.state);
-
-  }
-
+  // componentDidMount() {
+  //   console.log('didmount', this.state);
+  //     axios.post(`http://localhost:4000/a5/event`)
+  //     .then(result => {
+  //         this.setState({ titre: result.data.titre, dateStart: result.data.dateStart, cover: result.data.cover, link: result.data.link })
+  //     })
+  // }
 
 
   // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
@@ -83,12 +80,15 @@ class FormVideos extends Component {
     const {
       dateCreation,
       dateStart,
-      nomreal,
-      nomedit,
-      prenomreal,
-      prenomedit,
-      format,
+      // Distributeur: [nom, prenom, type],
+      nom,
+      prenom,
+      type,
+      // général,
       link,
+      // partenaires,
+      // rc,
+      // Realisateur: [nom, prenom, type ],
       titre,
       cover,
     } = this.state
@@ -96,7 +96,7 @@ class FormVideos extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formvideos" onSubmit={this.handleSubmit}>
+        <form className="Formcinema" onSubmit={this.handleSubmit}>
           <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
@@ -124,59 +124,49 @@ class FormVideos extends Component {
             funct={this.handleChangeInput}
           />
 
-          <InputInLine
-            keyState="format"
-            title="format"
-            value={format}
-            funct={this.handleChangeInput}
-          />
-
           <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomreal"
+            <p className="Role-contact">Réalisateur</p>
+            <InputInLine
+              keyState="prenom"
               title="prénom"
-              value={prenomreal}
+              value={prenom}
               funct={this.handleChangeInput}
             />
-            <InputContact
-              keyState="nomreal"
+            <InputInLine
+              keyState="nom"
               title="nom"
-              value={nomreal}
+              value={nom}
               funct={this.handleChangeInput}
             />
             <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typereal" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typereal" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typereal" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typereal" value={3} funct={this.handleChangeInput} />
+              <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput} />
+              <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput} />
+              <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput} />
             </div>
-
           </div>
 
           <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomedit"
+            <p className="Role-contact">Distributeur</p>
+            <InputInLine
+              keyState="prenom"
               title="prénom"
-              value={prenomedit}
+              value={prenom}
               funct={this.handleChangeInput}
             />
-            <InputContact
-              keyState="nomedit"
+            <InputInLine
+              keyState="nom"
               title="nom"
-              value={nomedit}
+              value={nom}
               funct={this.handleChangeInput}
             />
             <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typeedit" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typeedit" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typeedit" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typeedit" value={3} funct={this.handleChangeInput} />
+              <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput} />
+              <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput} />
+              <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput} />
             </div>
-
           </div>
-
 
           <InputInLine
             keyState="link"
@@ -206,4 +196,4 @@ class FormVideos extends Component {
   }
 }
 
-export default FormVideos
+export default FormCinema

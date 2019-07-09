@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-import CheckboxContact from './CheckboxContact';
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
-import InputContact from './InputContact';
 import MenuAdmin from '../screen/MenuAdmin';
 
-import './css/Cardcontact.css'
 import './Form.css';
 
-class FormVideos extends Component {
+class FormRetro extends Component {
   state = {
-    dateCreation: null,
     dateStart: null,
-    nomreal: null,
-    prenomreal: null,
-    typereal: null,
-    nomedit: null,
-    prenomedit: null,
-    typeedit: null,
-    format: null,
-    importance: null,
+    nom: null,
+    prenom: null,
+    type: null,
     link: null,
+    importance: null,
     titre: null,
     cover: null,
   }
+
 
   handleChangeInput = (keyState, evt) => {
     console.log("keyState", keyState, "evt", evt.target.value)
@@ -81,13 +74,10 @@ class FormVideos extends Component {
 
   render() {
     const {
-      dateCreation,
       dateStart,
-      nomreal,
-      nomedit,
-      prenomreal,
-      prenomedit,
-      format,
+      nom,
+      prenom,
+      type,
       link,
       titre,
       cover,
@@ -96,7 +86,7 @@ class FormVideos extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formvideos" onSubmit={this.handleSubmit}>
+        <form className="Formretro" onSubmit={this.handleSubmit}>
           <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
@@ -107,7 +97,7 @@ class FormVideos extends Component {
             <p>Importance </p>
             <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput} />
             <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={2} funct={this.handleChangeInput} />
+            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
           </div>
 
           <InputInLine
@@ -117,66 +107,49 @@ class FormVideos extends Component {
             funct={this.handleChangeInput}
           />
 
-          <InputInLine
-            keyState="dateCreation"
-            title="Date du film"
-            value={dateCreation}
-            funct={this.handleChangeInput}
-          />
-
-          <InputInLine
-            keyState="format"
-            title="format"
-            value={format}
-            funct={this.handleChangeInput}
-          />
-
           <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomreal"
+            <p className="Role-contact">Distributeur</p>
+            <InputInLine
+              keyState="prenom"
               title="prénom"
-              value={prenomreal}
+              value={prenom}
               funct={this.handleChangeInput}
             />
-            <InputContact
-              keyState="nomreal"
+            <InputInLine
+              keyState="nom"
               title="nom"
-              value={nomreal}
+              value={nom}
               funct={this.handleChangeInput}
             />
             <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typereal" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typereal" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typereal" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typereal" value={3} funct={this.handleChangeInput} />
+              <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
             </div>
-
           </div>
 
           <div className="contact">
-            <p className="Role-contact"></p>
-            <InputContact
-              keyState="prenomedit"
+            <p className="Role-contact">Réalisateur</p>
+            <InputInLine
+              keyState="prenom"
               title="prénom"
-              value={prenomedit}
+              value={prenom}
               funct={this.handleChangeInput}
             />
-            <InputContact
-              keyState="nomedit"
+            <InputInLine
+              keyState="nom"
               title="nom"
-              value={nomedit}
+              value={nom}
               funct={this.handleChangeInput}
             />
             <div className="type-contact">
-              <CheckboxContact title="Acteur" keyState="typeedit" value={0} funct={this.handleChangeInput} />
-              <CheckboxContact title="Distributeur" keyState="typeedit" value={1} funct={this.handleChangeInput} />
-              <CheckboxContact title="Editeur" keyState="typeedit" value={2} funct={this.handleChangeInput} />
-              <CheckboxContact title="Réalisateur" keyState="typeedit" value={3} funct={this.handleChangeInput} />
+              <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
+              <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
             </div>
-
           </div>
-
 
           <InputInLine
             keyState="link"
@@ -191,7 +164,6 @@ class FormVideos extends Component {
             value={cover}
             funct={this.handleChangeInput}
           />
-
           <button
             className="button-submit"
             type="submit"
@@ -200,10 +172,11 @@ class FormVideos extends Component {
             variant="contained"
           >Envoyer le formulaire
           </button>
+
         </form>
       </div>
     )
   }
 }
 
-export default FormVideos
+export default FormRetro

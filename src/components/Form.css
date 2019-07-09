@@ -1,5 +1,11 @@
+.screen {
+    display: flex;
+    flex-direction: row;
+}
 .Formevent,
-.Formvideos {
+.Formvideos,
+.Formcinema, 
+.Formretro {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -7,6 +13,7 @@
     width:40vw;
     margin-left: 5%;
 }
+
 .checkbox {
     display:flex;
     justify-content: space-around;

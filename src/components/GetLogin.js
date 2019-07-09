@@ -7,7 +7,7 @@ class GetLogin extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:4242/admin/adminform`)
+        axios.get(`http://localhost:4242/auth/login`)
         .then(result => {
             this.setState({ auth: result.data })
         })
