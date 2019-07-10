@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
@@ -14,8 +15,8 @@ class FormEvent extends Component {
     //generateur d'input
     adresse: [],
     category: null,
-    // dateEnd: null,
-    // dateStart: null,
+     dateEnd: null,
+     dateStart: null,
     importance: [],
     description: null,
     link: null,
@@ -24,6 +25,7 @@ class FormEvent extends Component {
     // video_idvideo: [],
     // contact_idcontact: []
   }
+
 
 
   handleChangeInput = (keyState, evt) => {
@@ -45,7 +47,6 @@ class FormEvent extends Component {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test', dateStart);
 
     this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
@@ -69,8 +70,8 @@ class FormEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      //dateStart: this.state.dateStart,
-      //dateEnd: this.state.dateEnd,
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
       importance: this.state.importance,
       description: this.state.description,
       link: this.state.link,
@@ -93,8 +94,8 @@ class FormEvent extends Component {
     }
 
     const {
-     // dateEnd,
-     // dateStart,
+      dateEnd,
+      dateStart,
       description,
       link,
       titre,
@@ -109,8 +110,8 @@ class FormEvent extends Component {
 
         <div style={style.general}>
           <form className="Formevent" onSubmit={this.handleSubmit} >
-            {/* <p>Date de debut :</p>
-            <InputWithCalendar
+             <p>Date de debut :</p>
+             <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
             keyState="dateStart"
@@ -125,8 +126,10 @@ class FormEvent extends Component {
             keyState="dateEnd"
             value={dateEnd}
             funct={this.handleChangeInput}
-          />   */}
-
+          />    
+ 
+            
+            
             <div className="importance">
               <p>Importance </p>
               <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />

@@ -1,29 +1,27 @@
 import React, { Component } from 'react'
-import { registerLocale } from  "react-datepicker";
+//import { registerLocale } from  "react-datepicker";
 import DatePicker from "react-datepicker";
-import fr from 'date-fns/locale/fr';
+//import fr from 'date-fns/locale/fr';
 
 import "react-datepicker/dist/react-datepicker.css"
-registerLocale('fr', fr)
+//registerLocale('fr', fr)
   
 class InputWithCalendar extends Component {
 
 
   render() {
-
+    
+ 
     
     return (
       
       <div>
 
         <DatePicker
-          dateFormat="d MMMM yyyy h:mm aa"
-          locale="fr"
+          //dateFormat="yyyy-MM-dd"
+          //locale="fr"
           onChange={this.props.onChangeDate}
           selected={this.props.date}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
         />
 
       </div>
