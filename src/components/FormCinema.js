@@ -132,16 +132,16 @@ TODO dropdown titre de film
             funct={this.handleChangeInput}
           />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          >Envoyer le formulaire
-          </button>
-        </form>
-      </div>
+            <button
+              className="button-submit"
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >Envoyer le formulaire
+            </button>
+          </form>
+        </div>
     )
   }
 }

@@ -73,6 +73,7 @@ class FormRetro extends Component {
       dateStart,
       link,
       cover,
+      titre,
     } = this.state
 
     return (
@@ -84,7 +85,12 @@ class FormRetro extends Component {
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
           />
-
+          <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          />
 
 // todo 4 - dropdown 2 contact  +  1 importance + 1 films
           <InputInLine

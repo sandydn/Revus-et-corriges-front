@@ -54,10 +54,12 @@ h4 {
     text-decoration-line: underline;
     padding-left: 1vw;
 }
-a {
+.buttonform {
+   
     padding-left: 2vw;
     font-size:1em;
+    color: black;
 }
-a:hover {
+.buttonform:hover {
     text-decoration-line: underline;
 }

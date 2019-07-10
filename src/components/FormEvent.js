@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
@@ -10,15 +9,20 @@ import axios from 'axios';
 import './Form.css';
 
 class FormEvent extends Component {
-  state = {
-    //dateEnd: null,
-    //dateStart: null,
-    importance: null,
+
+  state = { 
+    //generateur d'input
+    adresse: [],
+    category: null,
+    dateEnd: null,
+    dateStart: null,
+    importance: 0,
     description: null,
     link: null,
     titre: null,
     cover: null,
-    lieux_idlieux: null,
+    video_idvideo: [],
+    contact_idcontact: []
   }
 
 
@@ -72,7 +76,7 @@ class FormEvent extends Component {
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
-      lieux_idlieux: this.state.lieux_idlieux,
+      adresse: this.state.adresse,
 
     })
   }
@@ -95,7 +99,7 @@ class FormEvent extends Component {
       link,
       titre,
       cover,
-      lieux_idlieux,
+      adresse,
     } = this.state
 
     return (
@@ -135,10 +139,11 @@ class FormEvent extends Component {
               value={titre}
               funct={this.handleChangeInput}
             />
+
             <InputInLine
-              keyState="lieux_idlieux"
+              keyState="adresse"
               title="Adresse"
-              value={lieux_idlieux}
+              value={adresse}
               funct={this.handleChangeInput}
             />
 

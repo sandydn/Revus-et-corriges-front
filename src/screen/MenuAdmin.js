@@ -40,7 +40,7 @@ class MenuAdmin extends Component {
         <Link to="/admin-cinema" className="event-button"><LinkForm name="Cinéma" /></Link>
         <Link to="/admin-videos" className="event-button"><LinkForm name="Vidéos" /></Link>
         <Link to="/admin-retro" className="event-button"><LinkForm name="Rétrospective" /></Link>
-
+        <Link to="/admin-ajout" className="event-button"><LinkForm name="Ajout"/></Link>
         </div>
         <h4 className="title-managment"> Gestion administrateur</h4>
         <div className="deco-managment">

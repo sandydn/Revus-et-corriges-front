@@ -107,30 +107,31 @@ TODO dropdown titre de film
           />
 // TODO dropdown importance + dropdown contact 
 
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
 
-          <InputInLine
-            keyState="cover"
-            title="cover"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="link"
+              title="lien externe"
+              value={link}
+              funct={this.handleChangeInput}
+            />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          >Envoyer le formulaire
-          </button>
-        </form>
-      </div>
+            <InputInLine
+              keyState="cover"
+              title="cover"
+              value={cover}
+              funct={this.handleChangeInput}
+            />
+
+            <button
+              className="button-submit"
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >Envoyer le formulaire
+            </button>
+          </form>
+        </div>
     )
   }
 }
