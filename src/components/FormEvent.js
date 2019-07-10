@@ -12,7 +12,8 @@ class FormEvent extends Component {
 
   state = { 
     //generateur d'input
-    lieux_idlieux: [],
+    adresse: [],
+    category: null,
     dateEnd: null,
     dateStart: null,
     importance: 0,
@@ -29,14 +30,14 @@ class FormEvent extends Component {
     // console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
-      
+
     })
   }
 
   handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
-      
+
     })
   }
 
@@ -46,9 +47,9 @@ class FormEvent extends Component {
     }
     console.log('test', dateStart);
 
-    this.setState({dateStart: dateStart }, () => {
+    this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
-      
+
     })
   }
 
@@ -58,16 +59,11 @@ class FormEvent extends Component {
     }
     console.log(dateEnd);
 
-    this.setState({ dateEnd: dateEnd}, () => {
+    this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
-      
+
     })
   }
-
-  // componentDidMount() {
-  //   console.log('didmount', this.state);
-
-  // }
 
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
@@ -80,54 +76,61 @@ class FormEvent extends Component {
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
-      //lieux_idlieux: this.state.adresse,
+      adresse: this.state.adresse,
 
     })
   }
 
 
   render() {
+   
+    const style = {
+      general: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '20%'
+      }
+    }
+
     const {
-      adresse,
-      dateEnd,
-      dateStart,
+     // dateEnd,
+     // dateStart,
       description,
       link,
-      // nomLieu,
-      rc,
-      partenaires,
-      general,
       titre,
       cover,
+      adresse,
     } = this.state
 
     return (
       <div className="screen">
         <MenuAdmin />
-        <div className="cssevent">
+
+        <div style={style.general}>
           <form className="Formevent" onSubmit={this.handleSubmit} >
-            <p>Date de debut :</p>
-            {/* <InputWithCalendar
+            {/* <p>Date de debut :</p>
+            <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
             keyState="dateStart"
             value={dateStart}
-          /> */}
+            funct={this.handleChangeInput}
+          /> 
 
-            {/* <p>Date de fin :</p>
+            <p>Date de fin :</p>
           <InputWithCalendar
             date={dateEnd}
             onChangeDate={this.onChangeDateEnd}
             keyState="dateEnd"
             value={dateEnd}
             funct={this.handleChangeInput}
-          /> */}
+          />   */}
 
             <div className="importance">
               <p>Importance </p>
-              <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput} />
-              <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput} />
-              <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
+              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
             </div>
 
             <InputInLine
@@ -136,13 +139,6 @@ class FormEvent extends Component {
               value={titre}
               funct={this.handleChangeInput}
             />
-            {/* 
-          <InputInLine
-            keyState="nomLieu"
-            title="nom du Lieu"
-            value={nomLieu}
-            funct={this.handleChangeInput}
-          /> */}
 
             <InputInLine
               keyState="adresse"
@@ -178,8 +174,10 @@ class FormEvent extends Component {
               value="Submit"
               color="primary"
               variant="contained"
-            > Envoyer le formulaire
+            >
+              Envoyer le formulaire
             </button>
+
           </form>
         </div>
       </div>
