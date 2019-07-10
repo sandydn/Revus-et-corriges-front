@@ -19,6 +19,7 @@ import FormEvent from './components/FormEvent';
 import FormVideos from './components/FormVideos';
 import FormCinema from './components/FormCinema';
 import FormRetro from './components/FormRetro';
+import PrivateRoute from './components/PrivateRoute';
 
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
 
 
            {/* Section ADMIN  */}
-            <Route path="/menu-admin" component={MenuAdmin} />
+            <PrivateRoute path="/menu-admin" component={MenuAdmin} />
             <Route path="/signup" component={RegisterLogin} />      
             <Route path="/admin" component={Admin} />
             <Route path="/admin-events" component={Events} />

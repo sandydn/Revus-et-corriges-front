@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
@@ -24,7 +24,7 @@ class Login extends React.Component {
     },
     showPassword: false,
     success: false,
-    redirect: false
+    redirect: false,
   };
 
   // Show password or not (icon-eye) //
@@ -45,14 +45,14 @@ class Login extends React.Component {
       admin_email: event.target.email.value,
       admin_password: event.target.password.value
     })
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("token", res.headers["x-access-token"])
         this.setState({ success: true }, () => {
           setTimeout(() => this.setState({ success: false }), 1400);
           setTimeout(() => this.setState({ redirect: true }), 1400);
         });
       });
   };
-
 
   render() {
 
@@ -62,7 +62,7 @@ class Login extends React.Component {
     }
 
     return (
-      <div className="ball bubble">
+
         <div className="adminFormIn" >
 
           <img className="iconUser" src={RC} alt="icone-user" />
@@ -125,7 +125,6 @@ class Login extends React.Component {
           </div>
 
         </div>
-      </div>
     );
   };
 };
