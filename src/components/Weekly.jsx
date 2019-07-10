@@ -50,9 +50,10 @@ class Weekly extends Component {
       };
 
       daysInWeek = () => {
-
-        return this.state.dateObj.daysInWeek("D");
+         return this.state.dateObj.isoWeekday("D");
       };
+
+      
 // TEST
 
     previousDays = () => {
@@ -79,8 +80,6 @@ class Weekly extends Component {
         this.selectDay(event.target.innerHTML)
         this.displaySelector(event.target.className)
     }
-
-
 
     render() {
 

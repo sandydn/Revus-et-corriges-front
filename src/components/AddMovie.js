@@ -3,6 +3,8 @@ import InputInLine from './InputInLine'
 import MenuAdmin from '../screen/MenuAdmin'
 import Button from '@material-ui/core/Button';
 
+import axios from 'axios'
+
 class AddMovie extends Component {
 
     state = {
@@ -15,6 +17,16 @@ class AddMovie extends Component {
         this.setState({ [keyState]: evt.target.value })
     }
 
+      // ON SUBMIT - envoie du film dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post(`http://localhost:4000/a8/video`, {
+      dateCreation: this.state.dateCreation,
+      titre: this.state.titre,
+    })
+    alert("Film envoyé !")
+  }
+
 
   render() {
 
@@ -26,7 +38,7 @@ class AddMovie extends Component {
 
         <div>
             <h2>Ajout d'un film</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
 
             <InputInLine 
                 keyState="dateCreation"
