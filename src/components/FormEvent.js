@@ -1,42 +1,41 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 import moment from 'moment'
+
 
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
-import axios from 'axios';
 
-import './Form.css';
 
 class FormEvent extends Component {
 
   state = { 
-    //generateur d'input
+    
     adresse: [],
     category: null,
-     dateEnd: null,
-     dateStart: null,
+    dateEnd: null,
+    dateStart: null,
     importance: [],
     description: null,
     link: null,
     titre: null,
     cover: null,
+    //generateur d'input
     // video_idvideo: [],
     // contact_idcontact: []
   }
 
 
-
-  handleChangeInput = (keyState, evt) => {
-    // console.log("keyState", keyState, "evt", evt.target.value)
+  handleChangeDropdown = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
-
     })
   }
-
-  handleChangeDropdown = (keyState, evt) => {
+  
+  handleChangeInput = (keyState, evt) => {
+    // console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
 
@@ -47,10 +46,8 @@ class FormEvent extends Component {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-
     this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -59,10 +56,8 @@ class FormEvent extends Component {
       return console.log('error')
     }
     console.log(dateEnd);
-
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -70,6 +65,7 @@ class FormEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
+      //convert date format from DatePicker for filling database with the right format
       dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
       dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
       importance: this.state.importance,
@@ -105,30 +101,34 @@ class FormEvent extends Component {
     } = this.state
 
     return (
+      
       <div className="screen">
+        
         <MenuAdmin />
 
         <div style={style.general}>
+          
           <form className="Formevent" onSubmit={this.handleSubmit} >
-             <p>Date de debut :</p>
-             <InputWithCalendar
-            date={dateStart}
-            onChangeDate={this.onChangeDateStart}
-            keyState="dateStart"
-            value={dateStart}
-            funct={this.handleChangeInput}
-          /> 
+             
+            <p>Date de debut :</p>
+            <InputWithCalendar
+              date={dateStart}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateStart}
+              keyState="dateStart"
+              value={dateStart}
+            /> 
 
             <p>Date de fin :</p>
-          <InputWithCalendar
-            date={dateEnd}
-            onChangeDate={this.onChangeDateEnd}
-            keyState="dateEnd"
-            value={dateEnd}
-            funct={this.handleChangeInput}
-          />    
+            <InputWithCalendar
+              date={dateEnd}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateEnd}
+              keyState="dateEnd"
+              value={dateEnd}
+            />    
  
-            
+            {/* checkbox component must be replaced by a dropdowninline component */}
             
             <div className="importance">
               <p>Importance </p>
@@ -138,52 +138,52 @@ class FormEvent extends Component {
             </div>
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="titre"
               title="Titre"
               value={titre}
-              funct={this.handleChangeInput}
             />
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="adresse"
               title="Adresse"
               value={adresse}
-              funct={this.handleChangeInput}
             />
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="link"
               title="lien externe"
               value={link}
-              funct={this.handleChangeInput}
             />
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="description"
               title="information"
               value={description}
-              funct={this.handleChangeInput}
             />
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="cover"
               title="visuel"
               value={cover}
-              funct={this.handleChangeInput}
             />
 
             <InputInLine
+              funct={this.handleChangeInput}
               keyState="category"
               title="type de film"
               value={category}
-              funct={this.handleChangeInput}
             />  
 
             <button
               className="button-submit"
+              color="primary"
               type="submit"
               value="Submit"
-              color="primary"
               variant="contained"
             >
               Envoyer le formulaire
