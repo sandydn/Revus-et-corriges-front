@@ -79,6 +79,15 @@ class FormEvent extends Component {
 
 
   render() {
+   
+    const style = {
+      general: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '20%'
+      }
+    }
+
     const {
      // dateEnd,
      // dateStart,
@@ -93,78 +102,79 @@ class FormEvent extends Component {
       <div className="screen">
         <MenuAdmin />
 
-        <form className="Formevent" onSubmit={this.handleSubmit} >
-          {/* <p>Date de debut :</p>
-           <InputWithCalendar
-          date={dateStart}
-          onChangeDate={this.onChangeDateStart}
-          keyState="dateStart"
-          value={dateStart}
-          funct={this.handleChangeInput}
-        /> 
-
-           <p>Date de fin :</p>
-        <InputWithCalendar
-          date={dateEnd}
-          onChangeDate={this.onChangeDateEnd}
-          keyState="dateEnd"
-          value={dateEnd}
-          funct={this.handleChangeInput}
-        />   */}
-
-          <div className="importance">
-            <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-          </div>
-
-          <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
+        <div style={style.general}>
+          <form className="Formevent" onSubmit={this.handleSubmit} >
+            {/* <p>Date de debut :</p>
+            <InputWithCalendar
+            date={dateStart}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
             funct={this.handleChangeInput}
-          />
-          <InputInLine
-            keyState="lieux_idlieux"
-            title="Adresse"
-            value={lieux_idlieux}
+          /> 
+
+            <p>Date de fin :</p>
+          <InputWithCalendar
+            date={dateEnd}
+            onChangeDate={this.onChangeDateEnd}
+            keyState="dateEnd"
+            value={dateEnd}
             funct={this.handleChangeInput}
-          />
+          />   */}
 
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
+            <div className="importance">
+              <p>Importance </p>
+              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
+            </div>
 
-          <InputInLine
-            keyState="description"
-            title="information"
-            value={description}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              funct={this.handleChangeInput}
+            />
+            <InputInLine
+              keyState="lieux_idlieux"
+              title="Adresse"
+              value={lieux_idlieux}
+              funct={this.handleChangeInput}
+            />
 
-          <InputInLine
-            keyState="cover"
-            title="visuel"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
+            <InputInLine
+              keyState="link"
+              title="lien externe"
+              value={link}
+              funct={this.handleChangeInput}
+            />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          >
-            Envoyer le formulaire
-          </button>
+            <InputInLine
+              keyState="description"
+              title="information"
+              value={description}
+              funct={this.handleChangeInput}
+            />
 
-        </form>
+            <InputInLine
+              keyState="cover"
+              title="visuel"
+              value={cover}
+              funct={this.handleChangeInput}
+            />
 
+            <button
+              className="button-submit"
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >
+              Envoyer le formulaire
+            </button>
+
+          </form>
+        </div>
       </div>
     )
   }
