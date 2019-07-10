@@ -14,15 +14,15 @@ class FormEvent extends Component {
     //generateur d'input
     adresse: [],
     category: null,
-    dateEnd: null,
-    dateStart: null,
-    importance: 0,
+    // dateEnd: null,
+    // dateStart: null,
+    importance: [],
     description: null,
     link: null,
     titre: null,
     cover: null,
-    video_idvideo: [],
-    contact_idcontact: []
+    // video_idvideo: [],
+    // contact_idcontact: []
   }
 
 
@@ -77,7 +77,7 @@ class FormEvent extends Component {
       cover: this.state.cover,
       titre: this.state.titre,
       adresse: this.state.adresse,
-
+      category: this.state.category,
     })
   }
 
@@ -100,6 +100,7 @@ class FormEvent extends Component {
       titre,
       cover,
       adresse,
+      category
     } = this.state
 
     return (
@@ -167,6 +168,13 @@ class FormEvent extends Component {
               value={cover}
               funct={this.handleChangeInput}
             />
+
+            <InputInLine
+              keyState="category"
+              title="type de film"
+              value={category}
+              funct={this.handleChangeInput}
+            />  
 
             <button
               className="button-submit"
