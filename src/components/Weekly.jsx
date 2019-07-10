@@ -6,6 +6,10 @@ import Menu from './Menu'
 import MobileWeek from './MobileWeek'
 import Week from './Week'
 
+import moment from "moment"
+import 'moment/locale/fr';
+import 'moment-timezone';
+
 import dataTest from "./dataTest.json"
 import "./css/calendar.css"
 
@@ -13,8 +17,10 @@ class Weekly extends Component {
     state = {
         days: [],
         dayEvent: [],
-        dayDate: ''
+        dayDate: '',
+        dateObj: moment()
     }
+
 
     selectDay(i) {
         const day = dataTest.filter((display) => display.date.includes(i))
@@ -32,6 +38,23 @@ class Weekly extends Component {
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
     }
+
+    // TEST
+    firstDayOfWeek = () => {
+        let dateObject = this.state.dateObj;
+        let firstDay = moment(dateObject)
+          .startOf("week")
+          .format("w");
+    
+        return firstDay;
+      };
+
+      daysInWeek = () => {
+         return this.state.dateObj.isoWeekday("D");
+      };
+
+      
+// TEST
 
     previousDays = () => {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
@@ -58,9 +81,64 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
-
-
     render() {
+
+
+// TEST
+
+let blanks = [];
+  for (let i = 0; i < this.firstDayOfWeek(); i++) {
+    blanks.push(<div>{""}</div>);
+  }
+
+
+
+        let daysInWeek = [];
+        for (let w = 1; w <= this.daysInWeek(); w++) {
+            let currentDayOfWeek = w == this.currentDayOfWeek() ? "today" : "";
+
+            let dayOfEvent = false
+            this.state.dayEvent.map( event => {
+                const eventDateStart = moment(event.dateStart).format("D")       
+                if (w == eventDateStart) {
+
+                return dayOfEvent = true
+                }
+            })
+            const calendarDay = dayOfEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+            daysInWeek.push(
+                <div key={w} className = { `${calendarDay} ${currentDayOfWeek}`}>
+
+                <h3 onClick={e => {this.onDayClick(e, w)}}>{w}</h3>
+
+                </div>
+            )
+            }
+
+            let totalSlots = [...blanks, ...daysinweek];
+            let rows = [];
+            let cells = [];
+
+            totalSlots.forEach((row, i) => {
+                if (i % 7 !== 0) {
+                cells.push(row);
+                } else {
+                rows.push(cells);
+                cells = [];
+                cells.push(row);
+                }
+
+                if (i === totalSlots.length - 1) {
+                rows.push(cells);
+                }
+            });
+
+            let daysinweek = rows.map((w, i) => {
+
+                return <h3>{w}</h3>;
+            });
+// TEST
+
         return (
             <>
                 <BrowserView>
@@ -80,6 +158,11 @@ class Weekly extends Component {
                             </div>
 
                             <div className='weeklyDisplay'>
+
+                            {/* TEST */}
+                            <div>{daysinweek}</div>
+                            {/* TEST */}
+
                                 <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
 
                                 <Week dataDays={this.state.days} />
