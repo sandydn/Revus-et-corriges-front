@@ -19,7 +19,6 @@ getevent() {
       .get("http://localhost:4000/a5/event")
       .then(results => { 
         this.setState({results: results.data, isLoading: true}) 
-        console.log('je suis la', this.state)
       })
 }
 

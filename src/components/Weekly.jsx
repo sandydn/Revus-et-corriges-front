@@ -69,7 +69,6 @@ class Weekly extends Component {
                         <div className='navbar'>
                             <Menu />
                             <Link to="/login" ><input type="submit" value="Admin" /></Link>
-                            {/* <Link to="/login" ><input type="submit" value="Login" /></Link> */}
                             <Link to="/month"><input type="submit" value="Monthly" /></Link>
                         </div>
 
