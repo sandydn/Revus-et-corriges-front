@@ -1,6 +1,6 @@
 import React from 'react'
 import Events from './Events'
-import './css/Day.css'
+// import './css/Day.css'
 
 
 const Day = ({ date, dataEvent, stateClass }) => {

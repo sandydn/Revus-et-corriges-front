@@ -51,8 +51,7 @@ html{
     flex-direction: column;
 }
 
-/* .arrow {
-} */
+
 
 .nextMobile{
     height: 22px;
@@ -317,8 +316,7 @@ html {
         text-decoration-style: solid;
     
     
-        /* left: 50vw;
-        top: 4vh; */
+      
     }
     
       
@@ -362,7 +360,7 @@ html {
     }
       
       .nav {
-        /* padding: 25px; */
+        
         top: 0%;
         left: 1px;
         position:fixed 
@@ -373,7 +371,7 @@ html {
         background-image: url(https://static.thenounproject.com/png/568033-200.png);
         background-size: contain;
         background-repeat: no-repeat;
-        /* background-position-x: 90%; */
+       
         height: 34px;
         width: 34px;
        
@@ -421,3 +419,181 @@ html {
         display: none;
     }
     }
+
+
+
+
+
+
+    .DayzDisplay{
+        width: 20%;
+        margin-right: 4px;
+        margin-left: 4px;
+        margin-top: 0px;
+        display: inline-block;
+    }
+    
+    .DayzDisplay > h1 {
+        text-transform: uppercase;
+        font-size: 1.0em;
+        color: rgb(48, 48, 48);
+        margin: 0px;
+    
+    }
+    
+    .DayzDisplay > .line {
+        width: 100%;
+        height: 1px;
+        background: grey;
+        margin-top: 8px;
+        margin-bottom: 4px;
+    }
+    
+    .event{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+    .event > h2 {
+        font-size: .85em;
+    }
+    
+    .event > p {
+        font-size: .75em;
+        margin: 0px;
+    }
+    
+    .event > img {
+        width: 80%;
+        align-self: center;
+        margin: 5px;
+    }
+    
+    .important{
+        background: rgba(255,255,255, .45);
+        border-radius: 15px;
+    }
+
+
+
+
+
+
+
+    /* DESKTOP */
+.dayDesktop{
+    width: 20%;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 0px;
+}
+
+.dayDesktop > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48);
+    margin: 0px;
+}
+
+.dayDesktop > .line {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.event{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.event > h2 {
+    font-size: .85em;
+}
+
+.event > p {
+    font-size: .75em;
+    margin: 0px;
+}
+
+.event > img {
+    width: 80%;
+    align-self: center;
+    margin: 5px;
+}
+
+.important{
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 15px;
+}
+
+/* MOBILE */
+
+.dayMobile {
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 0px;
+}
+
+.dayMobile > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48);
+    margin: 0px;
+}
+
+.dayMobile > .line {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.dayMobile > .event{
+    border: .2px solid grey;
+    border-radius: 15px;
+    margin: 8px;
+}
+
+#selected {
+    background: rgba(180, 180, 180, 0.45);
+}
+
+.dayMobile > .important{
+    background: rgba(180, 180, 180, 0.45);
+}
+
+.dayMobile > h1{
+    display: none;
+}
+
+.dayMobile > .line{
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.days{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.days h1{
+    cursor: pointer;
+    font-size: 1.2em;
+    padding:5px;
+}
+
+.daySelector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.dayMobile > .event > h2 {
+    text-transform: uppercase;
+}
