@@ -21,6 +21,14 @@ class Weekly extends Component {
         dateObj: moment()
     }
 
+    getevent() {
+        axios
+          .get("http://localhost:4000/a5/event")
+          .then(results => { 
+            this.setState({results: results.data}) 
+            console.log(this.state.results)
+          })
+    }
 
     selectDay(i) {
         const day = dataTest.filter((display) => display.date.includes(i))
@@ -33,6 +41,7 @@ class Weekly extends Component {
     componentDidMount() {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
         this.selectDay(0)
+        this.getevent()
     }
 
     componentDidUpdate() {
