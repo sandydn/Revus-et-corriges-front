@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
