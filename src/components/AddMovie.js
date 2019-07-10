@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import Button from '@material-ui/core/Button';
 import InputInLine from './InputInLine'
 import MenuAdmin from '../screen/MenuAdmin'
-import Button from '@material-ui/core/Button';
-import axios from 'axios'
-
-import axios from 'axios'
 
 class AddMovie extends Component {
 
@@ -43,14 +41,14 @@ class AddMovie extends Component {
 
             <InputInLine 
                 keyState="dateCreation"
-                title="date de création du films"    
+                title="Date de création du film"    
                 value={this.state.dateCreation}
                 funct={this.handleChangeInput}
             />
 
             <InputInLine
                 keyState="titre"
-                title="titre du films"
+                title="Titre du film"
                 value={this.state.titre}  
                 funct={this.handleChangeInput}          
             />

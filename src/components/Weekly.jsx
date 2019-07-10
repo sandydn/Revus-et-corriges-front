@@ -40,18 +40,18 @@ class Weekly extends Component {
     }
 
     // TEST
-    firstDayOfWeek = () => {
-        let dateObject = this.state.dateObj;
-        let firstDay = moment(dateObject)
-          .startOf("week")
-          .format("w");
+    // firstDayOfWeek = () => {
+    //     let dateObject = this.state.dateObj;
+    //     let firstDay = moment(dateObject)
+    //       .startOf("week")
+    //       .format("w");
     
-        return firstDay;
-      };
+    //     return firstDay;
+    //   };
 
-      daysInWeek = () => {
-         return this.state.dateObj.isoWeekday("D");
-      };
+    //   daysInWeek = () => {
+    //      return this.state.dateObj.isoWeekday("D");
+    //   };
 
       
 // TEST
@@ -81,62 +81,67 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
+    // currentDayOfWeek = () => {
+    //     console.log
+    //     return this.state.dayDate/* .format("D") */
+    // }
+
     render() {
 
 
 // TEST
 
-let blanks = [];
-  for (let i = 0; i < this.firstDayOfWeek(); i++) {
-    blanks.push(<div>{""}</div>);
-  }
+// let blanks = [];
+//   for (let i = 0; i < this.firstDayOfWeek(); i++) {
+//     blanks.push(<div>{""}</div>);
+//   }
 
 
 
-        let daysInWeek = [];
-        for (let w = 1; w <= this.daysInWeek(); w++) {
-            let currentDayOfWeek = w == this.currentDayOfWeek() ? "today" : "";
+//         let daysInWeek = [];
+//         for (let w = 1; w <= this.daysInWeek(); w++) {
+//             let currentDayOfWeek = w == this.currentDayOfWeek() ? "today" : "";
 
-            let dayOfEvent = false
-            this.state.dayEvent.map( event => {
-                const eventDateStart = moment(event.dateStart).format("D")       
-                if (w == eventDateStart) {
+//             let dayOfEvent = false
+//             this.state.dayEvent.map( event => {
+//                 const eventDateStart = moment(event.dateStart).format("D")       
+//                 if (w == eventDateStart) {
 
-                return dayOfEvent = true
-                }
-            })
-            const calendarDay = dayOfEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
-            daysInWeek.push(
-                <div key={w} className = { `${calendarDay} ${currentDayOfWeek}`}>
+//                 return dayOfEvent = true
+//                 }
+//             })
+//             const calendarDay = dayOfEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+//             daysInWeek.push(
+//                 <div key={w} className = { `${calendarDay} ${currentDayOfWeek}`}>
 
-                <h3 onClick={e => {this.onDayClick(e, w)}}>{w}</h3>
+//                 <h3 onClick={e => {this.onDayClick(e, w)}}>{w}</h3>
 
-                </div>
-            )
-            }
+//                 </div>
+//             )
+//             }
 
-            let totalSlots = [...blanks, ...daysinweek];
-            let rows = [];
-            let cells = [];
+//             let totalSlots = [...blanks, ...daysinweek];
+//             let rows = [];
+//             let cells = [];
 
-            totalSlots.forEach((row, i) => {
-                if (i % 7 !== 0) {
-                cells.push(row);
-                } else {
-                rows.push(cells);
-                cells = [];
-                cells.push(row);
-                }
+//             totalSlots.forEach((row, i) => {
+//                 if (i % 7 !== 0) {
+//                 cells.push(row);
+//                 } else {
+//                 rows.push(cells);
+//                 cells = [];
+//                 cells.push(row);
+//                 }
 
-                if (i === totalSlots.length - 1) {
-                rows.push(cells);
-                }
-            });
+//                 if (i === totalSlots.length - 1) {
+//                 rows.push(cells);
+//                 }
+//             });
 
-            let daysinweek = rows.map((w, i) => {
+//             let daysinweek = rows.map((w, i) => {
 
-                return <h3>{w}</h3>;
-            });
+//                 return <h3>{w}</h3>;
+//             });
 // TEST
 
         return (
@@ -160,7 +165,7 @@ let blanks = [];
                             <div className='weeklyDisplay'>
 
                             {/* TEST */}
-                            <div>{daysinweek}</div>
+                            {/* <div>{daysinweek}</div> */}
                             {/* TEST */}
 
                                 <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
