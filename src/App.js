@@ -20,13 +20,17 @@ import FormVideos from './components/FormVideos';
 import FormCinema from './components/FormCinema';
 import FormRetro from './components/FormRetro';
 import Ajout from './screen/Ajout'
+import Favicon from 'react-favicon';
 
 class App extends Component {
 
   render() {
 
     return (
-      
+      <>
+      <div>
+      <Favicon url="https://revusetcorriges.files.wordpress.com/2018/03/rc_logo_final-021-e1521992230333.png?w=936" />
+      </div>
       <BrowserRouter>
           <Switch>
 
@@ -55,7 +59,7 @@ class App extends Component {
             <Route path="/admin-retro-form" component={FormRetro} />         
           </Switch>
       </BrowserRouter>
-      
+      </>
     );
   }
 }
