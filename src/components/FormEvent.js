@@ -6,7 +6,7 @@ import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
 
-import './Form.css';
+import './css/Form.css';
 
 class FormEvent extends Component {
 
