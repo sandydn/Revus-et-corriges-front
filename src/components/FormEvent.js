@@ -4,16 +4,18 @@ import moment from 'moment'
 
 
 import CheckboxLine from './CheckboxLine';
+import DropDownInline from './DropDownInline'
 import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import TextareaCustom from  './TextAreaCustom';
 import MenuAdmin from '../screen/MenuAdmin';
 
 import './css/Form.css';
 
 class FormEvent extends Component {
 
-  state = { 
-    
+  state = {
+    //generateur d'input
     adresse: [],
     category: null,
     dateEnd: null,
@@ -23,16 +25,8 @@ class FormEvent extends Component {
     link: null,
     titre: null,
     cover: null,
-    //generateur d'input
     // video_idvideo: [],
     // contact_idcontact: []
-  }
-
-
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value }, () => {
-      console.log(this.state);
-    })
   }
   
   handleChangeInput = (keyState, evt) => {
@@ -40,7 +34,11 @@ class FormEvent extends Component {
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
 
-    })
+  })
+
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {
@@ -71,6 +69,7 @@ class FormEvent extends Component {
       dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
       importance: this.state.importance,
       description: this.state.description,
+      category: this.state.category,
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
@@ -78,17 +77,9 @@ class FormEvent extends Component {
       category: this.state.category,
     })
   }
-
+}
 
   render() {
-   
-    const style = {
-      general: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '20%'
-      }
-    }
 
     const {
       dateEnd,
@@ -101,96 +92,99 @@ class FormEvent extends Component {
       category
     } = this.state
 
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
     return (
       
       <div className="screen">
         
         <MenuAdmin />
 
-        <div style={style.general}>
-          
-          <form className="Formevent" onSubmit={this.handleSubmit} >
-             
-            <p>Date de debut :</p>
-            <InputWithCalendar
-              date={dateStart}
-              funct={this.handleChangeInput}
-              onChangeDate={this.onChangeDateStart}
-              keyState="dateStart"
-              value={dateStart}
-            /> 
+        <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
+          <p>Date de debut :</p>
+          <InputWithCalendar
+            date={dateStart}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          />
 
-            <p>Date de fin :</p>
-            <InputWithCalendar
-              date={dateEnd}
-              funct={this.handleChangeInput}
-              onChangeDate={this.onChangeDateEnd}
-              keyState="dateEnd"
-              value={dateEnd}
-            />    
- 
-            {/* checkbox component must be replaced by a dropdowninline component */}
-            
-            <div className="importance">
-              <p>Importance </p>
-              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-            </div>
+          <p>Date de fin :</p>
+          <InputWithCalendar
+            date={dateEnd}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateEnd}
+            keyState="dateEnd"
+            value={dateEnd}
+          />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="titre"
-              title="Titre"
-              value={titre}
-            />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="adresse"
-              title="Adresse"
-              value={adresse}
-            />
+          <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="link"
-              title="lien externe"
-              value={link}
-            />
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="description"
-              title="information"
-              value={description}
-            />
+          <InputInLine
+            keyState="adresse"
+            title="Adresse"
+            value={adresse}
+            funct={this.handleChangeInput}
+          />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="cover"
-              title="visuel"
-              value={cover}
-            />
+          <DropDownInline
+            keyState="category"
+            title="catégorie"
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
 
-            <InputInLine
-              funct={this.handleChangeInput}
-              keyState="category"
-              title="type de film"
-              value={category}
-            />  
+          <InputInLine
+            keyState="link"
+            title="lien externe"
+            value={link}
+            funct={this.handleChangeInput}
+          />
 
-            <button
-              className="button-submit"
-              color="primary"
-              type="submit"
-              value="Submit"
-              variant="contained"
-            >
-              Envoyer le formulaire
-            </button>
+          <TextareaCustom
+            keyState="description"
+            value={description}
+            funct={this.handleChangeInput}
+          />
 
-          </form>
+
+          <InputInLine
+            keyState="cover"
+            title="visuel"
+            value={cover}
+            funct={this.handleChangeInput}
+          />
+
+
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
         </div>
       </div>
     )

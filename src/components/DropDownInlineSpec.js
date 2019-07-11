@@ -8,18 +8,23 @@ const style = {
   },
   general: {
     padding: '5px',
-    borderBottom: '2px solid blue'
+    marginTop: '10px',
+    borderBottom: '1px solid blue'
   },
   span: {
     padding: '5px'
   },
   divSelect: {
+    margin: '0',
+    padding: '0',
     position: 'absolute',
     background: 'white',
-    borderLeft: '2px solid blue',
+    borderLeft: '1px solid blue',
     display: 'none'
   },
   input: {
+    background: 'inherit',
+    width: 'auto',
     padding: '5px'
   },
   button: {
@@ -75,7 +80,7 @@ const DropDownInlineSpec = ({title, data, func}) => {
     <div style={{...style.common, ...style.general}}>
       
       <span style={{ ...style.common, ...style.span}}>
-        {(title && title) || 'Default'} <i className="fas fa-caret-down"></i> :
+        {(title && title) || 'Default'} <i className="fas fa-chevron-right fa-xs"></i> :
       </span>
      
       <input
