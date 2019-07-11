@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import moment from "moment"
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 import 'moment/locale/fr';
 import 'moment-timezone';
@@ -341,6 +342,7 @@ class Monthly extends Component {
 
       <div className="navbar">
       <Menu />
+      <Link to="/"><input type="submit" value="Weakly" /></Link>
       </div>
       <div className="monthly">
         <div className="monthAndYear">
@@ -390,6 +392,5 @@ class Monthly extends Component {
         )
     }
   }
-
 
 export default Monthly

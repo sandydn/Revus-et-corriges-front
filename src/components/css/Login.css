@@ -6,11 +6,11 @@
   align-items: center;
   border-radius: 10px 10px 10px 10px;
   background: #f0e8e8;
-  line-height: 7vh;
-  padding: 5%;
+  line-height: 6vh;
+  padding: 4%;
   margin-left: 31%;
   margin-top: 22%;
-  height: 30vh;
+  height: 27vh;
   max-width: 27vw;
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
 }
@@ -23,8 +23,8 @@
   align-items: center;
   border-radius: 10px 10px 10px 10px;
   background: rgb(240, 232, 232);
-  line-height: 5vh;
-  padding: 5%;
+  line-height: 3vh;
+  padding: 4%;
   margin-left: 31%;
   margin-top: 22%;
   height: 30vh;
@@ -55,23 +55,7 @@
   z-index: 2;
   top: -3.2vh;
   font-size: 1.2em;
-}
-
-/* Effect hightlight title */
-.FormTitleIn__Link:after {
-	content: '';
-	display: block;
-	margin: auto;
-	height: 1px;
-	width: 0;
-	background: transparent;
-	transition: width .5s ease, background-color .2s ease;
-}
-
-/* Effect hightlight title on Hover */
-.FormTitleIn__Link--Active:hover:after {
-	width: 90%;
-	background: #444;
+  text-shadow: 0px 2px 5px;
 }
 
 /* Postion title "Enregistrement" */
@@ -83,31 +67,7 @@
   z-index: 2;
   top: -3.2vh;
   font-size: 1.2em;
-}
-
-
-.FormTitleUp__Link:after {
-	content: '';
-	display: block;
-	margin: auto;
-	height: 1px;
-	width: 0;
-	background: transparent;
-	transition: width .5s ease, background-color .2s ease;
-}
-
-.FormTitleUp__Link:hover:after {
-	width: 92%;
-  background: #444;
-}
-
-
-.FormTitleUp{
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  top: -2vh;
+  text-shadow: 0px 2px 5px;
 }
 
 .FormTitleIn > a{
@@ -116,22 +76,6 @@
 
 .FormTitleUp > a{
   margin: 16px;
-}
-
-.adminForm{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px 10px 10px 10px;
-    background: #fff;
-    padding: 2%;
-    width: 90%;
-    margin-left: 30%;
-    margin-top: -8%;
-    margin-bottom: 9%;
-    max-width: 322px;
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
 }
 
 .iconLogin{
