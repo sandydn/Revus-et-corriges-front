@@ -6,11 +6,12 @@ import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios'
-
+import moment from 'moment'
 import './Form.css';
 
 class FormRetro extends Component {
   state = {
+    dateEnd: null,
     dateStart: null,
     category: null,
     link: null,
@@ -34,11 +35,8 @@ class FormRetro extends Component {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test', dateStart);
-
     this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -47,10 +45,8 @@ class FormRetro extends Component {
       return console.log('error')
     }
     console.log(dateEnd);
-
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -61,7 +57,9 @@ class FormRetro extends Component {
     e.preventDefault()
     console.log(e)
     axios.post(`http://localhost:4000/a9/eventcontact`, {
-      // dateStart: e.target.dateStart.value,
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
       importance: this.state.importance,
       category: this.state.category,
       link: this.state.link,
@@ -73,6 +71,7 @@ class FormRetro extends Component {
 
   render() {
     const {
+      dateEnd,
       dateStart,
       link,
       cover,
@@ -94,11 +93,23 @@ class FormRetro extends Component {
       <div className="screen">
         <MenuAdmin />
         <div className="Formretro" style={styleBase.form} onSubmit={this.handleSubmit}>
-          {/* <p>Date de debut :</p>
-          <InputWithCalendar
-            date={dateStart}
-            onChangeDate={this.onChangeDateStart}
-          /> */}
+        <p>Date de debut :</p>
+            <InputWithCalendar
+              date={dateStart}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateStart}
+              keyState="dateStart"
+              value={dateStart}
+            /> 
+
+            <p>Date de fin :</p>
+            <InputWithCalendar
+              date={dateEnd}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateEnd}
+              keyState="dateEnd"
+              value={dateEnd}
+            />
 
           <InputInLine
             keyState="titre"
@@ -114,7 +125,7 @@ class FormRetro extends Component {
             func={this.handleChangeDropDown}
           />
 
-          <DropDownInline
+          {/* <DropDownInline
             keyState='realisateur'
             title='Réalisateur'
             data={['Toto', 'Bebe', 'Kiki', 'Chocho', 'cécé']}
@@ -125,8 +136,8 @@ class FormRetro extends Component {
             keyState='distributeur'
             title='distributeur'
             data={['tomtom', 'sansan', 'papy', 'abdou']}
-            func={this.handleChangeDropDown}
-          />
+            func={this.handleChangeDropDown} 
+          />*/}
 
 
           // todo  axios get  - dropdown 2 contact - realisateur, distributeur + 1 films
