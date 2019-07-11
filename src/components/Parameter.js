@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 
 import "./Parameter.css"
 import { SketchPicker } from 'react-color';
-//import Calendar from 'react-calendar'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 export class Parameter extends Component {
 
   state = {
     show:true,
     color:"",
-    date: new Date()
   }
  
 
@@ -52,21 +49,7 @@ export class Parameter extends Component {
             onChangeComplete={ this.handleChange }/>
         </div> 
 
-        {/* <div>
-          <Calendar
-            className ='calendar'
-            onChange={this.onChangeDate}
-            value={this.state.date}/>
-        </div> */}
-
-        <DatePicker
-          selected={this.state.date}
-          onChange={this.onChangeDate}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
-          dateFormat="MMMM d, yyyy h:mm aa"
-        />
+      
 
       </div>
     )
