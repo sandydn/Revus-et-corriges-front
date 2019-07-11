@@ -24,7 +24,7 @@ class Events extends Component {
                     <MenuAdmin />
                     <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
                 </div>
-                <div>
+                <div className="displayData">
                     <Delete />
                 </div>
             </div>

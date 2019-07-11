@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 // import InputInLine from './InputInLine';
 
 class DeleteForm extends Component {
@@ -29,15 +29,16 @@ class DeleteForm extends Component {
         return (
 
         <div className={this.classDelete}>
-            <div>{this.props}</div>
+            {/* <div>{this.props.data}</div> */}
             <input
+                className="input-area"
                 title="Modifier" 
                 name="titre"   
                 value={this.state.name}
                 placeholder={this.props.data}
                 onChange={this.handleChange}
             />
-            <Button
+            <button
                 className="button-submit"
                 type="submit"
                 value="Submit"
@@ -45,7 +46,7 @@ class DeleteForm extends Component {
                 variant="contained"
             >
                 Valider
-            </Button>
+            </button>
         </div>
 
         )

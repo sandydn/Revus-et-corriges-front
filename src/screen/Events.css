@@ -35,3 +35,9 @@
     background-size: cover;
     background-position-x: 12vw;
 }
+
+.displayData {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
