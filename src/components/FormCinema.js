@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import InputInLine from './InputInLine';
 import CheckboxLine from './CheckboxLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import DropDownInline from './DropDownInline';
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
 import './Form.css';
+
 
 class FormCinema extends Component {
   state = {
     description: null,
     category: null,
     dateStart: null,
-    importance: [],
+    importance: 0,
     link: null,
     titre: null,
     cover: null,
@@ -22,10 +24,11 @@ class FormCinema extends Component {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
-
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
+
 
   onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
@@ -74,35 +77,50 @@ class FormCinema extends Component {
       dateStart,
       link,
       cover,
-      category,
     } = this.state
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
 
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formcinema" onSubmit={this.handleSubmit}>
+        <form className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
           {/* <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
           /> */}
 
-          TODO dropdown importance
-          
-          TODO dropdown titre de film
-          
-            <div className="importance">
-            <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-          </div>
 
-          <InputInLine
-            keyState="category"
-            title="catégorie"
-            value={category}
-            funct={this.handleChangeInput}
+          {/* <DropDownInline
+              title='Type de contact'
+              data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
+            // TODOS : add props for behavior
+            /> */}
+
+
+          TODO dropdown titre de film
+
+          <DropDownInline
+              keyState='importance'
+              title='Importance'
+              data={['RC', 'Partenaires', 'Général']}
+              func={this.handleChangeDropDown}
+          />
+
+          <DropDownInline
+              keyState='category'
+              title='catégorie'
+              data={['Evenement', 'Cinema', 'Vidéo', 'Rétrospective']}
+              func={this.handleChangeDropDown}
           />
 
           <InputInLine

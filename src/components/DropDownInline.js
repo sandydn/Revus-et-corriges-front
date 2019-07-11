@@ -8,22 +8,28 @@ const styleBase = {
   },
   general: {
     padding: '5px',
-    borderBottom: '2px solid blue'
+    borderBottom: '1px solid blue'
   },
   buttonClick: {
+    background: 'inherit',
+    fontSize: 'inherit',
     padding: '5px',
     cursor: 'pointer'
   },
   divSelect: {
     position: 'absolute',
     background: 'white',
-    borderLeft: '2px solid blue',
+    borderLeft: '1px solid blue',
     display: 'none'
   },
   input: {
+    background: 'inherit',
     padding: '5px'
   },
   button: {
+    textAlign: 'left',
+    width: '200%',
+    fontSize: 'inherit',
     display: 'block',
     cursor: 'pointer',
     margin: '0',
@@ -39,7 +45,8 @@ const handleDisplay = (evt, boolean) => {
 const handleSelect = (evt, func, keyState) => {
   const input = evt.target.parentNode.previousSibling
   input.value = evt.target.innerHTML
-  func && func(keyState, evt.target.getAttribute('data-id'))
+  const value = evt.target.getAttribute('data-id')
+  func && func(keyState, value)
 }
 
 const DropDownInline = ({ title, data, func, keyState }) => {

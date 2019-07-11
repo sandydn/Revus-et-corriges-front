@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import InputInLine from './InputInLine';
+import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
+import axios from 'axios'
 
 import './Form.css';
 
 class FormRetro extends Component {
   state = {
     dateStart: null,
+    category: null,
     link: null,
     importance: null,
     titre: null,
@@ -51,22 +54,19 @@ class FormRetro extends Component {
 
 
 
-  // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log(e)
-  //   axios.post(`http://localhost:4000/a5/event`, {
-  //     // dateStart: e.target.dateStart.value,
-  //     // dateEnd: e.target.dateEnd.value,
-  //     importance: e.target.importance.value,
-  //     description: e.target.description.value,
-  //     link: e.target.link.value,
-  //     cover: e.target.cover.value,
-  //     titre: e.target.titre.value,
-  //     lieux_idlieux: e.target.adresse.value,
-
-  //   })
-  // }
+  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(e)
+    axios.post(`http://localhost:4000/a5/event`, {
+      // dateStart: e.target.dateStart.value,
+      importance: this.state.importance,
+      category: this.state.category,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+    })
+  }
 
   render() {
     const {
@@ -74,29 +74,46 @@ class FormRetro extends Component {
       link,
       cover,
       titre,
+      category,
     } = this.state
 
     return (
       <div className="screen">
         <MenuAdmin />
         <form className="Formretro" onSubmit={this.handleSubmit}>
-          <p>Date de debut :</p>
+          {/* <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
-          />
-          <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
-            funct={this.handleChangeInput}
-          />
+          /> */}
 
-// todo 4 - dropdown 2 contact  +  1 importance + 1 films
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              funct={this.handleChangeInput}
+            />
+
+            <div className="importance">
+              <p>Importance </p>
+              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
+              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
+              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
+            </div>
+
+// todo 4 - dropdown 2 contact - realisateur, distributeur  +  1 importance + 1 films
+
           <InputInLine
             keyState="link"
             title="lien externe"
             value={link}
+            funct={this.handleChangeInput}
+          />
+
+          <InputInLine
+            keyState="category"
+            title="catégorie"
+            value={category}
             funct={this.handleChangeInput}
           />
 
