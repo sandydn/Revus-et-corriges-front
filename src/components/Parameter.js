@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import "./Parameter.css"
 import { SketchPicker } from 'react-color';
 import "react-datepicker/dist/react-datepicker.css"
-export class Parameter extends Component {
+ class Parameter extends Component {
 
   state = {
     show:true,
@@ -20,7 +20,10 @@ export class Parameter extends Component {
    this.setState({ color: color.hex});
   }
 
-   onChangeDate = date => this.setState({ date })
+  onChange = () => {
+    this.setState({ color: '' });
+ }
+
 
 
   render() {
@@ -30,7 +33,10 @@ export class Parameter extends Component {
     
     return (
       
-      <div>
+      <div  
+        style={{ backgroundColor: this.state.color }} 
+        onClick={this.onChange}
+      >
         
         <h1>BOUTON PARAMETRE</h1>
 
@@ -49,7 +55,7 @@ export class Parameter extends Component {
             onChangeComplete={ this.handleChange }/>
         </div> 
 
-      
+
 
       </div>
     )
