@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import DropDownInline from './DropDownInline'
-import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import TextareaCustom from  './TextAreaCustom';
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
 import moment from 'moment'
@@ -107,85 +107,85 @@ class FormEvent extends Component {
       <div className="screen">
         <MenuAdmin />
 
-          <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
+        <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
           <p>Date de debut :</p>
-            <InputWithCalendar
-              date={dateStart}
-              funct={this.handleChangeInput}
-              onChangeDate={this.onChangeDateStart}
-              keyState="dateStart"
-              value={dateStart}
-            /> 
+          <InputWithCalendar
+            date={dateStart}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          />
 
-            <p>Date de fin :</p>
-            <InputWithCalendar
-              date={dateEnd}
-              funct={this.handleChangeInput}
-              onChangeDate={this.onChangeDateEnd}
-              keyState="dateEnd"
-              value={dateEnd}
-            />
-
-
-            <InputInLine
-              keyState="titre"
-              title="Titre"
-              value={titre}
-              funct={this.handleChangeInput}
-            />
-
-            <DropDownInline
-              keyState='importance'
-              title='Importance'
-              data={['RC', 'Partenaires', 'Général']}
-              func={this.handleChangeDropDown}
-            />
-
-            <InputInLine
-              keyState="adresse"
-              title="Adresse"
-              value={adresse}
-              funct={this.handleChangeInput}
-            />
-
-            <DropDownInline
-              keyState="category"
-              title="catégorie"
-              data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
-              func={this.handleChangeDropDown}
-            />
-
-            <InputInLine
-              keyState="link"
-              title="lien externe"
-              value={link}
-              funct={this.handleChangeInput}
-            />
-
-            <InputInLine
-              keyState="description"
-              title="information"
-              value={description}
-              funct={this.handleChangeInput}
-            />
-
-            <InputInLine
-              keyState="cover"
-              title="visuel"
-              value={cover}
-              funct={this.handleChangeInput}
-            />
+          <p>Date de fin :</p>
+          <InputWithCalendar
+            date={dateEnd}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateEnd}
+            keyState="dateEnd"
+            value={dateEnd}
+          />
 
 
-            <input onClick={this.handleSubmit}
-              className="button-submit"
-              type="submit"
-              value="Envoyer"
-              color="grey"
-              variant="contained"
-            />
-          </div>
+          <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          />
+
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
+
+          <InputInLine
+            keyState="adresse"
+            title="Adresse"
+            value={adresse}
+            funct={this.handleChangeInput}
+          />
+
+          <DropDownInline
+            keyState="category"
+            title="catégorie"
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
+
+          <InputInLine
+            keyState="link"
+            title="lien externe"
+            value={link}
+            funct={this.handleChangeInput}
+          />
+
+          <TextareaCustom
+            keyState="description"
+            value={description}
+            funct={this.handleChangeInput}
+          />
+
+
+          <InputInLine
+            keyState="cover"
+            title="visuel"
+            value={cover}
+            funct={this.handleChangeInput}
+          />
+
+
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
         </div>
+      </div>
     )
   }
 }

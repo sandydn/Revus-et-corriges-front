@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import InputInLine from './InputInLine';
-import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar';
 import DropDownInline from './DropDownInline';
+import DropDownInlineSpec from './DropDownInlineSpec';
 import MenuAdmin from '../screen/MenuAdmin';
+import TextareaCustom from './TextAreaCustom';
 import axios from 'axios';
 import moment from 'moment'
 import './Form.css';
+
 
 
 class FormCinema extends Component {
@@ -19,6 +21,9 @@ class FormCinema extends Component {
     link: null,
     titre: null,
     cover: null,
+    results: {},
+    isLoading: false,
+    errors: null,
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -54,6 +59,19 @@ class FormCinema extends Component {
     })
   }
 
+  getDataContact() {
+    axios
+      .get("http://localhost:4000/a2/contact")
+      .then(results => {
+        this.setState({ results: results.data, isLoading: true })
+        console.log('je suis la', this.state)
+      })
+  }
+
+  componentDidMount() {
+    this.getDataContact()
+  }
+
 
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
@@ -66,7 +84,7 @@ class FormCinema extends Component {
       description: this.state.description,
       link: this.state.link,
       cover: this.state.cover,
-      // titre: this.state.titre,
+      titre: this.state.titre,
 
 
     })
@@ -78,6 +96,7 @@ class FormCinema extends Component {
       dateStart,
       link,
       cover,
+      titre,
     } = this.state
 
     const styleBase = {
@@ -94,44 +113,43 @@ class FormCinema extends Component {
       <div className="screen">
         <MenuAdmin />
         <div className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
-        <p>Date de debut :</p>
-            <InputWithCalendar
-              date={dateStart}
-              funct={this.handleChangeInput}
-              onChangeDate={this.onChangeDateStart}
-              keyState="dateStart"
-              value={dateStart}
-            /> 
+          <p>Date de debut :</p>
+          <InputWithCalendar
+            date={dateStart}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          />
 
-          {/* <DropDownInline
-              title='Type de contact'
-              data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
-            // TODOS : add props for behavior
-            /> */}
+          <DropDownInlineSpec
+            title="liste de contact"
+            data={this.state.results}
+          />
 
 
-          TODO dropdown titre de film
+          TODO dropdownspec titre de film + liste de contact
 
           <DropDownInline
-              keyState='importance'
-              title='Importance'
-              data={['RC', 'Partenaires', 'Général']}
-              func={this.handleChangeDropDown}
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
           />
 
           <DropDownInline
-              keyState='category'
-              title='catégorie'
-              data={['Evenement', 'Cinema', 'Vidéo', 'Rétrospective']}
-              func={this.handleChangeDropDown}
+            keyState='category'
+            title='catégorie'
+            data={['Evenement', 'Cinema', 'Vidéo', 'Rétrospective']}
+            func={this.handleChangeDropDown}
           />
 
-          <InputInLine
+
+          <TextareaCustom 
             keyState="description"
-            title="information"
             value={description}
             funct={this.handleChangeInput}
-          />
+            />
 
           <InputInLine
             keyState="link"
@@ -147,13 +165,13 @@ class FormCinema extends Component {
             funct={this.handleChangeInput}
           />
 
-            <input  onClick={this.handleSubmit}
-              className="button-submit"
-              type="submit"
-              value="Envoyer"
-              color="grey"
-              variant="contained"
-            />
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
         </div>
       </div>
     )
