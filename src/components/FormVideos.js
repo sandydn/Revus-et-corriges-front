@@ -3,22 +3,24 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'
 
 import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import DropDownInline from './DropDownInline';
 import InputContact from './InputContact';
 import MenuAdmin from '../screen/MenuAdmin';
-
+import axios from 'axios';
 import './css/Cardcontact.css'
 import './Form.css';
 
 class FormVideos extends Component {
   state = {
-    dateCreation: null,
     dateStart: null,
     format: null,
     importance: null,
     link: null,
     titre: null,
     cover: null,
+    category: null,
+
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -55,37 +57,54 @@ class FormVideos extends Component {
     })
   }
 
-      // //convert date format from DatePicker for filling database with the right format
-      // dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
-      // dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
+
+
+  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(e)
+    axios.post(`http://localhost:4000/a9/eventcontact`, {
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      importance: this.state.importance,
+      category: this.state.category,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+      format: this.state.format,
+
+    })
+  }
   render() {
     const {
-      dateCreation,
       dateStart,
       format,
       link,
-      titre,
       cover,
     } = this.state
 
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
     return (
       <div className="screen">
         <MenuAdmin />
-        <div className="Formvideos" onSubmit={this.handleSubmit}>
+        <div className="Formvideos" style={styleBase.form} onSubmit={this.handleSubmit}>
           <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
+            funct={this.handleChangeInput}
             onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
           />
           TODO dropdown titre de film
-          
-          
-          <InputInLine
-            keyState="dateCreation"
-            title="Date du film"
-            value={dateCreation}
-            funct={this.handleChangeInput}
-          />
 
           <InputInLine
             keyState="format"
@@ -93,9 +112,20 @@ class FormVideos extends Component {
             value={format}
             funct={this.handleChangeInput}
           />
-          // TODO dropdown importance + dropdown contact 
+          // TODO dropdown contact 
 
-
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
+          <DropDownInline
+            keyState="category"
+            title="catégorie"
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
           <InputInLine
             keyState="link"
             title="lien externe"
