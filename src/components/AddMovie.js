@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import InputInLine from './InputInLine'
-import MenuAdmin from '../screen/MenuAdmin'
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
 
@@ -22,6 +21,7 @@ class AddMovie extends Component {
         dateCreation: this.state.dateCreation,
         titre: this.state.titre,
       })
+      alert('Film ajouté !')
     }
   
   
@@ -30,10 +30,6 @@ class AddMovie extends Component {
 
     return (
       <div className="screen">
-        <div>
-          <MenuAdmin />
-        </div>
-
         <div>
             <h2>Ajout d'un film</h2>
         <form onSubmit={this.handleSubmit}>

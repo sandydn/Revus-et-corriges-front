@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import InputInLine from './InputInLine'
 import MenuAdmin from '../screen/MenuAdmin'
-import DropDownInline from './DropDownInLine';
-import Button from '@material-ui/core/Button';
+import DropDownInline from './DropDownInline';
+// import Button from '@material-ui/core/Button';
+import axios from 'axios';
+
+import './css/Form.css'
 
 class AddContact extends Component {
   state = {
@@ -16,21 +19,33 @@ class AddContact extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
+  }
+
+  handleSubmit = (e) => {
+    // e.preventDefault()
+    axios.post(`http://localhost:4000/a2/contact`, {
+      prenom: this.state.prenom,
+      nom: this.state.nom,
+      type: this.state.type,
+    })
+      alert('Contact ajouté !')
+  }
+
+
   render() {
     const {
       prenom,
       nom,
-      type,
     } = this.state
+
     return (
       <div className="screen">
         <div>
-          <MenuAdmin />
-        </div>
-
-        <div>
           <h2>Ajout d'un Contact</h2>
-          <form>
+          {/* <form onSubmit={this.handleSubmit}> */}
 
             <InputInLine
               keyState="prenom"
@@ -47,21 +62,22 @@ class AddContact extends Component {
             />
 
             <DropDownInline
-              title='Type de contact'
+              keyState='type'
+              title='Type'
               data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
-            // TODOS : add props for behavior
+              func={this.handleChangeDropDown}
             />
 
-            <Button
+            <input  onClick={this.handleSubmit}
               className="button-submit"
               type="submit"
               value="Submit"
               color="grey"
               variant="contained"
-            >Envoi
-            </Button>
-
-          </form>
+            />
+            
+            
+          {/* </form> */}
         </div>
 
       </div>

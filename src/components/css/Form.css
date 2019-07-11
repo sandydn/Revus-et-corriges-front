@@ -13,7 +13,7 @@
 }
 
 .container {
-  background-image: url(./assets/bgback.jpg);
+  background-image: url(../assets/bgback.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -60,3 +60,4 @@ margin-bottom: 2%;
     justify-content: space-around;
     width: 40vw;
 }
+
