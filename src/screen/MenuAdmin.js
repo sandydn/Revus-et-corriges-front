@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
 import LinkForm from '../components/LinkForm'
@@ -22,12 +23,17 @@ getevent() {
       })
 }
 
+logout() {
+  localStorage.clear()
+  window.location.href = "/login"
+}
 
 componentDidMount() {
     this.getevent()
 }
 
   render() {
+
     return (
 
       <div  className="all">
@@ -46,7 +52,7 @@ componentDidMount() {
           <LinkForm name="Paramètres" />
           <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
-
+        <button onClick={this.logout}>LOGOUT</button>
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
       </div>
 

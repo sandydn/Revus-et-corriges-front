@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
@@ -25,6 +25,7 @@ class Login extends React.Component {
     showPassword: false,
     success: false,
     redirect: false,
+    verified: false,
   };
 
   // Show password or not (icon-eye) //
@@ -54,7 +55,32 @@ class Login extends React.Component {
       });
   };
 
+  protectedRoute = () => {
+    
+    const token = localStorage.getItem("token")
+    axios({
+      method: 'POST',
+      url: "http://localhost:4000/auth/protected",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+      .then(res => {
+        this.setState({
+          verified: res.data.auth,
+        })
+      })
+  }
+
+  componentDidMount() {
+    this.protectedRoute()
+  }
+
   render() {
+
+    if (this.state.verified === true) {
+      return <Redirect to='/menu-admin' />
+    }
 
     const { formData, success, redirect } = this.state;
     if (redirect) {
@@ -63,68 +89,68 @@ class Login extends React.Component {
 
     return (
 
-        <div className="adminFormIn" >
+      <div className="adminFormIn" >
 
-          <img className="iconUser" src={RC} alt="icone-user" />
+        <img className="iconUser" src={RC} alt="icone-user" />
 
-          <div className="FormTitleIn">
-            <p to="/signin" className="FormTitleIn__Link">Connexion</p>
-          </div>
-
-          <div>
-            <ValidatorForm
-              ref="form"
-              onSubmit={this.handleSubmit}
-            >
-
-              <TextValidator
-                fullWidth
-                label="Email"
-                onChange={this.handleChange}
-                name="email"
-                value={formData.email}
-                validators={['required', 'isEmail']}
-                errorMessages={['this field is required', 'Email non valide.']}
-              />
-
-              <FormControl fullWidth >
-                <InputLabel htmlFor="adornment-password">Password</InputLabel>
-                <Input
-                  label="Password"
-                  name="password"
-                  type={this.state.showPassword ? 'text' : 'password'}
-                  value={formData.password}
-                  onChange={this.handleChange}
-                  validators={['required']}
-                  errorMessages={['this field is required']}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-                        {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
-                    </InputAdornment>} />
-              </FormControl>
-
-              <div className="btnSignUp"></div>
-
-              <Button
-                type="submit"
-                value="Submit"
-                color="primary"
-                variant="contained"
-                disabled={success}
-                fullWidth
-              >
-                {
-                  (success && 'Vous êtes connécté.')
-                  || (!success && 'Connexion')
-                }
-              </Button>
-
-            </ValidatorForm>
-          </div>
-
+        <div className="FormTitleIn">
+          <p to="/signin" className="FormTitleIn__Link">Connexion</p>
         </div>
+
+        <div>
+          <ValidatorForm
+            ref="form"
+            onSubmit={this.handleSubmit}
+          >
+
+            <TextValidator
+              fullWidth
+              label="Email"
+              onChange={this.handleChange}
+              name="email"
+              value={formData.email}
+              validators={['required', 'isEmail']}
+              errorMessages={['this field is required', 'Email non valide.']}
+            />
+
+            <FormControl fullWidth >
+              <InputLabel htmlFor="adornment-password">Password</InputLabel>
+              <Input
+                label="Password"
+                name="password"
+                type={this.state.showPassword ? 'text' : 'password'}
+                value={formData.password}
+                onChange={this.handleChange}
+                validators={['required']}
+                errorMessages={['this field is required']}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
+                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>} />
+            </FormControl>
+
+            <div className="btnSignUp"></div>
+
+            <Button
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+              disabled={success}
+              fullWidth
+            >
+              {
+                (success && 'Vous êtes connécté.')
+                || (!success && 'Connexion')
+              }
+            </Button>
+
+          </ValidatorForm>
+        </div>
+
+      </div>
     );
   };
 };
