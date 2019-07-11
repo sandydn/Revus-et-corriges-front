@@ -51,7 +51,7 @@ class FormCinema extends Component {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log(dateEnd);
+    console.log(dateEnd);      return console.log('error')
 
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
@@ -59,7 +59,7 @@ class FormCinema extends Component {
     })
   }
 
-  getDataContact() {
+  setDataSelect =() =>{
     axios
       .get("http://localhost:4000/a2/contact")
       .then(results => {
@@ -69,7 +69,7 @@ class FormCinema extends Component {
   }
 
   componentDidMount() {
-    this.getDataContact()
+    this.setDataSelect()
   }
 
 
@@ -124,7 +124,7 @@ class FormCinema extends Component {
 
           <DropDownInlineSpec
             title="liste de contact"
-            data={this.state.results}
+            data={this.state.results.data}
           />
 
 

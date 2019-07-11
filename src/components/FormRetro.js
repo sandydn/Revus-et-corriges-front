@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import InputInLine from './InputInLine';
 import DropDownInline from './DropDownInline';
-import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios'
