@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserView, MobileView } from "react-device-detect";
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 import Menu from './Menu'
 import MobileWeek from './MobileWeek'
@@ -9,18 +10,49 @@ import Week from './Week'
 import moment from "moment"
 import 'moment/locale/fr';
 import 'moment-timezone';
+import Moment from 'react-moment';
+import 'moment/locale/fr';
 
 import dataTest from "./dataTest.json"
 import "./css/calendar.css"
+
+Moment.globalFormat = 'D MMM YYYY';
 
 class Weekly extends Component {
     state = {
         days: [],
         dayEvent: [],
         dayDate: '',
-        dateObj: moment()
+        dateObj: moment(),
+        date: ''
     }
 
+    getevent() {
+        axios
+            .get("http://localhost:4000/a5/event")
+            .then(results => {
+                this.createDateArray(results.data)
+                this.setState({ results: results.data })
+            })
+    }
+
+    
+
+    createDateArray = (datas) => {
+        let dateArr = []
+        for (let i = 0; i < 7; i++ ){
+            const dataDay = datas.filter((data) => moment(data.dateStart).format('DD MMM YYYY') === this.state.date.format('DD MMM YYYY'))
+            const dayToPush = {
+                date: this.state.date.format('DD MMM YYYY'),
+                data: dataDay
+            }
+            dateArr.push(dayToPush)
+            this.setState({date: moment(this.state.date).add(1, 'days')})
+        }
+        console.log(dateArr)
+        // console.log(moment(this.state.date).format('DD MMM YYYY'))
+        // console.log(datas.map((data)=> moment(data.dateStart).format('DD MMM YYYY')))
+    }
 
     selectDay(i) {
         const day = dataTest.filter((display) => display.date.includes(i))
@@ -32,7 +64,9 @@ class Weekly extends Component {
 
     componentDidMount() {
         this.setState({ days: dataTest.filter((display) => display.id < 5) })
+        this.setState({ date: moment().startOf('hour')})
         this.selectDay(0)
+        this.getevent()
     }
 
     componentDidUpdate() {
@@ -61,7 +95,9 @@ class Weekly extends Component {
     }
 
     nextDays = () => {
-        this.setState({ days: dataTest.filter((display) => display.id > 4) })
+        // this.setState({ days: dataTest.filter((display) => display.id > 4) })
+        // this.setState({date: moment(this.state.date).add(7, 'days')})
+        this.getevent()
     }
 
     displaySelector = (select) => {
@@ -81,128 +117,81 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
-    // currentDayOfWeek = () => {
-    //     console.log
-    //     return this.state.dayDate/* .format("D") */
-    // }
+    dateTest = moment().startOf('hour');
 
+  
     render() {
+        
 
 
-// TEST
-
-// let blanks = [];
-//   for (let i = 0; i < this.firstDayOfWeek(); i++) {
-//     blanks.push(<div>{""}</div>);
-//   }
-
-
-
-//         let daysInWeek = [];
-//         for (let w = 1; w <= this.daysInWeek(); w++) {
-//             let currentDayOfWeek = w == this.currentDayOfWeek() ? "today" : "";
-
-//             let dayOfEvent = false
-//             this.state.dayEvent.map( event => {
-//                 const eventDateStart = moment(event.dateStart).format("D")       
-//                 if (w == eventDateStart) {
-
-//                 return dayOfEvent = true
-//                 }
-//             })
-//             const calendarDay = dayOfEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
-//             daysInWeek.push(
-//                 <div key={w} className = { `${calendarDay} ${currentDayOfWeek}`}>
-
-//                 <h3 onClick={e => {this.onDayClick(e, w)}}>{w}</h3>
-
-//                 </div>
-//             )
-//             }
-
-//             let totalSlots = [...blanks, ...daysinweek];
-//             let rows = [];
-//             let cells = [];
-
-//             totalSlots.forEach((row, i) => {
-//                 if (i % 7 !== 0) {
-//                 cells.push(row);
-//                 } else {
-//                 rows.push(cells);
-//                 cells = [];
-//                 cells.push(row);
-//                 }
-
-//                 if (i === totalSlots.length - 1) {
-//                 rows.push(cells);
-//                 }
-//             });
-
-//             let daysinweek = rows.map((w, i) => {
-
-//                 return <h3>{w}</h3>;
-//             });
-// TEST
-
+        const dateToFormat = '1976-04-19T12:59-0500';
         return (
+
             <>
-                <BrowserView>
-                    <div className='calendar'>
-
-                        <div className='navbar'>
-                            <Menu />
-                            <Link to="/menu-admin" ><input type="submit" value="Admin" /></Link>
-                            <Link to="/login" ><input type="submit" value="Login" /></Link>
-                            <Link to="/month"><input type="submit" value="Monthly" /></Link>
-                        </div>
-
-                        <div className='weeklyDesktop'>
-
-                            <div className='weeklyHead'>
-                                <h1>Agenda Mars 2019</h1>
-                            </div>
-
-                            <div className='weeklyDisplay'>
-
-                            {/* TEST */}
-                            {/* <div>{daysinweek}</div> */}
-                            {/* TEST */}
-
-                                <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
-
-                                <Week dataDays={this.state.days} />
-
-                                <div onClick={this.nextDays} className='nextDesktop'><i className="arrow right"></i></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </BrowserView>
-
-                <MobileView>
-
-                    <div className='weeklyMobile'>
-
-                        <div className='weeklyHeadMobile'>
-                            <h1>Agenda Mars 2019</h1>
-                        </div>
-
-                        <div className='weeklyDisplayMobile'>
-
-
-                            <MobileWeek dataDays={this.state.days}
-                                date={this.state.dayDate}
-                                dataEvent={this.state.dayEvent}
-                                previous={this.previousDays}
-                                next={this.nextDays}
-                                selector={this.handleSelector} />
-
-                        </div>
-
-                    </div>
-
-                </MobileView>
+            <Moment>{dateToFormat}</Moment>
+            <br/>
+            <Moment>{this.dateTest}</Moment>
+            <button onClick={this.nextDays}>TEST</button>
             </>
+
+            // <>
+            //     <BrowserView>
+            //         <div className='calendar'>
+
+            //             <div className='navbar'>
+            //                 <Menu />
+            //                 <Link to="/menu-admin" ><input type="submit" value="Admin" /></Link>
+            //                 <Link to="/login" ><input type="submit" value="Login" /></Link>
+            //                 <Link to="/month"><input type="submit" value="Monthly" /></Link>
+            //             </div>
+
+            //             <div className='weeklyDesktop'>
+
+            //                 <div className='weeklyHead'>
+            //                     <h1>Agenda Mars 2019</h1>
+            //                 </div>
+
+            //                 <div className='weeklyDisplay'>
+
+            //                 {/* TEST */}
+            //                 {/* <div>{daysinweek}</div> */}
+            //                 {/* TEST */}
+
+            //                     <div onClick={this.previousDays} className='previousDesktop'><i className="arrow left"></i></div>
+
+            //                     <Week dataDays={this.state.days} />
+
+            //                     <div onClick={this.nextDays} className='nextDesktop'><i className="arrow right"></i></div>
+            //                 </div>
+            //             </div>
+
+            //         </div>
+            //     </BrowserView>
+
+            //     <MobileView>
+
+            //         <div className='weeklyMobile'>
+
+            //             <div className='weeklyHeadMobile'>
+            //                 <h1>Agenda Mars 2019</h1>
+            //             </div>
+
+            //             <div className='weeklyDisplayMobile'>
+
+
+            //                 <MobileWeek dataDays={this.state.days}
+            //                     date={this.state.dayDate}
+            //                     dataEvent={this.state.dayEvent}
+            //                     previous={this.previousDays}
+            //                     next={this.nextDays}
+            //                     selector={this.handleSelector} />
+
+            //             </div>
+
+            //         </div>
+
+            //     </MobileView>
+            // </>
         )
     }
 }
