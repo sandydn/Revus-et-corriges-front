@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import InputInLine from './InputInLine'
-import Button from '@material-ui/core/Button';
 import axios from 'axios'
 
 class AddMovie extends Component {
@@ -24,7 +23,6 @@ class AddMovie extends Component {
       alert('Film ajouté !')
     }
   
-  
 
   render() {
 
@@ -36,26 +34,25 @@ class AddMovie extends Component {
 
             <InputInLine 
                 keyState="dateCreation"
-                title="date de création du films"    
+                title="date de création du film"    
                 value={this.state.dateCreation}
                 funct={this.handleChangeInput}
             />
 
             <InputInLine
                 keyState="titre"
-                title="titre du films"
+                title="titre du film"
                 value={this.state.titre}  
                 funct={this.handleChangeInput}          
             />
 
-            <Button 
-                 className="button-submit"
-                 type="submit"
-                 value="Submit"
-                 color="grey"
-                 variant="contained"
-            >Envoi
-            </Button>
+            <input  onClick={this.handleSubmit}
+              className="button-submit"
+              type="submit"
+              value="Envoyer"
+              color="grey"
+              variant="contained"
+            />
 
         </form>
         </div>

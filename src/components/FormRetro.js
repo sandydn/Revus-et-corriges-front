@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import InputInLine from './InputInLine';
+import DropDownInline from './DropDownInline';
 import CheckboxLine from './CheckboxLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
@@ -13,9 +14,10 @@ class FormRetro extends Component {
     dateStart: null,
     category: null,
     link: null,
-    importance: null,
+    importance: 0,
     titre: null,
     cover: null,
+
   }
 
 
@@ -58,13 +60,14 @@ class FormRetro extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(e)
-    axios.post(`http://localhost:4000/a5/event`, {
+    axios.post(`http://localhost:4000/a9/eventcontact`, {
       // dateStart: e.target.dateStart.value,
       importance: this.state.importance,
       category: this.state.category,
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
+      
     })
   }
 
@@ -77,31 +80,56 @@ class FormRetro extends Component {
       category,
     } = this.state
 
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
+
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formretro" onSubmit={this.handleSubmit}>
+        <div className="Formretro" style={styleBase.form} onSubmit={this.handleSubmit}>
           {/* <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
           /> */}
 
-            <InputInLine
-              keyState="titre"
-              title="Titre"
-              value={titre}
-              funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          />
 
-            <div className="importance">
-              <p>Importance </p>
-              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-            </div>
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
 
-// todo 4 - dropdown 2 contact - realisateur, distributeur  +  1 importance + 1 films
+          <DropDownInline
+            keyState='realisateur'
+            title='Réalisateur'
+            data={['Toto', 'Bebe', 'Kiki', 'Chocho', 'cécé']}
+            func={this.handleChangeDropDown}
+          />
+
+          <DropDownInline
+            keyState='distributeur'
+            title='distributeur'
+            data={['tomtom', 'sansan', 'papy', 'abdou']}
+            func={this.handleChangeDropDown}
+          />
+
+
+          // todo  axios get  - dropdown 2 contact - realisateur, distributeur + 1 films
 
           <InputInLine
             keyState="link"
@@ -110,11 +138,11 @@ class FormRetro extends Component {
             funct={this.handleChangeInput}
           />
 
-          <InputInLine
+          <DropDownInline
             keyState="category"
             title="catégorie"
-            value={category}
-            funct={this.handleChangeInput}
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
           />
 
           <InputInLine
@@ -123,16 +151,15 @@ class FormRetro extends Component {
             value={cover}
             funct={this.handleChangeInput}
           />
-          <button
+
+          <input onClick={this.handleSubmit}
             className="button-submit"
             type="submit"
-            value="Submit"
-            color="primary"
+            value="Envoyer"
+            color="grey"
             variant="contained"
-          >Envoyer le formulaire
-          </button>
-
-        </form>
+          />
+        </div>
       </div>
     )
   }

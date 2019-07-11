@@ -10,7 +10,7 @@ import './Form.css';
 
 class FormEvent extends Component {
 
-  state = { 
+  state = {
     //generateur d'input
     adresse: [],
     category: null,
@@ -83,7 +83,7 @@ class FormEvent extends Component {
 
 
   render() {
-   
+
     const style = {
       general: {
         display: 'flex',
@@ -93,8 +93,8 @@ class FormEvent extends Component {
     }
 
     const {
-     // dateEnd,
-     // dateStart,
+      // dateEnd,
+      // dateStart,
       description,
       link,
       titre,
@@ -107,7 +107,7 @@ class FormEvent extends Component {
         <MenuAdmin />
 
         <div style={style.general}>
-          <form className="Formevent" onSubmit={this.handleSubmit} >
+          <div className="Formevent" onSubmit={this.handleSubmit} >
             {/* <p>Date de debut :</p>
             <InputWithCalendar
             date={dateStart}
@@ -126,12 +126,6 @@ class FormEvent extends Component {
             funct={this.handleChangeInput}
           />   */}
 
-            <div className="importance">
-              <p>Importance </p>
-              <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-              <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-              <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-            </div>
 
             <InputInLine
               keyState="titre"
@@ -168,17 +162,15 @@ class FormEvent extends Component {
               funct={this.handleChangeInput}
             />
 
-            <button
+
+            <input onClick={this.handleSubmit}
               className="button-submit"
               type="submit"
-              value="Submit"
-              color="primary"
+              value="Envoyer"
+              color="grey"
               variant="contained"
-            >
-              Envoyer le formulaire
-            </button>
-
-          </form>
+            />
+          </div>
         </div>
       </div>
     )

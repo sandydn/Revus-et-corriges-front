@@ -92,7 +92,7 @@ class FormCinema extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
+        <div className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
           {/* <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
@@ -144,15 +144,14 @@ class FormCinema extends Component {
             funct={this.handleChangeInput}
           />
 
-          <button
-            className="button-submit"
-            type="submit"
-            value="Submit"
-            color="primary"
-            variant="contained"
-          >Envoyer le formulaire
-            </button>
-        </form>
+            <input  onClick={this.handleSubmit}
+              className="button-submit"
+              type="submit"
+              value="Envoyer"
+              color="grey"
+              variant="contained"
+            />
+        </div>
       </div>
     )
   }

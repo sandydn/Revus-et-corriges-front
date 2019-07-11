@@ -83,15 +83,15 @@ class FormVideos extends Component {
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formvideos" onSubmit={this.handleSubmit}>
+        <div className="Formvideos" onSubmit={this.handleSubmit}>
           <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
             onChangeDate={this.onChangeDateStart}
           />
-TODO dropdown titre de film
-
-
+          TODO dropdown titre de film
+          
+          
           <InputInLine
             keyState="dateCreation"
             title="Date du film"
@@ -105,33 +105,33 @@ TODO dropdown titre de film
             value={format}
             funct={this.handleChangeInput}
           />
-// TODO dropdown importance + dropdown contact 
+          // TODO dropdown importance + dropdown contact 
 
 
-            <InputInLine
-              keyState="link"
-              title="lien externe"
-              value={link}
-              funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="link"
+            title="lien externe"
+            value={link}
+            funct={this.handleChangeInput}
+          />
 
-            <InputInLine
-              keyState="cover"
-              title="cover"
-              value={cover}
-              funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="cover"
+            title="cover"
+            value={cover}
+            funct={this.handleChangeInput}
+          />
 
-            <button
-              className="button-submit"
-              type="submit"
-              value="Submit"
-              color="primary"
-              variant="contained"
-            >Envoyer le formulaire
-            </button>
-          </form>
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
+
         </div>
+      </div>
     )
   }
 }

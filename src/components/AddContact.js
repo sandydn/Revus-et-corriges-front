@@ -71,7 +71,7 @@ class AddContact extends Component {
             <input  onClick={this.handleSubmit}
               className="button-submit"
               type="submit"
-              value="Submit"
+              value="Envoyer"
               color="grey"
               variant="contained"
             />
