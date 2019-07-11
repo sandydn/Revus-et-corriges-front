@@ -36,27 +36,25 @@ class FormCinema extends Component {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test');
+    console.log('test', dateStart);
 
-    this.setState({ dateStart })
+    this.setState({ dateStart: dateStart }, () => {
+      console.log(this.state);
+
+    })
   }
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log('test');
+    console.log(dateEnd);
 
-    this.setState({ dateEnd })
+    this.setState({ dateEnd: dateEnd }, () => {
+      console.log(this.state);
+
+    })
   }
-
-  // componentDidMount() {
-  //   console.log('didmount', this.state);
-  //     axios.post(`http://localhost:4000/a5/event`)
-  //     .then(result => {
-  //         this.setState({ titre: result.data.titre, dateStart: result.data.dateStart, cover: result.data.cover, link: result.data.link })
-  //     })
-  // }
 
 
   // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
@@ -103,84 +101,36 @@ class FormCinema extends Component {
             onChangeDate={this.onChangeDateStart}
           />
 
-          <div className="importance">
-            <p>Importance </p>
-            <CheckboxLine title="r&c" keyState="importance" value={1} funct={this.handleChangeInput} />
-            <CheckboxLine title="partenaires" keyState="importance" value={2} funct={this.handleChangeInput} />
-            <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-          </div>
+TODO dropdown importance
 
-            <InputInLine
-              keyState="titre"
-              title="Titre"
-              value={titre}
-              funct={this.handleChangeInput}
-            />
+TODO dropdown titre de film
+          {/* <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          /> */}
 
-            <InputInLine
-              keyState="dateCreation"
-              title="Date du film"
-              value={dateCreation}
-              funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="dateCreation"
+            title="Date du film"
+            value={dateCreation}
+            funct={this.handleChangeInput}
+          />
 
-            <div className="contact">
-              <p className="Role-contact">Réalisateur</p>
-              <InputInLine
-                keyState="prenom"
-                title="prénom"
-                value={prenom}
-                funct={this.handleChangeInput}
-              />
-              <InputInLine
-                keyState="nom"
-                title="nom"
-                value={nom}
-                funct={this.handleChangeInput}
-              />
-              <div className="type-contact">
-                <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput} />
-                <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput} />
-                <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput} />
-                <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput} />
-              </div>
-            </div>
+          <InputInLine
+            keyState="link"
+            title="lien externe"
+            value={link}
+            funct={this.handleChangeInput}
+          />
 
-            <div className="contact">
-              <p className="Role-contact">Distributeur</p>
-              <InputInLine
-                keyState="prenom"
-                title="prénom"
-                value={prenom}
-                funct={this.handleChangeInput}
-              />
-              <InputInLine
-                keyState="nom"
-                title="nom"
-                value={nom}
-                funct={this.handleChangeInput}
-              />
-              <div className="type-contact">
-                <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeInput} />
-                <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeInput} />
-                <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeInput} />
-                <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeInput} />
-              </div>
-            </div>
-
-            <InputInLine
-              keyState="link"
-              title="lien externe"
-              value={link}
-              funct={this.handleChangeInput}
-            />
-
-            <InputInLine
-              keyState="cover"
-              title="cover"
-              value={cover}
-              funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="cover"
+            title="cover"
+            value={cover}
+            funct={this.handleChangeInput}
+          />
 
             <button
               className="button-submit"
