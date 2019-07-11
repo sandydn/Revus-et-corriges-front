@@ -27,8 +27,9 @@ class FormRetro extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {

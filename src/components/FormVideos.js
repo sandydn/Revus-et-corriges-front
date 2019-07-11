@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import moment from 'moment'
 
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
@@ -25,8 +26,9 @@ class FormVideos extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {
@@ -53,23 +55,9 @@ class FormVideos extends Component {
     })
   }
 
-  // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log(e)
-  //   axios.post(`http://localhost:4000/a5/event`, {
-  //     // dateStart: e.target.dateStart.value,
-  //     // dateEnd: e.target.dateEnd.value,
-  //     importance: e.target.importance.value,
-  //     description: e.target.description.value,
-  //     link: e.target.link.value,
-  //     cover: e.target.cover.value,
-  //     titre: e.target.titre.value,
-  //     lieux_idlieux: e.target.adresse.value,
-
-  //   })
-  // }
-
+      // //convert date format from DatePicker for filling database with the right format
+      // dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      // dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
   render() {
     const {
       dateCreation,

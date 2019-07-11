@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-
+import DropDownInline from './DropDownInline'
 import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
+import moment from 'moment'
 
 import './Form.css';
 
@@ -21,8 +22,8 @@ class FormEvent extends Component {
     link: null,
     titre: null,
     cover: null,
-    video_idvideo: [],
-    contact_idcontact: []
+    // video_idvideo: [],
+    // contact_idcontact: []
   }
 
 
@@ -33,12 +34,9 @@ class FormEvent extends Component {
 
     })
   }
-
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value }, () => {
-      console.log(this.state);
-
-    })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {
@@ -69,10 +67,12 @@ class FormEvent extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      //dateStart: this.state.dateStart,
-      //dateEnd: this.state.dateEnd,
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
       importance: this.state.importance,
       description: this.state.description,
+      category: this.state.category,
       link: this.state.link,
       cover: this.state.cover,
       titre: this.state.titre,
@@ -83,18 +83,9 @@ class FormEvent extends Component {
 
 
   render() {
-
-    const style = {
-      general: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginTop: '20%'
-      }
-    }
-
     const {
-      // dateEnd,
-      // dateStart,
+      dateEnd,
+      dateStart,
       description,
       link,
       titre,
@@ -102,29 +93,38 @@ class FormEvent extends Component {
       adresse,
     } = this.state
 
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
     return (
       <div className="screen">
         <MenuAdmin />
 
-        <div style={style.general}>
-          <div className="Formevent" onSubmit={this.handleSubmit} >
-            {/* <p>Date de debut :</p>
+          <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
+          <p>Date de debut :</p>
             <InputWithCalendar
-            date={dateStart}
-            onChangeDate={this.onChangeDateStart}
-            keyState="dateStart"
-            value={dateStart}
-            funct={this.handleChangeInput}
-          /> 
+              date={dateStart}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateStart}
+              keyState="dateStart"
+              value={dateStart}
+            /> 
 
             <p>Date de fin :</p>
-          <InputWithCalendar
-            date={dateEnd}
-            onChangeDate={this.onChangeDateEnd}
-            keyState="dateEnd"
-            value={dateEnd}
-            funct={this.handleChangeInput}
-          />   */}
+            <InputWithCalendar
+              date={dateEnd}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateEnd}
+              keyState="dateEnd"
+              value={dateEnd}
+            />
 
 
             <InputInLine
@@ -134,11 +134,25 @@ class FormEvent extends Component {
               funct={this.handleChangeInput}
             />
 
+            <DropDownInline
+              keyState='importance'
+              title='Importance'
+              data={['RC', 'Partenaires', 'Général']}
+              func={this.handleChangeDropDown}
+            />
+
             <InputInLine
               keyState="adresse"
               title="Adresse"
               value={adresse}
               funct={this.handleChangeInput}
+            />
+
+            <DropDownInline
+              keyState="category"
+              title="catégorie"
+              data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+              func={this.handleChangeDropDown}
             />
 
             <InputInLine
@@ -172,7 +186,6 @@ class FormEvent extends Component {
             />
           </div>
         </div>
-      </div>
     )
   }
 }

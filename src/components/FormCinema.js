@@ -6,6 +6,7 @@ import InputWithCalendar from './InputWithCalendar';
 import DropDownInline from './DropDownInline';
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
+import moment from 'moment'
 import './Form.css';
 
 
@@ -28,7 +29,6 @@ class FormCinema extends Component {
     console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
   }
-
 
   onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
@@ -59,7 +59,8 @@ class FormCinema extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     axios.post(`http://localhost:4000/a5/event`, {
-      // dateStart: e.target.dateStart.value,
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
       importance: this.state.importance,
       category: this.state.category,
       description: this.state.description,
@@ -93,12 +94,14 @@ class FormCinema extends Component {
       <div className="screen">
         <MenuAdmin />
         <div className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
-          {/* <p>Date de debut :</p>
-          <InputWithCalendar
-            date={dateStart}
-            onChangeDate={this.onChangeDateStart}
-          /> */}
-
+        <p>Date de debut :</p>
+            <InputWithCalendar
+              date={dateStart}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateStart}
+              keyState="dateStart"
+              value={dateStart}
+            /> 
 
           {/* <DropDownInline
               title='Type de contact'
