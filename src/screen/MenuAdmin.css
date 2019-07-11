@@ -23,12 +23,12 @@
     background-size: cover;
     background-position-x: 8vw;
 }
-/* 
+
 .getdata {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, auto);
-    grid-gap: 2vw;
+    grid-gap: 1vw;
     margin-top: 2vw;
     margin-left: 2vw;
     padding-right: 4vw;
@@ -41,13 +41,22 @@
 
 p {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-img {
+.cover {
     max-width:14vw;
     height:auto;
+    margin-left: 10vw;
 
-} */
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
 
 h4 {
     color: white;
@@ -62,4 +71,8 @@ h4 {
 }
 .buttonform:hover {
     text-decoration-line: underline;
+}
+
+.deleteNone{
+    display : none;
 }
