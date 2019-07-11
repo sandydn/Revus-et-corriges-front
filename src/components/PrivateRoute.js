@@ -13,12 +13,6 @@ class PrivateRoute extends Component {
         this.verifyToken();
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.path === this.props.location.pathname && this.props.location.pathname !== prevProps.location.pathname) {
-            window.scrollTo(0, 0)
-        }
-    }
-
     verifyToken() {
         // Getting localStorage data
         const token = localStorage.getItem("token");
@@ -47,6 +41,7 @@ class PrivateRoute extends Component {
         // Verify if a good token //
         const { verified, isLoading } = this.state;
         const { component: Component, ...rest } = this.props;
+
         if (!isLoading) {
             return (
                 <Route {...rest} render={props => (

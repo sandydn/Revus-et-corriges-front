@@ -27,35 +27,35 @@ class App extends Component {
   render() {
 
     return (
-      
+
       <BrowserRouter>
-          <Switch>
+        <Switch>
 
-            {/* Section CALENDRIER */}
-            <Route exact path="/" component={Weekly} />
-            <Route path="/month" component={Monthly} />
-
-
-            {/* Section CONNEXION */}
-            <Route path="/login" component={Sign} />
-            <Route exact path="/signin" component={Login} />
+          {/* Section CALENDRIER */}
+          <Route exact path="/" component={Weekly} />
+          <Route path="/month" component={Monthly} />
 
 
-           {/* Section ADMIN  */}
-            <PrivateRoute path="/menu-admin" component={MenuAdmin} />
-            <Route path="/signup" component={RegisterLogin} />      
-            <Route path="/admin" component={Admin} />
-            <Route path="/admin-events" component={Events} />
-            <Route path="/admin-cinema" component={Cinema} /> 
-            <Route path="/admin-videos" component={Videos} />
-            <Route path="/admin-retro" component={Retro} />
-            <Route path="/admin-events-form" component={FormEvent} />
-            <Route path="/admin-cinema-form" component={FormCinema} />
-            <Route path="/admin-videos-form" component={FormVideos} />   
-            <Route path="/admin-retro-form" component={FormRetro} />         
-          </Switch>
+          {/* Section CONNEXION */}
+          <Route path="/login" component={Sign} />
+          <Route exact path="/signin" component={Login} />
+
+
+          {/* Section ADMIN  */}
+          <PrivateRoute path="/menu-admin" component={MenuAdmin} />
+          <Route path="/signup" component={RegisterLogin} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/admin-events" component={Events} />
+          <Route path="/admin-cinema" component={Cinema} />
+          <Route path="/admin-videos" component={Videos} />
+          <Route path="/admin-retro" component={Retro} />
+          <Route path="/admin-events-form" component={FormEvent} />
+          <Route path="/admin-cinema-form" component={FormCinema} />
+          <Route path="/admin-videos-form" component={FormVideos} />
+          <Route path="/admin-retro-form" component={FormRetro} />
+        </Switch>
       </BrowserRouter>
-      
+
     );
   }
 }
