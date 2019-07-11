@@ -26,8 +26,8 @@ class Weekly extends Component {
         date: ''
     }
 
-    getevent(type) {
-        axios
+    getevent = async (type) => {
+        await axios
             .get("http://localhost:4000/a5/event")
             .then(results => {
                 type(results.data)
@@ -78,6 +78,7 @@ class Weekly extends Component {
     selectDay(i) {
         const day = this.state.days.filter((display) => display.date.includes(i))
         const dayArr = day[0]
+        console.log(dayArr)
         this.setState({ dayEvent: dayArr.data })
         this.setState({ dayDate: dayArr.date })
     }
