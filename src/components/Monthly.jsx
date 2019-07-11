@@ -266,28 +266,51 @@ class Monthly extends Component {
   }
 
   //FUNCTION FOR CURRENT DAY AND DISPLAY EVENT OR NOT
+  // let years = [];
+  // let months =[];
+  // let daysInMonth = [];
+  // for (let y = 1; y <= this.years(); y++){
+  //   for (let m = 1; m <= this.months(); m++) {
+  //     for (let d = 1; d <= this.daysInMonth(); d++) {
+  //       let currentDay = d == this.currentDay() ? "today" : "";
+  //       let dayEvent = false
+  //       this.state.eventDate.map( event => {
+  //       const eventDateStart = moment(event.dateStart).format("D")
+  //       if (d == eventDateStart) {
 
-      let dayzInMonth = [];
-      for (let d = 1; d <= this.daysInMonth(); d++) {
-        let currentDay = d == this.currentDay() ? "today" : "";
-        let dayEvent = false
-        this.state.eventDate.map( event => {
-          const eventDateStart = moment(event.dateStart).format("D")       
-          if (d == eventDateStart) {
+  //       return dayEvent = true
+  //     }
+  //   })
+  //   const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+  //   daysInMonth.push(
+  //     <div key={d} className = { `${calendarDay} ${currentDay}`}>
 
-            return dayEvent = true
-          }
-        })
-        const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
-        dayzInMonth.push(
-          <div key={d} className = { `${calendarDay} ${currentDay}`}>
+  //     let dayzInMonth = [];
+  //     for (let d = 1; d <= this.daysInMonth(); d++) {
+  //       let currentDay = d == this.currentDay() ? "today" : "";
+  //       let dayEvent = false
+  //       this.state.eventDate.map( event => {
+  //         const eventDateStart = moment(event.dateStart).format("D")       
+  //         if (d == eventDateStart) {
 
-            <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
+  //           return dayEvent = true
+  //         }
+  //       })
+  //       const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+  //       dayzInMonth.push(
+  //         <div key={d} className = { `${calendarDay} ${currentDay}`}>
 
-          </div>
-        )
-  }
+  //           <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
 
+  //         </div>
+  //       )
+  // }
+
+  //     </div>
+  //     )
+  //   } 
+//   }
+// }
   //END OF FUNCTION
 
   let totalSlots = [...blanks, ...dayzInMonth];
