@@ -13,10 +13,10 @@ class SearchBar extends React.Component {
     
     render() {
         
-        console.log(show)
+        // console.log(show)
 
         let leshow = show.filter(input => show.data === input)
-        console.log(leshow)
+        // console.log(leshow)
 
         return (
             
