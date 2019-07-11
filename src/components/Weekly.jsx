@@ -14,7 +14,7 @@ import Moment from 'react-moment';
 import 'moment/locale/fr';
 
 import "./css/calendar.css"
-import dataTest from './dataTest.json'
+// import dataTest from './dataTest.json'
 
 Moment.globalFormat = 'DD MMM YYYY';
 
@@ -35,7 +35,6 @@ class Weekly extends Component {
     }
 
     createDateArrayNext = (datas) => {
-        console.log(datas)
         let dateArr = []
         for (let i = 0; i < 5; i++) {
             const dataDay = datas.filter((data) => moment(data.dateStart).format('DD MMM YYYY') === this.state.date.format('DD MMM YYYY'))
@@ -64,26 +63,24 @@ class Weekly extends Component {
         this.setState({ date: moment(this.state.date).add(5, 'days') })
     }
 
-    componentDidMount() {
+    componentDidMount = async () => {
         this.setState({ date: moment().startOf('hour') })
-        this.getevent(this.createDateArrayNext)
-        const dayForSelect = moment().startOf('hour').format('DD MMM YYYY').split(' ')
+        await this.getevent(this.createDateArrayNext)
+        const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
-        this.selectDay(11)
-        console.log(this.state.days)
-    }
-    
-    selectDay(i) {
-        const day = dataTest.filter((display) => display.date.includes(i))
-        const dayArr = day[0]
-        this.setState({ dayEvent: dayArr.data })
-        this.setState({ dayDate: dayArr.date })
+        this.selectDay(selectDayTest)
     }
 
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
     }
-
+    
+    selectDay(i) {
+        const day = this.state.days.filter((display) => display.date.includes(i))
+        const dayArr = day[0]
+        this.setState({ dayEvent: dayArr.data })
+        this.setState({ dayDate: dayArr.date })
+    }
 
     previousDays = () => {
         this.setState({ date: moment(this.state.date).subtract(5, 'days') })
@@ -110,21 +107,13 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
-    handleTest = () =>{
-        console.log(this.state)
-    }
 
 
 
     render() {
-        // const dayForSelect = moment(this.state.date).format('DD MMM YYYY').split(' ')
-        // const selectDayTest = dayForSelect[0]
-        // console.log(selectDayTest)
-        // console.log(this.selectDay(11))
-        // console.log(this.selectDay(selectDayTest))
-        console.log(this.state.days)
-
+        console.log(this.state.dayDate)
         return (
+            
 
             <>
                 <BrowserView>
