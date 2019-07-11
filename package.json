@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@hapi/marker": "^1.0.0",
     "axios": "^0.19.0",
+    "date-fns": "^1.30.1",
     "datepicker": "0.0.0",
     "mini-create-react-context": "^0.3.2",
     "moment": "^2.24.0",
