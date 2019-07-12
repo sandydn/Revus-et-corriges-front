@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+import moment from 'moment'
+
+
+// import CheckboxLine from './CheckboxLine';
 import DropDownInline from './DropDownInline'
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar';
 import TextareaCustom from  './TextAreaCustom';
 import MenuAdmin from '../screen/MenuAdmin';
-import axios from 'axios';
-import moment from 'moment'
 
-import './Form.css';
+import './css/Form.css';
 
 class FormEvent extends Component {
 
@@ -25,8 +28,7 @@ class FormEvent extends Component {
     // video_idvideo: [],
     // contact_idcontact: []
   }
-
-
+  
   handleChangeInput = (keyState, evt) => {
     // console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value }, () => {
@@ -43,11 +45,8 @@ class FormEvent extends Component {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test', dateStart);
-
     this.setState({ dateStart: dateStart }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -56,10 +55,8 @@ class FormEvent extends Component {
       return console.log('error')
     }
     console.log(dateEnd);
-
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
-
     })
   }
 
@@ -77,12 +74,12 @@ class FormEvent extends Component {
       cover: this.state.cover,
       titre: this.state.titre,
       adresse: this.state.adresse,
-
+      category: this.state.category,
     })
   }
 
-
   render() {
+
     const {
       dateEnd,
       dateStart,
@@ -91,6 +88,7 @@ class FormEvent extends Component {
       titre,
       cover,
       adresse,
+      category
     } = this.state
 
 
@@ -104,7 +102,9 @@ class FormEvent extends Component {
       }
     }
     return (
+      
       <div className="screen">
+        
         <MenuAdmin />
 
         <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
@@ -34,7 +34,7 @@ class RegisterLogin extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		axios.post(`http://localhost:4242/auth/register/`, {
+		axios.post(`http://localhost:4000/auth/register/`, {
 			name: event.target.name.value,
 			admin_email: event.target.email.value,
 			admin_password: event.target.password.value,
@@ -71,8 +71,7 @@ class RegisterLogin extends React.Component {
 				<img className="iconUser" src={RC} alt="icone-user" />
 
 				<div className="FormTitleUp">
-					
-					<NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+					<p exact to="/signup" className="FormTitleUp__Link">Enregistrement</p>
 				</div>
 
 				<div>

@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar';
-import DropDownInline from './DropDownInline';
-import DropDownInlineSpec from './DropDownInlineSpec';
-import MenuAdmin from '../screen/MenuAdmin';
-import TextareaCustom from './TextAreaCustom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment'
-import './Form.css';
+
+import DropDownInline from './DropDownInline';
+import DropDownInlineSpec from './DropDownInlineSpec';
+import InputInLine from './InputInLine';
+import InputWithCalendar from './InputWithCalendar';
+import TextareaCustom from './TextAreaCustom';
+
+import MenuAdmin from '../screen/MenuAdmin';
+import './css/Form.css';
 
 
 
@@ -51,7 +53,7 @@ class FormCinema extends Component {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log(dateEnd);
+    console.log(dateEnd);      return console.log('error')
 
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
@@ -59,7 +61,7 @@ class FormCinema extends Component {
     })
   }
 
-  getDataContact() {
+  setDataSelect =() =>{
     axios
       .get("http://localhost:4000/a2/contact")
       .then(results => {
@@ -69,7 +71,7 @@ class FormCinema extends Component {
   }
 
   componentDidMount() {
-    this.getDataContact()
+    this.setDataSelect()
   }
 
 
@@ -124,7 +126,7 @@ class FormCinema extends Component {
 
           <DropDownInlineSpec
             title="liste de contact"
-            data={this.state.results}
+            data={this.state.results.data}
           />
 
 

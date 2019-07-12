@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import CheckboxLine from './CheckboxLine';
+import './Form.css';
+//import Dropdown from './Dropdown';
+import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
-import './Form.css';
+import './css/Form.css';
 
 
 class Form extends Component {
@@ -77,6 +80,8 @@ class Form extends Component {
     
     return (
       <div className="Form">
+
+
 
         <p>Date de debut</p>
         <InputWithCalendar
@@ -174,7 +179,9 @@ class Form extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Dropdown />
+        {/* <Dropdown /> */}
+
+
 
         <div className="importance">
           <CheckboxLine title="r&c" />

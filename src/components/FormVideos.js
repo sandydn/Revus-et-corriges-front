@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import moment from 'moment'
 
+import DropDownInline from './DropDownInline';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar';
-import DropDownInline from './DropDownInline';
+
 import MenuAdmin from '../screen/MenuAdmin';
-import axios from 'axios';
-import './css/Cardcontact.css'
-import './Form.css';
+import './css/Form.css';
 
 class FormVideos extends Component {
   state = {

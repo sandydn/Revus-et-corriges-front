@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import InputInLine from './InputInLine';
-import DropDownInline from './DropDownInline';
-import CheckboxLine from './CheckboxLine';
-import InputWithCalendar from './InputWithCalendar'
-import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios'
 import moment from 'moment'
-import './Form.css';
+// import { Link } from 'react-router-dom';
+import DropDownInline from './DropDownInline';
+import InputInLine from './InputInLine';
+import InputWithCalendar from './InputWithCalendar'
+
+import MenuAdmin from '../screen/MenuAdmin';
+import './css/Form.css';
 
 class FormRetro extends Component {
   state = {
@@ -20,7 +20,6 @@ class FormRetro extends Component {
     cover: null,
 
   }
-
 
   handleChangeInput = (keyState, evt) => {
     console.log("keyState", keyState, "evt", evt.target.value)
