@@ -5,6 +5,7 @@ import InputWithCalendar from './InputWithCalendar';
 import DropDownInline from './DropDownInline';
 import DropDownInlineSpec from './DropDownInlineSpec';
 import MenuAdmin from '../screen/MenuAdmin';
+import MapContact from './MapContact';
 import TextareaCustom from './TextAreaCustom';
 import axios from 'axios';
 import moment from 'moment'
@@ -21,9 +22,6 @@ class FormCinema extends Component {
     link: null,
     titre: null,
     cover: null,
-    results: {},
-    isLoading: false,
-    errors: null,
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -51,27 +49,13 @@ class FormCinema extends Component {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log(dateEnd);      return console.log('error')
+    console.log(dateEnd); return console.log('error')
 
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
 
     })
   }
-
-  setDataSelect =() =>{
-    axios
-      .get("http://localhost:4000/a2/contact")
-      .then(results => {
-        this.setState({ results: results.data, isLoading: true })
-        console.log('je suis la', this.state)
-      })
-  }
-
-  componentDidMount() {
-    this.setDataSelect()
-  }
-
 
   // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
   handleSubmit = (e) => {
@@ -121,14 +105,14 @@ class FormCinema extends Component {
             keyState="dateStart"
             value={dateStart}
           />
-
-          <DropDownInlineSpec
-            title="liste de contact"
-            data={this.state.results.data}
-          />
-
-
-          TODO dropdownspec titre de film + liste de contact
+           {/* <div className="getcontact">
+          {this.state.isLoading && this.state.results.map(contact =>
+            Object.keys(contact).map((key, index) => 
+              <DropDownInlineSpec                data={contact[key]}
+            /> )
+          )}
+          </div> */} 
+          <MapContact />            
 
           <DropDownInline
             keyState='importance'
@@ -145,11 +129,11 @@ class FormCinema extends Component {
           />
 
 
-          <TextareaCustom 
+          <TextareaCustom
             keyState="description"
             value={description}
             funct={this.handleChangeInput}
-            />
+          />
 
           <InputInLine
             keyState="link"
