@@ -25,11 +25,11 @@
 
 :root {
   --main-color: #1a8fff;
-  --text-color: #777;
-  --text-color-light: #ccc;
+  --text-color: rgb(25, 25, 25);
+  --text-color-light: rgb(75, 75 ,75 );
   --border-color: #eee;
   --bg-color: #f9f9f9;
-  --neutral-color: rgba(255, 255, 255, 0.418);
+  --neutral-color: rgba(212, 77, 77, 0.418);
 }
 
 
