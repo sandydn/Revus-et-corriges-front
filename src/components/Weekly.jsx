@@ -13,7 +13,7 @@ import 'moment-timezone';
 import Moment from 'react-moment';
 import 'moment/locale/fr';
 
-import "./css/calendar.css"
+// import "./css/calendar.css"
 // import dataTest from './dataTest.json'
 
 Moment.globalFormat = 'DD MMM YYYY';
@@ -129,15 +129,11 @@ class Weekly extends Component {
         return (
             
 
-            <>
+            <div className='weeklyContainer' id='weekly'>
                 <BrowserView>
-                    <div className='calendar'>
+                    <div className='weekly'>
 
-                        <div className='navbar'>
-                            <Menu />
-                            <Link to="/login" ><input type="submit" value="Admin" /></Link>
-                            <Link to="/month"><input type="submit" value="Monthly" /></Link>
-                        </div>
+                        
 
                         <div className='weeklyDesktop'>
 
@@ -181,7 +177,7 @@ class Weekly extends Component {
                     </div>
 
                 </MobileView>
-            </>
+            </div>
         )
     }
 }

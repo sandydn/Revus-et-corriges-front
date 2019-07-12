@@ -10,7 +10,7 @@ import InputWithCalendar from './InputWithCalendar';
 import TextareaCustom from './TextAreaCustom';
 
 import MenuAdmin from '../screen/MenuAdmin';
-import './Form.css';
+import './css/Form.css';
 
 
 

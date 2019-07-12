@@ -8,7 +8,7 @@ import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar';
 
 import MenuAdmin from '../screen/MenuAdmin';
-import './Form.css';
+import './css/Form.css';
 
 class FormVideos extends Component {
   state = {

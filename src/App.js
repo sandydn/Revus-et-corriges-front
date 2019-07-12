@@ -6,10 +6,10 @@ import Sign from './screen/Sign'
 import RegisterLogin from './components/RegisterLogin'
 
 import './App.css'
-// import Calendar from './components/Calendar'
+import Calendar from './components/Calendar'
 import MenuAdmin from './screen/MenuAdmin';
 import Weekly from './components/Weekly'
-import Monthly from './components/Monthly'
+import MonthlyV2 from './components/MonthlyV2'
 import Events from './screen/Events';
 import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
@@ -36,9 +36,8 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
 
-          {/* Section CALENDRIER */}
-          <Route exact path="/" component={Weekly} />
-          <Route path="/month" component={Monthly} />
+            {/* Section CALENDRIER */}
+            <Route exact path="/" component={Calendar} />
 
 
           {/* Section CONNEXION */}

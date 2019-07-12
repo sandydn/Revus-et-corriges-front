@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment'
 
 
-import CheckboxLine from './CheckboxLine';
+// import CheckboxLine from './CheckboxLine';
 import DropDownInline from './DropDownInline'
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar';
@@ -20,7 +20,7 @@ class FormEvent extends Component {
     category: null,
     dateEnd: null,
     dateStart: null,
-    importance: [],
+    importance: 0,
     description: null,
     link: null,
     titre: null,
@@ -34,8 +34,8 @@ class FormEvent extends Component {
     this.setState({ [keyState]: evt.target.value }, () => {
       console.log(this.state);
 
-  })
-
+    })
+  }
   handleChangeDropDown = (keyState, value) => {
     console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
@@ -77,7 +77,6 @@ class FormEvent extends Component {
       category: this.state.category,
     })
   }
-}
 
   render() {
 
