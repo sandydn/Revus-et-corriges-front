@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+
 import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
@@ -8,11 +9,11 @@ import '../screen/MenuAdmin.css'
 
 class MenuAdmin extends Component {
 
-  state = {
-    results: {},
-    isLoading: false,
-    errors: null
-  };
+//   state = {
+//     results: {},
+//     isLoading: false,
+//     errors: null
+//   };
 
 
 getevent() {
@@ -23,14 +24,15 @@ getevent() {
       })
 }
 
+
 logout() {
   localStorage.clear()
   window.location.href = "/login"
 }
 
-componentDidMount() {
-    this.getevent()
-}
+// componentDidMount() {
+//     this.getevent()
+// }
 
   render() {
 
@@ -57,7 +59,7 @@ componentDidMount() {
       </div>
 
       <div>
-        <div className="getdata">
+        {/* <div className="getdata">
           {this.state.isLoading && this.state.results.map(event => 
           <p>
             {(event.titre)}
@@ -70,7 +72,7 @@ componentDidMount() {
           </img>
           </p>
           )}
-        </div>
+        </div> */}
       </div>
       
       </div>

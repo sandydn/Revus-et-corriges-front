@@ -5,21 +5,20 @@ import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
+import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 import './Form.css';
 
 class FormEvent extends Component {
   state = {
-    adresse: null,
+    lieux_idlieux: null,
     dateEnd: null,
     dateStart: null,
     importance: null,
-    // général: null,
-    information: null,
+    description: null,
     link: null,
-    nomLieu: null,
-    // partenaires: null,
-    // rc: null,
+    // nomLieu: null,
     titre: null,
     cover: null,
   }
@@ -34,40 +33,55 @@ class FormEvent extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  onChangeDateStart = dateStart => {
+  onChangeDateStart = (keyState, dateStart,evt ) => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
     console.log('test');
 
-    this.setState({ dateStart })
+    this.setState({ [keyState]: evt.target.value })
   }
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log('test');
+    console.log(dateEnd);
 
     this.setState({ dateEnd })
   }
 
-  componentDidMount() {
-    console.log('didmount', this.state);
+  // componentDidMount() {
+  //   console.log('didmount', this.state);
 
-  }
+  // }
+
+    // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+    handleSubmit = (e) => {
+      e.preventDefault()
+      console.log(e)
+      axios.post(`http://localhost:4000/a5/event`, {
+        // dateStart: e.target.dateStart.value,
+        // dateEnd: e.target.dateEnd.value,
+        importance: e.target.importance.value,
+        description: e.target.description.value,
+        link: e.target.link.value,
+        cover: e.target.cover.value,
+        titre: e.target.titre.value,
+        lieux_idlieux: e.target.adresse.value,
+
+      })
+    }
+
 
   render() {
     const {
       adresse,
-      dateEnd,
-      dateStart,
-      // général,
-      information,
+      // dateEnd,
+      // dateStart,
+      description,
       link,
-      nomLieu,
-      // partenaires,
-      // rc,
+      // nomLieu,
       titre,
       cover,
     } = this.state
@@ -75,18 +89,23 @@ class FormEvent extends Component {
     return (
       <div className="screen">
       <MenuAdmin />
-      <div className="Formevent">
+      <form className="Formevent" onSubmit={this.handleSubmit} >
         <p>Date de debut :</p>
-        <InputWithCalendar
+        {/* <InputWithCalendar
           date={dateStart}
           onChangeDate={this.onChangeDateStart}
-        />
+          keyState="dateStart"
+          value={dateStart}
+        /> */}
 
-        <p>Date de fin :</p>
+        {/* <p>Date de fin :</p>
         <InputWithCalendar
           date={dateEnd}
           onChangeDate={this.onChangeDateEnd}
-        />
+          keyState="dateEnd"
+          value={dateEnd}
+          funct={this.handleChangeInput}
+        /> */}
 
         <div className="importance">
           <p>Importance </p>
@@ -101,13 +120,13 @@ class FormEvent extends Component {
           value={titre}
           funct={this.handleChangeInput}
         />
-
+{/* 
         <InputInLine
           keyState="nomLieu"
           title="nom du Lieu"
           value={nomLieu}
           funct={this.handleChangeInput}
-        />
+        /> */}
 
         <InputInLine
           keyState="adresse"
@@ -124,9 +143,9 @@ class FormEvent extends Component {
         />
 
         <InputInLine
-          keyState="information"
+          keyState="description"
           title="information"
-          value={information}
+          value={description}
           funct={this.handleChangeInput}
         />
 
@@ -137,14 +156,23 @@ class FormEvent extends Component {
           funct={this.handleChangeInput}
         />
 
-        <Link to="/admin">
-          <input
+    
+          {/* <input
             className="button-submit"
             type="submit"
             value="Valider le formulaire"
-          />
-        </Link>
-      </div>
+            funct={this.handleSubmit}            
+            /> */}
+          {/* <button className="button-submit" type="submit" value="Submit">Valider le formulaire</button> */}
+          <button
+              type="submit"
+              value="Submit"
+              color="primary"
+              variant="contained"
+            >
+            </button>
+      </form>
+
       </div>
     )
   }

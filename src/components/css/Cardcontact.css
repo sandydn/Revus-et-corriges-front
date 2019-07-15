@@ -5,3 +5,8 @@
     width: 28vw;
     border: 1px solid black;
 }
+.type-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
