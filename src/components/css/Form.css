@@ -2,6 +2,43 @@
     display: flex;
     flex-direction: row;
 }
+
+.container {
+  background-image: url(../assets/bgback.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.input-form {
+width: 41vw;
+height: 5vh;
+border-bottom: 1px solid black;
+border-top-style: none;
+border-right-style: none;
+border-left-style: none;
+border-bottom-style:none;
+background-color: #d3e8ed;
+padding-top:2%;
+box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
+}
+
+fieldset {
+width: 40VW;
+margin-top: 2%;
+margin-bottom: 2%;
+}
+.checkradio {
+  display: flex;
+  justify-content: space-evenly;
+}
+.button-selectform {
+    border: 1px solid black;
+    height: 5vh;
+    margin-left: 2%;
+    margin-top:2%;
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+}
 .Formevent,
 .Formvideos,
 .Formcinema, 
