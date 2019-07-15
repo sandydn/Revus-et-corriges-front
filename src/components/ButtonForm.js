@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "../screen/MenuAdmin.css"
+
 
 export class ButtonForm extends Component {
 

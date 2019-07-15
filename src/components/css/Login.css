@@ -39,12 +39,7 @@
 }
 
 /* Logo Revus & Corrigés */
-.iconUser{
-  width: 29%;
-  margin-top: -38vh;
-  margin-left: 1vw;
-  position: absolute;
-}
+
 
 /* Button Sign up*/
 .btnSignUp{
@@ -87,4 +82,11 @@
     width: 150px;
     margin-bottom: 5%;
     position: relative;
+}
+
+.iconUser{
+    width: 29%;
+    margin-top: -38vh;
+    margin-left: 1vw;
+    position: absolute;
 }

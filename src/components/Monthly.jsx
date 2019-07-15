@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import 'moment/locale/fr';
 import 'moment-timezone';
 
-import './css/Monthly.css'
+
 import Menu from './Menu.js'
 import './css/calendar.css'
 

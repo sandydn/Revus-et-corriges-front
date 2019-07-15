@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
 import LinkForm from '../components/LinkForm'
-import '../screen/MenuAdmin.css'
+
 
 class MenuAdmin extends Component {
 
@@ -52,10 +52,10 @@ logout() {
         <h4 className="title-managment"> Gestion administrateur</h4>
         <div className="deco-managment">
           <LinkForm name="Paramètres" />
-          <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
+          <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
-        <button onClick={this.logout}>LOGOUT</button>
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+        <button onClick={this.logout}>Se déconnecter</button>
       </div>
 
       <div>

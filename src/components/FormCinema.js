@@ -9,7 +9,7 @@ import MapContact from './MapContact';
 import TextareaCustom from './TextAreaCustom';
 import axios from 'axios';
 import moment from 'moment'
-import './Form.css';
+import './css/Form.css'
 
 
 

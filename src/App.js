@@ -32,7 +32,6 @@ class App extends Component {
   render() {
 
     return (
-
       <>
       <div>
       <Favicon url="https://revusetcorriges.files.wordpress.com/2018/03/rc_logo_final-021-e1521992230333.png?w=936" />

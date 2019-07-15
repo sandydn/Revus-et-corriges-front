@@ -7,7 +7,7 @@ import InputWithCalendar from './InputWithCalendar';
 import DropDownInline from './DropDownInline';
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
-import './Form.css';
+import './css/Form.css'
 
 class FormVideos extends Component {
   state = {

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import InputInLine from './InputInLine'
 
+import MenuAdmin from '../screen/MenuAdmin'
 
 class AddMovie extends Component {
 
@@ -26,6 +27,7 @@ class AddMovie extends Component {
       alert('Film ajouté !')
     }
   
+
   render() {
 
     return (

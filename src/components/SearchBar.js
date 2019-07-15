@@ -1,6 +1,6 @@
 import React from 'react'
 import show from './dataTest.json'
-import './css/SearchBar.css'
+
 
 class SearchBar extends React.Component {
     
@@ -13,10 +13,10 @@ class SearchBar extends React.Component {
     
     render() {
         
-        // console.log(show)
+        
 
         let leshow = show.filter(input => show.data === input)
-        // console.log(leshow)
+        
 
         return (
             
