@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-// import axios from 'axios'
+
+import { Redirect } from "react-router-dom";
+import axios from 'axios'
 
 import LinkForm from '../components/LinkForm'
 import '../screen/MenuAdmin.css'
@@ -14,21 +16,26 @@ class MenuAdmin extends Component {
 //   };
 
 
-// getevent() {
-//     axios
-//       .get("http://localhost:4000/a5/event")
-//       .then(results => { 
-//         this.setState({results: results.data, isLoading: true}) 
-//         console.log('je suis la', this.state)
-//       })
-// }
+getevent() {
+    axios
+      .get("http://localhost:4000/a5/event")
+      .then(results => { 
+        this.setState({results: results.data, isLoading: true}) 
+      })
+}
 
+
+logout() {
+  localStorage.clear()
+  window.location.href = "/login"
+}
 
 // componentDidMount() {
 //     this.getevent()
 // }
 
   render() {
+
     return (
 
       <div  className="all">
@@ -47,7 +54,7 @@ class MenuAdmin extends Component {
           <LinkForm name="Paramètres" />
           <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
-
+        <button onClick={this.logout}>LOGOUT</button>
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
       </div>
 
