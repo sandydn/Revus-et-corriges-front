@@ -155,6 +155,26 @@ class Monthly extends Component {
     this.setState({
       dateObject: this.state.dateObject.add(1, curr)
     });
+    let daysInMonth = [];
+  for (let d = 1; d <= this.daysInMonth(); d++) {
+    let currentDay = d == this.currentDay() ? "today" : "";
+    let dayEvent = false
+    this.state.eventDate.forEach( event => {
+      const eventDateStart = moment(event.dateStart).format("D")       
+      if (d == eventDateStart) {
+
+        return dayEvent = true
+      }
+    })
+    const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+    daysInMonth.push(
+      <div key={d} className = { `${calendarDay} ${currentDay}`}>
+
+        <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
+
+      </div>
+    )
+  }
   };
   //END OF FUNCTION
 

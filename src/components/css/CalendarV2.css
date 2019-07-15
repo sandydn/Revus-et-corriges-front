@@ -8,6 +8,11 @@ html{
 }
 
 .weekly{
+    width:78.5vw;
+    height: 100vh;
+}
+
+.calendarScreen{
     display: flex;
     border: 18px solid rgb(44, 67, 98);
     height: 100vh;
@@ -19,6 +24,7 @@ html{
 
 .weeklyDesktop{
     width: 100%;
+    height: 100vh;
     background: url(../../pictures/backg.png);
     background-size: 140%;
 }

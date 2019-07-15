@@ -9,7 +9,7 @@ import './App.css'
 // import Calendar from './components/Calendar'
 import MenuAdmin from './screen/MenuAdmin';
 import Weekly from './components/Weekly'
-import Monthly from './components/Monthly'
+import MonthlyV2 from './components/MonthlyV2'
 import Events from './screen/Events';
 import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
@@ -22,6 +22,7 @@ import FormRetro from './components/FormRetro';
 
 import Ajout from './screen/Ajout'
 import Favicon from 'react-favicon';
+import Calendar from './components/Calendar';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -40,8 +41,7 @@ class App extends Component {
           <Switch>
 
             {/* Section CALENDRIER */}
-            <Route exact path="/" component={Weekly} />
-            <Route path="/month" component={Monthly} />
+            <Route exact path="/" component={Calendar} />
 
 
             {/* Section CONNEXION */}
