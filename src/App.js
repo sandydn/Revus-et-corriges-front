@@ -19,14 +19,19 @@ import FormEvent from './components/FormEvent';
 import FormVideos from './components/FormVideos';
 import FormCinema from './components/FormCinema';
 import FormRetro from './components/FormRetro';
+
 import Ajout from './screen/Ajout'
 import Favicon from 'react-favicon';
+
+import PrivateRoute from './components/PrivateRoute';
+
 
 class App extends Component {
 
   render() {
 
     return (
+
       <>
       <div>
       <Favicon url="https://revusetcorriges.files.wordpress.com/2018/03/rc_logo_final-021-e1521992230333.png?w=936" />
@@ -45,7 +50,7 @@ class App extends Component {
 
 
            {/* Section ADMIN  */}
-            <Route path="/menu-admin" component={MenuAdmin} />
+            <PrivateRoute path="/menu-admin" component={MenuAdmin} />
             <Route path="/signup" component={RegisterLogin} />      
             <Route path="/admin" component={Admin} />
             <Route path="/admin-events" component={Events} />
@@ -60,6 +65,7 @@ class App extends Component {
           </Switch>
       </BrowserRouter>
       </>
+
     );
   }
 }
