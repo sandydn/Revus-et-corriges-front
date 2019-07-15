@@ -413,7 +413,7 @@ html {
     }
     
      
-    }
+    
     @media screen and (min-width : 1024px)  {
     #close, .liResponsive {
         display: none;
@@ -635,4 +635,4 @@ html {
           display: none;
           
       }
-}
+    }}
