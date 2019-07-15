@@ -120,8 +120,6 @@ class Weekly extends Component {
                 <BrowserView>
                     <div className='weekly'>
 
-                        
-
                         <div className='weeklyDesktop'>
 
                             <div className='weeklyHead'>

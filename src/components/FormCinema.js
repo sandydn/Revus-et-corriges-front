@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
-import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import DropDownInline from './DropDownInline';
+import DropDownInlineSpec from './DropDownInlineSpec';
 import MenuAdmin from '../screen/MenuAdmin';
-
+import MapContact from './MapContact';
+import TextareaCustom from './TextAreaCustom';
+import axios from 'axios';
+import moment from 'moment'
 import './Form.css';
+
+
 
 class FormCinema extends Component {
   state = {
-    dateCreation: null,
+    description: null,
+    category: null,
     dateStart: null,
-    // Distributeur: [nom, prenom, type],
-    nom: [],
-    prenom: [],
-    type: [],
-    importance: null,
+    importance: 0,
     link: null,
-    // Realisateur: [nom, prenom, type ],
     titre: null,
     cover: null,
   }
@@ -27,9 +28,9 @@ class FormCinema extends Component {
     console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
-
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {
@@ -48,7 +49,7 @@ class FormCinema extends Component {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log(dateEnd);
+    console.log(dateEnd); return console.log('error')
 
     this.setState({ dateEnd: dateEnd }, () => {
       console.log(this.state);
@@ -56,65 +57,81 @@ class FormCinema extends Component {
     })
   }
 
+  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post(`http://localhost:4000/a5/event`, {
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      importance: this.state.importance,
+      category: this.state.category,
+      description: this.state.description,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
 
-  // // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   console.log(e)
-  //   axios.post(`http://localhost:4000/a5/event`, {
-  //     // dateStart: e.target.dateStart.value,
-  //     // dateEnd: e.target.dateEnd.value,
-  //     importance: e.target.importance.value,
-  //     description: e.target.description.value,
-  //     link: e.target.link.value,
-  //     cover: e.target.cover.value,
-  //     titre: e.target.titre.value,
-  //     lieux_idlieux: e.target.adresse.value,
 
-  //   })
-  // }
+    })
+  }
 
   render() {
     const {
-      dateCreation,
+      description,
       dateStart,
-      // Distributeur: [nom, prenom, type],
-      nom,
-      prenom,
-      type,
-      // général,
       link,
-      // partenaires,
-      // rc,
-      // Realisateur: [nom, prenom, type ],
-      titre,
       cover,
+      titre,
     } = this.state
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
 
     return (
       <div className="screen">
         <MenuAdmin />
-        <form className="Formcinema" onSubmit={this.handleSubmit}>
+        <div className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
           <p>Date de debut :</p>
           <InputWithCalendar
             date={dateStart}
+            funct={this.handleChangeInput}
             onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          />
+           {/* <div className="getcontact">
+          {this.state.isLoading && this.state.results.map(contact =>
+            Object.keys(contact).map((key, index) => 
+              <DropDownInlineSpec                data={contact[key]}
+            /> )
+          )}
+          </div> */} 
+          <MapContact />            
+
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
           />
 
-TODO dropdown importance
+          <DropDownInline
+            keyState='category'
+            title='catégorie'
+            data={['Evenement', 'Cinema', 'Vidéo', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
 
-TODO dropdown titre de film
-          {/* <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
-            funct={this.handleChangeInput}
-          /> */}
 
-          <InputInLine
-            keyState="dateCreation"
-            title="Date du film"
-            value={dateCreation}
+          <TextareaCustom
+            keyState="description"
+            value={description}
             funct={this.handleChangeInput}
           />
 
@@ -132,16 +149,15 @@ TODO dropdown titre de film
             funct={this.handleChangeInput}
           />
 
-            <button
-              className="button-submit"
-              type="submit"
-              value="Submit"
-              color="primary"
-              variant="contained"
-            >Envoyer le formulaire
-            </button>
-          </form>
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
         </div>
+      </div>
     )
   }
 }
