@@ -3,7 +3,6 @@ import axios from 'axios'
 import Button from '@material-ui/core/Button';
 import InputInLine from './InputInLine'
 
-import axios from 'axios'
 
 class AddMovie extends Component {
 
