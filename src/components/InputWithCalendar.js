@@ -17,13 +17,10 @@ class InputWithCalendar extends Component {
       <div>
 
         <DatePicker
-          dateFormat="d MMMM yyyy h:mm aa"
+          dateFormat="dd/MM/yyyy"
           locale="fr"
           onChange={this.props.onChangeDate}
           selected={this.props.date}
-          showTimeSelect
-          timeFormat="HH:mm"
-          timeIntervals={15}
         />
 
       </div>
