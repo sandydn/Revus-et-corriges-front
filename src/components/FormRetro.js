@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
-import CheckboxLine from './CheckboxLine';
 import InputInLine from './InputInLine';
+import DropDownInline from './DropDownInline';
 import InputWithCalendar from './InputWithCalendar'
 import MenuAdmin from '../screen/MenuAdmin';
-
-import './Form.css';
+import axios from 'axios'
+import moment from 'moment'
+import './css/Form.css'
 
 class FormRetro extends Component {
   state = {
+    dateEnd: null,
     dateStart: null,
-    nom: null,
-    prenom: null,
-    type: null,
+    category: null,
     link: null,
-    importance: null,
+    importance: 0,
     titre: null,
     cover: null,
+
   }
 
 
@@ -26,134 +26,151 @@ class FormRetro extends Component {
     this.setState({ [keyState]: evt.target.value })
   }
 
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
   onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test');
-
-    this.setState({ dateStart })
+    this.setState({ dateStart: dateStart }, () => {
+      console.log(this.state);
+    })
   }
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart) {
       return console.log('error')
     }
-    console.log('test');
-
-    this.setState({ dateEnd })
+    console.log(dateEnd);
+    this.setState({ dateEnd: dateEnd }, () => {
+      console.log(this.state);
+    })
   }
 
-  componentDidMount() {
-    console.log('didmount', this.state);
 
+
+  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(e)
+    axios.post(`http://localhost:4000/a9/eventcontact`, {
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
+      importance: this.state.importance,
+      category: this.state.category,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+      
+    })
   }
 
   render() {
     const {
-        dateStart,
-        nom,
-        prenom,
-        type,
-        link,
-        titre,
-        cover,
+      dateEnd,
+      dateStart,
+      link,
+      cover,
+      titre,
+      category,
     } = this.state
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
 
     return (
       <div className="screen">
-      <MenuAdmin />
-      <form className="Formretro">
+        <MenuAdmin />
+        <div className="Formretro" style={styleBase.form} onSubmit={this.handleSubmit}>
         <p>Date de debut :</p>
-        <InputWithCalendar
-          date={dateStart}
-          onChangeDate={this.onChangeDateStart}
-        />
+            <InputWithCalendar
+              date={dateStart}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateStart}
+              keyState="dateStart"
+              value={dateStart}
+            /> 
 
-        <div className="importance">
-          <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="importance" value={0} funct={this.handleChangeInput}/>
-          <CheckboxLine title="partenaires" keyState="importance" value={1} funct={this.handleChangeInput}/>
-          <CheckboxLine title="général" keyState="importance" value={3} funct={this.handleChangeInput} />
-        </div>
+            <p>Date de fin :</p>
+            <InputWithCalendar
+              date={dateEnd}
+              funct={this.handleChangeInput}
+              onChangeDate={this.onChangeDateEnd}
+              keyState="dateEnd"
+              value={dateEnd}
+            />
 
-        <InputInLine
-          keyState="titre"
-          title="Titre"
-          value={titre}
-          funct={this.handleChangeInput}
-        />
-
-        <div className="contact">
-          <p className="Role-contact">Distributeur</p>
           <InputInLine
-            keyState="prenom"
-            title="prénom"
-            value={prenom}
+            keyState="titre"
+            title="Titre"
+            value={titre}
             funct={this.handleChangeInput}
           />
+
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
+
+          {/* <DropDownInline
+            keyState='realisateur'
+            title='Réalisateur'
+            data={['Toto', 'Bebe', 'Kiki', 'Chocho', 'cécé']}
+            func={this.handleChangeDropDown}
+          />
+
+          <DropDownInline
+            keyState='distributeur'
+            title='distributeur'
+            data={['tomtom', 'sansan', 'papy', 'abdou']}
+            func={this.handleChangeDropDown} 
+          />*/}
+
+
+          // todo  axios get  - dropdown 2 contact - realisateur, distributeur + 1 films
+
           <InputInLine
-            keyState="nom"
-            title="nom"
-            value={nom}
+            keyState="link"
+            title="lien externe"
+            value={link}
             funct={this.handleChangeInput}
           />
-          <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
-          </div>
-        </div>
 
-        <div className="contact">
-          <p className="Role-contact">Réalisateur</p>
+          <DropDownInline
+            keyState="category"
+            title="catégorie"
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
+
           <InputInLine
-            keyState="prenom"
-            title="prénom"
-            value={prenom}
+            keyState="cover"
+            title="cover"
+            value={cover}
             funct={this.handleChangeInput}
           />
-          <InputInLine
-            keyState="nom"
-            title="nom"
-            value={nom}
-            funct={this.handleChangeInput}
-          />
-          <div className="type-contact">
-            <CheckboxLine title="Acteur" keyState="type" value={0} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Distributeur" keyState="type" value={1} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Editeur" keyState="type" value={2} funct={this.handleChangeCheckbox} />
-            <CheckboxLine title="Réalisateur" keyState="type" value={3} funct={this.handleChangeCheckbox} />
-          </div>
-        </div>
 
-        <InputInLine
-          keyState="link"
-          title="lien externe"
-          value={link}
-          funct={this.handleChangeInput}
-        />
-
-        <InputInLine
-          keyState="cover"
-          title="cover"
-          value={cover}
-          funct={this.handleChangeInput}
-        />
-
-
-          <input
+          <input onClick={this.handleSubmit}
             className="button-submit"
             type="submit"
-            value="Valider le formulaire"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
           />
-
-      </form>
+        </div>
       </div>
     )
   }

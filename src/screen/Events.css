@@ -24,7 +24,7 @@
     flex-wrap: nowrap;
     background-image: url(https://revusetcorriges.files.wordpress.com/2017/12/sceno-la-planete-des-vampires.png?w=1024);
     background-size: cover;
-    background-position-x: 8vw;
+    background-position-x: 2vw;
 }
 .screenRetro{
     display: flex;
@@ -34,4 +34,74 @@
     background-image: url(https://revusetcorriges.files.wordpress.com/2018/08/dorothy-arzner-et-clara-bow-sur-le-tournage-de-the-wild-party-1929-recadrc3a9e.jpg);
     background-size: cover;
     background-position-x: 12vw;
+}
+
+
+
+.container-button {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(127, 127, 127);
+    height:100vh;
+    width: 20vw;
+   }
+.event-managment {
+    margin-top: -10vh;
+}
+.event-button {
+    font-size:0.9em;
+    text-decoration: none;
+}
+
+.deco-managment {
+    margin-top: -10vh;
+}
+
+.all {
+    display: flex;
+    background-image: url(https://revusetcorriges.files.wordpress.com/2018/03/rc.gif);
+    background-size: cover;
+    background-position-x: 8vw;
+}
+/* 
+.getdata {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-gap: 2vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
+    padding-right: 4vw;
+}
+
+.data {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+}
+
+img {
+    max-width:14vw;
+    height:auto;
+
+} */
+
+h4 {
+    color: white;
+    text-decoration-line: underline;
+    padding-left: 1vw;
+}
+.buttonform {
+    text-decoration: none;
+    padding-left: 2vw;
+    font-size:1em;
+    color: black;
+    display: block;
+}
+.buttonform:hover {
+    text-decoration-line: underline;
 }

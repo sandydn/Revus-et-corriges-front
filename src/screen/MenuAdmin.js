@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-// import axios from 'axios'
+
+import { Redirect } from "react-router-dom";
+import axios from 'axios'
 
 import LinkForm from '../components/LinkForm'
-import '../screen/MenuAdmin.css'
+
 
 class MenuAdmin extends Component {
 
@@ -14,21 +16,26 @@ class MenuAdmin extends Component {
 //   };
 
 
-// getevent() {
-//     axios
-//       .get("http://localhost:4000/a5/event")
-//       .then(results => { 
-//         this.setState({results: results.data, isLoading: true}) 
-//         console.log('je suis la', this.state)
-//       })
-// }
+getevent() {
+    axios
+      .get("http://localhost:4000/a5/event")
+      .then(results => { 
+        this.setState({results: results.data, isLoading: true}) 
+      })
+}
 
+
+logout() {
+  localStorage.clear()
+  window.location.href = "/login"
+}
 
 // componentDidMount() {
 //     this.getevent()
 // }
 
   render() {
+
     return (
 
       <div  className="all">
@@ -40,15 +47,15 @@ class MenuAdmin extends Component {
         <Link to="/admin-cinema" className="event-button"><LinkForm name="Cinéma" /></Link>
         <Link to="/admin-videos" className="event-button"><LinkForm name="Vidéos" /></Link>
         <Link to="/admin-retro" className="event-button"><LinkForm name="Rétrospective" /></Link>
-
+        <Link to="/admin-ajout" className="event-button"><LinkForm name="Ajout"/></Link>
         </div>
         <h4 className="title-managment"> Gestion administrateur</h4>
         <div className="deco-managment">
           <LinkForm name="Paramètres" />
-          <Link to="/signup"><LinkForm name="Ajouter un administrateur" /></Link>
+          <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
-
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+        <button onClick={this.logout}>Se déconnecter</button>
       </div>
 
       <div>

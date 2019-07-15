@@ -1,45 +1,54 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-
-import CheckboxLine from './CheckboxLine';
+import DropDownInline from './DropDownInline'
 import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar'
+import InputWithCalendar from './InputWithCalendar';
+import TextareaCustom from  './TextAreaCustom';
 import MenuAdmin from '../screen/MenuAdmin';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
+import moment from 'moment'
 
-import './Form.css';
+import './css/Form.css';
 
 class FormEvent extends Component {
+
   state = {
-    lieux_idlieux: null,
+    //generateur d'input
+    adresse: [],
+    category: null,
     dateEnd: null,
     dateStart: null,
-    importance: null,
+    importance: 0,
     description: null,
     link: null,
-    // nomLieu: null,
     titre: null,
     cover: null,
+    // video_idvideo: [],
+    // contact_idcontact: []
   }
 
 
   handleChangeInput = (keyState, evt) => {
-    console.log("keyState", keyState, "evt", evt.target.value)
-    this.setState({ [keyState]: evt.target.value })
+    // console.log("keyState", keyState, "evt", evt.target.value)
+    this.setState({ [keyState]: evt.target.value }, () => {
+      console.log(this.state);
+
+    })
+  }
+  handleChangeDropDown = (keyState, value) => {
+    console.log("keyState", keyState, "evt", value)
+    this.setState({ [keyState]: value })
   }
 
-  handleChangeDropdown = (keyState, evt) => {
-    this.setState({ [keyState]: evt.target.value })
-  }
-
-  onChangeDateStart = (keyState, dateStart,evt ) => {
+  onChangeDateStart = dateStart => {
     if (dateStart > this.state.dateEnd && this.state.dateEnd) {
       return console.log('error')
     }
-    console.log('test');
+    console.log('test', dateStart);
 
-    this.setState({ [keyState]: evt.target.value })
+    this.setState({ dateStart: dateStart }, () => {
+      console.log(this.state);
+
+    })
   }
 
   onChangeDateEnd = dateEnd => {
@@ -48,131 +57,134 @@ class FormEvent extends Component {
     }
     console.log(dateEnd);
 
-    this.setState({ dateEnd })
+    this.setState({ dateEnd: dateEnd }, () => {
+      console.log(this.state);
+
+    })
   }
 
-  // componentDidMount() {
-  //   console.log('didmount', this.state);
+  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
+  handleSubmit = (e) => {
+    e.preventDefault()
+    axios.post(`http://localhost:4000/a5/event`, {
+      //convert date format from DatePicker for filling database with the right format
+      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
+      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
+      importance: this.state.importance,
+      description: this.state.description,
+      category: this.state.category,
+      link: this.state.link,
+      cover: this.state.cover,
+      titre: this.state.titre,
+      adresse: this.state.adresse,
 
-  // }
-
-    // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-    handleSubmit = (e) => {
-      e.preventDefault()
-      console.log(e)
-      axios.post(`http://localhost:4000/a5/event`, {
-        // dateStart: e.target.dateStart.value,
-        // dateEnd: e.target.dateEnd.value,
-        importance: e.target.importance.value,
-        description: e.target.description.value,
-        link: e.target.link.value,
-        cover: e.target.cover.value,
-        titre: e.target.titre.value,
-        lieux_idlieux: e.target.adresse.value,
-
-      })
-    }
+    })
+  }
 
 
   render() {
     const {
-      adresse,
-      // dateEnd,
-      // dateStart,
+      dateEnd,
+      dateStart,
       description,
       link,
-      // nomLieu,
       titre,
       cover,
+      adresse,
     } = this.state
 
+
+    const styleBase = {
+      form: {
+        background: 'linear-gradient(to left, #fff, #A9DCFF)',
+        width: '100%',
+        borderLeft: '5px solid #A9DCFF',
+        borderTop: '5px solid #A9DCFF',
+        padding: '10px'
+      }
+    }
     return (
       <div className="screen">
-      <MenuAdmin />
-      <form className="Formevent" onSubmit={this.handleSubmit} >
-        <p>Date de debut :</p>
-        {/* <InputWithCalendar
-          date={dateStart}
-          onChangeDate={this.onChangeDateStart}
-          keyState="dateStart"
-          value={dateStart}
-        /> */}
+        <MenuAdmin />
 
-        {/* <p>Date de fin :</p>
-        <InputWithCalendar
-          date={dateEnd}
-          onChangeDate={this.onChangeDateEnd}
-          keyState="dateEnd"
-          value={dateEnd}
-          funct={this.handleChangeInput}
-        /> */}
+        <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
+          <p>Date de debut :</p>
+          <InputWithCalendar
+            date={dateStart}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateStart}
+            keyState="dateStart"
+            value={dateStart}
+          />
 
-        <div className="importance">
-          <p>Importance </p>
-          <CheckboxLine title="r&c" keyState="importance" value={"0"} funct={this.handleChangeInput}/>
-          <CheckboxLine title="partenaires" keyState="importance" value={"1"} funct={this.handleChangeInput}/>
-          <CheckboxLine title="général" keyState="importance" value={"2"} funct={this.handleChangeInput} />
-        </div>
+          <p>Date de fin :</p>
+          <InputWithCalendar
+            date={dateEnd}
+            funct={this.handleChangeInput}
+            onChangeDate={this.onChangeDateEnd}
+            keyState="dateEnd"
+            value={dateEnd}
+          />
 
-        <InputInLine
-          keyState="titre"
-          title="Titre"
-          value={titre}
-          funct={this.handleChangeInput}
-        />
-{/* 
-        <InputInLine
-          keyState="nomLieu"
-          title="nom du Lieu"
-          value={nomLieu}
-          funct={this.handleChangeInput}
-        /> */}
 
-        <InputInLine
-          keyState="adresse"
-          title="Adresse"
-          value={adresse}
-          funct={this.handleChangeInput}
-        />
+          <InputInLine
+            keyState="titre"
+            title="Titre"
+            value={titre}
+            funct={this.handleChangeInput}
+          />
 
-        <InputInLine
-          keyState="link"
-          title="lien externe"
-          value={link}
-          funct={this.handleChangeInput}
-        />
+          <DropDownInline
+            keyState='importance'
+            title='Importance'
+            data={['RC', 'Partenaires', 'Général']}
+            func={this.handleChangeDropDown}
+          />
 
-        <InputInLine
-          keyState="description"
-          title="information"
-          value={description}
-          funct={this.handleChangeInput}
-        />
+          <InputInLine
+            keyState="adresse"
+            title="Adresse"
+            value={adresse}
+            funct={this.handleChangeInput}
+          />
 
-        <InputInLine
-          keyState="cover"
-          title="visuel"
-          value={cover}
-          funct={this.handleChangeInput}
-        />
+          <DropDownInline
+            keyState="category"
+            title="catégorie"
+            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
+            func={this.handleChangeDropDown}
+          />
 
-    
-          {/* <input
+          <InputInLine
+            keyState="link"
+            title="lien externe"
+            value={link}
+            funct={this.handleChangeInput}
+          />
+
+          <TextareaCustom
+            keyState="description"
+            value={description}
+            funct={this.handleChangeInput}
+          />
+
+
+          <InputInLine
+            keyState="cover"
+            title="visuel"
+            value={cover}
+            funct={this.handleChangeInput}
+          />
+
+
+          <input onClick={this.handleSubmit}
             className="button-submit"
             type="submit"
-            value="Valider le formulaire"
-            funct={this.handleSubmit}            
-            /> */}
-          {/* <button className="button-submit" type="submit" value="Submit">Valider le formulaire</button> */}
-          <button
-              type="submit"
-              value="Submit"
-              color="primary"
-              variant="contained"
-            >
-            </button>
-      </form>
-
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
+        </div>
       </div>
     )
   }

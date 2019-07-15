@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
-import './css/MenuMobile.css'
+
 
 class MenuMobile extends Component {
     render() {
         return (
             <div id="wrap" >
                 
-                <header className="header">
+                
                         <nav className="nav">
                          <a href="#wrap" id="open">
                              
@@ -22,7 +22,7 @@ class MenuMobile extends Component {
                          <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/contact/nous-contacter/" id='close' >CONTACT+ </a></li>
       
                         </nav>
-                </header>
+               
 
             </div>
         )
