@@ -12,7 +12,7 @@ import RC from '../pictures/RC.png'
 import './css/Login.css'
 
 class RegisterLogin extends React.Component {
-	
+
 	state = {
 		formData: {
 			name: '',

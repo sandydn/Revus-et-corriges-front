@@ -42,11 +42,12 @@ class App extends Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
+  // Change state with form admin //
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  // ON SUBMIT - rediriger avec le routeur sur la e d'appel de formulaire
+  // ON SUBMIT - router on axios d'appel form
   handleSubmit = event => {
     event.preventDefault()
     axios.post(`http://localhost:4000/auth/login/`, {
@@ -63,7 +64,7 @@ class App extends Component {
   };
 
   protectedRoute = () => {
-
+    // Storage for token //
     const token = localStorage.getItem("token")
     axios({
       method: 'POST',
@@ -72,6 +73,7 @@ class App extends Component {
         'Authorization': `Bearer ${token}`,
       },
     })
+    // Verified if a token is correct //
       .then(res => {
         this.setState({
           verified: res.data.auth,

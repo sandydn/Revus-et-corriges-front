@@ -3,7 +3,7 @@ import Login from '../components/Login';
 
 
 class Sign extends Component {
-	
+
 	render() {
 		return (
 			<div>

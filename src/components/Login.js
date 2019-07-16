@@ -20,10 +20,12 @@ class Login extends React.Component {
 
     const { success, redirect } = this.props;
 
+    // if token is true redirect directly in menu admin //
     if (this.props.verif === true) {
-      return <Redirect to='/menu-admin' />     
-    } 
+      return <Redirect to='/menu-admin' />
+    }
 
+    // Redirect when Admin is connect //
     if (redirect) {
       return <Redirect to='/menu-admin' />
     }
@@ -66,6 +68,7 @@ class Login extends React.Component {
                 errorMessages={['this field is required']}
                 endAdornment={
                   <InputAdornment position="end">
+                    {/* Icon Eye, for see the password on click */}
                     <IconButton aria-label="Toggle password visibility" onClick={this.props.toggleSho}>
                       {this.props.showPass ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
