@@ -3,6 +3,10 @@ html{
     width: 100vw;
 }
 
+.hidden{
+    display : none;
+}
+
 .weeklyContainer{
     display:flex;
 }
@@ -445,12 +449,6 @@ i {
 .dayMobile > .event > h2 {
     text-transform: uppercase;
 }
-
-
-
-
-
-
 
 .searchForm{
     width:100%;

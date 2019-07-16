@@ -61,7 +61,7 @@ class RegisterLogin extends React.Component {
 	render() {
 		const { formData, success, redirect } = this.state;
 		if (redirect) {
-			return <Redirect to='/signin' />
+			return <Redirect to='/menu-admin' />
 		}
 
 		return (

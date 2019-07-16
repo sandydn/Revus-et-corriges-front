@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Link, Route, BrowserRouter, Switch } from 'react-router-dom'
 import axios from 'axios';
 
 import Login from './components/Login'
@@ -86,6 +86,7 @@ class App extends Component {
   };
 
   render() {
+
     return (
       <>
         <div>
@@ -95,7 +96,7 @@ class App extends Component {
           <Switch>
 
             {/* Section CALENDRIER */}
-            <Route exact path="/" component={Calendar} />
+            <Route exact path="/" render={(props) => <Calendar {...props}verif={this.state.verified}/>}/>
 
 
             {/* Section CONNEXION */}
