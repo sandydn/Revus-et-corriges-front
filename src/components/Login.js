@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 import Button from '@material-ui/core/Button';
@@ -12,11 +12,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-
 import RC from '../pictures/RC.png'
-import './Login.css'
+import './css/Login.css'
 
 class Login extends React.Component {
+
   state = {
     formData: {
       email: '',
@@ -24,7 +24,8 @@ class Login extends React.Component {
     },
     showPassword: false,
     success: false,
-    redirect: false
+    redirect: false,
+    verified: false,
   };
 
   // Show password or not (icon-eye) //
@@ -38,14 +39,15 @@ class Login extends React.Component {
     this.setState({ formData });
   };
 
-  // ON SUBMIT - rediriger avec le routeur sur la page d'appel de formulaire
+  // ON SUBMIT - rediriger avec le routeur sur la e d'appel de formulaire
   handleSubmit = event => {
     event.preventDefault()
-    axios.post(`http://localhost:4242/auth/login/`, {
+    axios.post(`http://localhost:4000/auth/login/`, {
       admin_email: event.target.email.value,
       admin_password: event.target.password.value
     })
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("token", res.headers["x-access-token"])
         this.setState({ success: true }, () => {
           setTimeout(() => this.setState({ success: false }), 1400);
           setTimeout(() => this.setState({ redirect: true }), 1400);
@@ -53,11 +55,36 @@ class Login extends React.Component {
       });
   };
 
+  protectedRoute = () => {
+    
+    const token = localStorage.getItem("token")
+    axios({
+      method: 'POST',
+      url: "http://localhost:4000/auth/protected",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+      .then(res => {
+        this.setState({
+          verified: res.data.auth,
+        })
+      })
+  }
+
+  componentDidMount() {
+    this.protectedRoute()
+  }
 
   render() {
+
+    if (this.state.verified === true) {
+      return <Redirect to='/menu-admin' />
+    }
+
     const { formData, success, redirect } = this.state;
     if (redirect) {
-      return <Redirect to='/select-form' />
+      return <Redirect to='/menu-admin' />
     }
 
     return (
@@ -67,8 +94,7 @@ class Login extends React.Component {
         <img className="iconUser" src={RC} alt="icone-user" />
 
         <div className="FormTitleIn">
-          <NavLink to="/signin" activeClassName="FormTitleIn__Link--Active" className="FormTitleIn__Link">Connexion</NavLink>
-          <NavLink exact to="/signup" activeClassName="FormTitleUp__Link--Active" className="FormTitleUp__Link">Enregistrement</NavLink>
+          <p to="/signin" className="FormTitleIn__Link">Connexion</p>
         </div>
 
         <div>
@@ -123,10 +149,6 @@ class Login extends React.Component {
 
           </ValidatorForm>
         </div>
-
-        <Link to="" variant="body2">
-          {"Mot de passe oublié ?"}
-        </Link>
 
       </div>
     );

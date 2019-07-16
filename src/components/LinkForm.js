@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+
+
+export class LinkForm extends Component {
+
+  render() {
+    return (
+      <>
+        <div>
+          <a className='buttonform' href="link" type="button">
+            {this.props.name}
+          </a>
+        </div>
+      </>
+    )
+  }
+}
+
+export default LinkForm

@@ -1,26 +1,73 @@
 import React from 'react'
 
-const style = {
-    input: {
-        color: "blue",
-        backgroundColor: "white"
-    },
-    span : {
-        fontSize: "1em",
-    }
+const styleBase = {
+  general: {
+    padding: '5px',
+    borderBottom: "2px solid blue"
+  },
+  input: {
+    border: "none",
+    outline: "none",
+    padding: "5px",
+  },
+  span: {
+    padding: "5px"
+  }
 }
 
-const InputInLIne = ({keyState, title, style, funct, value}) => {
-    <div>
-
-        <span>{title || "nothing"}</span>
-        <input 
-            style={style.input}
-            onChange={(e) => funct && funct(keyState, e)}
-            value={value || "" }
-
-        /> 
-    </div>
+const InputInLine = ({ keyState, title, style, funct, value }) => {
+  return <div style={styleBase.general}>
+    <span style={styleBase.span}>
+      {title + " :" || "nothing :"}
+    </span>
+    <input
+      style={{ ...styleBase.input, ...style }}
+      onChange={(e) => funct && funct(keyState, e)}
+      value={value || ""}
+    />
+  </div>
 }
 
 export default InputInLine
+
+
+
+
+
+
+//PREMIER INPUT INLINE
+// import React from 'react'
+
+// const styleBase = {
+//     input: {
+//         border: "none",
+//         borderBottom: "2px solid silver",
+//         outline: "none",
+//         fontSize: "1em",
+//         padding: "5px",
+//         width: "40vw",
+//         paddingTop: "2%",
+//     },
+//     span : {
+//         borderBottom: "2px solid silver",
+//         fontSize: "1em",
+//         paddingTop: "55%",
+//         padding: "6px",
+
+//     }
+// }
+
+// const InputInLine = ({keyState, title, style, funct, value}) => {
+//     return <div>
+//         <span style={styleBase.span}>
+//             {title + " :" || "nothing :"}
+//         </span>
+//         <input 
+//             style={{...styleBase.input, ...style}}
+//             onChange={(e) => funct && funct(keyState, e)}
+//             value={value || "" } 
+//         /> 
+//     </div>
+// }
+
+// export default InputInLine

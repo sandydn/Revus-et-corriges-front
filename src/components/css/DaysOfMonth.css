@@ -1,20 +1,19 @@
-.Day{
+.DayzDisplay{
     width: 20%;
     margin-right: 4px;
     margin-left: 4px;
     margin-top: 0px;
+    display: inline-block;
 }
 
-.Day > h1 {
-    background: white;  
+.DayzDisplay > h1 {
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 1.0em;
     color: rgb(48, 48, 48);
     margin: 0px;
-
 }
 
-.Day > .line {
+.DayzDisplay > .line {
     width: 100%;
     height: 1px;
     background: grey;
