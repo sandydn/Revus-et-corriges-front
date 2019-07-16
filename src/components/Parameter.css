@@ -1,6 +1,6 @@
  .wheelButton{
-  height :3%;
-  width : 3%;
+  height :7%;
+  width : 7%;
   background-image: url("https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png") no-repeat;
   /*animation  : example 1s linear 0s infinite;*/  
 }
@@ -14,17 +14,20 @@
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
 }    */
-
+.updatefontcolor {
+  display: flex;
+  flex-direction: row;
+  flex-grow: initial;
+}
 .showing {
-  visibility: hidden;
-
-}	
-
-.notShowing {
   visibility: visible;
 }
 
-
-.calendar{
-  top:2000px;}
-
+.notShowing {
+  visibility: hidden;
+  max-height:120px;
+}
+.view-color {
+ max-width:100px;
+ max-height: 100px;
+}
