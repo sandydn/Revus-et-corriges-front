@@ -73,7 +73,7 @@ main {
   margin: 0 auto;
   margin-top: 5em;
   max-width: 50em;/* FONT IMPORTS */
-
+}
   @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
   
   .icon {
@@ -301,7 +301,7 @@ main {
   .selected {
     background-color: grey;
   }
-}
+
 
 
 /* GRID */

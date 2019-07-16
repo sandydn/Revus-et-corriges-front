@@ -95,13 +95,24 @@ h4 {
     text-decoration-line: underline;
     padding-left: 1vw;
 }
-.buttonform {
+.buttonform  {
+    text-decoration: none;
+    padding: 0.7em;
+    font-size:1em;
+    color: black;
+    display: block;
+    margin-right: 39em;
+    margin-top: 14em;
+}
+.buttonform:hover {
+    text-decoration-line: underline;
+}
+
+
+.menuadminbuttonform {
     text-decoration: none;
     padding-left: 2vw;
     font-size:1em;
     color: black;
     display: block;
-}
-.buttonform:hover {
-    text-decoration-line: underline;
 }
