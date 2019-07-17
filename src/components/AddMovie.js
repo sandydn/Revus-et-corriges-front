@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import InputInLine from './InputInLine'
+import InputInLine from '../elements/InputInLine'
 // import MenuAdmin from '../screen/MenuAdmin'
 
 class AddMovie extends Component {

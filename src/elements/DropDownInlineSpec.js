@@ -9,7 +9,6 @@ const style = {
   general: {
     padding: '5px',
     marginTop: '10px',
-    borderBottom: '1px solid blue'
   },
   span: {
     padding: '5px'
@@ -19,13 +18,14 @@ const style = {
     padding: '0',
     position: 'absolute',
     background: 'white',
-    borderLeft: '1px solid blue',
     display: 'none'
   },
   input: {
     background: 'inherit',
     width: 'auto',
-    padding: '5px'
+    padding: '5px',
+    width: '100%',
+    borderBottom: '1px solid black'
   },
   button: {
     display: 'block',
@@ -36,49 +36,62 @@ const style = {
 }
 
 const handleSearch = (evt, data, setDataSelect) => {
+  // console.log("allo", data);
   // secure if data no gotten
   if (!data) return ;
+  // console.log("still here", data);
   // create new array after filter
   let filtre = data.filter(e => {
+    // console.log(data, e);
+    
     let c = evt.target.value.toLowerCase().split(/[\s,]+/)
     c = c[c.length - 1]
-    return c.length ? e.title.toLowerCase().search(c) > -1 : false
+    return c.length ? e.toLowerCase().search(c) > -1 : false
+    // console.log(evt);
+    
   })
   // if length of filter > 5 --- cut it
   if (filtre.length > 5)
-    filtre = filtre.slice(0, 4)
+  filtre = filtre.slice(0, 4)
+  
   
   // update with Hook -- for rendering
-  setDataSelect(filtre)
+  filtre.length && setDataSelect(filtre)
   // display or hide if array no empty
   const div =  evt.target.nextSibling
   div.style.display = filtre[0] ? 'block' : 'none'
 }
 
-const updateInput = (evt, func) => {
+const updateInput = (evt, func, keyState) => {
   const newValue = evt.target.innerHTML
   const input = evt.target.parentNode.previousSibling
+
   // after click hide select
   evt.target.parentNode.style.display = 'none'
   // cursor inside input
   input.focus()
   // create array of input value
-  const tabInput = input.value.split(/[\s,]+/)
+  console.log(input.value);
+  
+  const tabInput = input.value.split(/,\s|,/)
   // last value = newValue
   tabInput[tabInput.length - 1] = newValue
   // input Value take tab joint or newValue
-  input.value = tabInput.length - 1 ? tabInput.join(', ') + ', ' : newValue + ', '
+  
+  input.value = tabInput.length ? tabInput.join(', ') + ', ' : newValue + ', '
   // parent can get last update value
-  func && func(input.value)
+  func && func(keyState, input.value)
 }
 
-const DropDownInlineSpec = ({title, data, func}) => {
+const DropDownInlineSpec = ({title, data, func, keyState}) => {
   // data after filter rendering 
   const [dataSelect, setDataSelect] = useState([])
-
+  // console.log(dataSelect);
+  
   return (
+
     <div style={{...style.common, ...style.general}}>
-      
+
       <span style={{ ...style.common, ...style.span}}>
         {(title && title) || 'Default'} <i className="fas fa-chevron-right fa-xs"></i> :
       </span>
@@ -97,13 +110,13 @@ const DropDownInlineSpec = ({title, data, func}) => {
           dataSelect.map((e, i) => <button
             style={{ ...style.common, ...style.button}}
             key={`a-select--${i}`}
-            onClick={(e) => updateInput(e, func)}
+            onClick={(e) => updateInput(e, func, keyState)}
             onMouseOver={(e) => e.target.style.background = 'linear-gradient(to left, #fff, #A9DCFF)'}
             onMouseOut={(e) => e.target.style.background = 'white'}
             onFocus={(e) => e.target.style.background = 'linear-gradient(to left, #fff, #A9DCFF)'}
             onBlur={(e) => e.target.style.background = 'white'}
           >
-            {e.title}
+            {e}
           </button>)
         }
       </div>
