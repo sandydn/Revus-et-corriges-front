@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment'
 
-import DropDownInline from './DropDownInline';
-import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar';
+import DropDownInline from '../elements/DropDownInline';
+import InputInLine from '../elements/InputInLine';
+import InputWithCalendar from '../elements/InputWithCalendar';
 
 import MenuAdmin from '../screen/MenuAdmin';
 import './css/Form.css';
