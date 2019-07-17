@@ -3,9 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
-    background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
+    /* background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
     background-size: cover;
-    background-position-x: 18vw;
+    background-position-x: 18vw; */
 }
 .screenCinema{
     display: flex;
@@ -36,7 +36,11 @@
     background-position-x: 12vw;
 }
 
-
+.displayData {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 
 .container-button {
     display:flex;

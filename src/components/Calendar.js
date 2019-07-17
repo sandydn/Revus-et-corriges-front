@@ -6,8 +6,6 @@ import Weekly from "./Weekly"
 import MonthlyV2 from './MonthlyV2'
 
 import './css/CalendarV2.css'
-// import './css/calendar.css'
-
 
 
 class Calendar extends Component {

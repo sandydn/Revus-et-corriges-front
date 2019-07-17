@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-
 import { Redirect } from "react-router-dom";
 import axios from 'axios'
 
@@ -23,7 +22,6 @@ getevent() {
         this.setState({results: results.data, isLoading: true}) 
       })
 }
-
 
 logout() {
   localStorage.clear()
@@ -51,8 +49,8 @@ logout() {
         </div>
         <h4 className="title-managment"> Gestion administrateur</h4>
         <div className="deco-managment">
-          <LinkForm name="Paramètres" />
-          <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
+        <Link to="/parametre" className="event-button"><LinkForm name="Paramètres"/></Link>
+        <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
         <button onClick={this.logout}>Se déconnecter</button>

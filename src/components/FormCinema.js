@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar';
-import DropDownInline from './DropDownInline';
-import DropDownInlineSpec from './DropDownInlineSpec';
-import MenuAdmin from '../screen/MenuAdmin';
-import MapContact from './MapContact';
-import TextareaCustom from './TextAreaCustom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment'
-import './css/Form.css'
+
+import DropDownInline from './DropDownInline';
+import DropDownInlineSpec from './DropDownInlineSpec';
+import InputInLine from './InputInLine';
+import InputWithCalendar from './InputWithCalendar';
+import TextareaCustom from './TextAreaCustom';
+
+import MenuAdmin from '../screen/MenuAdmin';
+import './css/Form.css';
 
 
 
@@ -104,15 +105,7 @@ class FormCinema extends Component {
             onChangeDate={this.onChangeDateStart}
             keyState="dateStart"
             value={dateStart}
-          />
-           {/* <div className="getcontact">
-          {this.state.isLoading && this.state.results.map(contact =>
-            Object.keys(contact).map((key, index) => 
-              <DropDownInlineSpec                data={contact[key]}
-            /> )
-          )}
-          </div> */} 
-          <MapContact />            
+          />        
 
           <DropDownInline
             keyState='importance'

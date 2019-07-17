@@ -3,6 +3,7 @@ import AddMovie from '../components/AddMovie'
 import AddContact from '../components/AddContact';
 import MenuAdmin from '../screen/MenuAdmin'
 import '../components/css/Form.css'
+import Parameter from '../components/Parameter';
 
 class Ajout extends Component {
 
@@ -15,6 +16,7 @@ class Ajout extends Component {
           <div>
         <AddMovie />
         <AddContact />
+        <Parameter />
         </div>
       </div>
     )
