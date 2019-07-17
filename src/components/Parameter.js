@@ -29,12 +29,22 @@ class Parameter extends Component {
   }
 
   handleSubmit = (e) => {
+    const token = localStorage.getItem("token");
     e.preventDefault()
-    axios.post(`http://localhost:4000/a4/decoration`, {
+    axios.post(`http://localhost:4000/a4/decoration`, ({
       textcolor: this.state.color,
       background: this.state.background,
       textfont: this.state.textfont
-    })
+    }),
+    {headers: {
+      'x-access-token': `${token}`
+        }
+      })
+      .then((res) => {
+        alert("Couleur de texte ajouté !")
+      })
+      .catch((err) => {
+      })
   }
 
   render() {

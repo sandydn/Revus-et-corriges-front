@@ -34,6 +34,24 @@ class AddContact extends Component {
       alert('Contact ajouté !')
   }
 
+    handleSubmit = (e) => {
+    const token = localStorage.getItem("token");
+    e.preventDefault()
+    axios.post(`http://localhost:4000/a2/contact`, ({
+      prenom: this.state.prenom,
+      nom: this.state.nom,
+      genre: this.state.type,
+    }),
+      {headers: {
+      'x-access-token': `${token}`
+        }
+      })
+      .then((res) => {
+        alert("Contact ajouté !")
+      })
+      .catch((err) => {
+      })
+  }
 
   render() {
     const {
