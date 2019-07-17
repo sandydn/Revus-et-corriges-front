@@ -9,12 +9,14 @@ class Ajout extends Component {
   render() {
     return (
       <div className="screen">
-          <div>
+        <div>
           <MenuAdmin />
-          </div>
-          <div>
-        <AddMovie />
-        <AddContact />
+        </div>
+        <div className="addmovie">
+          <AddMovie />
+        </div>
+        <div className="addcontact">
+          <AddContact />
         </div>
       </div>
     )
