@@ -74,11 +74,22 @@ class Weekly extends Component {
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
     }
+
+    componentWillReceiveProps = async () => {
+        if(this.props.dateOnClick){
+            this.setState({ date: moment(this.props.dateOnClick).subtract(5, 'days') })
+        }else{
+            this.setState({ date: moment().startOf('hour') })
+        }
+        await this.getevent(this.createDateArrayNext)
+        const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
+        const selectDayTest = dayForSelect[0]
+        this.selectDay(selectDayTest)
+    }
     
     selectDay(i) {
         const day = this.state.days.filter((display) => display.date.includes(i))
         const dayArr = day[0]
-        console.log(dayArr)
         this.setState({ dayEvent: dayArr.data })
         this.setState({ dayDate: dayArr.date })
     }
@@ -112,7 +123,7 @@ class Weekly extends Component {
 
 
     render() {
-        console.log(this.state.dayDate)
+
         return (
             
 
