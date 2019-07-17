@@ -20,7 +20,7 @@ import FormCinema from './components/FormCinema';
 import Ajout from './screen/Ajout'
 import Favicon from 'react-favicon';
 import PrivateRoute from './components/PrivateRoute';
-
+import Parameter from './components/Parameter';
 
 class App extends Component {
 
@@ -54,6 +54,7 @@ class App extends Component {
           <Route path="/admin-events-form" component={FormEvent} />
           <Route path="/admin-cinema-form" component={FormCinema} />
           <Route path="/admin-videos-form" component={FormVideos} />
+          <Route path="/parametre" component={Parameter} />
         </Switch>
       </BrowserRouter>
 
