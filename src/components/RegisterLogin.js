@@ -10,9 +10,11 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 import RC from '../pictures/RC.png'
 import './css/Login.css'
+import '../screen/Events.css'
+import MenuAdmin from '../screen/MenuAdmin';
 
 class RegisterLogin extends React.Component {
-	
+
 	state = {
 		formData: {
 			name: '',
@@ -65,6 +67,8 @@ class RegisterLogin extends React.Component {
 		}
 
 		return (
+			<div className="screenRegister">
+			<MenuAdmin />
 
 			<div className="adminFormUp" >
 
@@ -140,6 +144,7 @@ class RegisterLogin extends React.Component {
 					</ValidatorForm>
 
 				</div>
+			</div>
 			</div>
 		);
 	};
