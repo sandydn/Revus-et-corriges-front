@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import "./Parameter.css"
+import "./ColorPicker.css"
 import { SketchPicker } from 'react-color';
 import axios from 'axios'
 
 
-class Parameter extends Component {
+class ColorPicker extends Component {
 
   state = {
     show: false,
@@ -97,7 +97,7 @@ class Parameter extends Component {
     )
   }
 }
-export default Parameter
+export default ColorPicker
 
 
 
