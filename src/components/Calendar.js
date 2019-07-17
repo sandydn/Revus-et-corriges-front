@@ -11,7 +11,7 @@ import './css/CalendarV2.css'
 class Calendar extends Component {
 	state = {
 		monthToWeek: 'Go to Monthly',
-		showButton: false
+		showButton: 'hidden'
 	}
 	handleClick = () => {
 		const weekly = document.getElementById('weekly')
@@ -28,24 +28,21 @@ class Calendar extends Component {
 		}
 	}
 
-	butoonClass = ''
-
-	updateButoon = () => {
-		if (this.props.verif) {
-			this.buttonClass = 'button'
-		} else {
-			this.buttonClass = 'hidden'
-		}
+	
+	updateButton = async() => {
+		const butoon = document.getElementById('buttonAdmin')
+		console.log(this.props.verif)
+		await this.props.verif ? butoon.style.display = 'block' : butoon.style.display = 'none'
 	}
-
+	
 	componentDidMount() {
-		this.updateButoon()
+		this.updateButton()
 	}
-
+	
 	componentDidUpdate() {
-		this.updateButoon()
+		this.updateButton()
 	}
-
+	
 	render() {
 
 		return (
@@ -53,7 +50,7 @@ class Calendar extends Component {
 			<div className='calendarScreen'>
 				<div className='navbar'>
 					<Menu />
-					<Link to="/menu-admin" className={this.buttonClass} ><input type="submit" value="Admin" /></Link>
+					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					{this.renderButtonAdmin}
 					<button onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
@@ -62,6 +59,7 @@ class Calendar extends Component {
 			</div>
 		)
 	}
+	
 }
 
 export default Calendar;

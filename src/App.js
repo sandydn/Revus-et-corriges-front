@@ -59,6 +59,7 @@ class App extends Component {
         this.setState({ success: true }, () => {
           setTimeout(() => this.setState({ success: false }), 1400);
           setTimeout(() => this.setState({ redirect: true }), 1400);
+          setTimeout(() => this.protectedRoute(), 1400);
         });
       });
   };
