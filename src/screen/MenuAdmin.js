@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from "react-router-dom";
 import axios from 'axios'
 // brick
-import LinkForm from './components/LinkForm'
+import LinkForm from '../components/LinkForm'
 
 class MenuAdmin extends Component {
 

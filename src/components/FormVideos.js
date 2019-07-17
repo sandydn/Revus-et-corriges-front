@@ -6,6 +6,7 @@ import moment from 'moment'
 import DropDownInline from '../elements/DropDownInline';
 import InputInLine from '../elements/InputInLine';
 import InputWithCalendar from '../elements/InputWithCalendar';
+import DropDownInlineSpec from '../elements/DropDownInlineSpec';
 
 import MenuAdmin from '../screen/MenuAdmin';
 import './css/Form.css';

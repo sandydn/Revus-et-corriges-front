@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import InputInLine from '..InputInLine/elements/InputInLine';
+import InputInLine from '../elements/InputInLine';
 
 class FontPicker extends Component {
   state = {
