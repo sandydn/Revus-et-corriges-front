@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import MenuAdmin from './MenuAdmin';
 import ColorPicker from '../components/ColorPicker';
-
+import BackgroundPicker from '../components/BackgroundPicker';
+import "../screen/Settings.css"
 class Settings extends Component {
   render() {
     return (
@@ -9,7 +10,11 @@ class Settings extends Component {
         <div>
           <MenuAdmin />
         </div>
+
+        <div  className=" test">
         <ColorPicker />
+        <BackgroundPicker />
+        </div>
       </div>
 
     )
