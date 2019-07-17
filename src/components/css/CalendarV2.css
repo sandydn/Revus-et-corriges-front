@@ -9,7 +9,7 @@ html{
 
 .weekly{
     width:78vw;
-    /* height: 100vh; */
+    
 }
 
 .calendarScreen{
@@ -66,8 +66,7 @@ html{
     flex-direction: column;
 }
 
-/* .arrow {
-} */
+
 
 .nextMobile{
     height: 22px;
@@ -124,11 +123,18 @@ i {
     }
   
     
-
+    @media screen and (min-width: 1295px) {
+        .menuCss  {
+            color: rgb(0, 0, 0);
+            list-style-type: none;
+            font-size: 2.8vh;
+            padding: 22px;
+          }
+    }
     .menuCss  {
         color: rgb(0, 0, 0);
         list-style-type: none;
-        font-size: 2.8vh;
+        
         padding: 22px;
       }
       
@@ -164,8 +170,7 @@ i {
         .logo{
           display: none;
         }
-      
-      }
+}
 
 
 
@@ -185,10 +190,7 @@ i {
         z-index: 8;
         text-decoration: none;
         text-decoration-style: solid;
-    
-    
-      
-    }
+}
     
       
       
@@ -285,11 +287,11 @@ i {
     
      
     }
-    @media screen and (min-width : 1024px)  {
+    @media screen and (min-width : 1025px)  {
     #close, .liResponsive {
         display: none;
     }
-    }
+}
 
 
 
@@ -466,7 +468,6 @@ i {
     height: 50%;
     background: #bc33e9;
     border: none;
-    /* position: absolute; */
     margin-left: -2.13em;
     margin-top: 0.72em;
     border-radius: 15%;
@@ -483,4 +484,21 @@ i {
           display: none;
           
       }
+      .calendarScreen{
+        
+        border: none;
+        height: 100vh;
+    }
+
+    .buttonMenuAdminMonthly {
+        margin-top: 39em;
+    }
+}
+
+
+@media screen and (min-width: 1025px) and (max-width: 1294px) {
+
+    .buttonMenuAdminMonthly {
+        margin-top: 14em;
+    }
 }
