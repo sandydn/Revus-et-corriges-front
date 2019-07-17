@@ -1,177 +1,162 @@
 import React, { Component } from 'react'
-import  {Link} from 'react-router-dom';
-import axios from "axios";
-import SelectionForm from "../screen/SelectionForm"
+import InputInLine from './InputInLine';
+import CheckboxLine from './CheckboxLine';
+import InputWithCalendar from './InputWithCalendar'
+import { Link } from 'react-router-dom';
+import DropdownCustom from "./DropdownCustom"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import '../components/Form.css'
-
+import './Form.css';
 
 class Formevent extends Component {
   state = {
-    dateStart: "",
-    dateEnd: "",
-    type:"",
-    importance: false,
-    name:"",
-    adresse:"",
-    dateinfo:"",
-    link:"",
-    description:"",
-    src:"",
-    succes: false
+    adresse: null,
+    dateEnd: null,
+    dateStart: null,
+    général: null,
+    information: null,
+    lien: null,
+    nomLieu: null,
+    partenaires: null,
+    rc: null,
+    titre: null,
+    visuel: null,
   }
 
 
-  handleChange = event => {
-    event.preventDefault()
-    console.log(this.state)
-    this.setState({ [event.target.name]: event.target.value },
-    )
+  handleChangeInput = (keyState, evt) => {
+    console.log("keyState", keyState, "evt", evt.target.value)
+    this.setState({ [keyState]: evt.target.value })
   }
 
-  
-  handleSubmit = event => { 
-    event.preventDefault()
-    axios.post(`http://localhost:4000/a13/events`, {
-      dateStart : event.target.dateStart.value,
-      dateEnd : event.target.dateEnd.value,
-      // : event.target.type.value,
-      // : event.target.importance.value,
-      name : event.target.name.value,
-      // : event.target.adresse.value,
-      // : event.target.dateinfo.value,
-     link : event.target.link.value,
-      description : event.target.description.value,
-     src : event.target.src.value
-  } 
-  .then(() => {
-    this.setState({ success: true })
-  })
-)
-}
-
-  // handleSubmit = e => {
-  //   e.preventDefault()
-  //   const url = "http://localhost:4000/a13;
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then( data => {
-  //       this.setState({
-  //         table : data
-  //       })
-  //     })
+  // handleChangeCheckbox = (keyState, evt) => {
+  //   this.setState({ [keyState]: evt.target.value})
   // }
+
+  handleChangeDropdown = (keyState, evt) => {
+    this.setState({ [keyState]: evt.target.value })
+  }
+
+  onChangeDateStart = dateStart => {
+    if (dateStart > this.state.dateEnd && this.state.dateEnd) {
+      return console.log('error')
+    }
+    console.log('test');
+
+    this.setState({ dateStart })
+  }
+
+  onChangeDateEnd = dateEnd => {
+    if (dateEnd < this.state.dateStart) {
+      return console.log('error')
+    }
+    console.log('test');
+
+    this.setState({ dateEnd })
+  }
+
+  componentDidMount() {
+    console.log('didmount', this.state);
+
+  }
 
 
   render() {
-    return ( 
-      <div className="screen-form">
-      <SelectionForm />
-      <div className="container">
-            <div className="form-event">
-          <form onSubmit={this.handleSubmit}>
+    const {
+      adresse,
+      dateEnd,
+      dateStart,
+      général,
+      information,
+      lien,
+      nomLieu,
+      partenaires,
+      rc,
+      titre,
+      visuel,
+      items
+    } = this.state
 
-            <h3>Formulaire event</h3>
-              <fieldset >
-              <legend>Importance de l'évènement :</legend>
-              <div className="checkradio">
-                <input 
-                  className="buttonradio" 
-                  name="importance" 
-                  onChange={this.handleChange} 
-                  type="radio" id="r-c" 
-                  value={this.state.importance}
-                />
-                <label for="r-c">Revus et Corrigés</label>
-                <input 
-                  className="buttonradio" 
-                  name="importance" 
-                  onChange={this.handleChange} 
-                  type="radio" id="partner" 
-                  value={this.state.importance}
-                />
-                <label for="partner">Partenaires</label>
-                <input 
-                  className="buttonradio" 
-                  name="importance" 
-                  onChange={this.handleChange} 
-                  type="radio" id="general" 
-                  value={this.state.importance}
-                />
-                <label for="general">Général</label>
-              </div>
-            </fieldset>
+    return (
 
-            <p>Date de début :</p>
-            <input className="input-form"
-              name="dateStart"
-              type="date"
-              placeholder="JJ-MM-AAAA"
-              value={this.state.dateStart}
-              onChange={this.handleChange} />
-
-            <p>Date de fin :</p>
-            <input className="input-form"
-              name="dateEnd"
-              placeholder="JJ-MM-AAAA"
-              type="date"
-              value={this.state.dateEnd}
-              onChange={this.handleChange} />
-
-            <p>Titre de l'évènement :</p>
-            <input className="input-form"
-              type="text"
-              name="name"
-              placheholder="Ton titre"
-              value={this.state.name}
-              onChange={this.handleChange} />
-
-            <p>Lieu :</p>
-            <input className="input-form"
-              type="text"
-              name="adresse"
-              placheholder="Adresse de l'évènement"
-              value={this.state.adresse}
-              onChange={this.handleChange} />
-
-            <p>Date :</p>
-            <input className="input-form"
-              type="date"
-              name="dateinfo"
-              placheholder="JJ-MM-AAAA "
-              value={this.state.dateinfo}
-              onChange={this.handleChange} />
+      
+      <div className="Formevent">
 
 
-            <p>Lien externe :</p>
-            <input className="input-form"
-              type="url"
-              name="link"
-              placeholder=""
-              value={this.state.link}
-              onChange={this.handleChange} />
+        <p>Date de debut :</p>
+        <InputWithCalendar
+          date={dateStart}
+          onChangeDate={this.onChangeDateStart}
+        />
 
-            <p>Informations :</p>
-            <input className="input-form"
-              type="text"
-              name="description"
-              placeholder="infos"
-              value={this.state.description}
-              onChange={this.handleChange} />
-            <div className="button-choice">
-            <FontAwesomeIcon icon={faLongArrowAltLeft} className="arrow-back" />
-            <Link to="/admin" ><input type="submit" value="Choisir un autre formulaire" className="button-selectform" /></Link>
-            <Link to="/" ><input type="submit" value="Valider" className="button-submit" /></Link>
-            </div>
-          </form>
-          {this.state.success ? <p>Formulaire remplis avec succés</p> : null}
+        <p>Date de fin :</p>
+        <InputWithCalendar
+          date={dateEnd}
+          onChangeDate={this.onChangeDateEnd}
+        />
+
+        <div className="importance">
+          <p>Importance </p>
+          <CheckboxLine title="r&c" keyState="rc" value={rc} funct={this.handleChangeCheckbox}/>
+          <CheckboxLine title="partenaires" keyState="partenaires" value={partenaires} funct={this.handleChangeCheckbox}/>
+          <CheckboxLine title="général" keyState="général" value={général} funct={this.handleChangeCheckbox} />
         </div>
-        </div>
+
+        <InputInLine
+          keyState="titre"
+          title="Titre"
+          value={titre}
+          funct={this.handleChangeInput}
+        />
+
+        <InputInLine
+          keyState="nomLieu"
+          title="nom du Lieu"
+          value={nomLieu}
+          funct={this.handleChangeInput}
+        />
+
+        <InputInLine
+          keyState="adresse"
+          title="Adresse"
+          value={adresse}
+          funct={this.handleChangeInput}
+        />
+
+        <InputInLine
+          keyState="lien"
+          title="lien externe"
+          value={lien}
+          funct={this.handleChangeInput}
+        />
+
+        <InputInLine
+          keyState="information"
+          title="information"
+          value={information}
+          funct={this.handleChangeInput}
+        />
+
+        <InputInLine
+          keyState="visuel"
+          title="visuel"
+          value={visuel}
+          funct={this.handleChangeInput}
+        /> 
+
+        <Link to="/admin">
+           <input
+            className="button-submit"
+            type="submit"
+            value="Valider le formulaire"
+          /> 
+        </Link>
+
+
+
+          <DropdownCustom />
       </div>
-        )
-    }
+    )
+  }
 }
 
-export default Formevent;
+export default Formevent

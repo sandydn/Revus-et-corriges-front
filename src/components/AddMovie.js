@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import InputInLine from './InputInLine'
-
-import MenuAdmin from '../screen/MenuAdmin'
+// import MenuAdmin from '../screen/MenuAdmin'
 
 class AddMovie extends Component {
 
@@ -16,7 +15,6 @@ class AddMovie extends Component {
         console.log("keyState", keyState, "evt", evt.target.value)
         this.setState({ [keyState]: evt.target.value })
     }
-
 
     handleSubmit = (e) => {
       e.preventDefault()
@@ -38,14 +36,14 @@ class AddMovie extends Component {
 
             <InputInLine 
                 keyState="dateCreation"
-                title="date de création du film"    
+                title="Date de création du film"    
                 value={this.state.dateCreation}
                 funct={this.handleChangeInput}
             />
 
             <InputInLine
                 keyState="titre"
-                title="titre du film"
+                title="Titre du film"
                 value={this.state.titre}  
                 funct={this.handleChangeInput}          
             />

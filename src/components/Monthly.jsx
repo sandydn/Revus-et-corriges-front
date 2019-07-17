@@ -35,6 +35,11 @@ class Monthly extends Component {
 
     this.getData()
   }
+
+  componentDidUpdate(){
+
+    this.displayDaysMonth()
+  }
   
   daysInMonth = () => {
 
@@ -57,6 +62,10 @@ class Monthly extends Component {
 
     return firstDay;
   };
+
+  displayDaysMonth = () => {
+    const eventOfTheDay =  document.getElementsByClassName("calendar-day-event")
+    if (eventOfTheDay) {eventOfTheDay.className = "calendar-day-not-event"}}
     
   month = () => {
 
@@ -278,29 +287,54 @@ class Monthly extends Component {
   }
 
   //FUNCTION FOR CURRENT DAY AND DISPLAY EVENT OR NOT
-  let daysInMonth = [];
-  for (let d = 1; d <= this.daysInMonth(); d++) {
-    let currentDay = d == this.currentDay() ? "today" : "";
-    let dayEvent = false
-    this.state.eventDate.forEach( event => {
-      const eventDateStart = moment(event.dateStart).format("D")       
-      if (d == eventDateStart) {
+  // let years = [];
+  // let months =[];
+  // let daysInMonth = [];
+  // for (let y = 1; y <= this.years(); y++){
+  //   for (let m = 1; m <= this.months(); m++) {
+  //     for (let d = 1; d <= this.daysInMonth(); d++) {
+  //       let currentDay = d == this.currentDay() ? "today" : "";
+  //       let dayEvent = false
+  //       this.state.eventDate.map( event => {
+  //       const eventDateStart = moment(event.dateStart).format("D")
+  //       if (d == eventDateStart) {
 
-        return dayEvent = true
-      }
-    })
-    const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
-    daysInMonth.push(
-      <div key={d} className = { `${calendarDay} ${currentDay}`}>
+  //       return dayEvent = true
+  //     }
+  //   })
+  //   const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+  //   daysInMonth.push(
+  //     <div key={d} className = { `${calendarDay} ${currentDay}`}>
 
-        <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
+  //     let dayzInMonth = [];
+  //     for (let d = 1; d <= this.daysInMonth(); d++) {
+  //       let currentDay = d == this.currentDay() ? "today" : "";
+  //       let dayEvent = false
+  //       this.state.eventDate.map( event => {
+  //         const eventDateStart = moment(event.dateStart).format("D")       
+  //         if (d == eventDateStart) {
 
-      </div>
-    )
-  }
+  //           return dayEvent = true
+  //         }
+  //       })
+  //       const calendarDay = dayEvent ? 'calendar-day-event' : 'calendar-day-not-event'   
+  //       dayzInMonth.push(
+  //         <div key={d} className = { `${calendarDay} ${currentDay}`}>
+
+  //           <h3 onClick={e => {this.onDayClick(e, d)}}>{d}</h3>
+
+  //         </div>
+  //       )
+  // }
+
+  //     </div>
+  //     )
+  //   } 
+//   }
+// }
   //END OF FUNCTION
 
-  let totalSlots = [...blanks, ...daysInMonth];
+  let totalSlots = [...blanks, ...dayzInMonth];
   let rows = [];
   let cells = [];
 
