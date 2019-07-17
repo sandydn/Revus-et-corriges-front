@@ -38,7 +38,8 @@ class BackgroundPicker extends Component {
     
     return (
 
-      <>
+      <div>
+        <form onSubmit={this.handleSubmit}>
         <h3>Changer le Background du calendrier</h3>
           <InputInLine
             keyState="background"
@@ -54,7 +55,8 @@ class BackgroundPicker extends Component {
             color="grey"
             variant="contained"
           />
-      </>
+          </form>
+      </div>
 
     )
   }
