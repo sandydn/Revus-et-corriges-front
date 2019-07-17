@@ -43,14 +43,14 @@ render() {
             keyState="dateCreation"
             title="Date de création du film"
             value={this.state.dateCreation}
-            funct={this.handleChangeInput}
+            func={this.handleChangeInput}
           />
 
           <InputInLine
             keyState="titre"
             title="Titre du film"
             value={this.state.titre}
-            funct={this.handleChangeInput}
+            func={this.handleChangeInput}
           />
 
           <input onClick={this.handleSubmit}

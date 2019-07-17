@@ -45,7 +45,7 @@ class BackgroundPicker extends Component {
             keyState="background"
             title="Background"
             value={this.state.background}
-            funct={this.handleChangeInput}
+            func={this.handleChangeInput}
           />
 
           <input onClick={this.handleSubmit}

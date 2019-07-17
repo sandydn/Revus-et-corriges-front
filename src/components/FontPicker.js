@@ -39,7 +39,7 @@ class FontPicker extends Component {
             keyState="textfont"
             title="Police de texte"
             value={textfont}
-            funct={this.handleChangeInput}
+            func={this.handleChangeInput}
           />
 
           <input onClick={this.handleSubmit}

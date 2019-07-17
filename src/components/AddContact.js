@@ -59,14 +59,14 @@ class AddContact extends Component {
               keyState="prenom"
               title="Prénom"
               value={prenom}
-              funct={this.handleChangeInput}
+              func={this.handleChangeInput}
             />
 
             <InputInLine
               keyState="nom"
               title="Nom"
               value={nom}
-              funct={this.handleChangeInput}
+              func={this.handleChangeInput}
             />
 
             <DropDownInline

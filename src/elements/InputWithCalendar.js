@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react'
-import { registerLocale } from  "react-datepicker";
-import DatePicker from "react-datepicker";
-import fr from 'date-fns/locale/fr';
+import DatePicker from 'react-date-picker'
 import { arrayOf } from 'prop-types';
-
-registerLocale('fr', fr)
-
 
 const style = {
   general: {
