@@ -12,7 +12,7 @@ class Settings extends Component {
         <div>
           <MenuAdmin />
         </div>
-        <BackgroundPicker />
+          <BackgroundPicker />
         <div>
           <ColorPicker />
         </div>

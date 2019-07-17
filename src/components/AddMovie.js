@@ -1,67 +1,72 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import Button from '@material-ui/core/Button';
 import InputInLine from './InputInLine'
 // import MenuAdmin from '../screen/MenuAdmin'
 
 class AddMovie extends Component {
 
-    state = {
-        dateCreation: null,
-        titre: null,
-    }
+  state = {
+    dateCreation: null,
+    titre: null,
+  }
 
-    handleChangeInput = (keyState, evt) => {
-        console.log("keyState", keyState, "evt", evt.target.value)
-        this.setState({ [keyState]: evt.target.value })
-    }
+  handleChangeInput = (keyState, evt) => {
+    console.log("keyState", keyState, "evt", evt.target.value)
+    this.setState({ [keyState]: evt.target.value })
+  }
 
-    handleSubmit = (e) => {
-      e.preventDefault()
-      axios.post(`http://localhost:4000/a8/video`, {
-        dateCreation: this.state.dateCreation,
-        titre: this.state.titre,
+  handleSubmit = (e) => {
+    const token = localStorage.getItem("token");
+    e.preventDefault()
+    axios.post(`http://localhost:4000/a7/video`, ({
+      dateCreation: this.state.dateCreation,
+      titre: this.state.titre,
+    }),
+      {headers: {'x-access-token': `${token}`}
       })
-      alert('Film ajouté !')
-    }
-  
+      .then((res) => {
+        alert("Film ajouté !")
+      })
+      .catch((err) => {
+      })
+  }
 
-  render() {
+render() {
 
-    return (
-      <div className="screen">
-        <div>
-            <h2>Ajout d'un film</h2>
+  return (
+    <div className="screen">
+      <div>
+        <h2>Ajout d'un film</h2>
         <form onSubmit={this.handleSubmit}>
 
-            <InputInLine 
-                keyState="dateCreation"
-                title="Date de création du film"    
-                value={this.state.dateCreation}
-                funct={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="dateCreation"
+            title="Date de création du film"
+            value={this.state.dateCreation}
+            funct={this.handleChangeInput}
+          />
 
-            <InputInLine
-                keyState="titre"
-                title="Titre du film"
-                value={this.state.titre}  
-                funct={this.handleChangeInput}          
-            />
+          <InputInLine
+            keyState="titre"
+            title="Titre du film"
+            value={this.state.titre}
+            funct={this.handleChangeInput}
+          />
 
-            <input  onClick={this.handleSubmit}
-              className="button-submit"
-              type="submit"
-              value="Envoyer"
-              color="grey"
-              variant="contained"
-            />
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            type="submit"
+            value="Envoyer"
+            color="grey"
+            variant="contained"
+          />
 
         </form>
-        </div>
+      </div>
 
     </div>
-    )
-  }
+  )
+}
 }
 
 export default AddMovie
