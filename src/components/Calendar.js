@@ -27,11 +27,9 @@ class Calendar extends Component {
 			this.setState({ monthToWeek: 'Go to Monthly' })
 		}
 	}
-
 	
 	updateButton = async() => {
 		const butoon = document.getElementById('buttonAdmin')
-		console.log(this.props.verif)
 		await this.props.verif ? butoon.style.display = 'block' : butoon.style.display = 'none'
 	}
 	
