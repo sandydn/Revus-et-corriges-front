@@ -34,6 +34,7 @@ class FontPicker extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+        <h3>Changer la police du texte</h3>
           <InputInLine
             keyState="textfont"
             title="Police de texte"
