@@ -52,8 +52,8 @@ logout() {
           <LinkForm name="Paramètres" />
           <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
         </div>
-        <button onClick={this.logout}>LOGOUT</button>
         <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
+        <button onClick={this.logout}>Se déconnecter</button>
       </div>
 
       <div>

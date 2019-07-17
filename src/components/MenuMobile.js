@@ -7,7 +7,7 @@ class MenuMobile extends Component {
         return (
             <div id="wrap" >
                 
-                <header className="header">
+                
                         <nav className="nav">
                          <a href="#wrap" id="open">
                              
@@ -22,7 +22,7 @@ class MenuMobile extends Component {
                          <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/contact/nous-contacter/" id='close' >CONTACT+ </a></li>
       
                         </nav>
-                </header>
+               
 
             </div>
         )

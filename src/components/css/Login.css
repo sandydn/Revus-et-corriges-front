@@ -85,11 +85,8 @@
 }
 
 .iconUser{
-  
-    border-radius: 50%;
-    border: 3px solid black;
-    width: 60%;
+    width: 29%;
     margin-top: -38vh;
     margin-left: 1vw;
-   
+    position: absolute;
 }
