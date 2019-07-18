@@ -261,12 +261,19 @@ html {
     justify-content: space-around;
     }
   
-    
+    @media screen and (min-width: 1295px) {
+      .menuCss  {
+          color: rgb(0, 0, 0);
+          list-style-type: none;
+          
+          padding: 22px;
+        }
+      }
 
     .menuCss  {
         color: rgb(0, 0, 0);
         list-style-type: none;
-        font-size: 2.8vh;
+       
         padding: 22px;
       }
       
@@ -568,9 +575,9 @@ html {
     margin: 8px;
 }
 
-#selected {
+/* #selected {
     background: rgba(180, 180, 180, 0.45);
-}
+} */
 
 .dayMobile > .important{
     background: rgba(180, 180, 180, 0.45);
@@ -627,7 +634,6 @@ html {
     height: 50%;
     background: #bc33e9;
     border: none;
-    /* position: absolute; */
     margin-left: -2.13em;
     margin-top: 0.72em;
     border-radius: 15%;
@@ -636,8 +642,6 @@ html {
 .loupe{
     width: 12px;
 }
-
-
 
 @media screen and (min-width: 10px) and (max-width: 1024px) {
         .searchForm {

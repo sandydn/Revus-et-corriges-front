@@ -346,9 +346,9 @@ main {
 .calendar {
   display: none;
   position: relative;
-  width: 78.5vw;
+ 
   width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background: url(../../pictures/backg.png);
     background-size: 140%;
   border: 1px solid var(--border-color);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import InputInLine from './InputInLine'
+import InputInLine from '../elements/InputInLine'
 import MenuAdmin from '../screen/MenuAdmin'
-import DropDownInline from './DropDownInline';
+import DropDownInline from '../elements/DropDownInline';
 // import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
@@ -22,16 +22,6 @@ class AddContact extends Component {
   handleChangeDropDown = (keyState, value) => {
     console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
-  }
-
-  handleSubmit = (e) => {
-    // e.preventDefault()
-    axios.post(`http://localhost:4000/a2/contact`, {
-      prenom: this.state.prenom,
-      nom: this.state.nom,
-      type: this.state.type,
-    })
-      alert('Contact ajouté !')
   }
 
     handleSubmit = (e) => {
@@ -63,20 +53,20 @@ class AddContact extends Component {
       <div className="screen">
         <div>
           <h2>Ajout d'un Contact</h2>
-          {/* <form onSubmit={this.handleSubmit}> */}
+          <form onSubmit={this.handleSubmit}>
 
             <InputInLine
               keyState="prenom"
               title="Prénom"
               value={prenom}
-              funct={this.handleChangeInput}
+              func={this.handleChangeInput}
             />
 
             <InputInLine
               keyState="nom"
               title="Nom"
               value={nom}
-              funct={this.handleChangeInput}
+              func={this.handleChangeInput}
             />
 
             <DropDownInline
@@ -95,7 +85,7 @@ class AddContact extends Component {
             />
             
             
-          {/* </form> */}
+          </form>
         </div>
 
       </div>

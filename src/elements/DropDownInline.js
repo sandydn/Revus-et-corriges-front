@@ -7,8 +7,7 @@ const styleBase = {
     outline: 'none'
   },
   general: {
-    padding: '5px',
-    borderBottom: '1px solid blue'
+    padding: '15px 5px',
   },
   buttonClick: {
     background: 'inherit',
@@ -19,12 +18,12 @@ const styleBase = {
   divSelect: {
     position: 'absolute',
     background: 'white',
-    borderLeft: '1px solid blue',
     display: 'none'
   },
   input: {
     background: 'inherit',
-    padding: '5px'
+    padding: '5px',
+    borderBottom: '1px solid black'
   },
   button: {
     textAlign: 'left',
@@ -79,9 +78,9 @@ const DropDownInline = ({ title, data, func, keyState }) => {
             data-id={i + 1}
             key={`a-select--${i}`}
             onMouseDown={(e) => handleSelect(e, func, keyState)}
-            onMouseOver={(e) => e.target.style.background = 'linear-gradient(to left, #fff, #A9DCFF)'}
+            onMouseOver={(e) => e.target.style.background = 'linear-gradient(to left, #fff, silver)'}
             onMouseOut={(e) => e.target.style.background = 'white'}
-            onFocus={(e) => e.target.style.background = 'linear-gradient(to left, #fff, #A9DCFF)'}
+            onFocus={(e) => e.target.style.background = 'linear-gradient(to left, #fff, silver)'}
             onBlur={(e) => e.target.style.background = 'white'}
           >
             {e}

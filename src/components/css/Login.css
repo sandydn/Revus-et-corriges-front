@@ -90,3 +90,12 @@
     margin-left: 1vw;
     position: absolute;
 }
+
+.iconUser{
+  width: 40vh;
+  top: 60px;
+}
+
+.adminFormIn{
+  height: 40vh;
+}

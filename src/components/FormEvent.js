@@ -1,191 +1,247 @@
 import React, { Component } from 'react'
-import axios from 'axios';
-import moment from 'moment'
-
-
-// import CheckboxLine from './CheckboxLine';
-import DropDownInline from './DropDownInline'
-import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar';
-import TextareaCustom from  './TextAreaCustom';
+import { ToastContainer, toast } from 'react-toastify';
+// brick
 import MenuAdmin from '../screen/MenuAdmin';
+import InputInLine from '../elements/InputInLine';
+import DropDownInline from '../elements/DropDownInline';
+import DropDownInlineSpec from '../elements/DropDownInlineSpec';
+import InputWithCalendar from '../elements/InputWithCalendar'
+import TextAreaCustom from '../elements/TextAreaCustom';
+import ButtonCustom from '../elements/ButtonCustom'
+// FUNC
+import { GetData, PostDataEvent } from '../utilis'
+// CSS
+import 'react-toastify/dist/ReactToastify.css';
+import { isThisTypeAnnotation } from '@babel/types';
 
-import './css/Form.css';
+const styleBase = {
+  globalForm: {
+    margin: '0 0 0 5%',
+    minWidth: '60%',
+  },
+  form: {
+    width: '100%',
+    borderLeft: '1px solid black',
+    borderTop: '2px solid black',
+    padding: '10px'
+  },
+  date: {
+    display: 'flex'
+  },
+  divAdresse: {
+    border: '1px solid silver',
+    padding: '10px',
+    borderRadius: '2px'
+  }
+}
 
 class FormEvent extends Component {
 
   state = {
-    //generateur d'input
-    adresse: [],
-    category: null,
-    dateEnd: null,
-    dateStart: null,
-    importance: 0,
-    description: null,
-    link: null,
-    titre: null,
-    cover: null,
-    // video_idvideo: [],
-    // contact_idcontact: []
+    category: 1,
+    titre: '',
+    dateStart: new Date(),
+    dateEnd: new Date(),
+    importance: 0, // valeur de 1 a 3
+    adresse: [], // array de string doit etre joint /
+    link: '',
+    cover: '',
+    video: '', // string qui doit etre parser
+    description: '',
+    //no send
+    inputAdress: ['Adresse'],
+    dataVideo: [],
+    allDataVideo: []
   }
-  
-  handleChangeInput = (keyState, evt) => {
-    // console.log("keyState", keyState, "evt", evt.target.value)
-    this.setState({ [keyState]: evt.target.value }, () => {
-      console.log(this.state);
 
-    })
+  componentDidMount() {
+    const video = GetData('http://localhost:4000/a7/video')
+    video.then((res) => {
+      const data = Array.from(res.data)
+      this.setState({allDataVideo: data})
+      const titleVideo = data.map(e => e.titre)      
+      this.setState({dataVideo: titleVideo})
+    })    
   }
+
+  notify = (msg) => toast.error(msg);
+
+  handleChangeInput = (keyState, evt) => {
+    this.setState({ [keyState]: evt.target.value })
+  }
+
+  handleChangeInputAdress = (keyState, evt) => {
+    const {adresse} = this.state
+    const index = evt.target.getAttribute('data-index')
+    adresse[index] = evt.target.value
+    this.setState({ [keyState[index]]: adresse })
+  }
+
   handleChangeDropDown = (keyState, value) => {
-    console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
   }
 
+  handleChangeDropDownSpec = (keyState, value) => {
+    console.log(value)
+    this.setState({ [keyState]: value })
+  }
+
+  addInputAdress = () => {
+    const { inputAdress } = this.state
+    const newInput = `${inputAdress[0]}${inputAdress.length}`
+    this.setState({ inputAdress: inputAdress.concat([newInput])})
+  }
+
+  RemoveInputAdress = () => {
+    const { inputAdress, adresse } = this.state
+    const newInput = inputAdress
+    const newInputAdresse = adresse
+    newInput.pop()
+    newInputAdresse.pop()
+    this.setState({ inputAdress: newInput })
+    this.setState({ adresse: newInputAdresse })
+  }
+
   onChangeDateStart = dateStart => {
-    if (dateStart > this.state.dateEnd && this.state.dateEnd) {
-      return console.log('error')
-    }
-    this.setState({ dateStart: dateStart }, () => {
-      console.log(this.state);
-    })
+    if (dateStart > this.state.dateEnd && this.state.dateEnd)
+      return this.notify('La date de debut ne peut être inférieur à la date de fin !')
+    this.setState({ dateStart })
   }
 
   onChangeDateEnd = dateEnd => {
-    if (dateEnd < this.state.dateStart) {
+    if (dateEnd < this.state.dateStart)
       return console.log('error')
-    }
-    console.log(dateEnd);
-    this.setState({ dateEnd: dateEnd }, () => {
-      console.log(this.state);
-    })
+    this.setState({ dateEnd })
   }
 
-  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-  handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post(`http://localhost:4000/a5/event`, {
-      //convert date format from DatePicker for filling database with the right format
-      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
-      dateEnd: moment(this.state.dateEnd).format('YYYY-MM-DD'),
-      importance: this.state.importance,
-      description: this.state.description,
-      category: this.state.category,
-      link: this.state.link,
-      cover: this.state.cover,
-      titre: this.state.titre,
-      adresse: this.state.adresse,
-      category: this.state.category,
-    })
+  handleSubmit = (evt) => {
+    evt.preventDefault()
+    PostDataEvent(this.state)
   }
 
   render() {
-
     const {
-      dateEnd,
-      dateStart,
-      description,
-      link,
       titre,
-      cover,
+      dateStart,
+      dateEnd,
+      importance,
       adresse,
-      category
+      link,
+      cover,
+      video,
+      description,
+      //no send
+      inputAdress,
+      dataVideo
     } = this.state
-
-
-    const styleBase = {
-      form: {
-        background: 'linear-gradient(to left, #fff, #A9DCFF)',
-        width: '100%',
-        borderLeft: '5px solid #A9DCFF',
-        borderTop: '5px solid #A9DCFF',
-        padding: '10px'
-      }
-    }
+    console.log(video)
     return (
-      
-      <div className="screen">
+      <MenuAdmin style={{ background: '#E5E5E5' }}>
         
-        <MenuAdmin />
+        <div style={styleBase.globalForm}>
+          <h2>Ajout Event: </h2>
+          <form style={styleBase.form} onSubmit={this.handleSubmit}>
+            
+            <ButtonCustom
+              title='Sauvegarder'
+              type='submit'
+              style={{float: 'right'}}
+            />
+            
+            {/* TITRE */}
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              func={this.handleChangeInput}
+            />
+            
+            {/* DATE */}
+            <div style={styleBase.date}>
+              <InputWithCalendar
+                title='Date début'
+                date={dateStart}
+                onChangeDate={this.onChangeDateStart}
+                keyState="dateStart"
+                value={dateStart}
+              />
+              <InputWithCalendar
+                title='Date fin'
+                date={dateEnd}
+                onChangeDate={this.onChangeDateEnd}
+                keyState="dateEnd"
+                value={dateEnd}
+                func={this.handleChangeInput}
+              />
+            </div>
 
-        <div className="Formevent" style={styleBase.form} onSubmit={this.handleSubmit} >
-          <p>Date de debut :</p>
-          <InputWithCalendar
-            date={dateStart}
-            funct={this.handleChangeInput}
-            onChangeDate={this.onChangeDateStart}
-            keyState="dateStart"
-            value={dateStart}
-          />
-
-          <p>Date de fin :</p>
-          <InputWithCalendar
-            date={dateEnd}
-            funct={this.handleChangeInput}
-            onChangeDate={this.onChangeDateEnd}
-            keyState="dateEnd"
-            value={dateEnd}
-          />
-
-
-          <InputInLine
-            keyState="titre"
-            title="Titre"
-            value={titre}
-            funct={this.handleChangeInput}
-          />
-
-          <DropDownInline
-            keyState='importance'
-            title='Importance'
-            data={['RC', 'Partenaires', 'Général']}
-            func={this.handleChangeDropDown}
-          />
-
-          <InputInLine
-            keyState="adresse"
-            title="Adresse"
-            value={adresse}
-            funct={this.handleChangeInput}
-          />
-
-          <DropDownInline
-            keyState="category"
-            title="catégorie"
-            data={['Evenement', 'Cinema', 'Video', 'Rétrospective']}
-            func={this.handleChangeDropDown}
-          />
-
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
-
-          <TextareaCustom
-            keyState="description"
-            value={description}
-            funct={this.handleChangeInput}
-          />
-
-
-          <InputInLine
-            keyState="cover"
-            title="visuel"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
-
-
-          <input onClick={this.handleSubmit}
-            className="button-submit"
-            type="submit"
-            value="Envoyer"
-            color="grey"
-            variant="contained"
-          />
+            
+            {/* IMPORTANCE */}
+            <DropDownInline
+              keyState='importance'
+              title='Importance'
+              data={['RC', 'Partenaires', 'Général']}
+              func={this.handleChangeDropDown}
+            />
+            
+            {/* ADRESSE */}
+            <div id='div-adress-event' style={styleBase.divAdresse}>
+              <ButtonCustom
+                title='+'
+                style={{ float: 'right', width: '40px'}}
+                onClick={this.addInputAdress}
+              />
+              {inputAdress.map((e, i) => {
+                return (
+                    <InputInLine
+                      index={i}
+                      keyState="adresse"
+                      title={e}
+                      value={adresse[i]}
+                      func={this.handleChangeInputAdress}
+                      del={i + 1 === inputAdress.length && i !== 0 ? true : false}
+                      funcDel={this.RemoveInputAdress}
+                    />)
+                })
+              }
+            </div>
+            
+            {/* LINK */}
+            <InputInLine
+              keyState="link"
+              title="Lien Externe"
+              value={link}
+              func={this.handleChangeInput}
+            />
+            
+            {/* cover */}
+            <InputInLine
+              keyState="cover"
+              title="Image"
+              value={cover}
+              func={this.handleChangeInput}
+            />
+            
+            {/* VIDEO */}
+            <DropDownInlineSpec
+              keyState="video"
+              title='Film'
+              data={this.state.dataVideo}
+              func={this.handleChangeDropDownSpec}
+            // TODOS : add props for behavior
+            />
+            
+            {/* DESCRIPTION */}
+            <TextAreaCustom
+              keyState="description"
+              func={this.handleChangeInput}
+              value={description}
+            />
+          </form>
         </div>
-      </div>
+
+        <ToastContainer />
+      </MenuAdmin >
     )
   }
 }

@@ -75,13 +75,14 @@ class Calendar extends React.Component {
 
                 days.push(
                     <div
+                      id = {cloneDay}
                       className={`col cell ${
                         !dateFns.isSameMonth(day, monthStart)
                           ? "disabled"
                           : compare ? "eventMonth" : "none"
                       }`}
                       key={day}
-
+                      onClick={this.props.monthly2Weekly}
                         >
                             <span className="number">{formattedDate}</span>
                             {/* <span className="bg">{formattedDate}</span> */}
@@ -121,7 +122,6 @@ class Calendar extends React.Component {
     componentDidMount = async () => {
         await this.getevent()
         this.compareDate()
-        console.log(this.state.compareDates)
     }
 
     nextMonth = () => {
