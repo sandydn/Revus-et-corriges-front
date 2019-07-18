@@ -12,7 +12,6 @@ import ButtonCustom from '../elements/ButtonCustom'
 import { GetData, PostDataEvent } from '../utilis'
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
-import { isThisTypeAnnotation } from '@babel/types';
 
 const styleBase = {
   globalForm: {
@@ -54,15 +53,15 @@ class FormEvent extends Component {
     allDataVideo: []
   }
 
-  componentDidMount() {
-    const video = GetData('http://localhost:4000/a7/video')
-    video.then((res) => {
-      const data = Array.from(res.data)
-      this.setState({allDataVideo: data})
-      const titleVideo = data.map(e => e.titre)      
-      this.setState({dataVideo: titleVideo})
-    })    
-  }
+  // componentDidMount() {
+  //   const video = GetData('http://localhost:4000/a7/video')
+  //   video.then((res) => {
+  //     const data = Array.from(res.data)
+  //     this.setState({allDataVideo: data})
+  //     const titleVideo = data.map(e => e.titre)      
+  //     this.setState({dataVideo: titleVideo})
+  //   })    
+  // }
 
   notify = (msg) => toast.error(msg);
 
@@ -124,7 +123,6 @@ class FormEvent extends Component {
       titre,
       dateStart,
       dateEnd,
-      importance,
       adresse,
       link,
       cover,
@@ -163,14 +161,12 @@ class FormEvent extends Component {
                 date={dateStart}
                 onChangeDate={this.onChangeDateStart}
                 keyState="dateStart"
-                value={dateStart}
               />
               <InputWithCalendar
                 title='Date fin'
                 date={dateEnd}
                 onChangeDate={this.onChangeDateEnd}
                 keyState="dateEnd"
-                value={dateEnd}
                 func={this.handleChangeInput}
               />
             </div>
@@ -226,7 +222,7 @@ class FormEvent extends Component {
             <DropDownInlineSpec
               keyState="video"
               title='Film'
-              data={this.state.dataVideo}
+              data={dataVideo}
               func={this.handleChangeDropDownSpec}
             // TODOS : add props for behavior
             />

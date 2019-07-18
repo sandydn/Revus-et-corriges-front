@@ -1,46 +1,51 @@
 import React, { Component } from 'react'
 import InputInLine from '../elements/InputInLine'
-import MenuAdmin from '../screen/MenuAdmin'
 import DropDownInline from '../elements/DropDownInline';
-// import Button from '@material-ui/core/Button';
-import axios from 'axios';
+import ButtonCustom from '../elements/ButtonCustom'
+import { PostDataContact } from '../utilis'
 
-import './css/Form.css'
+const styleBase = {
+  general: {
+    background: 'white',
+    left: '0',
+    right: '0',
+    top: '10px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '40vw',
+    border: '1px solid black',
+    position: 'absolute',
+    zIndex: '999',
+    padding: '30px'
+  },
+  close: {
+    width: '40px',
+    height: '40px',
+    float: 'right',
+    background: 'black',
+    color: 'white',
+    borderRadius: '100px'
+  }
+}
 
 class AddContact extends Component {
   state = {
-    prenom: null,
-    nom: null,
-    type: null,
+    prenom: '',
+    nom: '',
+    type: 0,
   }
 
   handleChangeInput = (keyState, evt) => {
-    console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
 
   handleChangeDropDown = (keyState, value) => {
-    console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
   }
 
-    handleSubmit = (e) => {
-    const token = localStorage.getItem("token");
-    e.preventDefault()
-    axios.post(`http://localhost:4000/a2/contact`, ({
-      prenom: this.state.prenom,
-      nom: this.state.nom,
-      genre: this.state.type,
-    }),
-      {headers: {
-      'x-access-token': `${token}`
-        }
-      })
-      .then((res) => {
-        alert("Contact ajouté !")
-      })
-      .catch((err) => {
-      })
+  handleSubmit = (evt) => {
+    evt.preventDefault()
+    PostDataContact(this.state)
   }
 
   render() {
@@ -48,46 +53,46 @@ class AddContact extends Component {
       prenom,
       nom,
     } = this.state
+    const { close } = this.props
 
     return (
-      <div className="screen">
-        <div>
-          <h2>Ajout d'un Contact</h2>
-          <form onSubmit={this.handleSubmit}>
+      <div style={styleBase.general}>
+        <ButtonCustom
+          title='X'
+          type='button'
+          onClick={close}
+          style={styleBase.close}
+        />
+        <h2>Ajout d'un Contact :</h2>
+        <form onSubmit={this.handleSubmit}>
 
-            <InputInLine
-              keyState="prenom"
-              title="Prénom"
-              value={prenom}
-              func={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="prenom"
+            title="Prénom"
+            value={prenom}
+            func={this.handleChangeInput}
+          />
 
-            <InputInLine
-              keyState="nom"
-              title="Nom"
-              value={nom}
-              func={this.handleChangeInput}
-            />
+          <InputInLine
+            keyState="nom"
+            title="Nom"
+            value={nom}
+            func={this.handleChangeInput}
+          />
 
-            <DropDownInline
-              keyState='type'
-              title='Type'
-              data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
-              func={this.handleChangeDropDown}
-            />
+          <DropDownInline
+            keyState='type'
+            title='Type'
+            data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
+            func={this.handleChangeDropDown}
+          />
 
-            <input  onClick={this.handleSubmit}
-              className="button-submit"
-              type="submit"
-              value="Envoyer"
-              color="grey"
-              variant="contained"
-            />
-            
-            
-          </form>
-        </div>
-
+          <ButtonCustom
+            title='Ajouter'
+            type='submit'
+            style={{ float: 'right' }}
+          />
+        </form>
       </div>
     )
   }

@@ -1,156 +1,258 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom';
-import axios from 'axios';
-import moment from 'moment'
-
+import { ToastContainer, toast } from 'react-toastify';
+// brick
+import MenuAdmin from '../screen/MenuAdmin';
+import InputInLine from '../elements/InputInLine';
 import DropDownInline from '../elements/DropDownInline';
 import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import InputInLine from '../elements/InputInLine';
-import InputWithCalendar from '../elements/InputWithCalendar';
-import TextareaCustom from '../elements/TextAreaCustom';
+import InputWithCalendar from '../elements/InputWithCalendar'
+import TextAreaCustom from '../elements/TextAreaCustom';
+import ButtonCustom from '../elements/ButtonCustom'
+import AddContact from './AddContact'
+// FUNC
+import { GetData, PostDataCinema } from '../utilis'
+// CSS
+import 'react-toastify/dist/ReactToastify.css';
 
-import MenuAdmin from '../screen/MenuAdmin';
-import './css/Form.css';
-
-
+const styleBase = {
+  globalForm: {
+    margin: '0 0 0 5%',
+    minWidth: '60%',
+  },
+  form: {
+    width: '100%',
+    borderLeft: '1px solid black',
+    borderTop: '2px solid black',
+    padding: '10px'
+  },
+  date: {
+    display: 'flex'
+  },
+  divAdresse: {
+    border: '1px solid silver',
+    padding: '10px',
+    borderRadius: '2px'
+  }
+}
 
 class FormCinema extends Component {
+
   state = {
-    description: null,
-    category: null,
-    dateStart: null,
-    importance: 0,
-    link: null,
-    titre: null,
-    cover: null,
+    category: 2,
+    titre: '',
+    dateStart: new Date(),
+    importance: 0, // valeur de 1 a 3
+    adresse: [], // array de string doit etre joint /
+    link: '',
+    cover: '',
+    video: '', // string qui doit etre parser
+    contact: '',
+    description: '',
+    //no send
+    inputAdress: ['Adresse'],
+    dataVideo: [],
+    allDataVideo: [],
+    displayModalContact: false
   }
 
+  // componentDidMount() {
+  //   const video = GetData('http://localhost:4000/a7/video')
+  //   video.then((res) => {
+  //     const data = Array.from(res.data)
+  //     this.setState({ allDataVideo: data })
+  //     const titleVideo = data.map(e => e.titre)
+  //     this.setState({ dataVideo: titleVideo })
+  //   })
+  // }
+
+  notify = (msg) => toast.error(msg);
+
   handleChangeInput = (keyState, evt) => {
-    console.log("keyState", keyState, "evt", evt.target.value)
     this.setState({ [keyState]: evt.target.value })
   }
+
+  handleChangeInputAdress = (keyState, evt) => {
+    const { adresse } = this.state
+    const index = evt.target.getAttribute('data-index')
+    adresse[index] = evt.target.value
+    this.setState({ [keyState[index]]: adresse })
+  }
+
   handleChangeDropDown = (keyState, value) => {
-    console.log("keyState", keyState, "evt", value)
     this.setState({ [keyState]: value })
   }
 
+  handleChangeDropDownSpec = (keyState, value) => {
+    console.log(value)
+    this.setState({ [keyState]: value })
+  }
+
+  addInputAdress = () => {
+    const { inputAdress } = this.state
+    const newInput = `${inputAdress[0]}${inputAdress.length}`
+    this.setState({ inputAdress: inputAdress.concat([newInput]) })
+  }
+
+  RemoveInputAdress = () => {
+    const { inputAdress, adresse } = this.state
+    const newInput = inputAdress
+    const newInputAdresse = adresse
+    newInput.pop()
+    newInputAdresse.pop()
+    this.setState({ inputAdress: newInput })
+    this.setState({ adresse: newInputAdresse })
+  }
+
   onChangeDateStart = dateStart => {
-    if (dateStart > this.state.dateEnd && this.state.dateEnd) {
-      return console.log('error')
-    }
-    console.log('test', dateStart);
-
-    this.setState({ dateStart: dateStart }, () => {
-      console.log(this.state);
-
-    })
+    if (dateStart > this.state.dateEnd && this.state.dateEnd)
+      return this.notify('La date de debut ne peut être inférieur à la date de fin !')
+    this.setState({ dateStart })
   }
 
   onChangeDateEnd = dateEnd => {
-    if (dateEnd < this.state.dateStart) {
+    if (dateEnd < this.state.dateStart)
       return console.log('error')
-    }
-    console.log(dateEnd); return console.log('error')
-
-    this.setState({ dateEnd: dateEnd }, () => {
-      console.log(this.state);
-
-    })
+    this.setState({ dateEnd })
   }
 
-  // ON SUBMIT - envoyer les informations de l'evenement dans la bdd
-  handleSubmit = (e) => {
-    e.preventDefault()
-    axios.post(`http://localhost:4000/a5/event`, {
-      //convert date format from DatePicker for filling database with the right format
-      dateStart: moment(this.state.dateStart).format('YYYY-MM-DD'),
-      importance: this.state.importance,
-      category: this.state.category,
-      description: this.state.description,
-      link: this.state.link,
-      cover: this.state.cover,
-      titre: this.state.titre,
+  handleSubmit = (evt) => {
+    evt.preventDefault()
+    PostDataCinema(this.state)
+  }
 
+  upModalContact = () => {
+    const { displayModalContact } = this.state
+    // inverse la valeur de {displayModalContact} (true/false)
+    this.setState({ displayModalContact: !displayModalContact})
+  }
 
-    })
+  renderModalContact = () => {
+    const { displayModalContact } = this.state
+    if (displayModalContact)
+      return <AddContact close={this.upModalContact}/>
   }
 
   render() {
     const {
-      description,
+      titre,
       dateStart,
+      adresse,
       link,
       cover,
-      titre,
+      contact,
+      description,
+      //no send
+      inputAdress,
+      dataVideo
     } = this.state
-
-    const styleBase = {
-      form: {
-        background: 'linear-gradient(to left, #fff, #A9DCFF)',
-        width: '100%',
-        borderLeft: '5px solid #A9DCFF',
-        borderTop: '5px solid #A9DCFF',
-        padding: '10px'
-      }
-    }
-
     return (
-      <div className="screen">
-        <MenuAdmin />
-        <div className="Formcinema" style={styleBase.form} onSubmit={this.handleSubmit}>
-          <p>Date de debut :</p>
-          <InputWithCalendar
-            date={dateStart}
-            funct={this.handleChangeInput}
-            onChangeDate={this.onChangeDateStart}
-            keyState="dateStart"
-            value={dateStart}
-          />        
+      <MenuAdmin style={{ background: '#E5E5E5' }}>
+        {this.renderModalContact()}
+        <div style={styleBase.globalForm}>
+          <h2>Ajout Cinéma: </h2>
+          <form style={styleBase.form} onSubmit={this.handleSubmit}>
 
-          <DropDownInline
-            keyState='importance'
-            title='Importance'
-            data={['RC', 'Partenaires', 'Général']}
-            func={this.handleChangeDropDown}
-          />
+            <ButtonCustom
+              title='Sauvegarder'
+              type='submit'
+              style={{ float: 'right' }}
+            />
 
-          <DropDownInline
-            keyState='category'
-            title='catégorie'
-            data={['Evenement', 'Cinema', 'Vidéo', 'Rétrospective']}
-            func={this.handleChangeDropDown}
-          />
+            {/* TITRE */}
+            <InputInLine
+              keyState="titre"
+              title="Titre"
+              value={titre}
+              func={this.handleChangeInput}
+            />
+
+            {/* DATE */}
+            <div style={styleBase.date}>
+              <InputWithCalendar
+                title='Date sortie'
+                date={dateStart}
+                onChangeDate={this.onChangeDateStart}
+                keyState="dateStart"
+              />
+            </div>
 
 
-          <TextareaCustom
-            keyState="description"
-            value={description}
-            funct={this.handleChangeInput}
-          />
+            {/* IMPORTANCE */}
+            <DropDownInline
+              keyState='importance'
+              title='Importance'
+              data={['RC', 'Partenaires', 'Général']}
+              func={this.handleChangeDropDown}
+            />
 
-          <InputInLine
-            keyState="link"
-            title="lien externe"
-            value={link}
-            funct={this.handleChangeInput}
-          />
+            {/* ADRESSE */}
+            <div id='div-adress-event' style={styleBase.divAdresse}>
+              <ButtonCustom
+                title='+'
+                style={{ float: 'right', width: '40px' }}
+                onClick={this.addInputAdress}
+              />
+              {inputAdress.map((e, i) => {
+                return (
+                  <InputInLine
+                    index={i}
+                    keyState="adresse"
+                    title={e}
+                    value={adresse[i]}
+                    func={this.handleChangeInputAdress}
+                    del={i + 1 === inputAdress.length && i !== 0 ? true : false}
+                    funcDel={this.RemoveInputAdress}
+                  />)
+              })
+              }
+            </div>
 
-          <InputInLine
-            keyState="cover"
-            title="cover"
-            value={cover}
-            funct={this.handleChangeInput}
-          />
+            {/* LINK */}
+            <InputInLine
+              keyState="link"
+              title="Lien Externe"
+              value={link}
+              func={this.handleChangeInput}
+            />
 
-          <input onClick={this.handleSubmit}
-            className="button-submit"
-            type="submit"
-            value="Envoyer"
-            color="grey"
-            variant="contained"
-          />
+            {/* COVER */}
+            <InputInLine
+              keyState="cover"
+              title="Image"
+              value={cover}
+              func={this.handleChangeInput}
+            />
+
+            {/* VIDEO */}
+            <DropDownInlineSpec
+              keyState="video"
+              title='Film'
+              data={dataVideo}
+              func={this.handleChangeDropDownSpec}
+            />
+
+            {/* INTERVENANT */}
+            <DropDownInlineSpec
+              keyState="contact"
+              title='Intervenant'
+              data={contact}
+              func={this.handleChangeDropDownSpec}
+              buttonValue="ADD contact"
+              button={true}
+              funcButton={this.upModalContact}
+            />
+
+            {/* DESCRIPTION */}
+            <TextAreaCustom
+              keyState="description"
+              func={this.handleChangeInput}
+              value={description}
+            />
+          </form>
         </div>
-      </div>
+
+        <ToastContainer />
+      </MenuAdmin >
     )
   }
 }
