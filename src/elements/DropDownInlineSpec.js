@@ -93,7 +93,7 @@ const createButton = (button, funcButton, buttonValue) => {
     )
 }
 
-const DropDownInlineSpec = ({title, data, func, keyState, button, funcButton, buttonValue}) => {
+const DropDownInlineSpec = ({title, data, func, keyState, button, funcButton, buttonValue, del, funcDel}) => {
   // data after filter rendering 
   const [dataSelect, setDataSelect] = useState([])
   return (
@@ -102,7 +102,7 @@ const DropDownInlineSpec = ({title, data, func, keyState, button, funcButton, bu
       <span style={{ ...style.common, ...style.span}}>
         {(title && title) || 'Default'} <i className="fas fa-chevron-right fa-xs"></i> :
       </span>
-      {createButton(button, funcButton, buttonValue)}
+      {createButton(button, funcButton, buttonValue, del, funcDel)}
       <input
         style={{ ...style.common, ...style.input}}
         onChange={(e) => handleSearch(e, data, setDataSelect)}

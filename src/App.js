@@ -17,7 +17,7 @@ import Admin from './screen/Admin';
 import FormEvent from './components/FormEvent';
 import FormVideos from './components/FormVideos';
 import FormCinema from './components/FormCinema';
-import Ajout from './screen/Ajout'
+import FormMovie from './components/FormMovie';
 import Favicon from 'react-favicon';
 import PrivateRoute from './components/PrivateRoute';
 import Settings from './screen/Settings';
@@ -50,7 +50,7 @@ class App extends Component {
           <Route path="/admin-events" component={Events} />
           <Route path="/admin-cinema" component={Cinema} />
           <Route path="/admin-videos" component={Videos} />
-          <Route path="/admin-ajout" component={Ajout} />
+          <Route path="/admin-movie-form" component={FormMovie} />
           <Route path="/admin-events-form" component={FormEvent} />
           <Route path="/admin-cinema-form" component={FormCinema} />
           <Route path="/admin-videos-form" component={FormVideos} />
