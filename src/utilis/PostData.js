@@ -17,14 +17,14 @@ import moment from "moment"
 export const PostDataEvent = (objState) => {
     const {
         titre,
-        importance, 
-        description, 
-        dateStart, 
-        dateEnd, 
-        adresse, 
-        category, 
-        cover, 
-        link, 
+        importance,
+        description,
+        dateStart,
+        dateEnd,
+        adresse,
+        category,
+        cover,
+        link,
         video,
         allDataVideo
     } = objState
@@ -40,19 +40,19 @@ export const PostDataEvent = (objState) => {
     })
     const body = {
         titre,
-        importance, 
-        description, 
-        dateStart: moment(dateStart).format('YYYY-MM-DD'), 
-        dateEnd: moment(dateEnd).format('YYYY-MM-DD'), 
-        adresse: adresse.join('/'), 
-        category, 
-        cover, 
+        importance,
+        description,
+        dateStart: moment(dateStart).format('YYYY-MM-DD'),
+        dateEnd: moment(dateEnd).format('YYYY-MM-DD'),
+        adresse: adresse.join('/'),
+        category,
+        cover,
         link,
-        idvideo    
+        idvideo
     }
     axios.post('http://localhost:4000/a5/event', body)
-         .then(console.log)
-         .catch(console.log)
+        .then(console.log)
+        .catch(console.log)
 }
 
 // ------------------------------------------------------ CINEMA (Projection)
@@ -69,6 +69,35 @@ export const PostDataEvent = (objState) => {
  * @param {Number}    genre
  */
 export const PostDataCinema = (objState) => {
+    const {
+        titre,
+        importance,
+        dateStart,
+        adresse,
+        idvideo,
+        description,
+        idcontact,
+        link,
+        cover,
+        genre,
+
+    } = objState
+
+    const body = {
+        titre,
+        importance,
+        dateStart: moment(dateStart).format('YYYY-MM-DD'),
+        adresse: adresse.join('/'),
+        idvideo,
+        description,
+        idcontact,
+        cover,
+        link,
+        genre,
+    }
+    axios.post('http://localhost:4000/a5/event', body)
+        .then(console.log)
+        .catch(console.log)
     console.log(objState)
 }
 
@@ -78,11 +107,47 @@ export const PostDataVideo = (objState) => {
 }
 
 // ------------------------------------------------------ CONTACT (editeur, realisateur, distributeur, acteur)
-export const PostDataContact = (objState) => {
-    console.log(objState)
-}
 
+/**
+ * @param {String}      prenom
+ * @param {String}      nom
+ * @param {Number}      genre
+ */
+export const PostDataContact = (objState) => {
+    const {
+        prenom,
+        nom,
+        genre,
+    } = objState
+
+    const body = {
+        prenom,
+        nom,
+        genre,
+    }
+    axios.post('http://localhost:4000/a2/contact', body)
+        .then(console.log)
+        .catch(console.log)
+}
 // ------------------------------------------------------ DB FILM
+/**
+ * @param {String}    titre
+ * @param {Date}      dateCreation
+ * @param {ArrayOfId} contact
+ */
 export const PostDataMovie = (objState) => {
-    console.log(objState)
+    const {
+        titre,
+        dateCreation,
+        contact,
+    } = objState
+
+    const body = {
+        titre,
+        dateCreation,
+        contact,
+    }
+    axios.post('http://localhost:4000/a7/video', body)
+        .then(console.log)
+        .catch(console.log)
 }

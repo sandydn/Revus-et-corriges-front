@@ -32,7 +32,7 @@ class AddContact extends Component {
   state = {
     prenom: '',
     nom: '',
-    type: 0,
+    genre: null,
   }
 
   handleChangeInput = (keyState, evt) => {
@@ -52,6 +52,7 @@ class AddContact extends Component {
     const {
       prenom,
       nom,
+      genre,
     } = this.state
     const { close } = this.props
 
@@ -81,7 +82,7 @@ class AddContact extends Component {
           />
 
           <DropDownInline
-            keyState='type'
+            keyState='genre'
             title='Type'
             data={['Acteur', 'Distributeur', 'Editeur', 'Réalisateur']}
             func={this.handleChangeDropDown}
