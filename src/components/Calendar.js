@@ -53,7 +53,7 @@ class Calendar extends Component {
 				<div className='navbar'>
 					<Menu />
 					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
-					<button onClick={this.handleClick}>{this.state.monthToWeek}</button>
+					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick}/>
                 <MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />

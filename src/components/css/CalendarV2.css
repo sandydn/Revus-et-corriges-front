@@ -26,7 +26,7 @@ html{
     width: 81.4vw;
     height: 97vh;
     background: url(../../pictures/backg.png);
-    background-size: 140%;
+    background-size: cover;
 }
 
 .weeklyDisplayMobile{
@@ -123,7 +123,7 @@ i {
     }
   
     
-    @media screen and (min-width: 1295px) {
+    @media screen and (min-width: 1430px) {
         .menuCss  {
             color: rgb(0, 0, 0);
             list-style-type: none;
@@ -145,12 +145,13 @@ i {
       .aLinkRC {
       size: 20px;
       font-family: 'Oswald', 'sans-serif';
-      line-height: 2;
+      
       color: black;
       text-decoration: none;
       text-decoration-style: solid;
       font-weight: normal;
       letter-spacing: .06em;
+      line-height: 55px
       }
       
       .liDesckop :hover {
@@ -170,6 +171,25 @@ i {
         .logo{
           display: none;
         }
+
+
+        .navbar {
+  
+            width: 0%;
+            border: none
+          }
+
+          .weeklyDesktop{
+            width: 181vw;
+            height: 118vh;
+            background: url(../../pictures/backg.png);
+            background-size: cover;
+        }
+
+        .buttonGoToMonthly{
+            display: none
+        }
+
 }
 
 
