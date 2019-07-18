@@ -3,11 +3,11 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import moment from 'moment'
 
-import DropDownInline from './DropDownInline';
-import DropDownInlineSpec from './DropDownInlineSpec';
-import InputInLine from './InputInLine';
-import InputWithCalendar from './InputWithCalendar';
-import TextareaCustom from './TextAreaCustom';
+import DropDownInline from '../elements/DropDownInline';
+import DropDownInlineSpec from '../elements/DropDownInlineSpec';
+import InputInLine from '../elements/InputInLine';
+import InputWithCalendar from '../elements/InputWithCalendar';
+import TextareaCustom from '../elements/TextAreaCustom';
 
 import MenuAdmin from '../screen/MenuAdmin';
 import './css/Form.css';

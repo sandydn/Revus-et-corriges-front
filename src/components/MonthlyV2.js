@@ -75,18 +75,18 @@ class Calendar extends React.Component {
 
                 days.push(
                     <div
-                      className={`col cell ${
-                        !dateFns.isSameMonth(day, monthStart)
-                          ? "disabled"
-                          : compare ? "eventMonth" : "none"
-                      }`}
-                      key={day}
+                        className={`col cell ${
+                            !dateFns.isSameMonth(day, monthStart)
+                                ? "disabled"
+                                : compare ? "eventMonth" : "none"
+                            }`}
+                        key={day}
 
-                        >
-                            <span className="number">{formattedDate}</span>
-                            {/* <span className="bg">{formattedDate}</span> */}
-                        </div>
-                    )
+                    >
+                        <span className="number">{formattedDate}</span>
+                        {/* <span className="bg">{formattedDate}</span> */}
+                    </div>
+                )
 
                 day = dateFns.addDays(day, 1);
             }

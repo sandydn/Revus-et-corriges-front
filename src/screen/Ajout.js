@@ -3,20 +3,20 @@ import AddMovie from '../components/AddMovie'
 import AddContact from '../components/AddContact';
 import MenuAdmin from '../screen/MenuAdmin'
 import '../components/css/Form.css'
-import Parameter from '../components/Parameter';
 
 class Ajout extends Component {
 
   render() {
     return (
       <div className="screen">
-          <div>
+        <div>
           <MenuAdmin />
-          </div>
-          <div>
-        <AddMovie />
-        <AddContact />
-        <Parameter />
+        </div>
+        <div className="addmovie">
+          <AddMovie />
+        </div>
+        <div className="addcontact">
+          <AddContact />
         </div>
       </div>
     )
