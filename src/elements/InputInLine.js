@@ -28,6 +28,7 @@ const createButton = (del, funcDel) => {
   if (del)
     return (
       <button
+      type="button"
       style={styleBase.button}
       onClick={() => remove(funcDel)}
       >X</button>

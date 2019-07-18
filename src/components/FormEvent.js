@@ -6,7 +6,7 @@ import InputInLine from '../elements/InputInLine';
 import DropDownInline from '../elements/DropDownInline';
 import DropDownInlineSpec from '../elements/DropDownInlineSpec';
 import InputWithCalendar from '../elements/InputWithCalendar'
-import TextAreaCustom from '../elements/TextAreaCustom';
+import TextareaCustom from '../elements/TextareaCustom';
 import ButtonCustom from '../elements/ButtonCustom'
 // FUNC
 import { GetData, PostDataEvent } from '../utilis'
@@ -228,14 +228,14 @@ class FormEvent extends Component {
             />
             
             {/* DESCRIPTION */}
-            <TextAreaCustom
+            <TextareaCustom
               keyState="description"
               func={this.handleChangeInput}
               value={description}
             />
           </form>
         </div>
-
+f
         <ToastContainer />
       </MenuAdmin >
     )
