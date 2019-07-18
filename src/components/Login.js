@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
@@ -17,72 +16,16 @@ import './css/Login.css'
 
 class Login extends React.Component {
 
-  state = {
-    formData: {
-      email: '',
-      password: '',
-    },
-    showPassword: false,
-    success: false,
-    redirect: false,
-    verified: false,
-  };
-
-  // Show password or not (icon-eye) //
-  toggleShow = () => {
-    this.setState({ showPassword: !this.state.showPassword });
-  };
-
-  handleChange = event => {
-    const { formData } = this.state;
-    formData[event.target.name] = event.target.value;
-    this.setState({ formData });
-  };
-
-  // ON SUBMIT - rediriger avec le routeur sur la e d'appel de formulaire
-  handleSubmit = event => {
-    event.preventDefault()
-    axios.post(`http://localhost:4000/auth/login/`, {
-      admin_email: event.target.email.value,
-      admin_password: event.target.password.value
-    })
-      .then((res) => {
-        localStorage.setItem("token", res.headers["x-access-token"])
-        this.setState({ success: true }, () => {
-          setTimeout(() => this.setState({ success: false }), 1400);
-          setTimeout(() => this.setState({ redirect: true }), 1400);
-        });
-      });
-  };
-
-  protectedRoute = () => {
-    
-    const token = localStorage.getItem("token")
-    axios({
-      method: 'POST',
-      url: "http://localhost:4000/auth/protected",
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    })
-      .then(res => {
-        this.setState({
-          verified: res.data.auth,
-        })
-      })
-  }
-
-  componentDidMount() {
-    this.protectedRoute()
-  }
-
   render() {
 
-    if (this.state.verified === true) {
+    const { success, redirect } = this.props;
+
+    // if token is true redirect directly in menu admin //
+    if (this.props.verif === true) {
       return <Redirect to='/menu-admin' />
     }
 
-    const { formData, success, redirect } = this.state;
+    // Redirect when Admin is connect //
     if (redirect) {
       return <Redirect to='/menu-admin' />
     }
@@ -100,17 +43,17 @@ class Login extends React.Component {
         <div>
           <ValidatorForm
             ref="form"
-            onSubmit={this.handleSubmit}
+            onSubmit={this.props.handleSub}
           >
 
             <TextValidator
               fullWidth
               label="Email"
-              onChange={this.handleChange}
+              onChange={this.props.handleCha}
               name="email"
-              value={formData.email}
+              value={this.props.email}
               validators={['required', 'isEmail']}
-              errorMessages={['this field is required', 'Email non valide.']}
+              errorMessages={['Email non valide', 'Email non valide.']}
             />
 
             <FormControl fullWidth >
@@ -118,15 +61,16 @@ class Login extends React.Component {
               <Input
                 label="Password"
                 name="password"
-                type={this.state.showPassword ? 'text' : 'password'}
-                value={formData.password}
-                onChange={this.handleChange}
+                type={this.props.showPass ? 'text' : 'password'}
+                value={this.props.password}
+                onChange={this.props.handleCha}
                 validators={['required']}
                 errorMessages={['this field is required']}
                 endAdornment={
                   <InputAdornment position="end">
-                    <IconButton aria-label="Toggle password visibility" onClick={this.toggleShow}>
-                      {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {/* Icon Eye, for see the password on click */}
+                    <IconButton aria-label="Toggle password visibility" onClick={this.props.toggleSho}>
+                      {this.props.showPass ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>} />
             </FormControl>

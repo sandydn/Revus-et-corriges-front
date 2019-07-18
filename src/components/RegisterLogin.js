@@ -12,7 +12,7 @@ import RC from '../pictures/RC.png'
 import './css/Login.css'
 
 class RegisterLogin extends React.Component {
-	
+
 	state = {
 		formData: {
 			name: '',
@@ -61,7 +61,7 @@ class RegisterLogin extends React.Component {
 	render() {
 		const { formData, success, redirect } = this.state;
 		if (redirect) {
-			return <Redirect to='/signin' />
+			return <Redirect to='/menu-admin' />
 		}
 
 		return (
