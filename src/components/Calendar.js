@@ -39,6 +39,11 @@ class Calendar extends Component {
 	componentDidUpdate() {
 		this.updateButton()
 	}
+
+	handleMonthly2Weekly = async (e) => {
+		await this.setState({dateOnClick: e.target.id})
+		this.handleClick() 
+	 }
 	
 	render() {
 
@@ -50,8 +55,8 @@ class Calendar extends Component {
 					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					<button onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
-				<Weekly />
-				<MonthlyV2 />
+				<Weekly dateOnClick = {this.state.dateOnClick}/>
+                <MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
 		)
 	}
