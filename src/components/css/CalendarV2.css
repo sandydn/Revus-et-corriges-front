@@ -5,11 +5,14 @@ html{
 
 .weeklyContainer{
     display:flex;
+    background: url(../../pictures/backg.png);
+    background-size: cover;
+    width: 81.4vw;
+    justify-content: space-evenly;
 }
 
 .weekly{
     width:78vw;
-    
 }
 
 .calendarScreen{
@@ -22,12 +25,12 @@ html{
     width: 20%;
 }
 
-.weeklyDesktop{
+/* .weeklyDesktop{
     width: 81.4vw;
     height: 97vh;
     background: url(../../pictures/backg.png);
     background-size: cover;
-}
+} */
 
 .weeklyDisplayMobile{
     margin: 20px;
@@ -55,6 +58,7 @@ html{
 
 .weeklyHeadMobile > h1{
     font-size: 1.6em;
+    color: black;
 }
 
 .weeklyDisplay{
@@ -65,8 +69,6 @@ html{
     display:flex;
     flex-direction: column;
 }
-
-
 
 .nextMobile{
     height: 22px;
@@ -82,8 +84,8 @@ i {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
-    padding: 3px;
-    margin-top: 0px;
+    padding: 4px;
+    margin-top: 10px;
     cursor: pointer;
 }
   
@@ -110,9 +112,7 @@ i {
 } */
 
   .navbar {
-  
     width: 17%;
-    border: 2px solid grey
   }
   
      
@@ -344,12 +344,6 @@ i {
         border-radius: 15px;
     }
 
-
-
-
-
-
-
     /* DESKTOP */
 .dayDesktop{
     width: 20%;
@@ -386,6 +380,7 @@ i {
 .event > p {
     font-size: .75em;
     margin: 0px;
+    color :rgb(58, 58, 58);
 }
 
 .event > img {
@@ -430,7 +425,8 @@ i {
 }
 
 #selected {
-    background: rgba(180, 180, 180, 0.45);
+    background: rgba(212, 77, 77, 0.418);
+    border-radius: 45px;
 }
 
 .dayMobile > .important{
@@ -456,6 +452,7 @@ i {
     cursor: pointer;
     font-size: 1.2em;
     padding:5px;
+    color : black;
 }
 
 .daySelector{
@@ -466,6 +463,7 @@ i {
 }
 .dayMobile > .event > h2 {
     text-transform: uppercase;
+    color: black;
 }
 
 .searchForm{
@@ -491,8 +489,6 @@ i {
     width: 12px;
 }
 
-
-
 @media screen and (min-width: 10px) and (max-width: 1024px) {
         .searchForm {
           display: none;
@@ -507,8 +503,11 @@ i {
     .buttonMenuAdminMonthly {
         margin-top: 39em;
     }
-}
 
+    .weeklyContainer{
+        width: 100vw;
+    }
+}
 
 @media screen and (min-width: 1025px) and (max-width: 1294px) {
 
