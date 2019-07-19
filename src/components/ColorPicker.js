@@ -8,15 +8,8 @@ import axios from 'axios'
 class ColorPicker extends Component {
 
   state = {
-    //show: false,
     color: "",
   }
-
-
-  handleShow = () => {
-    this.setState({ show: !this.state.show });
-  }
-
 
   handleChange = (color) => {
     this.setState({ color: color.hex });
@@ -37,31 +30,19 @@ class ColorPicker extends Component {
         }
       })
       .then((res) => {
-        alert("Couleur de texte ajouté !")
+        alert("Nouvelle couleur au calendrier ajoutée !")
       })
       .catch((err) => {
       })
   }
 
   render() {
-    console.log(this.state.color);
-    
-
-    //const effect = this.state.show ? "showing" : "notShowing"
-
     return (
 
       <>
         
         <h3>Changer la couleur du calendrier</h3>
         <form className="updatefontcolor" onSubmit={this.handleSubmit}>
-
-          {/* <img
-            className="wheelButton"
-            onClick={this.handleShow}
-            src='https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png'
-          /> */}
-
           <input
             className='colorInput'
             name="Valeur hexadécimale"
@@ -70,28 +51,18 @@ class ColorPicker extends Component {
           />
           <div className='displayColorPicker'>
           <SketchPicker
-            //className={effect}
             color={this.state.color}
             onChangeComplete={this.handleChange}
-            
           />
-          {/* <div
-            style={{ backgroundColor: this.state.color }}
-            onClick={this.onChange}
-            className="view-color"
-          >
-            </div> */}
-                      
-        <input onClick={this.handleSubmit}
-          className="button-submit"
-          id='colorPickerButton'
-          type="submit"
-          value="Envoyer"
-          color="grey"
-          variant="contained"
-        />
-        </div>
-                    
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            color="grey"
+            id='colorPickerButton'
+            type="submit"
+            value="Envoyer"
+            variant="contained"
+          />
+          </div>          
         </form>
       </>
 
