@@ -7,6 +7,7 @@ const Events = ({dataEvent}) => {
     return(
         dataEvent.map((one) => 
        
+       
         <Event title=
             {one.titre} 
             comment={one.description}  
