@@ -18,7 +18,8 @@ html{
 .calendarScreen{
     display: flex;
     border: 16px solid rgb(44, 67, 98);
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .navbar{
@@ -57,7 +58,7 @@ html{
 }
 
 .weeklyHeadMobile > h1{
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: black;
 }
 
@@ -450,7 +451,7 @@ i {
 
 .days h1{
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     padding:5px;
     color : black;
 }
@@ -514,4 +515,5 @@ i {
     .buttonMenuAdminMonthly {
         margin-top: 14em;
     }
+
 }
