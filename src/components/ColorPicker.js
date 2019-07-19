@@ -8,7 +8,7 @@ import axios from 'axios'
 class ColorPicker extends Component {
 
   state = {
-    show: false,
+    //show: false,
     color: "",
   }
 
@@ -47,44 +47,51 @@ class ColorPicker extends Component {
     console.log(this.state.color);
     
 
-    const effect = this.state.show ? "showing" : "notShowing"
+    //const effect = this.state.show ? "showing" : "notShowing"
 
     return (
 
       <>
-        <h3>Changer la couleur de police du calendrier</h3>
+        
+        <h3>Changer la couleur du calendrier</h3>
         <form className="updatefontcolor" onSubmit={this.handleSubmit}>
 
-            <img
-              className="wheelButton"
-              onClick={this.handleShow}
-              src='https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png'
-            />
+          {/* <img
+            className="wheelButton"
+            onClick={this.handleShow}
+            src='https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png'
+          /> */}
 
-          <div
+          <input
+            className='colorInput'
+            name="Valeur hexadécimale"
+            value={this.state.color}
+            style={{ backgroundColor: this.state.color }}
+          />
+          <div className='displayColorPicker'>
+          <SketchPicker
+            //className={effect}
+            color={this.state.color}
+            onChangeComplete={this.handleChange}
+            
+          />
+          {/* <div
             style={{ backgroundColor: this.state.color }}
             onClick={this.onChange}
             className="view-color"
           >
-
-                <SketchPicker
-                  className={effect}
-                  color={this.state.color}
-                  onChangeComplete={this.handleChange}
-                />
-                <input
-                  name="Valeur hexadécimale"
-                  value={this.state.color}
-                />
-                <input onClick={this.handleSubmit}
-                  className="button-submit"
-                  type="submit"
-                  value="Envoyer"
-                  color="grey"
-                  variant="contained"
-                />
-              </div>
-
+            </div> */}
+                      
+        <input onClick={this.handleSubmit}
+          className="button-submit"
+          id='colorPickerButton'
+          type="submit"
+          value="Envoyer"
+          color="grey"
+          variant="contained"
+        />
+        </div>
+                    
         </form>
       </>
 

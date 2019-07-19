@@ -7,16 +7,26 @@ import '../screen/Events.css'
 
 const styleBase = {
   general: {
-    background:"white",
+    background: 'white',
+    left: '0',
+    right: '-20%',
+    top: '60px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    width: '60vw',
+    border: '10px solid black',
+    borderRadius: '30px',
+    position: 'absolute',
+    padding: '60px',
   }
 }
 
 class Settings extends Component {
   render() {
     return (
-      <div style={styleBase.general} className='screenEvent'>
+      <div  style={styleBase.general} className='screenEvent'>
         
-        <div>
+        <div >
           <BackgroundPicker />
         </div>
         <div>
