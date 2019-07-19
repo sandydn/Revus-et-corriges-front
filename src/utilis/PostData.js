@@ -73,37 +73,112 @@ export const PostDataCinema = (objState) => {
         titre,
         importance,
         dateStart,
-        adresse,
-        idvideo,
         description,
-        idcontact,
-        link,
+        adresse,
+        category,
         cover,
-        genre,
-
+        link,
+        video,
+        allDataVideo,
+        contact,
+        allDataContact,
+        genre
     } = objState
+
+    let idvideo = video.split(/,\s|,/)
+    idvideo = idvideo.filter(e => e && e != '')
+
+    idvideo = idvideo.map(e => {
+        const ret = allDataVideo.find(elem => {
+            return elem.titre === e
+        })
+        return ret && ret.idvideo
+    })
+
+    let idcontact = contact.split(/,\s|,/)
+    idcontact = idcontact.filter(e => e && e != '')
+
+    idcontact = idcontact.map(e => {
+        const ret = allDataContact.find(elem => {
+            return elem.nom === e
+        })
+        return ret && ret.idcontact
+    })
 
     const body = {
         titre,
         importance,
-        dateStart: moment(dateStart).format('YYYY-MM-DD'),
-        adresse: adresse.join('/'),
-        idvideo,
         description,
-        idcontact,
+        dateStart: moment(dateStart).format('YYYY-MM-DD'),
         cover,
         link,
-        genre,
+        adresse: adresse.join('/'),
+        category,
+        idvideo,
+        idcontact,
+        genre
     }
-    axios.post('http://localhost:4000/a5/event', body)
+    axios.post('http://localhost:4000/a5/event-cinema', body)
         .then(console.log)
         .catch(console.log)
-    console.log(objState)
+        console.log(objState,body)
 }
 
 // ------------------------------------------------------ VIDEO (DVD/coffret)
 export const PostDataVideo = (objState) => {
-    console.log(objState)
+    const {
+        titre,
+        importance,
+        dateStart,
+        description,
+        adresse,
+        category,
+        cover,
+        link,
+        video,
+        allDataVideo,
+        contact,
+        allDataContact,
+        genre
+    } = objState
+
+    let idvideo = video.split(/,\s|,/)
+    idvideo = idvideo.filter(e => e && e != '')
+
+    idvideo = idvideo.map(e => {
+        const ret = allDataVideo.find(elem => {
+            return elem.titre === e
+        })
+        return ret && ret.idvideo
+    })
+
+    let idcontact = contact.split(/,\s|,/)
+    idcontact = idcontact.filter(e => e && e != '')
+
+    idcontact = idcontact.map(e => {
+        const ret = allDataContact.find(elem => {
+            return elem.nom === e
+        })
+        return ret && ret.idcontact
+    })
+
+    const body = {
+        titre,
+        importance,
+        description,
+        dateStart: moment(dateStart).format('YYYY-MM-DD'),
+        cover,
+        link,
+        adresse: adresse.join('/'),
+        category,
+        idvideo,
+        idcontact,
+        genre
+    }
+    axios.post('http://localhost:4000/a5/event-cinema', body)
+        .then(console.log)
+        .catch(console.log)
+        console.log(objState,body)
 }
 
 // ------------------------------------------------------ CONTACT (editeur, realisateur, distributeur, acteur)

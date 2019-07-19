@@ -33,14 +33,7 @@ class Weekly extends Component {
                 type(results.data)
             })
     }
-    // getevent() {
-    //     axios
-    //       .get("http://localhost:4000/a5/event")
-    //       .then(results => { 
-    //         this.setState({results: results.data}) 
-    //         console.log(this.state.results)
-    //       })
-    // }
+
 
     createDateArrayNext = (datas) => {
         let dateArr = []

@@ -8,9 +8,8 @@ import DropDownInlineSpec from '../elements/DropDownInlineSpec';
 import InputWithCalendar from '../elements/InputWithCalendar'
 import TextareaCustom from '../elements/TextareaCustom';
 import ButtonCustom from '../elements/ButtonCustom'
-import AddContact from './AddContact'
 // FUNC
-import { GetData, PostDataVideo } from '../utilis'
+import { GetData, PostDataEvent } from '../utilis'
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -35,34 +34,34 @@ const styleBase = {
   }
 }
 
-class FormVideo extends Component {
+class EventForm extends Component {
 
   state = {
-    category: 2,
+    category: 1,
     titre: '',
     dateStart: new Date(),
+    dateEnd: new Date(),
     importance: 0, // valeur de 1 a 3
+    adresse: [], // array de string doit etre joint /
     link: '',
     cover: '',
     video: '', // string qui doit etre parser
-    format: '',
-    contact: '',
     description: '',
     //no send
+    inputAdress: ['Adresse'],
     dataVideo: [],
-    allDataVideo: [],
-    displayModalContact: false
+    allDataVideo: []
   }
 
-  // componentDidMount() {
-  //   const video = GetData('http://localhost:4000/a7/video')
-  //   video.then((res) => {
-  //     const data = Array.from(res.data)
-  //     this.setState({ allDataVideo: data })
-  //     const titleVideo = data.map(e => e.titre)
-  //     this.setState({ dataVideo: titleVideo })
-  //   })
-  // }
+  componentDidMount() {
+    const video = GetData('http://localhost:4000/a7/video')
+    video.then((res) => {
+      const data = Array.from(res.data)
+      this.setState({allDataVideo: data})
+      const titleVideo = data.map(e => e.titre)      
+      this.setState({dataVideo: titleVideo})
+    })    
+  }
 
   notify = (msg) => toast.error(msg);
 
@@ -71,7 +70,7 @@ class FormVideo extends Component {
   }
 
   handleChangeInputAdress = (keyState, evt) => {
-    const { adresse } = this.state
+    const {adresse} = this.state
     const index = evt.target.getAttribute('data-index')
     adresse[index] = evt.target.value
     this.setState({ [keyState[index]]: adresse })
@@ -84,6 +83,22 @@ class FormVideo extends Component {
   handleChangeDropDownSpec = (keyState, value) => {
     console.log(value)
     this.setState({ [keyState]: value })
+  }
+
+  addInputAdress = () => {
+    const { inputAdress } = this.state
+    const newInput = `${inputAdress[0]}${inputAdress.length}`
+    this.setState({ inputAdress: inputAdress.concat([newInput])})
+  }
+
+  RemoveInputAdress = () => {
+    const { inputAdress, adresse } = this.state
+    const newInput = inputAdress
+    const newInputAdresse = adresse
+    newInput.pop()
+    newInputAdresse.pop()
+    this.setState({ inputAdress: newInput })
+    this.setState({ adresse: newInputAdresse })
   }
 
   onChangeDateStart = dateStart => {
@@ -100,29 +115,19 @@ class FormVideo extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataVideo(this.state)
-  }
-
-  upModalContact = () => {
-    const { displayModalContact } = this.state
-    // inverse la valeur de {displayModalContact} (true/false)
-    this.setState({ displayModalContact: !displayModalContact })
-  }
-
-  renderModalContact = () => {
-    const { displayModalContact } = this.state
-    if (displayModalContact)
-      return <AddContact close={this.upModalContact} />
+    PostDataEvent(this.state)
   }
 
   render() {
     const {
       titre,
       dateStart,
+      dateEnd,
+      importance,
+      adresse,
       link,
       cover,
-      contact,
-      format,
+      video,
       description,
       //no send
       inputAdress,
@@ -130,17 +135,18 @@ class FormVideo extends Component {
     } = this.state
     return (
       <MenuAdmin style={{ background: '#E5E5E5' }}>
-        {this.renderModalContact()}
+        
         <div style={styleBase.globalForm}>
-          <h2>Ajout Cinéma: </h2>
-          <form style={styleBase.form} onSubmit={this.handleSubmit}>
-
+          <h2>Ajout Event: </h2>
+          <div style={styleBase.form} >
+            
             <ButtonCustom
               title='Sauvegarder'
               type='submit'
-              style={{ float: 'right' }}
+              style={{float: 'right'}}
+              onClick={this.handleSubmit}
             />
-
+            
             {/* TITRE */}
             <InputInLine
               keyState="titre"
@@ -148,18 +154,27 @@ class FormVideo extends Component {
               value={titre}
               func={this.handleChangeInput}
             />
-
+            
             {/* DATE */}
             <div style={styleBase.date}>
               <InputWithCalendar
-                title='Date sortie'
+                title='Date début'
                 date={dateStart}
                 onChangeDate={this.onChangeDateStart}
                 keyState="dateStart"
+                value={dateStart}
+              />
+              <InputWithCalendar
+                title='Date fin'
+                date={dateEnd}
+                onChangeDate={this.onChangeDateEnd}
+                keyState="dateEnd"
+                value={dateEnd}
+                func={this.handleChangeInput}
               />
             </div>
 
-
+            
             {/* IMPORTANCE */}
             <DropDownInline
               keyState='importance'
@@ -167,7 +182,29 @@ class FormVideo extends Component {
               data={['RC', 'Partenaires', 'Général']}
               func={this.handleChangeDropDown}
             />
-
+            
+            {/* ADRESSE */}
+            <div id='div-adress-event' style={styleBase.divAdresse}>
+              <ButtonCustom
+                title='+'
+                style={{ float: 'right', width: '40px'}}
+                onClick={this.addInputAdress}
+              />
+              {inputAdress.map((e, i) => {
+                return (
+                    <InputInLine
+                      index={i}
+                      keyState="adresse"
+                      title={e}
+                      value={adresse[i]}
+                      func={this.handleChangeInputAdress}
+                      del={i + 1 === inputAdress.length && i !== 0 ? true : false}
+                      funcDel={this.RemoveInputAdress}
+                    />)
+                })
+              }
+            </div>
+            
             {/* LINK */}
             <InputInLine
               keyState="link"
@@ -175,49 +212,31 @@ class FormVideo extends Component {
               value={link}
               func={this.handleChangeInput}
             />
-
-            {/* COVER */}
+            
+            {/* cover */}
             <InputInLine
               keyState="cover"
               title="Image"
               value={cover}
               func={this.handleChangeInput}
             />
-
+            
             {/* VIDEO */}
             <DropDownInlineSpec
               keyState="video"
               title='Film'
-              data={dataVideo}
+              data={this.state.dataVideo}
               func={this.handleChangeDropDownSpec}
+            // TODOS : add props for behavior
             />
-
-            {/* FORMAT */}
-            <InputInLine
-              keyState="format"
-              title="Format"
-              value={format}
-              func={this.handleChangeInput}
-            />
-
-            {/* INTERVENANT */}
-            <DropDownInlineSpec
-              keyState="contact"
-              title='Editeur'
-              data={contact}
-              func={this.handleChangeDropDownSpec}
-              buttonValue="ADD contact"
-              button={true}
-              funcButton={this.upModalContact}
-            />
-
+            
             {/* DESCRIPTION */}
             <TextareaCustom
               keyState="description"
               func={this.handleChangeInput}
               value={description}
             />
-          </form>
+          </div>
         </div>
 
         <ToastContainer />
@@ -226,4 +245,4 @@ class FormVideo extends Component {
   }
 }
 
-export default FormVideo
+export default EventForm
