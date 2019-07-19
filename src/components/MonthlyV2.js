@@ -138,7 +138,7 @@ class Calendar extends React.Component {
 
     render() {
         return (
-            <div className="calendar" id="monthly">
+            <div style={{display:"none"}} className="calendar" id="monthly">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
