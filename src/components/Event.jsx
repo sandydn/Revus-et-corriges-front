@@ -10,7 +10,7 @@ const Event = ({ title, comment, picture, type }) => {
         }
     }
 
-    const typeEvent = `event ${type}`
+    const typeEvent = {type} === 1 ? 'event important' : 'event regular'
     
     return( 
         <div className={typeEvent}>
