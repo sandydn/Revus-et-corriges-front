@@ -114,7 +114,7 @@ class CinemaForm extends Component {
     onChangeDate = dateStart => {
         if (moment(dateStart).isBefore(moment().startOf('day')))
             return this.notify('La date de sortie ne peut être antérieur à la date du jour !')
-            this.setState({dateStart})
+        this.setState({dateStart})
     }
 
     handleSubmit = (evt) => {

@@ -21,6 +21,7 @@ const InputWithCalendar = ({ title, onChangeDate, date }) => {
       e.style.borderBottom = '1px solid black'
     })
   })
+  
   return (
     <div style={style.general}>
 
