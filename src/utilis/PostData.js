@@ -50,7 +50,13 @@ export const PostDataEvent = (objState) => {
         link,
         idvideo
     }
-    axios.post('http://localhost:4000/a5/event', body)
+    const token = localStorage.getItem("token")
+
+    axios.post('http://localhost:4000/a5/event', body,
+        {headers: {
+            'x-access-token': `${token}`
+            }
+        })
         .then(console.log)
         .catch(console.log)
 }
@@ -118,7 +124,13 @@ export const PostDataCinema = (objState) => {
         idcontact,
         genre
     }
-    axios.post('http://localhost:4000/a5/event-cinema', body)
+    const token = localStorage.getItem("token")
+
+    axios.post('http://localhost:4000/a5/event-cinema', body,
+        {headers: {
+            'x-access-token': `${token}`
+            }
+        })
         .then(console.log)
         .catch(console.log)
         console.log(objState,body)
@@ -175,7 +187,13 @@ export const PostDataVideo = (objState) => {
         idcontact,
         genre
     }
-    axios.post('http://localhost:4000/a5/event-cinema', body)
+    const token = localStorage.getItem("token")
+
+    axios.post('http://localhost:4000/a5/event-cinema', body,
+        {headers: {
+            'x-access-token': `${token}`
+            }
+        })
         .then(console.log)
         .catch(console.log)
         console.log(objState,body)
@@ -190,39 +208,55 @@ export const PostDataVideo = (objState) => {
  */
 export const PostDataContact = (objState) => {
     const {
-        prenom,
         nom,
-        genre,
+        prenom,
+        genre
     } = objState
 
     const body = {
-        prenom,
         nom,
-        genre,
+        prenom,
+        genre
     }
-    axios.post('http://localhost:4000/a2/contact', body)
+    const token = localStorage.getItem("token")
+
+    axios.post('http://localhost:4000/a2/contact', body,
+        {headers: {
+        'x-access-token': `${token}`
+          }
+        })
         .then(console.log)
-        .catch(console.log)
+        .catch(console.log(body, objState))
 }
 // ------------------------------------------------------ DB FILM
 /**
  * @param {String}    titre
  * @param {Date}      dateCreation
+ * @param {ArrayOfId} video
  * @param {ArrayOfId} contact
  */
 export const PostDataMovie = (objState) => {
     const {
         titre,
         dateCreation,
+        video,
         contact,
+        allDataContact
     } = objState
 
     const body = {
         titre,
-        dateCreation,
-        contact,
+        dateCreation: moment(dateCreation).format('YYYY'),
+        video,
+        contact
     }
-    axios.post('http://localhost:4000/a7/video', body)
+    const token = localStorage.getItem("token")
+
+    axios.post('http://localhost:4000/a7/video', body,
+        {headers: {
+            'x-access-token': `${token}`
+            }
+        })
         .then(console.log)
         .catch(console.log)
 }

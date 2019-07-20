@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { ToastContainer } from 'react-toastify';
+import moment from "moment"
 // brick
 import MenuAdmin from '../screen/MenuAdmin';
 import InputInLine from '../elements/InputInLine';
@@ -8,6 +10,8 @@ import ButtonCustom from '../elements/ButtonCustom'
 import AddContact from './AddContact'
 // FUNC
 import { GetData, PostDataMovie } from '../utilis'
+// CSS
+import 'react-toastify/dist/ReactToastify.css';
 
 const styleBase = {
   globalForm: {
@@ -30,27 +34,44 @@ const styleBase = {
   }
 }
 
-class FormCinema extends Component {
+class FormMovie extends Component {
 
   state = {
     dateCreation: new Date(),
     titre: '', // string qui doit etre parser
     contact: [],
-    //no send
+    video: [],
+    dataContact: [],
+    allDataContact: [],
     dataVideo: [],
     allDataVideo: [],
-    displayModalContact: false
+    displayModalContact: false,
+    addContact: false
   }
 
-  // componentDidMount() {
-  //   const video = GetData('http://localhost:4000/a7/video')
-  //   video.then((res) => {
-  //     const data = Array.from(res.data)
-  //     this.setState({ allDataVideo: data })
-  //     const titleVideo = data.map(e => e.titre)
-  //     this.setState({ dataVideo: titleVideo })
-  //   })
-  // }
+  contact = () => {
+    const contact = GetData('http://localhost:4000/a2/contact')
+    contact.then((res) => {
+        const data = Array.from(res.data)
+        this.setState({allDataContact: data})
+        const nameContact = data.map(e => e.nom)
+        this.setState({dataContact: nameContact})
+    })
+  }
+
+  componentDidMount() {
+    this.contact()
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.addContact != prevState.addContact) {
+      // this.contact()
+      console.log(this.state.addContact);
+      
+    }
+  }
+
+  // notify = (msg) => toast.error(msg)
 
   handleChangeInput = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -61,20 +82,13 @@ class FormCinema extends Component {
   }
 
   handleChangeDropDownSpec = (keyState, value) => {
-    console.log(value)
     this.setState({ [keyState]: value })
   }
 
-  onChangeDateStart = dateStart => {
-    if (dateStart > this.state.dateEnd && this.state.dateEnd)
-      return this.notify('La date de debut ne peut être inférieur à la date de fin !')
-    this.setState({ dateStart })
-  }
-
-  onChangeDateEnd = dateEnd => {
-    if (dateEnd < this.state.dateStart)
-      return console.log('error')
-    this.setState({ dateEnd })
+  onChangeDate = dateCreation => {
+    if (moment(dateCreation).isAfter(moment().startOf('year')))
+        return this.notify('La date de sortie du film ne peut être supérieur à la date du jour !')
+        this.setState({dateCreation})
   }
 
   handleSubmit = (evt) => {
@@ -83,15 +97,22 @@ class FormCinema extends Component {
   }
 
   upModalContact = () => {
-    const { displayModalContact } = this.state
+    const {displayModalContact} = this.state
     // inverse la valeur de {displayModalContact} (true/false)
-    this.setState({ displayModalContact: !displayModalContact })
+    this.setState({displayModalContact: !displayModalContact} ,console.log(this.state.displayModalContact)
+    )
+  }
+
+  lafunc = () => {
+    console.log('un trux');
+    
+    this.setState({addContact: true})
   }
 
   renderModalContact = () => {
-    const { displayModalContact } = this.state
+    const {displayModalContact} = this.state
     if (displayModalContact)
-      return <AddContact close={this.upModalContact} />
+      return <AddContact close={this.upModalContact} con={this.lafunc}/>
   }
 
   render() {
@@ -99,20 +120,23 @@ class FormCinema extends Component {
       titre,
       dateCreation,
       contact,
-      //no send
+      video,
+      dataContact,
       dataVideo
     } = this.state
+    console.log(video, dataVideo, contact, dataContact)
     return (
-      <MenuAdmin style={{ background: '#E5E5E5' }}>
+      <MenuAdmin style={{ background: '#E5E5E5'}}>
         {this.renderModalContact()}
         <div style={styleBase.globalForm}>
           <h2>Ajout d'un Film: </h2>
-          <form style={styleBase.form} onSubmit={this.handleSubmit}>
+          <form style={styleBase.form}>
 
             <ButtonCustom
               title='Sauvegarder'
               type='submit'
               style={{ float: 'right' }}
+              onClick={this.handleSubmit}
             />
 
             {/* TITRE */}
@@ -126,10 +150,10 @@ class FormCinema extends Component {
             {/* DATE */}
             <div style={styleBase.date}>
               <InputWithCalendar
+                keyState='dateCreation'
                 title='Date de création'
                 date={dateCreation}
-                onChangeDate={this.onChangeDateStart}
-                keyState="dateCreation"
+                onChangeDate={this.onChangeDate}
               />
             </div>
 
@@ -137,9 +161,9 @@ class FormCinema extends Component {
             <DropDownInlineSpec
               keyState="contact"
               title='Réalisateur'
-              data={contact}
+              data={this.state.dataContact}
               func={this.handleChangeDropDownSpec}
-              buttonValue="ADD contact"
+              buttonValue="Ajout réalisateur"
               button={true}
               funcButton={this.upModalContact}
             />
@@ -148,9 +172,9 @@ class FormCinema extends Component {
             <DropDownInlineSpec
               keyState="contact"
               title='Distributeur'
-              data={contact}
+              data={this.state.dataContact}
               func={this.handleChangeDropDownSpec}
-              buttonValue="ADD contact"
+              buttonValue="Ajout distributeur"
               button={true}
               funcButton={this.upModalContact}
             />
@@ -159,17 +183,18 @@ class FormCinema extends Component {
             <DropDownInlineSpec
               keyState="contact"
               title='Acteur'
-              data={contact}
+              data={this.state.dataContact}
               func={this.handleChangeDropDownSpec}
-              buttonValue="ADD contact"
+              buttonValue="Ajout acteur"
               button={true}
               funcButton={this.upModalContact}
             />
           </form>
         </div>
+        <ToastContainer />
       </MenuAdmin >
     )
   }
 }
 
-export default FormCinema
+export default FormMovie

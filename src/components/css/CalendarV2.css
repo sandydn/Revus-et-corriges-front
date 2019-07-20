@@ -451,36 +451,25 @@ i {
 
 
 
-
-.searchForm{
-    width:100%;
-    display: flex;
-    overflow: hidden;
-}
-
-.searchForm input{
-    width: 90%
-}
-
-.boutonLoupe{
-    height: 50%;
-    background: #bc33e9;
-    border: none;
-    /* position: absolute; */
-    margin-left: -2.13em;
-    margin-top: 0.72em;
-    border-radius: 15%;
-}
-
 .loupe{
     width: 12px;
 }
 
+.slide-pane__header{
+    display: none;
+}
 
+.inputModal{
+    border: none;
+    width: 65%;
+    height: 7rem;
+    font-size: 7rem;
+}
 
-@media screen and (min-width: 10px) and (max-width: 1024px) {
-        .searchForm {
-          display: none;
-          
-      }
+.modalWrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }

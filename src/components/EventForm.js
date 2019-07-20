@@ -47,7 +47,6 @@ class EventForm extends Component {
     cover: '',
     video: '', // string qui doit etre parser
     description: '',
-    //no send
     inputAdress: ['Adresse'],
     dataVideo: [],
     allDataVideo: []
@@ -81,7 +80,6 @@ class EventForm extends Component {
   }
 
   handleChangeDropDownSpec = (keyState, value) => {
-    console.log(value)
     this.setState({ [keyState]: value })
   }
 
@@ -109,7 +107,6 @@ class EventForm extends Component {
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart)
-      return console.log('error')
     this.setState({ dateEnd })
   }
 
@@ -129,7 +126,6 @@ class EventForm extends Component {
       cover,
       video,
       description,
-      //no send
       inputAdress,
       dataVideo
     } = this.state

@@ -66,7 +66,6 @@ class VideoForm extends Component {
         })
         const contact = GetData('http://localhost:4000/a2/contact')
         contact.then((res) => {
-            console.log(contact)
             const data = Array.from(res.data)
             this.setState({allDataContact: data})
             const nameContact = data.map(e => e.nom)
@@ -148,7 +147,7 @@ class VideoForm extends Component {
             dataVideo,
             dataContact
         } = this.state
-        console.log(video, dataVideo, contact, dataContact, importance);
+        console.log(video, dataVideo, contact, dataContact, importance)
         return (
             <MenuAdmin style={{background: '#E5E5E5'}}>
                 {this.renderModalContact()}

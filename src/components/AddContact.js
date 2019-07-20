@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import InputInLine from '../elements/InputInLine'
 import DropDownInline from '../elements/DropDownInline';
 import ButtonCustom from '../elements/ButtonCustom'
-import { PostDataContact } from '../utilis'
+import {PostDataContact} from '../utilis'
 
 const styleBase = {
   general: {
@@ -30,10 +30,12 @@ const styleBase = {
 
 class AddContact extends Component {
   state = {
-    prenom: '',
     nom: '',
+    prenom: '',
     genre: null,
   }
+   lafunc = this.props.con
+
 
   handleChangeInput = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -45,18 +47,17 @@ class AddContact extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataContact(this.state)
+    PostDataContact(this.state, console.log(this.state))   
   }
 
   render() {
     const {
-      prenom,
       nom,
-      genre,
+      prenom,
+      genre
     } = this.state
-    const { close } = this.props
-
-    return (
+    const {close} = this.props.close
+    return (      
       <div style={styleBase.general}>
         <ButtonCustom
           title='X'
@@ -65,7 +66,7 @@ class AddContact extends Component {
           style={styleBase.close}
         />
         <h2>Ajout d'un Contact :</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form>
 
           <InputInLine
             keyState="prenom"
@@ -92,6 +93,7 @@ class AddContact extends Component {
             title='Ajouter'
             type='submit'
             style={{ float: 'right' }}
+            onClick={this.handleSubmit}
           />
         </form>
       </div>
