@@ -18,6 +18,7 @@ html{
 .calendarScreen{
     display: flex;
     border: 16px solid rgb(44, 67, 98);
+    min-height: 100vh;
     height: 100%;
 }
 
@@ -57,7 +58,7 @@ html{
 }
 
 .weeklyHeadMobile > h1{
-    font-size: 1.6em;
+    font-size: 1.4em;
     color: black;
 }
 
@@ -450,7 +451,7 @@ i {
 
 .days h1{
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     padding:5px;
     color : black;
 }
@@ -518,6 +519,7 @@ i {
         height: 7rem;
         font-size: 7rem;
     }
+
 }
 
 .modalWrapper{
@@ -526,4 +528,12 @@ i {
     height: 20%;
     justify-content: center;
     align-items: center;
+}
+
+.inputModal{
+    font-size: 2.5em;
+}
+
+.searchResult{
+    font-size: 1.5em;
 }

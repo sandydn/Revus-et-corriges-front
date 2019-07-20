@@ -107,6 +107,7 @@ class App extends Component {
               showPass={this.state.showPassword}
               toggleSho={this.toggleShow} />} />
             <Route exact path="/signin" component={Login} />
+            
           {/* Section ADMIN  */}
           <PrivateRoute path="/menu-admin" component={MenuAdmin} />
           <Route path="/signup" component={RegisterLogin} />

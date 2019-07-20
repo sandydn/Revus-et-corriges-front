@@ -3,15 +3,39 @@ import dateFns from "date-fns";
 import axios from 'axios';
 import moment from "moment";
 
-import './css/MonthlyV2.css'
+import './css/MonthlyV3.css'
 
 class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
         selectedDate: new Date(),
-        compareDates: []
+        compareDates: [],
+        // background: 'rgba(212, 77, 77, 0.418)',
+        // hoverStyle: {background: 'rgba(212, 77, 77, 0.418)'},
     };
 
+    handleHoverIn = (e) => {
+        const cell = document.getElementById(e.target.id)
+        if(cell){
+            cell.style.background = 'rgba(250, 250, 250, 0.800)'}
+    }
+
+    handleHoverOff = (e) => {
+        const cell = document.getElementById(e.target.id)
+        if(cell){
+            cell.style.background = this.state.background}
+    }
+
+    getStyle = async () => {
+		await axios
+		.get("http://localhost:4000/a4/decoration")
+		.then(results => {
+			const exactDeco = results.data[0]
+            this.setState({background: exactDeco.textcolor})
+            this.setState({hoverStyle:{background: exactDeco.textcolor}})
+            })
+	}
+    
     renderHeader() {
         const dateFormat = "MMMM YYYY";
 
@@ -20,7 +44,7 @@ class Calendar extends React.Component {
                 <div className="col col-start">
                     <div className="icon" onClick={this.prevMonth}>
                         chevron_left
-          </div>
+            </div>
                 </div>
                 <div className="col col-center">
                     <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
@@ -72,6 +96,7 @@ class Calendar extends React.Component {
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = moment(day).format('DD MMM YYYY')
                 let compare = this.state.compareDates.includes(cloneDay)
+                
 
                 days.push(
                     <div
@@ -83,9 +108,12 @@ class Calendar extends React.Component {
                       }`}
                       key={day}
                       onClick={this.props.monthly2Weekly}
+                      style={this.state.hoverStyle}
+                      onMouseEnter={this.handleHoverIn}
+                      onMouseLeave={this.handleHoverOff}
+                      
                         >
                             <span className="number">{formattedDate}</span>
-                            {/* <span className="bg">{formattedDate}</span> */}
                         </div>
                     )
 
@@ -116,12 +144,11 @@ class Calendar extends React.Component {
         this.setState({ compareDates: comparing })
     }
 
-
-
-
     componentDidMount = async () => {
+        await this.getStyle()
         await this.getevent()
         this.compareDate()
+        console.log(this.state)
     }
 
     nextMonth = () => {
@@ -137,6 +164,12 @@ class Calendar extends React.Component {
     };
 
     render() {
+        var linkStyle;
+        if (this.state.hover) {
+          linkStyle = {color: '#ed1212',cursor: 'pointer'}
+        } else {
+          linkStyle = {color: '#000'}
+        }
         return (
             <div className="calendar" id="monthly">
                 {this.renderHeader()}

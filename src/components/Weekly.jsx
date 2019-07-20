@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserView, MobileView } from "react-device-detect";
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 import Menu from './Menu'
@@ -24,7 +23,7 @@ class Weekly extends Component {
         dayEvent: [],
         dayDate: '',
         date: '',
-        monthForDisplay: moment('2012 juillet', 'YYYY MMM', 'fr').format('MMMM YYYY')
+        monthForDisplay: moment( 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')
     }
 
     getevent = async (type) => {
@@ -34,7 +33,14 @@ class Weekly extends Component {
                 type(results.data)
             })
     }
-
+    getStyle = async () => {
+		await axios
+		.get("http://localhost:4000/a4/decoration")
+		.then(results => {
+			const exactDeco = results.data[0]
+			this.setState({colorDB: exactDeco.textcolor})
+})
+	}
 
     createDateArrayNext = (datas) => {
         let dateArr = []
@@ -48,6 +54,7 @@ class Weekly extends Component {
             this.setState({ date: moment(this.state.date).add(1, 'days') })
         }
         this.setState({ days: dateArr })
+        this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
 
     createDateArrayPrev = (datas) => {
@@ -63,21 +70,18 @@ class Weekly extends Component {
         }
         this.setState({ days: dateArr })
         this.setState({ date: moment(this.state.date).add(5, 'days') })
+        this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
 
     componentDidMount = async () => {
         this.setState({ date: moment().startOf('hour') })
+        await this.getStyle()
         await this.getevent(this.createDateArrayNext)
         const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
         this.selectDay(selectDayTest)
         console.log(this.state.monthForDisplay)
     }
-    // componentDidMount() {
-    //     this.setState({ days: dataTest.filter((display) => display.id < 5) })
-    //     this.selectDay(0)
-    //     this.getevent()
-    // }
 
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
@@ -120,6 +124,7 @@ class Weekly extends Component {
             const clasSelect = accurateSelec.className
             if (clasSelect) { accurateSelec.id = 'selected' }
         }
+        
     }
 
     handleSelector = (event) => {

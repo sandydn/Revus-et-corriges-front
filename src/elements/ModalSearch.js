@@ -36,7 +36,10 @@ class ModalSearch extends Component {
         this.setState({searchResult: this.state.eventData.filter((search) => search.titre.toLowerCase().includes(e.target.value.toLowerCase()))})
         // console.log(e.target.value)
     }
-        
+
+    closeForSearch = () => {
+        this.setState({ isPaneOpen: false })
+    }
             
     render() {    
         console.log(this.state.searchResult);
@@ -56,7 +59,9 @@ class ModalSearch extends Component {
                 <div className='modalWrapper'>
                     <input placeholder='Recherche...' className='inputModal' onChange={this.handleSearch}></input>
                 </div>
+                <div onClick={this.closeForSearch}>
                 {this.renderResults()}
+                </div>
             </SlidingPane>
         </div>
 

@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom'
 import Menu from './Menu'
 import Weekly from "./Weekly"
 import MonthlyV2 from './MonthlyV2'
+import axios from 'axios';
 
 import './css/CalendarV2.css'
 
@@ -26,6 +27,31 @@ class Calendar extends Component {
 			this.setState({ monthToWeek: 'Go to Monthly' })
 		}
 	}
+
+	getStyle = async () => {
+		await axios
+		.get("http://localhost:4000/a4/decoration")
+		.then(results => {
+			const exactDeco = results.data[0]
+			this.setState({colorDB: exactDeco.textcolor})
+
+			const weeklyContainer = document.getElementById('weekly')
+			const monthlyContainer = document.getElementById('monthly')
+
+			const urlBackground = `url(${exactDeco.background})`
+			monthlyContainer.style.background = urlBackground
+			weeklyContainer.style.background = urlBackground
+
+			const monthEvent = document.querySelectorAll('.calendar .body .cell')
+			const loupe = document.querySelector('.boutonLoupe')
+			
+			loupe.style.background = exactDeco.textcolor
+			const selectMobile = document.getElementById('selected')
+			// selectMobile.style.background = exactDeco.textcolor
+			console.log(loupe);
+			
+            })
+	}
 	
 	updateButton = async() => {
 		const butoon = document.getElementById('buttonAdmin')
@@ -33,6 +59,7 @@ class Calendar extends Component {
 	}
 	
 	componentDidMount() {
+		this.getStyle()
 		this.updateButton()
 	}
 	
@@ -43,6 +70,21 @@ class Calendar extends Component {
 	handleMonthly2Weekly = async (e) => {
 		await this.setState({dateOnClick: e.target.id})
 		this.handleClick() 
+    }
+
+    handleSearch = async (e) => {
+        await this.setState({dateOnClick: e.target.id})
+        this.handleClickForSearch() 
+        this.handleClickForSearch() 
+    }
+
+    handleClickForSearch = () => {
+        const weekly = document.getElementById('weekly')
+        const monthly = document.getElementById('monthly')
+
+        monthly.style.display = 'none'
+        weekly.style.display = 'flex'
+        this.setState({ monthToWeek: 'Go to Monthly' })
     }
 	
 	render() {
