@@ -280,7 +280,7 @@ i {
     }
     
      
-    }
+    
     @media screen and (min-width : 1024px)  {
     #close, .liResponsive {
         display: none;
@@ -499,4 +499,4 @@ i {
           display: none;
           
       }
-}
+    }}
