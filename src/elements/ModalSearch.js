@@ -4,13 +4,15 @@ import SlidingPane from 'react-sliding-pane';
 import 'react-sliding-pane/dist/react-sliding-pane.css';    
 
 import { GetData } from '../utilis'
+import SearchResult from './SearchResult'
        
             
 class ModalSearch extends Component {
         
     state = {
         isPaneOpen: false,
-        eventData: []
+        eventData: [],
+        searchResult: []
     }
 
     componentDidMount() {
@@ -18,14 +20,26 @@ class ModalSearch extends Component {
         const events = GetData('http://localhost:4000/a5/event')
         events.then((res) => {
             const events = Array.from(res.data)
-            const eventData = events.map(e => e.titre)
-            this.setState({eventData: eventData})
-            console.log(eventData);
+            const eventData = events.map((e) => e.titre )
+            this.setState({eventData: events})
+            console.log(events);
         })
     }      
+
+    renderResults = () => {
+        const results = this.state.searchResult.map((result) => <SearchResult titre={result.titre} date={result.dateStart}/>)
+        return (results)
+    }
+
+    handleSearch = (e) => {
+        this.setState({searchResult: this.state.eventData.filter((search) => search.titre.toLowerCase().includes(e.target.value.toLowerCase()))})
+        // console.log(e.target.value)
+    }
         
             
-    render() {           
+    render() {    
+        console.log(this.state.searchResult);
+               
         return <div ref={ref => this.el = ref}>
              <button 
                 onClick={() => this.setState({ isPaneOpen: true })}
@@ -39,8 +53,9 @@ class ModalSearch extends Component {
                 } 
                 }>
                 <div className='modalWrapper'>
-                    <input placeholder='Recherche...' className='inputModal'></input>
+                    <input placeholder='Recherche...' className='inputModal' onChange={this.handleSearch}></input>
                 </div>
+                {this.renderResults()}
             </SlidingPane>
         </div>
 

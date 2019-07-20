@@ -38,7 +38,7 @@ handleClick = () => {
                             <Link to="/menu-admin" ><input type="submit" value="Admin" /></Link>
                             <Link to="/login" ><input type="submit" value="Login" /></Link>
                             <button onClick={this.handleClick}>{this.state.monthToWeek}</button>
-            </div>
+                </div>
             <Weekly />
             <MonthlyV2 />
             </div>
