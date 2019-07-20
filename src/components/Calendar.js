@@ -26,7 +26,7 @@ class Calendar extends Component {
 			weekly.style.display = 'flex'
 			this.setState({ monthToWeek: 'Go to Monthly' })
 		}
-	}
+    }
 
 	getStyle = async () => {
 		await axios
