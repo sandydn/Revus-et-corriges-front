@@ -239,16 +239,24 @@ export const PostDataMovie = (objState) => {
     const {
         titre,
         dateCreation,
-        video,
         contact,
-        allDataContact
+        allDataContact,
     } = objState
+
+    let idcontact = contact.split(/,\s|,/)
+    idcontact = idcontact.filter(e => e && e != '')
+
+    idcontact = idcontact.map(e => {
+        const ret = allDataContact.find(elem => {
+            return elem.nom === e
+        })
+        return ret && ret.idcontact
+    })
 
     const body = {
         titre,
         dateCreation: moment(dateCreation).format('YYYY'),
-        video,
-        contact
+        idcontact,
     }
     const token = localStorage.getItem("token")
 
@@ -257,6 +265,6 @@ export const PostDataMovie = (objState) => {
             'x-access-token': `${token}`
             }
         })
-        .then(console.log)
+        .then(console.log(body))
         .catch(console.log)
 }

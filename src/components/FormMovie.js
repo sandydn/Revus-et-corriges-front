@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { ToastContainer } from 'react-toastify';
 import moment from "moment"
+import YearPicker from "react-year-picker";
+
 // brick
 import MenuAdmin from '../screen/MenuAdmin';
 import InputInLine from '../elements/InputInLine';
 import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import InputWithCalendar from '../elements/InputWithCalendar'
 import ButtonCustom from '../elements/ButtonCustom'
 import AddContact from './AddContact'
 // FUNC
 import { GetData, PostDataMovie } from '../utilis'
 // CSS
-import 'react-toastify/dist/ReactToastify.css';
 
 const styleBase = {
   globalForm: {
@@ -37,16 +36,12 @@ const styleBase = {
 class FormMovie extends Component {
 
   state = {
-    dateCreation: new Date(),
     titre: '', // string qui doit etre parser
-    contact: [],
-    video: [],
+    dateCreation: new Date(),
+    contact: '',
     dataContact: [],
     allDataContact: [],
-    dataVideo: [],
-    allDataVideo: [],
     displayModalContact: false,
-    addContact: false
   }
 
   contact = () => {
@@ -63,15 +58,6 @@ class FormMovie extends Component {
     this.contact()
   }
 
-  componentDidUpdate(prevState) {
-    if (this.state.addContact != prevState.addContact) {
-      // this.contact()
-      console.log(this.state.addContact);
-      
-    }
-  }
-
-  // notify = (msg) => toast.error(msg)
 
   handleChangeInput = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -85,34 +71,25 @@ class FormMovie extends Component {
     this.setState({ [keyState]: value })
   }
 
-  onChangeDate = dateCreation => {
-    if (moment(dateCreation).isAfter(moment().startOf('year')))
-        return this.notify('La date de sortie du film ne peut être supérieur à la date du jour !')
-        this.setState({dateCreation})
+  onChange = dateCreation => {
+    this.setState({dateCreation: moment(dateCreation).format('YYYY')})
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataMovie(this.state)
+    PostDataMovie(this.state)    
   }
-
+  
   upModalContact = () => {
     const {displayModalContact} = this.state
-    // inverse la valeur de {displayModalContact} (true/false)
-    this.setState({displayModalContact: !displayModalContact} ,console.log(this.state.displayModalContact)
-    )
-  }
-
-  lafunc = () => {
-    console.log('un trux');
-    
-    this.setState({addContact: true})
+    this.setState({displayModalContact: !displayModalContact})
+    this.contact()
   }
 
   renderModalContact = () => {
     const {displayModalContact} = this.state
     if (displayModalContact)
-      return <AddContact close={this.upModalContact} con={this.lafunc}/>
+      return <AddContact close={this.upModalContact}/>
   }
 
   render() {
@@ -120,11 +97,9 @@ class FormMovie extends Component {
       titre,
       dateCreation,
       contact,
-      video,
-      dataContact,
-      dataVideo
+      dataContact
     } = this.state
-    console.log(video, dataVideo, contact, dataContact)
+    console.log(contact, dataContact)
     return (
       <MenuAdmin style={{ background: '#E5E5E5'}}>
         {this.renderModalContact()}
@@ -149,49 +124,27 @@ class FormMovie extends Component {
 
             {/* DATE */}
             <div style={styleBase.date}>
-              <InputWithCalendar
+              <YearPicker
                 keyState='dateCreation'
-                title='Date de création'
+                title='Année de création du film'
                 date={dateCreation}
-                onChangeDate={this.onChangeDate}
+                onChange={this.onChange}
               />
             </div>
 
-            {/* REALISATEUR */}
+            {/* CONTACT */}
             <DropDownInlineSpec
-              keyState="contact"
-              title='Réalisateur'
+              keyState='contact'
+              title='Contact'
               data={this.state.dataContact}
               func={this.handleChangeDropDownSpec}
-              buttonValue="Ajout réalisateur"
+              buttonValue='Ajout contact'
               button={true}
               funcButton={this.upModalContact}
             />
 
-            {/* Distributeur */}
-            <DropDownInlineSpec
-              keyState="contact"
-              title='Distributeur'
-              data={this.state.dataContact}
-              func={this.handleChangeDropDownSpec}
-              buttonValue="Ajout distributeur"
-              button={true}
-              funcButton={this.upModalContact}
-            />
-
-            {/* ACTEUR */}
-            <DropDownInlineSpec
-              keyState="contact"
-              title='Acteur'
-              data={this.state.dataContact}
-              func={this.handleChangeDropDownSpec}
-              buttonValue="Ajout acteur"
-              button={true}
-              funcButton={this.upModalContact}
-            />
           </form>
         </div>
-        <ToastContainer />
       </MenuAdmin >
     )
   }

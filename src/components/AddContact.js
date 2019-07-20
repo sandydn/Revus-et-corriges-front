@@ -47,7 +47,13 @@ class AddContact extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataContact(this.state, console.log(this.state))   
+    PostDataContact(this.state, console.log(this.state))
+    this.props.close()
+  }
+
+  poil = () => {
+    console.log('adieu');
+    
   }
 
   render() {
@@ -56,7 +62,7 @@ class AddContact extends Component {
       prenom,
       genre
     } = this.state
-    const {close} = this.props.close
+    const close = this.props.close
     return (      
       <div style={styleBase.general}>
         <ButtonCustom
