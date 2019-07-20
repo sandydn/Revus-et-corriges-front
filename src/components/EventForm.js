@@ -6,13 +6,12 @@ import InputInLine from '../elements/InputInLine';
 import DropDownInline from '../elements/DropDownInline';
 import DropDownInlineSpec from '../elements/DropDownInlineSpec';
 import InputWithCalendar from '../elements/InputWithCalendar'
-import TextAreaCustom from '../elements/TextAreaCustom';
+import TextareaCustom from '../elements/TextareaCustom';
 import ButtonCustom from '../elements/ButtonCustom'
 // FUNC
 import { GetData, PostDataEvent } from '../utilis'
 // CSS
 import 'react-toastify/dist/ReactToastify.css';
-import { isThisTypeAnnotation } from '@babel/types';
 
 const styleBase = {
   globalForm: {
@@ -35,7 +34,7 @@ const styleBase = {
   }
 }
 
-class FormEvent extends Component {
+class EventForm extends Component {
 
   state = {
     category: 1,
@@ -48,7 +47,6 @@ class FormEvent extends Component {
     cover: '',
     video: '', // string qui doit etre parser
     description: '',
-    //no send
     inputAdress: ['Adresse'],
     dataVideo: [],
     allDataVideo: []
@@ -82,7 +80,6 @@ class FormEvent extends Component {
   }
 
   handleChangeDropDownSpec = (keyState, value) => {
-    console.log(value)
     this.setState({ [keyState]: value })
   }
 
@@ -110,7 +107,6 @@ class FormEvent extends Component {
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart)
-      return console.log('error')
     this.setState({ dateEnd })
   }
 
@@ -130,22 +126,21 @@ class FormEvent extends Component {
       cover,
       video,
       description,
-      //no send
       inputAdress,
       dataVideo
     } = this.state
-    console.log(video)
     return (
       <MenuAdmin style={{ background: '#E5E5E5' }}>
         
         <div style={styleBase.globalForm}>
           <h2>Ajout Event: </h2>
-          <form style={styleBase.form} onSubmit={this.handleSubmit}>
+          <div style={styleBase.form} >
             
             <ButtonCustom
               title='Sauvegarder'
               type='submit'
               style={{float: 'right'}}
+              onClick={this.handleSubmit}
             />
             
             {/* TITRE */}
@@ -232,12 +227,12 @@ class FormEvent extends Component {
             />
             
             {/* DESCRIPTION */}
-            <TextAreaCustom
+            <TextareaCustom
               keyState="description"
               func={this.handleChangeInput}
               value={description}
             />
-          </form>
+          </div>
         </div>
 
         <ToastContainer />
@@ -246,4 +241,4 @@ class FormEvent extends Component {
   }
 }
 
-export default FormEvent
+export default EventForm

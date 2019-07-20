@@ -1,4 +1,21 @@
-import { GetData } from './GetData'
-import { PostDataEvent } from './PostData'
 
-export { GetData, PostDataEvent }
+// ------------------- GET
+import { GetData } from './GetData'
+
+// ------------------- POST
+import {
+  PostDataEvent,
+  PostDataCinema,
+  PostDataVideo,
+  PostDataContact,
+  PostDataMovie
+} from './PostData'
+
+export {
+  GetData,
+  PostDataEvent,
+  PostDataCinema,
+  PostDataVideo,
+  PostDataContact,
+  PostDataMovie
+}

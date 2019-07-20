@@ -466,19 +466,20 @@ i {
     color: black;
 }
 
-.searchForm{
-    width:100%;
-    display: flex;
-    overflow: hidden;
+
+
+
+
+
+.loupe{
+    width: 12px;
 }
 
-.searchForm input{
-    width: 90%
+.slide-pane__header{
+    display: none;
 }
 
-.boutonLoupe{
-    height: 50%;
-    background: #bc33e9;
+.inputModal{
     border: none;
     margin-left: -2.13em;
     margin-top: 0.72em;
@@ -513,5 +514,16 @@ i {
 
     .buttonMenuAdminMonthly {
         margin-top: 14em;
+        width: 65%;
+        height: 7rem;
+        font-size: 7rem;
     }
+}
+
+.modalWrapper{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
 }

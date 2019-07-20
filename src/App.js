@@ -13,13 +13,13 @@ import Events from './screen/Events';
 import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
 import Admin from './screen/Admin';
-import FormEvent from './components/FormEvent';
-import FormVideos from './components/FormVideos';
-import FormCinema from './components/FormCinema';
-import Ajout from './screen/Ajout'
+import VideoForm from './components/VideoForm';
+import CinemaForm from './components/CinemaForm';
+import FormMovie from './components/FormMovie';
 import Favicon from 'react-favicon';
 import PrivateRoute from './components/PrivateRoute';
 import Settings from './screen/Settings';
+import EventForm from './components/EventForm';
 
 class App extends Component {
 
@@ -107,21 +107,20 @@ class App extends Component {
               showPass={this.state.showPassword}
               toggleSho={this.toggleShow} />} />
             <Route exact path="/signin" component={Login} />
-
-            {/* Section ADMIN  */}
-            <PrivateRoute path="/menu-admin" component={MenuAdmin} />
-            <Route path="/signup" component={RegisterLogin} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/admin-events" component={Events} />
-            <Route path="/admin-cinema" component={Cinema} />
-            <Route path="/admin-videos" component={Videos} />
-            <Route path="/admin-ajout" component={Ajout} />
-            <Route path="/admin-events-form" component={FormEvent} />
-            <Route path="/admin-cinema-form" component={FormCinema} />
-            <Route path="/admin-videos-form" component={FormVideos} />
-            <Route path="/parametre" component={Settings} />
-          </Switch>
-        </BrowserRouter>
+          {/* Section ADMIN  */}
+          <PrivateRoute path="/menu-admin" component={MenuAdmin} />
+          <Route path="/signup" component={RegisterLogin} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/admin-events" component={Events} />
+          <Route path="/admin-cinema" component={Cinema} />
+          <Route path="/admin-videos" component={Videos} />
+          <Route path="/admin-movie-form" component={FormMovie} />
+          <Route path="/admin-events-form" component={EventForm} />
+          <Route path="/admin-cinema-form" component={CinemaForm} />
+          <Route path="/admin-videos-form" component={VideoForm} />
+          <Route path="/parametre" component={Settings} />
+        </Switch>
+      </BrowserRouter>
       </>
     );
   }
