@@ -75,7 +75,6 @@ class Calendar extends Component {
     handleSearch = async (e) => {
         await this.setState({dateOnClick: e.target.id})
         this.handleClickForSearch() 
-        this.handleClickForSearch() 
     }
 
     handleClickForSearch = () => {
@@ -93,7 +92,7 @@ class Calendar extends Component {
 
 			<div className='calendarScreen'>
 				<div className='navbar'>
-					<Menu search={this.handleMonthly2Weekly}/>
+					<Menu search={this.handleSearch}/>
 					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
