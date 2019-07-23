@@ -14,6 +14,8 @@ import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
 import Admin from './screen/Admin';
 import VideoForm from './components/VideoForm';
+import EditEvent from './components/EditEvent';
+
 import CinemaForm from './components/CinemaForm';
 import FormMovie from './components/FormMovie';
 import Favicon from 'react-favicon';
@@ -111,6 +113,8 @@ class App extends Component {
           {/* Section ADMIN  */}
           <PrivateRoute path="/menu-admin" component={MenuAdmin} />
           <Route path="/signup" component={RegisterLogin} />
+          <Route path="/edit/:id" component={EditEvent} />
+
           <Route path="/admin" component={Admin} />
           <Route path="/admin-events" component={Events} />
           <Route path="/admin-cinema" component={Cinema} />
