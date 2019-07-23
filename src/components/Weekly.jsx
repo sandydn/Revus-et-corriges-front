@@ -129,7 +129,7 @@ class Weekly extends Component {
         return (
             
 
-            <div className='weeklyContainer' id='weekly'>
+            <div className='weeklyContainer apply-font' id='weekly'>
                 <BrowserView>
                     <div className='weekly'>
 

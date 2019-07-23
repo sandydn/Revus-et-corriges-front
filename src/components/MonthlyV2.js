@@ -170,7 +170,7 @@ class Calendar extends React.Component {
           linkStyle = {color: '#000'}
         }
         return (
-            <div style={{display:"none"}} className="calendar" id="monthly">
+            <div style={{display:"none"}} className="calendar apply-font" id="monthly">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
