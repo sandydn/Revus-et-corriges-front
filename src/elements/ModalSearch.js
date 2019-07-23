@@ -46,6 +46,7 @@ class ModalSearch extends Component {
                
         return <div ref={ref => this.el = ref}>
              <button 
+                className='boutonLoupe'
                 onClick={() => this.setState({ isPaneOpen: true })}
             >
                 <img className="loupe" src="https://image.flaticon.com/icons/png/128/54/54527.png" alt='Recherche'/> 
