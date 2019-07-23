@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import MenuAdmin from './MenuAdmin';
 import ColorPicker from '../components/ColorPicker';
 import BackgroundPicker from '../components/BackgroundPicker';
-import FontPicker from '../components/FontPicker';
+// import FontPicker from '../components/FontPicker';
 import '../screen/Events.css'
+import TextFont from '../components/TextFont';
 
 const styleBase = {
   general: {
@@ -33,7 +34,7 @@ class Settings extends Component {
           <ColorPicker />
         </div>
         <div>
-          <FontPicker />
+          <TextFont />
         </div>
       
       </div>

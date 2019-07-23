@@ -116,7 +116,7 @@ class Calendar extends Component {
 		
 		return (
 		
-			<div className='calendarScreen'>
+			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
 					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
