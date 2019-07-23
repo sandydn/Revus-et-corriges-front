@@ -341,14 +341,14 @@ i {
     }
 
     .important{
-        background: rgb(255, 0, 98);
+        background: rgba(212, 77, 77, 0.418);
         border-radius: 15px;
     }
     
-    .regular{
+    /* .regular{
         background: rgba(255,255,255, .45);
         border-radius: 15px;
-    }
+    } */
 
     /* DESKTOP */
 .dayDesktop{

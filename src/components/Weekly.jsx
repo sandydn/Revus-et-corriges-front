@@ -15,8 +15,6 @@ import 'moment/locale/fr';
 // import "./css/calendar.css"
 // import dataTest from './dataTest.json'
 
-Moment.globalFormat = 'DD MMM YYYY';
-
 class Weekly extends Component {
     state = {
         days: [],
@@ -33,14 +31,7 @@ class Weekly extends Component {
                 type(results.data)
             })
     }
-    getStyle = async () => {
-		await axios
-		.get("http://localhost:4000/a4/decoration")
-		.then(results => {
-			const exactDeco = results.data[0]
-			this.setState({colorDB: exactDeco.textcolor})
-})
-	}
+    
 
     createDateArrayNext = (datas) => {
         let dateArr = []
@@ -74,13 +65,14 @@ class Weekly extends Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ date: moment().startOf('hour') })
-        await this.getStyle()
+        await this.setState({ date: moment().startOf('hour') })
+        console.log(this.state.date)
         await this.getevent(this.createDateArrayNext)
+        console.log(this.state.date)
         const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
         this.selectDay(selectDayTest)
-        console.log(this.state.monthForDisplay)
+        console.log(this.state.date)
     }
 
     componentDidUpdate() {

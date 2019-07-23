@@ -42,14 +42,9 @@ class Calendar extends Component {
 			monthlyContainer.style.background = urlBackground
 			weeklyContainer.style.background = urlBackground
 
-			const monthEvent = document.querySelectorAll('.calendar .body .cell')
+	
 			const loupe = document.querySelector('.boutonLoupe')
-			
 			loupe.style.background = exactDeco.textcolor
-			const selectMobile = document.getElementById('selected')
-			// selectMobile.style.background = exactDeco.textcolor
-			console.log(loupe);
-			
             })
 	}
 	
