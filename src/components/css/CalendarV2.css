@@ -339,8 +339,13 @@ i {
         align-self: center;
         margin: 5px;
     }
-    
+
     .important{
+        background: rgb(255, 0, 98);
+        border-radius: 15px;
+    }
+    
+    .regular{
         background: rgba(255,255,255, .45);
         border-radius: 15px;
     }
@@ -390,10 +395,10 @@ i {
     margin: 5px;
 }
 
-.important{
+/* .important{
     background: rgba(255, 255, 255, 0.45);
     border-radius: 15px;
-}
+} */
 
 /* MOBILE */
 
