@@ -333,6 +333,7 @@ main {
   font-size: 115%;
   padding: 1.5em 0;
   border-bottom: 1px solid #eee;
+  height: 10vh;
 }
 
 .calendar .header .icon {

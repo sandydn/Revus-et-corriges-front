@@ -13,6 +13,7 @@ class Calendar extends Component {
 		monthToWeek: 'Go to Monthly',
 		showButton: 'hidden'
 	}
+
 	handleClick = () => {
 		const weekly = document.getElementById('weekly')
 		const monthly = document.getElementById('monthly')
@@ -33,33 +34,47 @@ class Calendar extends Component {
 		.get("http://localhost:4000/a4/decoration")
 		.then(results => {
 			const exactDeco = results.data[0]
-			this.setState({colorDB: exactDeco.textcolor})
-
-			const weeklyContainer = document.getElementById('weekly')
-			const monthlyContainer = document.getElementById('monthly')
-
 			const urlBackground = `url(${exactDeco.background})`
-			monthlyContainer.style.background = urlBackground
-			weeklyContainer.style.background = urlBackground
-
-	
-			const loupe = document.querySelector('.boutonLoupe')
-			loupe.style.background = exactDeco.textcolor
+			this.setState({colorDB: exactDeco.textcolor})
+			this.setState({backgroundDB: urlBackground })
+			this.setState({fontDB: exactDeco.textfont})
             })
 	}
+
+	useStyle = () => {
+		const weeklyContainer = document.getElementById('weekly')
+		const monthlyContainer = document.getElementById('monthly')
+		monthlyContainer.style.background = this.state.backgroundDB
+		weeklyContainer.style.background = this.state.backgroundDB
+
+
+		const loupe = document.querySelector('.boutonLoupe')
+		loupe.style.background = this.state.colorDB
+
+		const important = document.querySelectorAll('.important')
+
+		if(important){
+			for (let i = 0; i < important.length; i++){
+				important[i].style.background = this.state.colorDB
+			}
+		}
+		
+	}
 	
-	updateButton = async() => {
+	updateButton = async () => {
 		const butoon = document.getElementById('buttonAdmin')
 		await this.props.verif ? butoon.style.display = 'block' : butoon.style.display = 'none'
 	}
 	
-	componentDidMount() {
-		this.getStyle()
+	componentDidMount = async ()=> {
+		await this.getStyle()
+		this.useStyle()
 		this.updateButton()
 	}
 	
 	componentDidUpdate() {
 		this.updateButton()
+		this.useStyle()
 	}
 
 	handleClick = () => {
@@ -107,7 +122,7 @@ class Calendar extends Component {
 					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
-				<Weekly dateOnClick = {this.state.dateOnClick}/>
+				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
         		<MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
 

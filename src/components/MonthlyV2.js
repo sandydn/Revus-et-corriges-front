@@ -148,7 +148,6 @@ class Calendar extends React.Component {
         await this.getStyle()
         await this.getevent()
         this.compareDate()
-        console.log(this.state)
     }
 
     nextMonth = () => {

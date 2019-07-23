@@ -23,7 +23,6 @@ class ModalSearch extends Component {
             const events = Array.from(res.data)
             const eventData = events.map((e) => e.titre )
             this.setState({eventData: events})
-            console.log(events);
         })
     }      
 
@@ -34,7 +33,6 @@ class ModalSearch extends Component {
 
     handleSearch = (e) => {
         this.setState({searchResult: this.state.eventData.filter((search) => search.titre.toLowerCase().includes(e.target.value.toLowerCase()))})
-        // console.log(e.target.value)
     }
 
     closeForSearch = () => {
@@ -42,7 +40,6 @@ class ModalSearch extends Component {
     }
             
     render() {    
-        console.log(this.state.searchResult);
                
         return <div ref={ref => this.el = ref}>
              <button 

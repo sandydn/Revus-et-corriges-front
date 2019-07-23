@@ -44,7 +44,6 @@ class Weekly extends Component {
             dateArr.push(dayToPush)
             this.setState({ date: moment(this.state.date).add(1, 'days') })
         }
-        console.log(this.state.date)
         this.setState({ days: dateArr })
         this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
@@ -94,13 +93,15 @@ class Weekly extends Component {
         this.setState({ dayDate: dayArr.date })
     }
 
-    previousDays = () => {
-        this.setState({ date: moment(this.state.date).subtract(5, 'days') })
-        this.getevent(this.createDateArrayPrev)
+    previousDays = async () => {
+        await this.setState({ date: moment(this.state.date).subtract(5, 'days') })
+        await this.getevent(this.createDateArrayPrev)
+        this.props.style()
     }
 
-    nextDays = () => {
-        this.getevent(this.createDateArrayNext)
+    nextDays = async () => {
+        await this.getevent(this.createDateArrayNext)
+        this.props.style()
     }
 
     displaySelector = (select) => {

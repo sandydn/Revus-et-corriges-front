@@ -13,7 +13,7 @@ class Event extends Component{
         }
     }
     changeClass = () => {
-        this.props.type === 2 ? this.setState({classType: 'event important'}) : this.setState({classType: 'event regular'})
+        this.props.type === 1 ? this.setState({classType: 'event important'}) : this.props.type === 2 ? this.setState({classType: 'event partner'}) : this.setState({classType: 'event regular'})
     }
 
     componentDidMount = () => {
