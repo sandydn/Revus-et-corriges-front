@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import DeleteForm from '../components/DeleteForm'
+import DisplayEvent from '../components/DisplayEvent'
 import ButtonForm from '../components/ButtonForm'
 import Delete from '../components/Delete';
-import DeleteForm from '../components/DeleteForm'
 import MenuAdmin from './MenuAdmin';
 import '../screen/Events.css'
 
@@ -25,7 +26,8 @@ class Events extends Component {
                     <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
                 </div>
                 <div className="displayData">
-                    <Delete />
+                <DisplayEvent />
+                    {/* <Delete /> */}
                 </div>
             </div>
 
