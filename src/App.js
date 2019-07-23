@@ -10,7 +10,6 @@ import Admin from './screen/Admin';
 import Calendar from './components/Calendar'
 import Cinema from './screen/Cinema';
 import Videos from './screen/Videos';
-import Admin from './screen/Admin';
 import VideoForm from './components/VideoForm';
 import EditEvent from './components/EditEvent';
 
@@ -22,8 +21,6 @@ import FormMovie from './components/FormMovie';
 import MenuAdmin from './screen/MenuAdmin';
 import PrivateRoute from './components/PrivateRoute';
 import Settings from './screen/Settings';
-import Videos from './screen/Videos';
-import VideoForm from './components/VideoForm';
 import './App.css'
 
 class App extends Component {
