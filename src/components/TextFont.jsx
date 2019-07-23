@@ -18,7 +18,7 @@ class TextFont extends Component {
             })
           }
         />
-        <p className="apply-font">The font will be applied to this text.</p>
+        <p className="apply-font">La police de ce texte sera appliquer sur le calendrier.</p>
       </div>
     )
   }
