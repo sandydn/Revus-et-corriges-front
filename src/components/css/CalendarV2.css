@@ -344,6 +344,11 @@ i {
         background: rgba(212, 77, 77, 0.418);
         border-radius: 15px;
     }
+
+    .partner{
+        background: rgba(187, 187, 187, 0.418);
+        border-radius: 15px;
+    }
     
     /* .regular{
         background: rgba(255,255,255, .45);
