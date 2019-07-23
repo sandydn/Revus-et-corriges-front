@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import moment from "moment"
 // brick
 import MenuAdmin from '../screen/MenuAdmin';
 import InputInLine from '../elements/InputInLine';
@@ -100,7 +101,7 @@ class EventForm extends Component {
   }
 
   onChangeDateStart = dateStart => {
-    if (dateStart > this.state.dateEnd && this.state.dateEnd)
+    if (moment(dateStart).isBefore(moment().startOf('day')))
       return this.notify('La date de debut ne peut être inférieur à la date de fin !')
     this.setState({ dateStart })
   }
@@ -113,6 +114,7 @@ class EventForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     PostDataEvent(this.state)
+    return this.notify('L\'événement est bien enregistrer !')
   }
 
   render() {

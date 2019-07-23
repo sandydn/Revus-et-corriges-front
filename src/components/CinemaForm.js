@@ -56,6 +56,16 @@ class CinemaForm extends Component {
         displayModalContact: false
     }
     
+    contact = () => {
+        const contact = GetData('http://localhost:4000/a2/contact')
+        contact.then((res) => {
+            const data = Array.from(res.data)
+            this.setState({allDataContact: data})
+            const nameContact = data.map(e => e.nom)
+            this.setState({dataContact: nameContact})
+        })
+      }
+    
     componentDidMount() {
         const video = GetData('http://localhost:4000/a7/video')
         video.then((res) => {
@@ -64,14 +74,7 @@ class CinemaForm extends Component {
             const titleVideo = data.map(e => e.titre)
             this.setState({dataVideo: titleVideo})
         })
-        const contact = GetData('http://localhost:4000/a2/contact')
-        contact.then((res) => {
-            console.log(contact)
-            const data = Array.from(res.data)
-            this.setState({allDataContact: data})
-            const nameContact = data.map(e => e.nom)
-            this.setState({dataContact: nameContact})
-        })
+        this.contact()
     }
 
     notify = (msg) => toast.error(msg)
@@ -120,11 +123,13 @@ class CinemaForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         PostDataCinema(this.state)
+        return this.notify('La sortie cinéma est bien enregistrer !')
     }
 
     upModalContact = () => {
         const {displayModalContact} = this.state
         this.setState({displayModalContact: !displayModalContact})
+        this.contact()
     }
 
     renderModalContact = () => {

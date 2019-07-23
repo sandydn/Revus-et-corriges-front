@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import moment from "moment"
 import YearPicker from "react-year-picker";
 
@@ -11,6 +12,8 @@ import AddContact from './AddContact'
 // FUNC
 import { GetData, PostDataMovie } from '../utilis'
 // CSS
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const styleBase = {
   globalForm: {
@@ -58,6 +61,7 @@ class FormMovie extends Component {
     this.contact()
   }
 
+  notify = (msg) => toast.error(msg)
 
   handleChangeInput = (keyState, evt) => {
     this.setState({ [keyState]: evt.target.value })
@@ -77,7 +81,8 @@ class FormMovie extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataMovie(this.state)    
+    PostDataMovie(this.state) 
+    return this.notify('Le film est bien enregistrer !')   
   }
   
   upModalContact = () => {
@@ -145,6 +150,7 @@ class FormMovie extends Component {
 
           </form>
         </div>
+        <ToastContainer />
       </MenuAdmin >
     )
   }
