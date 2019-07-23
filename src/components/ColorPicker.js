@@ -12,7 +12,8 @@ class ColorPicker extends Component {
   }
 
   handleChange = (color) => {
-    this.setState({ color: color.hex });
+    const rgbaColor =`rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`
+    this.setState({ color: rgbaColor });
   }
 
   onChange = () => {
@@ -30,7 +31,7 @@ class ColorPicker extends Component {
         }
       })
       .then((res) => {
-        alert("Nouvelle couleur au calendrier ajoutée !")
+        alert("Nouvelle couleur de calendrier ajoutée !")
       })
       .catch((err) => {
       })
