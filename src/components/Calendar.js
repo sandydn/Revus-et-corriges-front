@@ -67,6 +67,22 @@ class Calendar extends Component {
 		this.updateButton()
 	}
 
+	handleClick = () => {
+		const weekly = document.getElementById('weekly')
+		const monthly = document.getElementById('monthly')
+
+		if (monthly.style.display === 'none') {
+			weekly.style.display = 'none'
+			monthly.style.display = 'block'
+			this.setState({ monthToWeek: 'Go to Weekly' })
+		}
+		else {
+			monthly.style.display = 'none'
+			weekly.style.display = 'flex'
+			this.setState({ monthToWeek: 'Go to Monthly' })
+		}
+	}
+	
 	handleMonthly2Weekly = async (e) => {
 		await this.setState({dateOnClick: e.target.id})
 		this.handleClick() 
@@ -87,9 +103,9 @@ class Calendar extends Component {
     }
 	
 	render() {
-
+		
 		return (
-
+		
 			<div className='calendarScreen'>
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
@@ -97,8 +113,10 @@ class Calendar extends Component {
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick}/>
-                <MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />
+        		<MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
+
+			
 		)
 	}
 	

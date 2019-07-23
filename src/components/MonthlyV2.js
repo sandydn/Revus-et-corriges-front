@@ -171,7 +171,7 @@ class Calendar extends React.Component {
           linkStyle = {color: '#000'}
         }
         return (
-            <div className="calendar" id="monthly">
+            <div style={{display:"none"}} className="calendar" id="monthly">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
