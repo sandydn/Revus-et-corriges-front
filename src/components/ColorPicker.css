@@ -16,18 +16,33 @@
 }    */
 .updatefontcolor {
   display: flex;
+  flex-direction: column;
+  flex-grow: initial;
+}
+
+.displayColoPicker{
+  display: flex;
   flex-direction: row;
   flex-grow: initial;
 }
-.showing {
+/* .showing {
   visibility: visible;
 }
 
 .notShowing {
   visibility: hidden;
   max-height:120px;
-}
+} */
 .view-color {
- max-width:100px;
- max-height: 100px;
+ width: 220px;
+ height: 40px
+}
+
+.colorInput {
+  width: 220px;
+  height: 40px;
+}
+
+#colorPickerButton {
+  width: 220px;
 }
