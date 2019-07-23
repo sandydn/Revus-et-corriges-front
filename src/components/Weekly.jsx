@@ -44,6 +44,7 @@ class Weekly extends Component {
             dateArr.push(dayToPush)
             this.setState({ date: moment(this.state.date).add(1, 'days') })
         }
+        console.log(this.state.date)
         this.setState({ days: dateArr })
         this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
@@ -66,13 +67,10 @@ class Weekly extends Component {
 
     componentDidMount = async () => {
         await this.setState({ date: moment().startOf('hour') })
-        console.log(this.state.date)
         await this.getevent(this.createDateArrayNext)
-        console.log(this.state.date)
         const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
         this.selectDay(selectDayTest)
-        console.log(this.state.date)
     }
 
     componentDidUpdate() {
@@ -80,15 +78,13 @@ class Weekly extends Component {
     }
 
     componentWillReceiveProps = async () => {
-        if(this.props.dateOnClick){
-            this.setState({ date: moment(this.props.dateOnClick).subtract(5, 'days') })
-        }else{
-            this.setState({ date: moment().startOf('hour') })
+        if (this.props.dateOnClick) {
+            this.setState({ date: moment(this.props.dateOnClick) })
+            await this.getevent(this.createDateArrayNext)
+            const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
+            const selectDayTest = dayForSelect[0]
+            this.selectDay(selectDayTest)
         }
-        await this.getevent(this.createDateArrayNext)
-        const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
-        const selectDayTest = dayForSelect[0]
-        this.selectDay(selectDayTest)
     }
     
     selectDay(i) {
