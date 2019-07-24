@@ -40,8 +40,9 @@ class TextFont extends Component {
   render() {
     return (
       <div>
+        <h3>Changer la police du calendrier</h3>
         <FontPicker
-          apiKey="AIzaSyA3zC4mK2VJCsyk_YC-oauL62U5HHQT1E8"
+          apiKey="AIzaSyA3zC4mK3VJCsyk_YC-oauL62U5HHQT1E8"
           activeFontFamily={this.state.activeFontFamily}
           onChange={nextFont =>
             this.setState({
