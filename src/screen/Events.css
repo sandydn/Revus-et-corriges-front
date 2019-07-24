@@ -41,12 +41,15 @@
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: nowrap;
-
 }
 
 .displayData {
     display: flex;
     justify-content: center;
+}
+
+.tableDeleteEvent{
+    width: 100vw;
 }
 
 .container-button {

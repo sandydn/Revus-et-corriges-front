@@ -41,7 +41,7 @@ class DisplayEvent extends Component {
   render() {
     const { events } = this.state
     return (
-      <div>
+      <div className='tableDeleteEvent'>
 
 
         {/* <p>Display Event</p>
