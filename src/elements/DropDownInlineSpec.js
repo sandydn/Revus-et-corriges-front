@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import '@fortawesome/fontawesome-free/js/all.js'
 
 const style = {
@@ -43,17 +43,13 @@ const style = {
 }
 
 const handleSearch = (evt, data, setDataSelect) => {
-  // console.log("allo", data);
   // secure if data no gotten
   if (!data) return ;
-  // console.log("still here", data);
   // create new array after filter
   let filtre = data.filter(e => {
-    // console.log(data, e);
     let c = evt.target.value.toLowerCase().split(/[\s,]+/)
     c = c[c.length - 1]
     return c.length ? e.toLowerCase().search(c) > -1 : false
-    // console.log(evt);
   })
   // if length of filter > 5 --- cut it
   if (filtre.length > 5)

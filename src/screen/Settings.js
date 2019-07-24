@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
-import MenuAdmin from './MenuAdmin';
-import ColorPicker from '../components/ColorPicker';
-import BackgroundPicker from '../components/BackgroundPicker';
-// import FontPicker from '../components/FontPicker';
+import React, {Component} from 'react'
+import BackgroundPicker from '../components/BackgroundPicker'
+import ColorPicker from '../components/ColorPicker'
+import TextFont from '../components/TextFont'
 import '../screen/Events.css'
-import TextFont from '../components/TextFont';
 
 const styleBase = {
   general: {

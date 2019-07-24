@@ -196,7 +196,6 @@ export const PostDataVideo = (objState) => {
         })
         .then(console.log)
         .catch(console.log)
-        console.log(objState,body)
 }
 
 // ------------------------------------------------------ CONTACT (editeur, realisateur, distributeur, acteur)
@@ -226,7 +225,7 @@ export const PostDataContact = (objState) => {
           }
         })
         .then(console.log)
-        .catch(console.log(body, objState))
+        .catch(console.log)
 }
 // ------------------------------------------------------ DB FILM
 /**
@@ -265,6 +264,6 @@ export const PostDataMovie = (objState) => {
             'x-access-token': `${token}`
             }
         })
-        .then(console.log(body))
+        .then(console.log)
         .catch(console.log)
 }

@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import Modal from 'react-modal';
-import SlidingPane from 'react-sliding-pane';
-import 'react-sliding-pane/dist/react-sliding-pane.css';  
-import moment from "moment";  
+import React, {Component} from "react"
+import Modal from 'react-modal'
 
-import { GetData } from '../utilis'
+import {GetData} from '../utilis'
 import SearchResult from './SearchResult'
-       
-            
+import SlidingPane from 'react-sliding-pane'
+import moment from "moment"
+
+import 'react-sliding-pane/dist/react-sliding-pane.css'  
+                   
 class ModalSearch extends Component {
         
     state = {

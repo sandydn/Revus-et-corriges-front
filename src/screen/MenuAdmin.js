@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import { Redirect } from "react-router-dom";
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 // brick
 import LinkForForms from '../components/LinkForForms'
-import Settings from './Settings';
-  
+import Settings from './Settings'
 
 class MenuAdmin extends Component {
 

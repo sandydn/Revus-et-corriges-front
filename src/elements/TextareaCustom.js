@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const styleBase = {
   general: {
@@ -32,7 +32,6 @@ const TextareaCustom = ({func, keyState, value }) => {
         cols="100"
         rows="15"
       >
-
       </textarea>
     </div>
   )

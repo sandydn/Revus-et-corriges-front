@@ -8,19 +8,19 @@ import RegisterLogin from './components/RegisterLogin'
 
 import Admin from './screen/Admin';
 import Calendar from './components/Calendar'
-import Cinema from './screen/Cinema';
-import Videos from './screen/Videos';
-import VideoForm from './components/VideoForm';
-import EditEvent from './components/EditEvent';
+import Cinema from './screen/Cinema'
+import CinemaForm from './components/CinemaForm'
+import EditEvent from './components/EditEvent'
+import Events from './screen/Events'
+import EventForm from './components/EventForm'
+import Favicon from 'react-favicon'
+import FormMovie from './components/FormMovie'
+import MenuAdmin from './screen/MenuAdmin'
+import PrivateRoute from './components/PrivateRoute'
+import Settings from './screen/Settings'
+import Videos from './screen/Videos'
+import VideoForm from './components/VideoForm'
 
-import CinemaForm from './components/CinemaForm';
-import Events from './screen/Events';
-import EventForm from './components/EventForm';
-import Favicon from 'react-favicon';
-import FormMovie from './components/FormMovie';
-import MenuAdmin from './screen/MenuAdmin';
-import PrivateRoute from './components/PrivateRoute';
-import Settings from './screen/Settings';
 import '../src/components/css/Login.css'
 
 class App extends Component {
@@ -32,17 +32,17 @@ class App extends Component {
     success: false,
     redirect: false,
     verified: false,
-  };
+  }
 
   // Show password or not (icon-eye) //
   toggleShow = () => {
-    this.setState({ showPassword: !this.state.showPassword });
-  };
+    this.setState({ showPassword: !this.state.showPassword })
+  }
 
   // Change state with form admin //
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   // ON SUBMIT - router on axios d'appel form
   handleSubmit = event => {
@@ -54,12 +54,12 @@ class App extends Component {
       .then((res) => {
         localStorage.setItem("token", res.headers["x-access-token"])
         this.setState({ success: true }, () => {
-          setTimeout(() => this.setState({ success: false }), 1400);
-          setTimeout(() => this.setState({ redirect: true }), 1400);
-          setTimeout(() => this.protectedRoute(), 1400);
-        });
-      });
-  };
+          setTimeout(() => this.setState({ success: false }), 1400)
+          setTimeout(() => this.setState({ redirect: true }), 1400)
+          setTimeout(() => this.protectedRoute(), 1400)
+        })
+      })
+  }
 
   protectedRoute = () => {
     // Storage for token //
@@ -77,14 +77,13 @@ class App extends Component {
           verified: res.data.auth,
         })
       })
-  };
+  }
 
   componentDidMount = () => {
     this.protectedRoute()
-  };
+  }
 
   render() {
-
     return (
       <>
         <div>
@@ -127,8 +126,8 @@ class App extends Component {
         </Switch>
       </BrowserRouter>
       </>
-    );
+    )
   }
 }
 
-export default App;
+export default App

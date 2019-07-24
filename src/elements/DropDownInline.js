@@ -64,7 +64,6 @@ const DropDownInline = ({ title, data, func, keyState }) => {
 
       <input
         style={{ ...styleBase.common, ...styleBase.input }}
-        // onChange={(e) => handleSearch(e, data, setDataSelect)}
         type="text"
         disabled
       />
