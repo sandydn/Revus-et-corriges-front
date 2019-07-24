@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import axios from "axios"
 import MaterialTable from 'material-table'
+import moment from 'moment'
 
 class DisplayEvent extends Component {
   state = {
@@ -9,8 +10,20 @@ class DisplayEvent extends Component {
 
   getData = async () => {
     const result = await axios.get("http://localhost:4000/a5/event")
-    console.log(result.data)
-    this.setState({ events: result.data })
+    const reformatedData = []
+
+    for (let i = 0; i<result.data.length; i++){
+      const event = result.data[i]
+
+      const dataToPush = {
+        idevent : event.idevent,
+        titre : event.titre,
+        dateStart : moment(event.dateStart).format('DD MMMM YYYY'),
+        description : event.description
+      }
+      reformatedData.push(dataToPush)
+    }
+    this.setState({ events: reformatedData })
   }
 
   delete = async (id) => {
