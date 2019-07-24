@@ -1,7 +1,5 @@
 import React from 'react'
-
 import '../components/css/SelectBox.css'
-
 
 class SelectBox extends React.Component {
 
@@ -16,7 +14,6 @@ class SelectBox extends React.Component {
     this.setState(prevState => ({
       showItems:!prevState.showItems
     }))
-
   }
 
   selectItem = (item) => this.setState({
@@ -24,8 +21,6 @@ class SelectBox extends React.Component {
     showItems:false
 
   })
-
-
 
   render() {
     return (
@@ -69,8 +64,6 @@ class SelectBox extends React.Component {
               }
             </div>
           </div>
-
-
         </div>
 
         <input 
@@ -78,7 +71,6 @@ class SelectBox extends React.Component {
           value={this.state.selectedItem.id} 
           name={this.state.name}
         />
-
       </div>
     )
   }

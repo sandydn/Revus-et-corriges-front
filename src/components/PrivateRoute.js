@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
+import {Route, Redirect, withRouter} from "react-router-dom"
 import axios from 'axios'
-import { Route, Redirect, withRouter } from "react-router-dom";
 
 class PrivateRoute extends Component {
 
@@ -10,12 +10,12 @@ class PrivateRoute extends Component {
     }
 
     componentDidMount() {
-        this.verifyToken();
+        this.verifyToken()
     }
 
     verifyToken() {
         // Getting localStorage data
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token")
 
         axios({
             method: "Get",
@@ -34,13 +34,13 @@ class PrivateRoute extends Component {
                     verified: false,
                     isLoading: false
                 })
-            });
+            })
     }
 
     render() {
         // Verify if a good token //
-        const { verified, isLoading } = this.state;
-        const { component: Component, ...rest } = this.props;
+        const { verified, isLoading } = this.state
+        const { component: Component, ...rest } = this.props
 
         if (!isLoading) {
             return (
@@ -57,11 +57,11 @@ class PrivateRoute extends Component {
                         )
                 )}
                 />
-            );
+            )
         } else {
             return <Redirect to='/menu-admin' />
         }
     }
 }
 
-export default withRouter(PrivateRoute);
+export default withRouter(PrivateRoute)

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import FontPicker from "font-picker-react";
-import axios from 'axios';
+import React, {Component} from "react"
+import FontPicker from "font-picker-react"
+import axios from 'axios'
 
 class TextFont extends Component {
     state = {
@@ -36,7 +36,6 @@ class TextFont extends Component {
   componentDidMount = () =>{
     this.getStyle()
   }
-
 	
   render() {
     return (

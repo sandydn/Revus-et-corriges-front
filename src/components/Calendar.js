@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
+import axios from 'axios'
 import Menu from './Menu'
+import Monthly from './Monthly'
 import Weekly from "./Weekly"
-import MonthlyV2 from './MonthlyV2'
-import axios from 'axios';
 
 import '../components/css/calendar.css'
 
@@ -113,9 +113,7 @@ class Calendar extends Component {
     }
 	
 	render() {
-		
 		return (
-		
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
@@ -123,13 +121,10 @@ class Calendar extends Component {
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
-        		<MonthlyV2 monthly2Weekly = {this.handleMonthly2Weekly} />
+        		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
-
-			
 		)
 	}
-	
 }
 
-export default Calendar;
+export default Calendar

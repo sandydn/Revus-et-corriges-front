@@ -1,15 +1,15 @@
-import React from 'react';
-import { Redirect } from "react-router-dom";
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import React from 'react'
+import {Redirect} from "react-router-dom"
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
 
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import IconButton from '@material-ui/core/IconButton'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import InputLabel from '@material-ui/core/InputLabel'
+import Visibility from '@material-ui/icons/Visibility'
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 import RC from '../pictures/RC.png'
 import './css/Login.css'
@@ -18,8 +18,7 @@ class Login extends React.Component {
 
   render() {
 
-    const { success, redirect } = this.props;
-
+    const {success, redirect} = this.props    
     // if token is true redirect directly in menu admin //
     if (this.props.verif === true) {
       return <Redirect to='/menu-admin' />
@@ -95,8 +94,8 @@ class Login extends React.Component {
         </div>
 
       </div>
-    );
-  };
-};
+    )
+  }
+}
 
-export default Login;
+export default Login

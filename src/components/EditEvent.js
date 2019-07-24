@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import axios from "axios"
 
 class EditEvent extends Component {
@@ -18,7 +18,7 @@ class EditEvent extends Component {
     console.log("yolo", this)
     return (
       <div>
-        Edit event
+        Créer un évènement:
         <p>{this.state.dataEvents.titre}</p>
       </div>
     )

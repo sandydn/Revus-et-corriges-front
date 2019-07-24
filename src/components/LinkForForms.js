@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-
-export class LinkForm extends Component {
+export class LinkForForms extends Component {
 
   render() {
     return (
@@ -16,4 +15,4 @@ export class LinkForm extends Component {
   }
 }
 
-export default LinkForm
+export default LinkForForms

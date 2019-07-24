@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import React, {Component} from 'react'
+import {ToastContainer, toast} from 'react-toastify'
 import moment from "moment"
-import YearPicker from "react-year-picker";
+import YearPicker from "react-year-picker"
 
 // brick
-import MenuAdmin from '../screen/MenuAdmin';
-import InputInLine from '../elements/InputInLine';
-import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import ButtonCustom from '../elements/ButtonCustom'
 import AddContact from './AddContact'
+import ButtonCustom from '../elements/ButtonCustom'
+import DropDownInlineSpec from '../elements/DropDownInlineSpec'
+import InputInLine from '../elements/InputInLine'
+import MenuAdmin from '../screen/MenuAdmin'
 // FUNC
-import { GetData, PostDataMovie } from '../utilis'
+import {GetData, PostDataMovie} from '../utilis'
 // CSS
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const styleBase = {
@@ -39,7 +39,7 @@ const styleBase = {
 class FormMovie extends Component {
 
   state = {
-    titre: '', // string qui doit etre parser
+    titre: '',
     dateCreation: new Date(),
     contact: '',
     dataContact: [],
@@ -104,20 +104,12 @@ class FormMovie extends Component {
       contact,
       dataContact
     } = this.state
-    console.log(contact, dataContact)
     return (
       <MenuAdmin style={{ background: '#E5E5E5'}}>
         {this.renderModalContact()}
         <div style={styleBase.globalForm}>
           <h2>Ajout d'un Film: </h2>
           <form style={styleBase.form}>
-
-            <ButtonCustom
-              title='Sauvegarder'
-              type='submit'
-              style={{ float: 'right' }}
-              onClick={this.handleSubmit}
-            />
 
             {/* TITRE */}
             <InputInLine
@@ -148,6 +140,13 @@ class FormMovie extends Component {
               funcButton={this.upModalContact}
             />
 
+            <ButtonCustom
+              title='Sauvegarder'
+              type='submit'
+              style={{ float: 'right' }}
+              onClick={this.handleSubmit}
+            />
+            
           </form>
         </div>
         <ToastContainer />

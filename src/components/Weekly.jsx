@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
-import { BrowserView, MobileView } from "react-device-detect";
-import axios from 'axios';
+import { BrowserView, MobileView } from "react-device-detect"
+import axios from 'axios'
 
-import Menu from './Menu'
 import MobileWeek from './MobileWeek'
 import Week from './Week'
 
 import moment from "moment"
-import 'moment/locale/fr';
-import 'moment-timezone';
-import Moment from 'react-moment';
-import 'moment/locale/fr';
-
-// import "./css/calendar.css"
-// import dataTest from './dataTest.json'
+import 'moment/locale/fr'
+import 'moment-timezone'
 
 class Weekly extends Component {
     state = {
@@ -121,19 +115,13 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
-
-
-
     render() {
 
         return (
-            
 
             <div className='weeklyContainer apply-font' id='weekly'>
                 <BrowserView>
                     <div className='weekly'>
-
-                        
 
                         <div className='weeklyDesktop'>
 
@@ -163,7 +151,6 @@ class Weekly extends Component {
                         </div>
 
                         <div className='weeklyDisplayMobile'>
-
 
                             <MobileWeek dataDays={this.state.days}
                                 date={this.state.dayDate}

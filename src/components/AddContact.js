@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import InputInLine from '../elements/InputInLine'
-import DropDownInline from '../elements/DropDownInline';
-import ButtonCustom from '../elements/ButtonCustom'
+
 import {PostDataContact} from '../utilis'
+import ButtonCustom from '../elements/ButtonCustom'
+import DropDownInline from '../elements/DropDownInline'
+import InputInLine from '../elements/InputInLine'
 
 const styleBase = {
   general: {
@@ -47,13 +48,8 @@ class AddContact extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    PostDataContact(this.state, console.log(this.state))
+    PostDataContact(this.state)
     this.props.close()
-  }
-
-  poil = () => {
-    console.log('adieu');
-    
   }
 
   render() {

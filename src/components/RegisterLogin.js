@@ -1,17 +1,17 @@
-import React from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import React from 'react'
+import axios from 'axios'
+import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator'
+import {Redirect} from 'react-router-dom'
 
-import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import Input from '@material-ui/core/Input'
+import InputLabel from '@material-ui/core/InputLabel'
 
-import RC from '../pictures/RC.png'
 import './css/Login.css'
 import '../screen/Events.css'
-import MenuAdmin from '../screen/MenuAdmin';
+import MenuAdmin from '../screen/MenuAdmin'
+import RC from '../pictures/RC.png'
 
 class RegisterLogin extends React.Component {
 
@@ -24,15 +24,13 @@ class RegisterLogin extends React.Component {
 		},
 		showPassword: false,
 		success: false,
-	};
-
+	}
 
 	handleChange = event => {
 		const { formData } = this.state;
 		formData[event.target.name] = event.target.value;
-		this.setState({ formData });
-	};
-
+		this.setState({ formData })
+	}
 
 	handleSubmit = event => {
 		event.preventDefault()
@@ -43,29 +41,28 @@ class RegisterLogin extends React.Component {
 		})
 			.then(() => {
 				this.setState({ success: true }, () => {
-					setTimeout(() => this.setState({ success: false }), 1400);
-					setTimeout(() => this.setState({ redirect: true }), 1400);
-				});
-			});
-	};
+					setTimeout(() => this.setState({ success: false }), 1400)
+					setTimeout(() => this.setState({ redirect: true }), 1400)				})
+			})
+	}
 
 	componentDidMount() {
 		// custom rule will have name 'isPasswordMatch'
 		ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
 			const { formData } = this.state;
 			if (value !== formData.password) {
-				return false;
+				return false
 			}
-			return true;
-		});
+			return true
+		})
 	}
 
 	render() {
-		const { formData, success, redirect } = this.state;
+		const { formData, success, redirect } = this.state
+
 		if (redirect) {
 			return <Redirect to='/menu-admin' />
 		}
-
 		return (
 			<div className="screenRegister">
 			<MenuAdmin />
@@ -143,11 +140,11 @@ class RegisterLogin extends React.Component {
 
 					</ValidatorForm>
 
+					</div>
 				</div>
 			</div>
-			</div>
-		);
-	};
-};
+		)
+	}
+}
 
-export default RegisterLogin;
+export default RegisterLogin

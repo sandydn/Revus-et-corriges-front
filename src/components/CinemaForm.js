@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import React, {Component} from 'react'
+import {ToastContainer, toast} from 'react-toastify'
 import moment from "moment"
 // brick
-import MenuAdmin from '../screen/MenuAdmin';
-import InputInLine from '../elements/InputInLine';
-import DropDownInline from '../elements/DropDownInline';
-import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import InputWithCalendar from '../elements/InputWithCalendar'
-import TextareaCustom from '../elements/TextareaCustom';
-import ButtonCustom from '../elements/ButtonCustom'
 import AddContact from './AddContact'
+import ButtonCustom from '../elements/ButtonCustom'
+import DropDownInline from '../elements/DropDownInline'
+import DropDownInlineSpec from '../elements/DropDownInlineSpec'
+import InputInLine from '../elements/InputInLine'
+import InputWithCalendar from '../elements/InputWithCalendar'
+import MenuAdmin from '../screen/MenuAdmin'
+import TextareaCustom from '../elements/TextareaCustom'
 // FUNC
-import { GetData, PostDataCinema } from '../utilis'
+import {GetData, PostDataCinema} from '../utilis'
 // CSS
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 const styleBase = {
     globalForm: {
@@ -64,7 +64,7 @@ class CinemaForm extends Component {
             const nameContact = data.map(e => e.nom)
             this.setState({dataContact: nameContact})
         })
-      }
+    }
     
     componentDidMount() {
         const video = GetData('http://localhost:4000/a7/video')
@@ -153,21 +153,13 @@ class CinemaForm extends Component {
             dataVideo,
             dataContact
         } = this.state
-        console.log(video, dataVideo, contact, dataContact, importance);
         return (
             <MenuAdmin style={{background: '#E5E5E5'}}>
                 {this.renderModalContact()}
                 <div style={styleBase.globalForm}>
                     <h2>Ajout Cinéma:</h2>
                     <form style={styleBase.form}>
-
-                    <ButtonCustom
-                        title='Sauvegarder'
-                        type='submit'
-                        style={{float: 'right'}}
-                        onClick={this.handleSubmit}
-                    />
-
+                        
                     {/* TITRE */}
                     <InputInLine
                         keyState='titre'
@@ -255,6 +247,13 @@ class CinemaForm extends Component {
                         keyState='description'
                         value={description}
                         func={this.handleChangeInput}
+                    />
+
+                    <ButtonCustom
+                        title='Sauvegarder'
+                        type='submit'
+                        style={{float: 'right'}}
+                        onClick={this.handleSubmit}
                     />
                     </form>
                 </div>

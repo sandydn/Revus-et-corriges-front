@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
-
-import "../components/css/ColorPicker.css"
-import { SketchPicker } from 'react-color';
+import React, {Component} from 'react'
+import {SketchPicker} from 'react-color'
 import axios from 'axios'
 
+import "../components/css/ColorPicker.css"
 
 class ColorPicker extends Component {
-
   state = {
     color: "",
   }
@@ -39,9 +37,7 @@ class ColorPicker extends Component {
 
   render() {
     return (
-
       <>
-        
         <h3>Changer la couleur du calendrier</h3>
         <form className="updatefontcolor" onSubmit={this.handleSubmit}>
           <input
@@ -70,6 +66,7 @@ class ColorPicker extends Component {
     )
   }
 }
+
 export default ColorPicker
 
 

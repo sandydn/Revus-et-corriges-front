@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 // import axios from 'axios'
 
-import ButtonForm from '../components/ButtonForm';
+import ButtonForm from '../elements/ButtonForm';
 import MenuAdmin from './MenuAdmin';
 import '../screen/Events.css'
 // import './Cinema.css'

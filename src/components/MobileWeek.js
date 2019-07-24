@@ -1,6 +1,6 @@
 import React from 'react'
-import DaySelector from './DaySelector';
-import Day from './Day';
+import Day from './Day'
+import DaySelector from './DaySelector'
 
 
 
@@ -15,12 +15,9 @@ const MobileWeek = ({ dataDays, dataEvent, date, previous, next, selector }) => 
 
                 <div onClick={next} className='nextMobile'><i class="arrow right"></i></div>
             </div>
-
             <Day date={date} dataEvent={dataEvent} stateClass='Mobile' />
-
         </div>
     )
-
 }
 
 export default MobileWeek

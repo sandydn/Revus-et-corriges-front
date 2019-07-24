@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import React, {Component} from 'react'
+import {ToastContainer, toast} from 'react-toastify'
 import moment from "moment"
 // brick
-import MenuAdmin from '../screen/MenuAdmin';
-import InputInLine from '../elements/InputInLine';
-import DropDownInline from '../elements/DropDownInline';
-import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import InputWithCalendar from '../elements/InputWithCalendar'
-import TextareaCustom from '../elements/TextareaCustom';
 import ButtonCustom from '../elements/ButtonCustom'
+import DropDownInline from '../elements/DropDownInline'
+import DropDownInlineSpec from '../elements/DropDownInlineSpec'
+import InputInLine from '../elements/InputInLine'
+import InputWithCalendar from '../elements/InputWithCalendar'
+import MenuAdmin from '../screen/MenuAdmin'
+import TextareaCustom from '../elements/TextareaCustom'
 // FUNC
-import { GetData, PostDataEvent } from '../utilis'
+import {GetData, PostDataEvent} from '../utilis'
 // CSS
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 const styleBase = {
   globalForm: {
@@ -36,17 +36,16 @@ const styleBase = {
 }
 
 class EventForm extends Component {
-
   state = {
     category: 1,
     titre: '',
     dateStart: new Date(),
     dateEnd: new Date(),
-    importance: 0, // valeur de 1 a 3
-    adresse: [], // array de string doit etre joint /
+    importance: 0, 
+    adresse: [],
     link: '',
     cover: '',
-    video: '', // string qui doit etre parser
+    video: '', 
     description: '',
     inputAdress: ['Adresse'],
     dataVideo: [],
@@ -135,15 +134,8 @@ class EventForm extends Component {
       <MenuAdmin style={{ background: '#E5E5E5' }}>
         
         <div style={styleBase.globalForm}>
-          <h2>Ajout Event: </h2>
+          <h2>Ajouter un évènement: </h2>
           <div style={styleBase.form} >
-            
-            <ButtonCustom
-              title='Sauvegarder'
-              type='submit'
-              style={{float: 'right'}}
-              onClick={this.handleSubmit}
-            />
             
             {/* TITRE */}
             <InputInLine
@@ -156,14 +148,14 @@ class EventForm extends Component {
             {/* DATE */}
             <div style={styleBase.date}>
               <InputWithCalendar
-                title='Date début'
+                title='Date de début'
                 date={dateStart}
                 onChangeDate={this.onChangeDateStart}
                 keyState="dateStart"
                 value={dateStart}
               />
               <InputWithCalendar
-                title='Date fin'
+                title='Date de fin'
                 date={dateEnd}
                 onChangeDate={this.onChangeDateEnd}
                 keyState="dateEnd"
@@ -172,7 +164,6 @@ class EventForm extends Component {
               />
             </div>
 
-            
             {/* IMPORTANCE */}
             <DropDownInline
               keyState='importance'
@@ -222,10 +213,9 @@ class EventForm extends Component {
             {/* VIDEO */}
             <DropDownInlineSpec
               keyState="video"
-              title='Film'
+              title='Films'
               data={this.state.dataVideo}
               func={this.handleChangeDropDownSpec}
-            // TODOS : add props for behavior
             />
             
             {/* DESCRIPTION */}
@@ -234,9 +224,16 @@ class EventForm extends Component {
               func={this.handleChangeInput}
               value={description}
             />
+
+            <ButtonCustom
+              title='Sauvegarder'
+              type='submit'
+              style={{float: 'right'}}
+              onClick={this.handleSubmit}
+            />
+
           </div>
         </div>
-
         <ToastContainer />
       </MenuAdmin >
     )

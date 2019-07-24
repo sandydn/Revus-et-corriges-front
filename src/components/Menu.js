@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import React, {Component} from 'react'
+import {NavLink} from 'react-router-dom'
+import axios from 'axios'
 
-import SearchBar from './SearchBar';
-import MenuMobile from './MenuMobile';
+import MenuMobile from './MenuMobile'
+import SearchBar from './SearchBar'
 
-import './css/Menu.css'
 import RC from '../pictures/RC.png'
+import './css/Menu.css'
 
 
 export class Menu extends Component {
-state = {
 
+state = {
 }
 
 getStyle = async () => {
@@ -20,7 +20,6 @@ getStyle = async () => {
     .then(results => {
         const exactDeco = results.data[0]
         this.setState({hoverStyle:exactDeco.textcolor})
-        console.log(this.state)
         })
 }
 
@@ -81,5 +80,5 @@ render() {
     }
 }
 
-export default Menu;
+export default Menu
 

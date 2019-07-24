@@ -1,17 +1,15 @@
-import React from "react";
-import axios from 'axios';
-import moment from "moment";
+import React from "react"
+import axios from 'axios'
+import moment from "moment"
 
 import './css/MonthlyV3.css'
 
-class Calendar extends React.Component {
+class Monthly extends React.Component {
     state = {
         currentMonth: new Date(),
         selectedDate: new Date(),
         compareDates: [],
-        // background: 'rgba(212, 77, 77, 0.418)',
-        // hoverStyle: {background: 'rgba(212, 77, 77, 0.418)'},
-    };
+    }
 
     handleHoverIn = (e) => {
         const cell = document.getElementById(e.target.id)
@@ -36,14 +34,14 @@ class Calendar extends React.Component {
 	}
     
     renderHeader() {
-        const dateFormat = "MMMM YYYY";
+        const dateFormat = "MMMM YYYY"
 
         return (
             <div className="header row flex-middle">
                 <div className="col col-start">
                     <div className="icon" onClick={this.prevMonth}>
                         chevron_left
-            </div>
+                    </div>
                 </div>
                 <div className="col col-center">
                     <span>{moment(this.state.currentMonth).format(dateFormat)}</span>
@@ -52,40 +50,38 @@ class Calendar extends React.Component {
                     <div className="icon">chevron_right</div>
                 </div>
             </div>
-        );
+        )
     }
 
     renderDays() {
-        const dateFormat = "dddd";
-        const days = [];
+        const dateFormat = "dddd"
+        const days = []
 
-        let startDate = moment(this.state.currentMonth).startOf('week');
+        let startDate = moment(this.state.currentMonth).startOf('week')
 
         for (let i = 0; i < 7; i++) {
             days.push(
                 <div className="col col-center" key={i}>
                     {moment(startDate).add(i, 'days').format(dateFormat)}
                 </div>
-            );
+            )
         }
-
         return <div className="days row">{days}</div>;
     }
 
-
     renderCells() {
-        const { currentMonth, selectedDate } = this.state;
-        const monthStart = moment(currentMonth).startOf('month'); 
+        const { currentMonth, selectedDate } = this.state
+        const monthStart = moment(currentMonth).startOf('month') 
         const monthEnd = moment(monthStart).endOf('month') 
         const startDate = moment(monthStart).startOf('week') 
-        const endDate = moment(monthEnd).endOf('week'); 
+        const endDate = moment(monthEnd).endOf('week') 
 
-        const dateFormat = "D";
-        const rows = [];
+        const dateFormat = "D"
+        const rows = []
 
-        let days = [];
-        let day = startDate;
-        let formattedDate = "";
+        let days = []
+        let day = startDate
+        let formattedDate = ""
 
         while (day <= endDate) {
             for (let i = 0; i < 7; i++) {
@@ -93,7 +89,6 @@ class Calendar extends React.Component {
                 const cloneDay = moment(day).format('DD MMM YYYY')
                 let compare = this.state.compareDates.includes(cloneDay)
                 
-
                 days.push(
                     <div
                       id = {cloneDay}
@@ -107,23 +102,20 @@ class Calendar extends React.Component {
                       style={this.state.hoverStyle}
                       onMouseEnter={this.handleHoverIn}
                       onMouseLeave={this.handleHoverOff}
-                      
                         >
-                            <span className="number">{formattedDate}</span>
-                        </div>
-                    )
-
-                day = moment(day).add(1, 'days'); 
+                        <span className="number">{formattedDate}</span>
+                    </div>
+                )
+                day = moment(day).add(1, 'days')
             }
-
             rows.push(
                 <div className="row" key={day}>
                     {days}
                 </div>
-            );
-            days = [];
+            )
+            days = []
         }
-        return <div className="body">{rows}</div>;
+        return <div className="body">{rows}</div>
     }
 
     getevent = async () => {
@@ -149,30 +141,24 @@ class Calendar extends React.Component {
     nextMonth = () => {
         this.setState({
             currentMonth: moment(this.state.currentMonth).add(1, 'months')
-        });
-    };
+        })
+    }
 
     prevMonth = () => {
         this.setState({
             currentMonth: moment(this.state.currentMonth).subtract(1, 'months')
-        });
-    };
+        })
+    }
 
     render() {
-        var linkStyle;
-        if (this.state.hover) {
-          linkStyle = {color: '#ed1212',cursor: 'pointer'}
-        } else {
-          linkStyle = {color: '#000'}
-        }
         return (
             <div style={{display:"none"}} className="calendar apply-font" id="monthly">
                 {this.renderHeader()}
                 {this.renderDays()}
                 {this.renderCells()}
             </div>
-        );
+        )
     }
 }
 
-export default Calendar;
+export default Monthly

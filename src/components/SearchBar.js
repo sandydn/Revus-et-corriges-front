@@ -1,28 +1,17 @@
 import React from 'react'
-import ModalSearch from '../elements/ModalSearch.js';
+import ModalSearch from '../elements/ModalSearch.js'
 
-
-class SearchBar extends React.Component {
+const SearchBar = ({search}) => {
     
-    state = {  };
-
-    render() {
-                
-        return (
-            
-            <div className="searchForm">
+    return (
+        <div className="searchForm">
+            <div>
                 <div>
-                    <div>
-                    <ModalSearch search={this.props.search}/>
-                    </div>
+                    <ModalSearch search={search}/>
                 </div>
-                
-            </div>        
-
-        )
-        
-    }
-
+            </div>
+        </div>        
+    )
 }
 
-export default SearchBar;
+export default SearchBar
