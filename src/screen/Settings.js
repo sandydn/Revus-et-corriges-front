@@ -25,7 +25,7 @@ const styleBase = {
 class Settings extends Component {
   render() {
     return (
-      <div  style={styleBase.general} className='screenEvent'>
+      <div  style={styleBase.general} className='screenSettings'>
         
         <div >
           <BackgroundPicker />
