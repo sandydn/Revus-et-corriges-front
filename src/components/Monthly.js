@@ -93,7 +93,7 @@ class Monthly extends React.Component {
                     <div
                       id = {cloneDay}
                       className={`col cell ${
-                        moment(day).isSame(monthStart) 
+                        !moment(day).isSame(monthStart, 'month') 
                           ? "disabled"
                           : compare ? "eventMonth" : "none"
                       }`}
