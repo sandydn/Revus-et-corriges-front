@@ -76,7 +76,7 @@ html{
 
 i {
     border: solid black;
-    border-width: 0 3px 3px 0;
+    border-width: 0 4px 4px 0;
     display: inline-block;
     padding: 4px;
     margin-top: 10px;
@@ -96,6 +96,11 @@ i {
     margin-right: 2px;
     margin-left: 10px;
 }
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    padding: 30px;
+  }
 
 .navbar {
     width: 17%;

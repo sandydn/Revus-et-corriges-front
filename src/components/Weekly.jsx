@@ -8,6 +8,7 @@ import Week from './Week'
 import moment from "moment"
 import 'moment/locale/fr'
 import 'moment-timezone'
+import Moment from 'react-moment'
 
 class Weekly extends Component {
     state = {
@@ -73,6 +74,7 @@ class Weekly extends Component {
     componentWillReceiveProps = async () => {
         if (this.props.dateOnClick) {
             this.setState({ date: moment(this.props.dateOnClick) })
+            console.log(this.state.date)
             await this.getevent(this.createDateArrayNext)
             const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
             const selectDayTest = dayForSelect[0]
@@ -82,6 +84,9 @@ class Weekly extends Component {
     
     selectDay(i) {
         const day = this.state.days.filter((display) => display.date.includes(i))
+        console.log(this.state.days);
+        console.log(day);
+        
         const dayArr = day[0]
         this.setState({ dayEvent: dayArr.data })
         this.setState({ dayDate: dayArr.date })
