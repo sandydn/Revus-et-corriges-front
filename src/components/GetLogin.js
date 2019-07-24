@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios';
+import React, {Component} from 'react'
+import axios from 'axios'
 
 class GetLogin extends Component {
     state = {
@@ -14,7 +14,6 @@ class GetLogin extends Component {
     }
 
     render() {
-
         if (this.state.auth === null) {
             return <p> loading... </p>
         }

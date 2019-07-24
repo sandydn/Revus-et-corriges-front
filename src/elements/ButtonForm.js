@@ -1,10 +1,8 @@
-import React, { Component } from 'react'
-
+import React, {Component} from 'react'
 
 export class ButtonForm extends Component {
 
   render() {
-
     return (
       <>
         <div>

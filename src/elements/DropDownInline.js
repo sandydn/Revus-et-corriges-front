@@ -54,6 +54,7 @@ const DropDownInline = ({ title, data, func, keyState }) => {
     <div style={{ ...styleBase.common, ...styleBase.general }}>
 
       <button
+        type='button'
         style={{ ...styleBase.common, ...styleBase.buttonClick }}
         onFocus={(e) => handleDisplay(e, 1)}
         onBlur={(e) => handleDisplay(e, 0)}
@@ -63,7 +64,6 @@ const DropDownInline = ({ title, data, func, keyState }) => {
 
       <input
         style={{ ...styleBase.common, ...styleBase.input }}
-        // onChange={(e) => handleSearch(e, data, setDataSelect)}
         type="text"
         disabled
       />

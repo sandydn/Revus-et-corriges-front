@@ -1,11 +1,15 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import { Redirect } from "react-router-dom";
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 // brick
-import LinkForm from '../components/LinkForm'
+import LinkForForms from '../components/LinkForForms'
+import Settings from './Settings'
 
 class MenuAdmin extends Component {
+
+  state={   
+    displayModalSettings:false,
+  }
 
   getevent() {
     axios
@@ -20,26 +24,41 @@ class MenuAdmin extends Component {
     window.location.href = "/login"
   }
 
-  render() {
+  upModalSettings = () => {
+    const { displayModalSettings } = this.state
+    // inverse la valeur de {displayModalContact} (true/false)
+    this.setState({ displayModalSettings: !displayModalSettings})
+  }
+
+  renderModalSettings = () => {
+    const { displayModalSettings } = this.state
+    if (displayModalSettings)
+      return <Settings close={this.upModalSettings}/>
+  }
+  
+  render() {  
+
     return (
       <div style={this.props.style} className="all">
+        
         <div className='container-button'>
           <h4 className="title-managment">Gérer les évènements</h4>
           <div className="event-managment">
-            <Link to="/admin-events" className="event-button"><LinkForm name="Evènements" /></Link>
-            <Link to="/admin-cinema" className="event-button"><LinkForm name="Cinéma" /></Link>
-            <Link to="/admin-videos" className="event-button"><LinkForm name="Vidéos" /></Link>
-            <Link to="/admin-ajout" className="event-button"><LinkForm name="Ajout" /></Link>
+            <Link to="/admin-events" className="event-button"><LinkForForms name="Evènements" /></Link>
+            <Link to="/admin-cinema" className="event-button"><LinkForForms name="Cinéma" /></Link>
+            <Link to="/admin-videos" className="event-button"><LinkForForms name="Vidéos" /></Link>
+            <Link to="/admin-movie-form" className="event-button"><LinkForForms name="Ajout de Film" /></Link>
           </div>
           <h4 className="title-managment"> Gestion administrateur</h4>
           <div className="deco-managment">
-            <Link to="/parametre" className="event-button"><LinkForm name="Paramètres" /></Link>
-            <Link to="/signup" className="event-button"><LinkForm name="Ajouter un administrateur" /></Link>
+            <Link onClick={this.upModalSettings} className="event-button"><LinkForForms name="Paramètres" /></Link>
+            <Link to="/signup" className="event-button"><LinkForForms name="Ajouter un administrateur" /></Link>
           </div>
           <Link to="/" ><input type="submit" value="Retourner à l'accueil" /></Link>
           <button onClick={this.logout}>Se déconnecter</button>
         </div>
         {this.props.children}
+        {this.renderModalSettings()}
       </div>
     )
   }

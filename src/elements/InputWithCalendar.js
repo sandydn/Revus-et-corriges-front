@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import DatePicker from 'react-date-picker'
-import { arrayOf } from 'prop-types';
 
 const style = {
   general: {
@@ -21,6 +20,7 @@ const InputWithCalendar = ({ title, onChangeDate, date }) => {
       e.style.borderBottom = '1px solid black'
     })
   })
+  
   return (
     <div style={style.general}>
 
@@ -30,12 +30,8 @@ const InputWithCalendar = ({ title, onChangeDate, date }) => {
 
       <DatePicker
         className="class-date-picker1"
-        // dateFormat="d MMMM yyyy h:mm"
-        // locale="fr"
         onChange={onChangeDate}
         value={date}
-        // timeFormat="HH:mm"
-        // timeIntervals={15}
       />
 
     </div>

@@ -1,12 +1,11 @@
 .screenEvent{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: nowrap;
-    /* background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
-    background-size: cover;
-    background-position-x: 18vw; */
 }
+
 .screenCinema{
     display: flex;
     flex-direction: row;
@@ -17,6 +16,7 @@
     background-position-y: -1vh;
     background-position-x: 3vw;
 }
+
 .screenVideo{
     display: flex;
     flex-direction: row;
@@ -26,6 +26,7 @@
     background-size: cover;
     background-position-x: 2vw;
 }
+
 .screenRetro{
     display: flex;
     flex-direction: row;
@@ -35,18 +36,21 @@
     background-size: cover;
     background-position-x: 12vw;
 }
+
 .screenRegister {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: nowrap;
-
 }
 
 .displayData {
     display: flex;
     justify-content: center;
-    width: 100%;
+}
+
+.tableDeleteEvent{
+    width: 100vw;
 }
 
 .container-button {
@@ -54,12 +58,14 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(127, 127, 127);
-    height:100vh;
+    min-height:100vh;
     width: 20vw;
-   }
+}
+
 .event-managment {
     margin-top: -10vh;
 }
+
 .event-button {
     font-size:0.9em;
     text-decoration: none;
@@ -75,31 +81,6 @@
     background-size: cover;
     background-position-x: 8vw;
 }
-/* 
-.getdata {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, auto);
-    grid-gap: 2vw;
-    margin-top: 2vw;
-    margin-left: 2vw;
-    padding-right: 4vw;
-}
-
-.data {
-    display: flex;
-    justify-content: center;
-}
-
-p {
-    display: flex;
-}
-
-img {
-    max-width:14vw;
-    height:auto;
-
-} */
 
 h4 {
     color: white;
@@ -112,13 +93,16 @@ h4 {
     font-size:1em;
     color: black;
     display: block;
-    margin-right: 39em;
-    margin-top: 14em;
 }
+
 .buttonform:hover {
     text-decoration-line: underline;
 }
 
+#buttonEventForm {
+    position: absolute;
+    right: 1vw;
+}
 
 .menuadminbuttonform {
     text-decoration: none;
@@ -126,4 +110,39 @@ h4 {
     font-size:1em;
     color: black;
     display: block;
+}
+
+.screenSettings{
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.9);
+    top: 15vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    box-shadow: 10px 15px 35px 0 rgba(0, 0, 0, 0.616);
+    border-radius: 45px;
+    position: absolute;
+    padding: 15px;
+}
+
+.screenSettings > div{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closeModalSettings{
+    cursor: pointer;
+}
+
+.arrowDownAdmin{
+    position: absolute;
+    left: 50vw;
+    background: rgba(255, 255, 255, 0.774);
+    height: 140px;
+    padding: 15px;
+    border-radius: 45px;
+    box-shadow: -8px -10px 12px rgba(255, 255, 255, 0.753) inset;
 }

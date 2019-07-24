@@ -1,25 +1,26 @@
 import React, { Component } from 'react'
-import { Link, Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import axios from 'axios';
 
 import Login from './components/Login'
 import Sign from './screen/Sign'
 import RegisterLogin from './components/RegisterLogin'
 
-import './App.css'
 import Calendar from './components/Calendar'
-import MenuAdmin from './screen/MenuAdmin';
-import Events from './screen/Events';
-import Cinema from './screen/Cinema';
-import Videos from './screen/Videos';
-import Admin from './screen/Admin';
-import FormEvent from './components/FormEvent';
-import FormVideos from './components/FormVideos';
-import FormCinema from './components/FormCinema';
-import Ajout from './screen/Ajout'
-import Favicon from 'react-favicon';
-import PrivateRoute from './components/PrivateRoute';
-import Settings from './screen/Settings';
+import Cinema from './screen/Cinema'
+import CinemaForm from './components/CinemaForm'
+import EditEvent from './components/EditEvent'
+import Events from './screen/Events'
+import EventForm from './components/EventForm'
+import Favicon from 'react-favicon'
+import FormMovie from './components/FormMovie'
+import MenuAdmin from './screen/MenuAdmin'
+import PrivateRoute from './components/PrivateRoute'
+import Settings from './screen/Settings'
+import Videos from './screen/Videos'
+import VideoForm from './components/VideoForm'
+
+import '../src/components/css/Login.css'
 
 class App extends Component {
 
@@ -30,17 +31,17 @@ class App extends Component {
     success: false,
     redirect: false,
     verified: false,
-  };
+  }
 
   // Show password or not (icon-eye) //
   toggleShow = () => {
-    this.setState({ showPassword: !this.state.showPassword });
-  };
+    this.setState({ showPassword: !this.state.showPassword })
+  }
 
   // Change state with form admin //
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
+    this.setState({ [event.target.name]: event.target.value })
+  }
 
   // ON SUBMIT - router on axios d'appel form
   handleSubmit = event => {
@@ -52,12 +53,12 @@ class App extends Component {
       .then((res) => {
         localStorage.setItem("token", res.headers["x-access-token"])
         this.setState({ success: true }, () => {
-          setTimeout(() => this.setState({ success: false }), 1400);
-          setTimeout(() => this.setState({ redirect: true }), 1400);
-          setTimeout(() => this.protectedRoute(), 1400);
-        });
-      });
-  };
+          setTimeout(() => this.setState({ success: false }), 1400)
+          setTimeout(() => this.setState({ redirect: true }), 1400)
+          setTimeout(() => this.protectedRoute(), 1400)
+        })
+      })
+  }
 
   protectedRoute = () => {
     // Storage for token //
@@ -75,14 +76,13 @@ class App extends Component {
           verified: res.data.auth,
         })
       })
-  };
+  }
 
   componentDidMount = () => {
     this.protectedRoute()
-  };
+  }
 
   render() {
-
     return (
       <>
         <div>
@@ -107,24 +107,24 @@ class App extends Component {
               showPass={this.state.showPassword}
               toggleSho={this.toggleShow} />} />
             <Route exact path="/signin" component={Login} />
-
-            {/* Section ADMIN  */}
-            <PrivateRoute path="/menu-admin" component={MenuAdmin} />
-            <Route path="/signup" component={RegisterLogin} />
-            <Route path="/admin" component={Admin} />
-            <Route path="/admin-events" component={Events} />
-            <Route path="/admin-cinema" component={Cinema} />
-            <Route path="/admin-videos" component={Videos} />
-            <Route path="/admin-ajout" component={Ajout} />
-            <Route path="/admin-events-form" component={FormEvent} />
-            <Route path="/admin-cinema-form" component={FormCinema} />
-            <Route path="/admin-videos-form" component={FormVideos} />
-            <Route path="/parametre" component={Settings} />
-          </Switch>
-        </BrowserRouter>
+            
+          {/* Section ADMIN  */}
+          <PrivateRoute path="/menu-admin" component={MenuAdmin} />
+          <Route path="/signup" component={RegisterLogin} />
+          <Route path="/edit/:id" component={EditEvent} />
+          <Route path="/admin-events" component={Events} />
+          <Route path="/admin-cinema" component={Cinema} />
+          <Route path="/admin-videos" component={Videos} />
+          <Route path="/admin-movie-form" component={FormMovie} />
+          <Route path="/admin-events-form" component={EventForm} />
+          <Route path="/admin-cinema-form" component={CinemaForm} />
+          <Route path="/admin-videos-form" component={VideoForm} />
+          <Route path="/parametre" component={Settings} />
+        </Switch>
+      </BrowserRouter>
       </>
-    );
+    )
   }
 }
 
-export default App;
+export default App

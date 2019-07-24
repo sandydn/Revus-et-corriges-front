@@ -1,24 +1,35 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-const Event = ({ title, comment, picture, type }) => {
-    const picEvent = () => {
+class Event extends Component{
+    state={
+        classType:''
+    }
 
-        if (picture === "") {
+    picEvent = () => {
+        if (this.props.picture === "") {
             return ""
         } else {
-            return { title }
+            return this.props.title
         }
     }
 
-    const typeEvent = `event ${type}`
-    
+    changeClass = () => {
+        this.props.type === 1 ? this.setState({classType: 'event important'}) : this.props.type === 2 ? this.setState({classType: 'event partner'}) : this.setState({classType: 'event regular'})
+    }
+
+    componentDidMount = () => {
+        this.changeClass()
+    }
+
+    render() {
     return( 
-        <div className={typeEvent}>
-            <h2>{title}</h2>
-            <p>{comment}</p>
-            <img src={picture} alt={picEvent} />
+        <div className={this.state.classType}>
+            <h2>{this.props.title}</h2>
+            <p>{this.props.comment}</p>
+            <img src={this.props.picture} alt={this.props.picEvent} />
         </div>
-    )
+        )
+    }
 }
 
 export default Event

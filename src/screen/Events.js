@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import ButtonForm from '../components/ButtonForm'
-import Delete from '../components/Delete';
-import DeleteForm from '../components/DeleteForm'
-import MenuAdmin from './MenuAdmin';
+import ButtonForm from '../elements/ButtonForm'
+import DisplayEvent from '../components/DisplayEvent'
+import MenuAdmin from './MenuAdmin'
 import '../screen/Events.css'
-
-// import ListEvent from '../components/ListEvent';
-// import Form from '../components/Form';
 
 class Events extends Component {
 
@@ -16,19 +12,18 @@ class Events extends Component {
         results: {}
     }
 
-
     render() {
         return (
-            <div  className='screenEvent'>
-                <div>
-                    <MenuAdmin />
-                    <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
-                </div>
-                <div className="displayData">
-                    <Delete />
+            <div>
+                <a href='#displayAdminEvent' className='arrowDownAdmin'><i className="down"></i></a>
+                <Link to="/admin-events-form" id='buttonEventForm'><ButtonForm name="Ajouter un évenement" /></Link>
+                <MenuAdmin />
+                <div className='screenEvent'>
+                    <div className="displayData" id='displayAdminEvent'>
+                        <DisplayEvent />
+                    </div>
                 </div>
             </div>
-
         )
     }
 }

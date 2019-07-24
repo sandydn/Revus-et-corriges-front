@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-
-
 import axios from 'axios'
-import InputInLine from '../elements/InputInLine';
-
+import InputInLine from '../elements/InputInLine'
 
 class BackgroundPicker extends Component {
-
   state = {
     background: "",
   }
@@ -35,12 +31,10 @@ class BackgroundPicker extends Component {
   }
 
   render() {
-    
     return (
-
       <div>
         <form onSubmit={this.handleSubmit}>
-        <h3>Changer le Background du calendrier</h3>
+        <h3>Changer le fond du calendrier</h3>
           <InputInLine
             keyState="background"
             title="Background"
@@ -61,6 +55,7 @@ class BackgroundPicker extends Component {
     )
   }
 }
+
 export default BackgroundPicker
 
 

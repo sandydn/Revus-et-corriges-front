@@ -1,27 +1,26 @@
-import React, { Component } from 'react'
-import MenuAdmin from './MenuAdmin';
-import ColorPicker from '../components/ColorPicker';
-import BackgroundPicker from '../components/BackgroundPicker';
-import FontPicker from '../components/FontPicker';
+import React, {Component} from 'react'
+import BackgroundPicker from '../components/BackgroundPicker'
+import ColorPicker from '../components/ColorPicker'
+import TextFont from '../components/TextFont'
 import '../screen/Events.css'
 
 class Settings extends Component {
   render() {
     return (
-      <div  className='screenEvent'>
-        <div>
-          <MenuAdmin />
-        </div>
+      <div  className='screenSettings'>
+        
+        <div >
           <BackgroundPicker />
+        </div>
         <div>
           <ColorPicker />
         </div>
         <div>
-          <FontPicker />
+          <TextFont />
         </div>
+        <div onClick={this.props.close} className='closeModalSettings'>X</div>
+      
       </div>
-
-
     )
   }
 }

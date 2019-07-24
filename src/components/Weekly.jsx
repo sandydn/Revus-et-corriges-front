@@ -1,22 +1,14 @@
 import React, { Component } from 'react'
-import { BrowserView, MobileView } from "react-device-detect";
-import { Link } from 'react-router-dom'
-import axios from 'axios';
+import { BrowserView, MobileView } from "react-device-detect"
+import axios from 'axios'
 
-import Menu from './Menu'
 import MobileWeek from './MobileWeek'
 import Week from './Week'
 
 import moment from "moment"
-import 'moment/locale/fr';
-import 'moment-timezone';
-import Moment from 'react-moment';
-import 'moment/locale/fr';
-
-// import "./css/calendar.css"
-// import dataTest from './dataTest.json'
-
-Moment.globalFormat = 'DD MMM YYYY';
+import 'moment/locale/fr'
+import 'moment-timezone'
+import Moment from 'react-moment'
 
 class Weekly extends Component {
     state = {
@@ -24,7 +16,7 @@ class Weekly extends Component {
         dayEvent: [],
         dayDate: '',
         date: '',
-        monthForDisplay: moment('2012 juillet', 'YYYY MMM', 'fr').format('MMMM YYYY')
+        monthForDisplay: moment( 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')
     }
 
     getevent = async (type) => {
@@ -34,14 +26,7 @@ class Weekly extends Component {
                 type(results.data)
             })
     }
-    // getevent() {
-    //     axios
-    //       .get("http://localhost:4000/a5/event")
-    //       .then(results => { 
-    //         this.setState({results: results.data}) 
-    //         console.log(this.state.results)
-    //       })
-    // }
+    
 
     createDateArrayNext = (datas) => {
         let dateArr = []
@@ -55,6 +40,7 @@ class Weekly extends Component {
             this.setState({ date: moment(this.state.date).add(1, 'days') })
         }
         this.setState({ days: dateArr })
+        this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
 
     createDateArrayPrev = (datas) => {
@@ -70,52 +56,51 @@ class Weekly extends Component {
         }
         this.setState({ days: dateArr })
         this.setState({ date: moment(this.state.date).add(5, 'days') })
+        this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
 
     componentDidMount = async () => {
-        this.setState({ date: moment().startOf('hour') })
+        await this.setState({ date: moment().startOf('hour') })
         await this.getevent(this.createDateArrayNext)
         const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
         this.selectDay(selectDayTest)
-        console.log(this.state.monthForDisplay)
     }
-    // componentDidMount() {
-    //     this.setState({ days: dataTest.filter((display) => display.id < 5) })
-    //     this.selectDay(0)
-    //     this.getevent()
-    // }
 
     componentDidUpdate() {
         this.displaySelector(this.state.dayDate)
     }
 
     componentWillReceiveProps = async () => {
-        if(this.props.dateOnClick){
-            this.setState({ date: moment(this.props.dateOnClick).subtract(5, 'days') })
-        }else{
-            this.setState({ date: moment().startOf('hour') })
+        if (this.props.dateOnClick) {
+            this.setState({ date: moment(this.props.dateOnClick) })
+            console.log(this.state.date)
+            await this.getevent(this.createDateArrayNext)
+            const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
+            const selectDayTest = dayForSelect[0]
+            this.selectDay(selectDayTest)
         }
-        await this.getevent(this.createDateArrayNext)
-        const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
-        const selectDayTest = dayForSelect[0]
-        this.selectDay(selectDayTest)
     }
     
     selectDay(i) {
         const day = this.state.days.filter((display) => display.date.includes(i))
+        console.log(this.state.days);
+        console.log(day);
+        
         const dayArr = day[0]
         this.setState({ dayEvent: dayArr.data })
         this.setState({ dayDate: dayArr.date })
     }
 
-    previousDays = () => {
-        this.setState({ date: moment(this.state.date).subtract(5, 'days') })
-        this.getevent(this.createDateArrayPrev)
+    previousDays = async () => {
+        await this.setState({ date: moment(this.state.date).subtract(5, 'days') })
+        await this.getevent(this.createDateArrayPrev)
+        this.props.style()
     }
 
-    nextDays = () => {
-        this.getevent(this.createDateArrayNext)
+    nextDays = async () => {
+        await this.getevent(this.createDateArrayNext)
+        this.props.style()
     }
 
     displaySelector = (select) => {
@@ -127,6 +112,7 @@ class Weekly extends Component {
             const clasSelect = accurateSelec.className
             if (clasSelect) { accurateSelec.id = 'selected' }
         }
+        
     }
 
     handleSelector = (event) => {
@@ -134,19 +120,13 @@ class Weekly extends Component {
         this.displaySelector(event.target.className)
     }
 
-
-
-
     render() {
 
         return (
-            
 
-            <div className='weeklyContainer' id='weekly'>
+            <div className='weeklyContainer apply-font' id='weekly'>
                 <BrowserView>
                     <div className='weekly'>
-
-                        
 
                         <div className='weeklyDesktop'>
 
@@ -176,7 +156,6 @@ class Weekly extends Component {
                         </div>
 
                         <div className='weeklyDisplayMobile'>
-
 
                             <MobileWeek dataDays={this.state.days}
                                 date={this.state.dayDate}

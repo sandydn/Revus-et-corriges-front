@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import React, {Component} from 'react'
+import {ToastContainer, toast} from 'react-toastify'
+import moment from "moment"
 // brick
-import MenuAdmin from '../screen/MenuAdmin';
-import InputInLine from '../elements/InputInLine';
-import DropDownInline from '../elements/DropDownInline';
-import DropDownInlineSpec from '../elements/DropDownInlineSpec';
-import InputWithCalendar from '../elements/InputWithCalendar'
-import TextAreaCustom from '../elements/TextAreaCustom';
 import ButtonCustom from '../elements/ButtonCustom'
+import DropDownInline from '../elements/DropDownInline'
+import DropDownInlineSpec from '../elements/DropDownInlineSpec'
+import InputInLine from '../elements/InputInLine'
+import InputWithCalendar from '../elements/InputWithCalendar'
+import MenuAdmin from '../screen/MenuAdmin'
+import TextareaCustom from '../elements/TextareaCustom'
 // FUNC
-import { GetData, PostDataEvent } from '../utilis'
+import {GetData, PostDataEvent} from '../utilis'
 // CSS
-import 'react-toastify/dist/ReactToastify.css';
-import { isThisTypeAnnotation } from '@babel/types';
+import 'react-toastify/dist/ReactToastify.css'
 
 const styleBase = {
   globalForm: {
@@ -35,20 +35,18 @@ const styleBase = {
   }
 }
 
-class FormEvent extends Component {
-
+class EventForm extends Component {
   state = {
     category: 1,
     titre: '',
     dateStart: new Date(),
     dateEnd: new Date(),
-    importance: 0, // valeur de 1 a 3
-    adresse: [], // array de string doit etre joint /
+    importance: 0, 
+    adresse: [],
     link: '',
     cover: '',
-    video: '', // string qui doit etre parser
+    video: '', 
     description: '',
-    //no send
     inputAdress: ['Adresse'],
     dataVideo: [],
     allDataVideo: []
@@ -82,7 +80,6 @@ class FormEvent extends Component {
   }
 
   handleChangeDropDownSpec = (keyState, value) => {
-    console.log(value)
     this.setState({ [keyState]: value })
   }
 
@@ -103,20 +100,20 @@ class FormEvent extends Component {
   }
 
   onChangeDateStart = dateStart => {
-    if (dateStart > this.state.dateEnd && this.state.dateEnd)
+    if (moment(dateStart).isBefore(moment().startOf('day')))
       return this.notify('La date de debut ne peut être inférieur à la date de fin !')
     this.setState({ dateStart })
   }
 
   onChangeDateEnd = dateEnd => {
     if (dateEnd < this.state.dateStart)
-      return console.log('error')
     this.setState({ dateEnd })
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault()
     PostDataEvent(this.state)
+    return this.notify('L\'événement est bien enregistrer !')
   }
 
   render() {
@@ -124,29 +121,18 @@ class FormEvent extends Component {
       titre,
       dateStart,
       dateEnd,
-      importance,
       adresse,
       link,
       cover,
-      video,
       description,
-      //no send
       inputAdress,
-      dataVideo
     } = this.state
-    console.log(video)
     return (
       <MenuAdmin style={{ background: '#E5E5E5' }}>
         
         <div style={styleBase.globalForm}>
-          <h2>Ajout Event: </h2>
-          <form style={styleBase.form} onSubmit={this.handleSubmit}>
-            
-            <ButtonCustom
-              title='Sauvegarder'
-              type='submit'
-              style={{float: 'right'}}
-            />
+          <h2>Ajouter un évènement: </h2>
+          <div style={styleBase.form} >
             
             {/* TITRE */}
             <InputInLine
@@ -159,14 +145,14 @@ class FormEvent extends Component {
             {/* DATE */}
             <div style={styleBase.date}>
               <InputWithCalendar
-                title='Date début'
+                title='Date de début'
                 date={dateStart}
                 onChangeDate={this.onChangeDateStart}
                 keyState="dateStart"
                 value={dateStart}
               />
               <InputWithCalendar
-                title='Date fin'
+                title='Date de fin'
                 date={dateEnd}
                 onChangeDate={this.onChangeDateEnd}
                 keyState="dateEnd"
@@ -175,7 +161,6 @@ class FormEvent extends Component {
               />
             </div>
 
-            
             {/* IMPORTANCE */}
             <DropDownInline
               keyState='importance'
@@ -225,25 +210,31 @@ class FormEvent extends Component {
             {/* VIDEO */}
             <DropDownInlineSpec
               keyState="video"
-              title='Film'
+              title='Films'
               data={this.state.dataVideo}
               func={this.handleChangeDropDownSpec}
-            // TODOS : add props for behavior
             />
             
             {/* DESCRIPTION */}
-            <TextAreaCustom
+            <TextareaCustom
               keyState="description"
               func={this.handleChangeInput}
               value={description}
             />
-          </form>
-        </div>
 
+            <ButtonCustom
+              title='Sauvegarder'
+              type='submit'
+              style={{float: 'right'}}
+              onClick={this.handleSubmit}
+            />
+
+          </div>
+        </div>
         <ToastContainer />
       </MenuAdmin >
     )
   }
 }
 
-export default FormEvent
+export default EventForm

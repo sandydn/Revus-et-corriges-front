@@ -1,25 +1,17 @@
-import React, { Component } from 'react'
-
-import "./ColorPicker.css"
-import { SketchPicker } from 'react-color';
+import React, {Component} from 'react'
+import {SketchPicker} from 'react-color'
 import axios from 'axios'
 
+import "../components/css/ColorPicker.css"
 
 class ColorPicker extends Component {
-
   state = {
-    show: false,
     color: "",
   }
 
-
-  handleShow = () => {
-    this.setState({ show: !this.state.show });
-  }
-
-
   handleChange = (color) => {
-    this.setState({ color: color.hex });
+    const rgbaColor =`rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`
+    this.setState({ color: rgbaColor });
   }
 
   onChange = () => {
@@ -37,60 +29,44 @@ class ColorPicker extends Component {
         }
       })
       .then((res) => {
-        alert("Couleur de texte ajouté !")
+        alert("Nouvelle couleur de calendrier ajoutée !")
       })
       .catch((err) => {
       })
   }
 
   render() {
-    console.log(this.state.color);
-    
-
-    const effect = this.state.show ? "showing" : "notShowing"
-
     return (
-
       <>
-        <h3>Changer la couleur de police du calendrier</h3>
+        <h3>Changer la couleur du calendrier</h3>
         <form className="updatefontcolor" onSubmit={this.handleSubmit}>
-
-            <img
-              className="wheelButton"
-              onClick={this.handleShow}
-              src='https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png'
-            />
-
-          <div
+          <input
+            className='colorInput'
+            name="Valeur hexadécimale"
+            value={this.state.color}
             style={{ backgroundColor: this.state.color }}
-            onClick={this.onChange}
-            className="view-color"
-          >
-
-                <SketchPicker
-                  className={effect}
-                  color={this.state.color}
-                  onChangeComplete={this.handleChange}
-                />
-                <input
-                  name="Valeur hexadécimale"
-                  value={this.state.color}
-                />
-                <input onClick={this.handleSubmit}
-                  className="button-submit"
-                  type="submit"
-                  value="Envoyer"
-                  color="grey"
-                  variant="contained"
-                />
-              </div>
-
+          />
+          <div className='displayColorPicker'>
+          <SketchPicker
+            color={this.state.color}
+            onChangeComplete={this.handleChange}
+          />
+          <input onClick={this.handleSubmit}
+            className="button-submit"
+            color="grey"
+            id='colorPickerButton'
+            type="submit"
+            value="Envoyer"
+            variant="contained"
+          />
+          </div>          
         </form>
       </>
 
     )
   }
 }
+
 export default ColorPicker
 
 

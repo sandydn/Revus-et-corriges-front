@@ -1,36 +1,3 @@
-.screen {
-    display: flex;
-    flex-direction: row;
-}
-
-.container {
-  background-image: url(../assets/bgback.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.input-form {
-width: 41vw;
-height: 5vh;
-border-bottom: 1px solid black;
-border-top-style: none;
-border-right-style: none;
-border-left-style: none;
-border-bottom-style:none;
-background-color: #d3e8ed;
-padding-top:2%;
-box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
-}
-
-fieldset {
-width: 40VW;
-margin-top: 2%;
-margin-bottom: 2%;
-}
-.checkradio {
-  display: flex;
-  justify-content: space-evenly;
-}
 .button-selectform {
     border: 1px solid black;
     height: 5vh;
@@ -39,6 +6,64 @@ margin-bottom: 2%;
     border-radius: 5px 5px 5px 5px;
     background-color: white;
 }
+
+.button-submit {
+    border-radius: 5px 5px 5px 5px;
+}
+
+.checkbox {
+    display:flex;
+    justify-content: space-around;
+    width: 40vw;
+    padding-top: 3%;
+}
+
+.checkradio {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+    width:40vw;
+}
+
+.container {
+    background-image: url(../assets/bgback.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cssevent{
+    background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
+    background-size: cover;
+    background-position: right; 
+    background-blend-mode: hard-light;
+    width: 80vw;
+}
+
+.csscinema{
+    background-image: url(https://pbs.twimg.com/media/D-nSD28WkAAZi3Q.jpg);
+    background-size: cover;
+    width: 80vw;
+}
+
+.cssvideo{
+    background-image: url(https://revusetcorriges.files.wordpress.com/2017/12/sceno-la-planete-des-vampires.png?w=1024);
+    background-position-x: -18vw;
+    background-size: cover;
+    width: 80vw;
+}
+
+.cssretro{
+    background-image: url(https://revusetcorriges.files.wordpress.com/2018/08/dorothy-arzner-et-clara-bow-sur-le-tournage-de-the-wild-party-1929-recadrc3a9e.jpg);
+    background-position-x: -10vw;
+    background-size: cover;
+    width: 80vw;
+}
+
 .Formevent,
 .Formvideos,
 .Formcinema, 
@@ -52,53 +77,39 @@ margin-bottom: 2%;
     background-color: rgba(250, 252, 255,0.4);
     border-radius: 10px 10px 10px 10px;
     margin: auto;
-    /* margin-top: 12vh; */
 }
-.cssevent{
-    background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
-    background-size: cover;
-    background-position: right; 
-    background-blend-mode: hard-light;
-    width: 80vw;
+
+fieldset {
+    width: 40VW;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
-.csscinema{
-    background-image: url(https://pbs.twimg.com/media/D-nSD28WkAAZi3Q.jpg);
-    background-size: cover;
-    width: 80vw;
+
+.input-form {
+    width: 41vw;
+    height: 5vh;
+    border-bottom: 1px solid black;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style:none;
+    background-color: #d3e8ed;
+    padding-top:2%;
+    box-shadow: -1px 1px 6px 1px rgba(0, 0, 0, 0.3) inset;
 }
-.cssvideo{
-    background-image: url(https://revusetcorriges.files.wordpress.com/2017/12/sceno-la-planete-des-vampires.png?w=1024);
-    background-position-x: -18vw;
-    background-size: cover;
-    width: 80vw;
-}
-.cssretro{
-    background-image: url(https://revusetcorriges.files.wordpress.com/2018/08/dorothy-arzner-et-clara-bow-sur-le-tournage-de-the-wild-party-1929-recadrc3a9e.jpg);
-    background-position-x: -10vw;
-    background-size: cover;
-    width: 80vw;
-}
-.checkbox {
-    display:flex;
-    justify-content: space-around;
-    width: 40vw;
-    padding-top: 3%;
-}
-.contact {
+
+.screen {
     display: flex;
-    flex-direction: column;
-    padding-top: 1%;
-    width:40vw;
+    flex-direction: row;
 }
+
 .type-contact {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 3%;
 }
+
 .Role-contact {
     text-decoration: underline cadetblue;
-}
-.button-submit {
-    border-radius: 5px 5px 5px 5px;
 }

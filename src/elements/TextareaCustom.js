@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const styleBase = {
   general: {
@@ -9,12 +9,13 @@ const styleBase = {
     display: 'block'
   },
   textarea: {
-    border: 'none',
-    borderRadius: '2px'
+    padding: '10px',
+    borderRadius: '2px',
+    width:'100%'
   }
 }
 
-const TextareaCustom = ({funct, keyState, value }) => {
+const TextareaCustom = ({func, keyState, value }) => {
   return (
     <div style={styleBase.general}>
       
@@ -26,13 +27,12 @@ const TextareaCustom = ({funct, keyState, value }) => {
       </label>
       
       <textarea
-        onChange={(e) => funct && funct(keyState, e)}
+        onChange={(e) => func && func(keyState, e)}
         value={value || ""}
         style={styleBase.textarea}
-        cols="55"
-        rows="10"
+        cols="100"
+        rows="15"
       >
-
       </textarea>
     </div>
   )

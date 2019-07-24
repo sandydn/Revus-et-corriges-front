@@ -1,25 +1,5 @@
-// Composant cree en test mais on utilisera plutot DropdownCustom
-
-// partie a rajouter dans un des formulaire et changer les values de test
-
-          {/* <SelectBox 
-            width={200}
-            name='country_id'
-            items={[
-              { value: 'USA', id:1 },
-              { value: 'Mexico', id:2 },
-              { value: 'Canada', id:3 }, 
-            ]}
-          />  */}
-
-
-
-
-
 import React from 'react'
-
-import './SelectBox.css'
-
+import '../components/css/SelectBox.css'
 
 class SelectBox extends React.Component {
 
@@ -34,7 +14,6 @@ class SelectBox extends React.Component {
     this.setState(prevState => ({
       showItems:!prevState.showItems
     }))
-
   }
 
   selectItem = (item) => this.setState({
@@ -42,8 +21,6 @@ class SelectBox extends React.Component {
     showItems:false
 
   })
-
-
 
   render() {
     return (
@@ -87,8 +64,6 @@ class SelectBox extends React.Component {
               }
             </div>
           </div>
-
-
         </div>
 
         <input 
@@ -96,7 +71,6 @@ class SelectBox extends React.Component {
           value={this.state.selectedItem.id} 
           name={this.state.name}
         />
-
       </div>
     )
   }

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import Login from '../components/Login';
-
+import React, {Component} from 'react'
+import Login from '../components/Login'
 
 class Sign extends Component {
 
