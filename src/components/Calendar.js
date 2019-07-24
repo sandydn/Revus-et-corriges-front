@@ -6,7 +6,7 @@ import Weekly from "./Weekly"
 import MonthlyV2 from './MonthlyV2'
 import axios from 'axios';
 
-import './css/CalendarV2.css'
+import '../components/css/calendar.css'
 
 class Calendar extends Component {
 	state = {

@@ -2,18 +2,12 @@
   height :7%;
   width : 7%;
   background-image: url("https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png") no-repeat;
-  /*animation  : example 1s linear 0s infinite;*/  
 }
 
 .wheelButton:hover{
-  /* animation-play-state: paused ; */
   cursor: pointer;  
 } 
 
-/* @keyframes example {
-	from { transform: rotate(0deg); }
-	to { transform: rotate(360deg); }
-}    */
 .updatefontcolor {
   display: flex;
   flex-direction: column;
@@ -25,17 +19,10 @@
   flex-direction: row;
   flex-grow: initial;
 }
-/* .showing {
-  visibility: visible;
-}
 
-.notShowing {
-  visibility: hidden;
-  max-height:120px;
-} */
 .view-color {
- width: 220px;
- height: 40px
+  width: 220px;
+  height: 40px
 }
 
 .colorInput {

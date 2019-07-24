@@ -4,10 +4,8 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    /* background-image: url(https://pbs.twimg.com/media/DmgHJ8eX0AAolAO.jpg);
-    background-size: cover;
-    background-position-x: 18vw; */
 }
+
 .screenCinema{
     display: flex;
     flex-direction: row;
@@ -18,6 +16,7 @@
     background-position-y: -1vh;
     background-position-x: 3vw;
 }
+
 .screenVideo{
     display: flex;
     flex-direction: row;
@@ -27,6 +26,7 @@
     background-size: cover;
     background-position-x: 2vw;
 }
+
 .screenRetro{
     display: flex;
     flex-direction: row;
@@ -36,6 +36,7 @@
     background-size: cover;
     background-position-x: 12vw;
 }
+
 .screenRegister {
     display: flex;
     flex-direction: row;
@@ -59,10 +60,12 @@
     background-color: rgb(127, 127, 127);
     height:100vh;
     width: 20vw;
-   }
+}
+
 .event-managment {
     margin-top: -10vh;
 }
+
 .event-button {
     font-size:0.9em;
     text-decoration: none;
@@ -79,31 +82,6 @@
     background-position-x: 8vw;
     width:100vw;
 }
-/* 
-.getdata {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(1, auto);
-    grid-gap: 2vw;
-    margin-top: 2vw;
-    margin-left: 2vw;
-    padding-right: 4vw;
-}
-
-.data {
-    display: flex;
-    justify-content: center;
-}
-
-p {
-    display: flex;
-}
-
-img {
-    max-width:14vw;
-    height:auto;
-
-} */
 
 h4 {
     color: white;
@@ -116,13 +94,11 @@ h4 {
     font-size:1em;
     color: black;
     display: block;
-    /* margin-right: 39em;
-    margin-top: 14em; */
 }
+
 .buttonform:hover {
     text-decoration-line: underline;
 }
-
 
 .menuadminbuttonform {
     text-decoration: none;

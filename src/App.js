@@ -21,7 +21,7 @@ import FormMovie from './components/FormMovie';
 import MenuAdmin from './screen/MenuAdmin';
 import PrivateRoute from './components/PrivateRoute';
 import Settings from './screen/Settings';
-import './App.css'
+import '../src/components/css/Login.css'
 
 class App extends Component {
 
