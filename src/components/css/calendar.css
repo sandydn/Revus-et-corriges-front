@@ -1,6 +1,128 @@
-html{
+/******************************
+ *         CALENDAR           *
+ ******************************/
+ html{
     height: 100vh;
     width: 100vw;
+}
+
+.calendarScreen{
+    display: flex;
+    border: 16px solid rgb(44, 67, 98);
+    min-height: 100vh;
+    height: 100%;
+}
+
+ /******************************
+ *       NAVBAR/SCREEN         *
+ ******************************/
+ .aLinkRC {
+    size: 20px;
+    font-family: 'Helvetica Neue', 'sans-serif';
+    color: black;
+    text-decoration: none;
+    text-decoration-style: solid;
+    font-weight: normal;
+    letter-spacing: .06em;
+    line-height: 55px
+}
+
+.inputModal{
+    border: none;
+    margin-left: -2.13em;
+    margin-top: 0.72em;
+    border-radius: 15%;
+    font-size: 2.5em;
+}
+
+.liDesckop :hover {
+    box-shadow: #bc33e9 0 -12px inset; 
+    list-style-type: none;
+}
+
+.logo {
+    width: 90%;
+}
+
+.loupe{
+    width: 12px;
+}
+
+.menuCss{
+    color: rgb(0, 0, 0);
+    list-style-type: none;
+    padding: 22px;
+}
+
+.modalWrapper{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar {
+    width: 20%;
+}
+
+.searchResult{
+    font-size: 1.5em;
+}
+
+.slide-pane__header{
+    display: none;
+}
+
+ /******************************
+ *        WEEK/WEEKLY          *
+ ******************************/
+.arrow {
+    display: flex;
+    justify-content: space-around;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    padding: 30px;
+}
+
+i {
+    border: solid black;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    margin-right: 2px;
+    margin-left: 10px;
+}
+
+.nextMobile{
+    height: 22px;
+    margin-left: 4px;
+}
+
+.previousMobile{
+    height: 22px;
+    margin-right: 4px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+.weekly{
+    width:78vw;
 }
 
 .weeklyContainer{
@@ -11,33 +133,20 @@ html{
     justify-content: space-evenly;
 }
 
-.weekly{
-    width:78vw;
-}
-
-.calendarScreen{
-    display: flex;
-    border: 16px solid rgb(44, 67, 98);
-    min-height: 100vh;
-    height: 100%;
-}
-
-.navbar{
-    width: 20%;
-}
-
 .weeklyDisplayMobile{
     margin: 20px;
+    display:flex;
+    flex-direction: column;
+}
+
+.weeklyDisplay{
+    display: flex;
 }
 
 .weeklyHead{
     display: flex;
     justify-content: center;
     margin: -5px;
-}
-
-.weeklyMobile{
-    width: 100vw;
 }
 
 .weeklyHead > h1{
@@ -55,62 +164,139 @@ html{
     color: black;
 }
 
-.weeklyDisplay{
-    display: flex;
+.weeklyMobile{
+    width: 100vw;
 }
 
-.weeklyDisplayMobile{
-    display:flex;
-    flex-direction: column;
-}
-
-.nextMobile{
-    height: 22px;
-    margin-left: 4px;
-}
-
-.previousMobile{
-    height: 22px;
-    margin-right: 4px;
-}
-
-i {
-    border: solid black;
-    border-width: 0 4px 4px 0;
-    display: inline-block;
-    padding: 4px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-  
-.right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    margin-right: 10px;
-    margin-left: 2px;
-}
-
-.left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-    margin-right: 2px;
-    margin-left: 10px;
-}
-.down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    padding: 30px;
-  }
-
-.navbar {
-    width: 17%;
-}
-
-.arrow {
-
+ /******************************
+ *         DAY/DAYS           *
+ ******************************/
+.days{
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
+
+.days h1{
+    cursor: pointer;
+    font-size: 1em;
+    padding:5px;
+    color : black;
+}
+
+.dayDesktop{
+    width: 20%;
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 0px;
+}
+
+.dayDesktop > .line {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.dayDesktop > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48);
+    margin: 0px;
+}
+
+.dayMobile {
+    margin-right: 4px;
+    margin-left: 4px;
+    margin-top: 0px;
+}
+
+.dayMobile > .line {
+    width: 100%;
+    height: 1px;
+    background: grey;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.dayMobile > .event{
+    border: .2px solid grey;
+    border-radius: 15px;
+    margin: 8px;
+}
+
+.dayMobile > .event > h2 {
+    text-transform: uppercase;
+    color: black;
+}
+
+.dayMobile > h1 {
+    background: white;  
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: rgb(48, 48, 48);
+    margin: 0px;
+    display: none;
+}
+
+.dayMobile > .important{
+    background: rgba(180, 180, 180, 0.45);
+}
+
+.daySelector{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+#selected {
+    background: rgba(212, 77, 77, 0.418);
+    border-radius: 45px;
+}
+
+ /******************************
+ *        EVENT/EVENTS         *
+ ******************************/
+
+.event{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.event > h2 {
+    font-size: .85em;
+}
+
+.event > img {
+    width: 80%;
+    align-self: center;
+    margin: 5px;
+}
+
+.event > p {
+    font-size: .75em;
+    margin: 0px;
+    color :rgb(58, 58, 58);
+}
+
+.important{
+    background: rgba(212, 77, 77, 0.418);
+    border-radius: 15px;
+}
+
+.partner{
+    background: rgba(187, 187, 187, 0.418);
+    border-radius: 15px;
+}
+
+ /******************************
+ *        MEDIA QUERYS         *
+ ******************************/
     
 @media screen and (min-width: 1430px) {
     .menuCss  {
@@ -120,48 +306,82 @@ i {
         padding: 22px;
     }
 }
-.menuCss  {
-    color: rgb(0, 0, 0);
-    list-style-type: none;
-    padding: 22px;
-}
-
-.logo{
-    width: 90%;
-}
-
-.aLinkRC {
-    size: 20px;
-    font-family: 'Helvetica Neue', 'sans-serif';
-    color: black;
-    text-decoration: none;
-    text-decoration-style: solid;
-    font-weight: normal;
-    letter-spacing: .06em;
-    line-height: 55px
-}
-
-.liDesckop :hover {
-    box-shadow: #bc33e9 0 -12px inset; 
-    list-style-type: none;
-}
 
 @media screen and (min-width: 10px) and (max-width: 1024px) {
     .aLinkRC {
         display: none;
     }
 
-    .responsiveDisplay{
-        width: 50vw
+    .buttonGoToMonthly{
+        display: none
+    }
+
+    .buttonMenuAdminMonthly {
+        margin-top: 39em;
+    }
+
+    .calendar{
+        border: none;
+    }
+
+    .calendarScreen{
+        border: none;
+        height: 100vh;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .liResponsive {
+        list-style-type: none;
+    }
+
+    .liResponsive :hover {
+        list-style-type: none;
     }
 
     .logo{
         display: none;
     }
 
+    .nav {
+        top: 0%;
+        left: 1px;
+        position:fixed 
+    }
+
     .navbar {
         width: 0%;
         border: none
+    }
+
+    .nav .aLinkRC {
+        text-decoration-style: solid;
+        color: black;
+        text-decoration: none;
+        display: block;
+    }
+
+    .responsiveDisplay{
+        width: 50vw
+    }
+
+    .searchForm {
+        display: none;
+    }
+
+    .shadowBox{
+        padding-left: 2em;
+        list-style-type: none; 
+    }
+    
+    .shadowBox:hover {
+        box-shadow: #bc33e9 310px -21px inset;
+    }
+
+    .weeklyContainer{
+        width: 100vw;
     }
 
     .weeklyDesktop{
@@ -171,12 +391,13 @@ i {
         background-size: cover;
     }
 
-    .buttonGoToMonthly{
-        display: none
+    #open, #close {
+        height: 44px;
+        text-align: left ;
+        display: block;
+        margin-left: -35%;
     }
-}
 
-@media screen and (min-width: 10px) and (max-width: 1024px) {
     #wrap {
         font-family: sans-serif;
         font-size: 21px;
@@ -199,13 +420,6 @@ i {
         transform: translate3d(0, 0, 0);
     }
     
-    #open, #close {
-        height: 44px;
-        text-align: left ;
-        display: block;
-        margin-left: -35%;
-    }
-    
     #wrap:target #open,
     #wrap:not(:target) #close {
         display: none;
@@ -214,25 +428,8 @@ i {
     #wrap:target #open {
         display: none;
     }
-    
-    .nav .aLinkRC {
-        text-decoration-style: solid;
-        color: black;
-        text-decoration: none;
-        display: block;
-    }
-    
-    .header {
-        width: 100%;
-    }
-    
-    .nav {
-        top: 0%;
-        left: 1px;
-        position:fixed 
-    }
 
-    #warp,  #open {
+    #warp, #open {
         background-image: url(https://static.thenounproject.com/png/568033-200.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -249,213 +446,11 @@ i {
         text-decoration: none;
         color: black;
     }
-
-    .liResponsive :hover {
-        list-style-type: none;
-    }
-
-    .shadowBox:hover {
-        box-shadow: #bc33e9 310px -21px inset;
-    }
-
-    .shadowBox{
-        padding-left: 2em;
-        list-style-type: none; 
-    }
-
-    .liResponsive {
-        list-style-type: none;
-    }
-
-    .calendar{
-        border: none;
-    }
 }
+
 @media screen and (min-width : 1025px)  {
     #close, .liResponsive {
         display: none;
-    }
-}
-
-.event{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.event > h2 {
-    font-size: .85em;
-}
-
-.event > p {
-    font-size: .75em;
-    margin: 0px;
-}
-
-.event > img {
-    width: 80%;
-    align-self: center;
-    margin: 5px;
-}
-
-.important{
-    background: rgba(212, 77, 77, 0.418);
-    border-radius: 15px;
-}
-
-.partner{
-    background: rgba(187, 187, 187, 0.418);
-    border-radius: 15px;
-}
-
-/* DESKTOP */
-.dayDesktop{
-    width: 20%;
-    margin-right: 4px;
-    margin-left: 4px;
-    margin-top: 0px;
-}
-
-.dayDesktop > h1 {
-    background: white;  
-    text-transform: uppercase;
-    font-size: 1.2em;
-    color: rgb(48, 48, 48);
-    margin: 0px;
-}
-
-.dayDesktop > .line {
-    width: 100%;
-    height: 1px;
-    background: grey;
-    margin-top: 8px;
-    margin-bottom: 4px;
-}
-
-.event{
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-}
-
-.event > h2 {
-    font-size: .85em;
-}
-
-.event > p {
-    font-size: .75em;
-    margin: 0px;
-    color :rgb(58, 58, 58);
-}
-
-.event > img {
-    width: 80%;
-    align-self: center;
-    margin: 5px;
-}
-
-/* MOBILE */
-.dayMobile {
-    margin-right: 4px;
-    margin-left: 4px;
-    margin-top: 0px;
-}
-
-.dayMobile > h1 {
-    background: white;  
-    text-transform: uppercase;
-    font-size: 1.2em;
-    color: rgb(48, 48, 48);
-    margin: 0px;
-}
-
-.dayMobile > .line {
-    width: 100%;
-    height: 1px;
-    background: grey;
-    margin-top: 8px;
-    margin-bottom: 4px;
-}
-
-.dayMobile > .event{
-    border: .2px solid grey;
-    border-radius: 15px;
-    margin: 8px;
-}
-
-#selected {
-    background: rgba(212, 77, 77, 0.418);
-    border-radius: 45px;
-}
-
-.dayMobile > .important{
-    background: rgba(180, 180, 180, 0.45);
-}
-
-.dayMobile > h1{
-    display: none;
-}
-
-.dayMobile > .line{
-    margin-top: 15px;
-    margin-bottom: 5px;
-}
-
-.days{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.days h1{
-    cursor: pointer;
-    font-size: 1em;
-    padding:5px;
-    color : black;
-}
-
-.daySelector{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.dayMobile > .event > h2 {
-    text-transform: uppercase;
-    color: black;
-}
-
-.loupe{
-    width: 12px;
-}
-
-.slide-pane__header{
-    display: none;
-}
-
-.inputModal{
-    border: none;
-    margin-left: -2.13em;
-    margin-top: 0.72em;
-    border-radius: 15%;
-}
-
-@media screen and (min-width: 10px) and (max-width: 1024px) {
-    .searchForm {
-        display: none;
-    }
-    .calendarScreen{
-        border: none;
-        height: 100vh;
-    }
-
-    .buttonMenuAdminMonthly {
-        margin-top: 39em;
-    }
-
-    .weeklyContainer{
-        width: 100vw;
     }
 }
 
@@ -468,18 +463,3 @@ i {
     }
 }
 
-.modalWrapper{
-    display: flex;
-    width: 100%;
-    height: 20%;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputModal{
-    font-size: 2.5em;
-}
-
-.searchResult{
-    font-size: 1.5em;
-}

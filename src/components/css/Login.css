@@ -10,7 +10,7 @@
   padding: 4%;
   margin-left: 31%;
   margin-top: 22%;
-  height: 27vh;
+  height: 40vh;
   max-width: 27vw;
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
 }
@@ -30,12 +30,6 @@
   height: 30vh;
   max-width: 27vw;
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3)
-}
-
-.login{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* Button Sign up*/
@@ -93,6 +87,9 @@
   top: 60px;
 }
 
-.adminFormIn{
-  height: 40vh;
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
