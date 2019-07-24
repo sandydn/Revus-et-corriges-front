@@ -1,5 +1,4 @@
 import React from "react";
-import dateFns from "date-fns";
 import axios from 'axios';
 import moment from "moment";
 
@@ -47,7 +46,7 @@ class Calendar extends React.Component {
             </div>
                 </div>
                 <div className="col col-center">
-                    <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+                    <span>{moment(this.state.currentMonth).format(dateFormat)}</span>
                 </div>
                 <div className="col col-end" onClick={this.nextMonth}>
                     <div className="icon">chevron_right</div>
@@ -60,12 +59,12 @@ class Calendar extends React.Component {
         const dateFormat = "dddd";
         const days = [];
 
-        let startDate = dateFns.startOfWeek(this.state.currentMonth);
+        let startDate = moment(this.state.currentMonth).startOf('week');
 
         for (let i = 0; i < 7; i++) {
             days.push(
                 <div className="col col-center" key={i}>
-                    {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
+                    {moment(startDate).add(i, 'days').format(dateFormat)}
                 </div>
             );
         }
@@ -73,16 +72,13 @@ class Calendar extends React.Component {
         return <div className="days row">{days}</div>;
     }
 
-    displayEventDate(dayEvent) {
-
-    }
 
     renderCells() {
         const { currentMonth, selectedDate } = this.state;
-        const monthStart = dateFns.startOfMonth(currentMonth);
-        const monthEnd = dateFns.endOfMonth(monthStart);
-        const startDate = dateFns.startOfWeek(monthStart);
-        const endDate = dateFns.endOfWeek(monthEnd);
+        const monthStart = moment(currentMonth).startOf('month'); 
+        const monthEnd = moment(monthStart).endOf('month') 
+        const startDate = moment(monthStart).startOf('week') 
+        const endDate = moment(monthEnd).endOf('week'); 
 
         const dateFormat = "D";
         const rows = [];
@@ -93,7 +89,7 @@ class Calendar extends React.Component {
 
         while (day <= endDate) {
             for (let i = 0; i < 7; i++) {
-                formattedDate = dateFns.format(day, dateFormat);
+                formattedDate = moment(day).format(dateFormat) 
                 const cloneDay = moment(day).format('DD MMM YYYY')
                 let compare = this.state.compareDates.includes(cloneDay)
                 
@@ -102,7 +98,7 @@ class Calendar extends React.Component {
                     <div
                       id = {cloneDay}
                       className={`col cell ${
-                        !dateFns.isSameMonth(day, monthStart)
+                        moment(day).isSame(monthStart) 
                           ? "disabled"
                           : compare ? "eventMonth" : "none"
                       }`}
@@ -117,7 +113,7 @@ class Calendar extends React.Component {
                         </div>
                     )
 
-                day = dateFns.addDays(day, 1);
+                day = moment(day).add(1, 'days'); 
             }
 
             rows.push(
@@ -152,13 +148,13 @@ class Calendar extends React.Component {
 
     nextMonth = () => {
         this.setState({
-            currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
+            currentMonth: moment(this.state.currentMonth).add(1, 'months')
         });
     };
 
     prevMonth = () => {
         this.setState({
-            currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
+            currentMonth: moment(this.state.currentMonth).subtract(1, 'months')
         });
     };
 
