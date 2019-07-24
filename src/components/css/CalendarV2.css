@@ -104,6 +104,17 @@ i {
     margin-left: 10px;
 }
 
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-right: 2px;
+    margin-left: 10px;
+  }
+
+
+
+
+
 /* 
 @media screen and (min-width: 10px) and (max-width: 1024px) {
 

@@ -22,10 +22,11 @@ class Events extends Component {
         return (
             <div  className='screenEvent'>
                 <div>
+                <a href='#displayAdminEvent'><i className="down"></i></a>
                     <MenuAdmin />
                     <Link to="/admin-events-form"><ButtonForm name="Ajouter un évenement" /></Link>
                 </div>
-                <div className="displayData">
+                <div className="displayData" id='displayAdminEvent'>
                 <DisplayEvent />
                     {/* <Delete /> */}
                 </div>
