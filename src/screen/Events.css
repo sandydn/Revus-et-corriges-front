@@ -58,7 +58,7 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(127, 127, 127);
-    height:100vh;
+    min-height:100vh;
     width: 20vw;
 }
 
@@ -80,7 +80,6 @@
     background-image: url(https://revusetcorriges.files.wordpress.com/2018/03/rc.gif);
     background-size: cover;
     background-position-x: 8vw;
-    width:100vw;
 }
 
 h4 {
@@ -106,4 +105,39 @@ h4 {
     font-size:1em;
     color: black;
     display: block;
+}
+
+.screenSettings{
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.9);
+    top: 15vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    box-shadow: 10px 15px 35px 0 rgba(0, 0, 0, 0.616);
+    border-radius: 45px;
+    position: absolute;
+    padding: 15px;
+}
+
+.screenSettings > div{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closeModalSettings{
+    cursor: pointer;
+}
+
+.arrowDownAdmin{
+    position: absolute;
+    left: 50vw;
+    background: rgba(255, 255, 255, 0.774);
+    height: 140px;
+    padding: 15px;
+    border-radius: 45px;
+    box-shadow: -8px -10px 12px rgba(255, 255, 255, 0.753) inset;
 }
