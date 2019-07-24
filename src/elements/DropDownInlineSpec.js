@@ -22,7 +22,6 @@ const style = {
   },
   input: {
     background: 'inherit',
-    width: 'auto',
     padding: '5px',
     width: '100%',
     borderBottom: '1px solid black'

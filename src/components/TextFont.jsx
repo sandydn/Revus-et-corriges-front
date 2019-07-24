@@ -43,7 +43,6 @@ class TextFont extends Component {
         <FontPicker
           apiKey="AIzaSyA3zC4mK2VJCsyk_YC-oauL62U5HHQT1E8"
           activeFontFamily={this.state.activeFontFamily}
-          onChange={this.handleSubmit}
           onChange={nextFont =>
             this.setState({
               activeFontFamily: nextFont.family,

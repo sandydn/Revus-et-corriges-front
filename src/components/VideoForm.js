@@ -142,16 +142,11 @@ class VideoForm extends Component {
         const {
             titre,
             dateStart,
-            importance,
             adresse,
             link,
             cover,
-            video,
-            contact,
             description,
-            inputAdress,
-            dataVideo,
-            dataContact
+            inputAdress
         } = this.state
         return (
             <MenuAdmin style={{background: '#E5E5E5'}}>

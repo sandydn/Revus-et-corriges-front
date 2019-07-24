@@ -30,7 +30,7 @@ export const PostDataEvent = (objState) => {
     } = objState
 
     let idvideo = video.split(/,\s|,/)
-    idvideo = idvideo.filter(e => e && e != '')
+    idvideo = idvideo.filter(e => e && e !== '')
 
     idvideo = idvideo.map(e => {
         const ret = allDataVideo.find(elem => {
@@ -92,7 +92,7 @@ export const PostDataCinema = (objState) => {
     } = objState
 
     let idvideo = video.split(/,\s|,/)
-    idvideo = idvideo.filter(e => e && e != '')
+    idvideo = idvideo.filter(e => e && e !== '')
 
     idvideo = idvideo.map(e => {
         const ret = allDataVideo.find(elem => {
@@ -102,7 +102,7 @@ export const PostDataCinema = (objState) => {
     })
 
     let idcontact = contact.split(/,\s|,/)
-    idcontact = idcontact.filter(e => e && e != '')
+    idcontact = idcontact.filter(e => e && e !== '')
 
     idcontact = idcontact.map(e => {
         const ret = allDataContact.find(elem => {
@@ -155,7 +155,7 @@ export const PostDataVideo = (objState) => {
     } = objState
 
     let idvideo = video.split(/,\s|,/)
-    idvideo = idvideo.filter(e => e && e != '')
+    idvideo = idvideo.filter(e => e && e !== '')
 
     idvideo = idvideo.map(e => {
         const ret = allDataVideo.find(elem => {
@@ -165,7 +165,7 @@ export const PostDataVideo = (objState) => {
     })
 
     let idcontact = contact.split(/,\s|,/)
-    idcontact = idcontact.filter(e => e && e != '')
+    idcontact = idcontact.filter(e => e && e !== '')
 
     idcontact = idcontact.map(e => {
         const ret = allDataContact.find(elem => {
@@ -243,7 +243,7 @@ export const PostDataMovie = (objState) => {
     } = objState
 
     let idcontact = contact.split(/,\s|,/)
-    idcontact = idcontact.filter(e => e && e != '')
+    idcontact = idcontact.filter(e => e && e !== '')
 
     idcontact = idcontact.map(e => {
         const ret = allDataContact.find(elem => {

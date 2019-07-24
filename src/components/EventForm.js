@@ -121,14 +121,11 @@ class EventForm extends Component {
       titre,
       dateStart,
       dateEnd,
-      importance,
       adresse,
       link,
       cover,
-      video,
       description,
       inputAdress,
-      dataVideo
     } = this.state
     return (
       <MenuAdmin style={{ background: '#E5E5E5' }}>

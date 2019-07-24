@@ -6,7 +6,6 @@ import Login from './components/Login'
 import Sign from './screen/Sign'
 import RegisterLogin from './components/RegisterLogin'
 
-import Admin from './screen/Admin';
 import Calendar from './components/Calendar'
 import Cinema from './screen/Cinema'
 import CinemaForm from './components/CinemaForm'
@@ -113,8 +112,6 @@ class App extends Component {
           <PrivateRoute path="/menu-admin" component={MenuAdmin} />
           <Route path="/signup" component={RegisterLogin} />
           <Route path="/edit/:id" component={EditEvent} />
-
-          <Route path="/admin" component={Admin} />
           <Route path="/admin-events" component={Events} />
           <Route path="/admin-cinema" component={Cinema} />
           <Route path="/admin-videos" component={Videos} />

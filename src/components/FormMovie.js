@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {ToastContainer, toast} from 'react-toastify'
 import moment from "moment"
 import YearPicker from "react-year-picker"
-
 // brick
 import AddContact from './AddContact'
 import ButtonCustom from '../elements/ButtonCustom'
@@ -100,9 +99,7 @@ class FormMovie extends Component {
   render() {
     const {
       titre,
-      dateCreation,
-      contact,
-      dataContact
+      dateCreation
     } = this.state
     return (
       <MenuAdmin style={{ background: '#E5E5E5'}}>

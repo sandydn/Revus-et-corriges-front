@@ -55,8 +55,7 @@ class AddContact extends Component {
   render() {
     const {
       nom,
-      prenom,
-      genre
+      prenom
     } = this.state
     const close = this.props.close
     return (      

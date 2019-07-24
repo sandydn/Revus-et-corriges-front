@@ -7,8 +7,8 @@ class MenuMobile extends Component {
         return (
             <div id="wrap" >
                         <nav className="nav">
-                         <a href="#wrap" id="open"></a>
-                         <a href="/" id="close">×</a>
+                         <a href="#wrap" id="open" alt="menu"> </a>
+                         <a href="/" id="close" alt="fermer menu">×</a>
                          
                          <li className='liResponsive'><a className='shadowBox'  href="https://revusetcorriges.net/la-revue/"  id='close' >LA REVUE </a></li>
                          <li className='liResponsive'><a className='shadowBox' href="https://revusetcorriges.net/boutique/sabonner/" id='close' >BOUTIQUE </a></li>      

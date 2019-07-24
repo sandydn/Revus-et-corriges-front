@@ -21,7 +21,6 @@ class ModalSearch extends Component {
         const events = GetData('http://localhost:4000/a5/event')
         events.then((res) => {
             const events = Array.from(res.data)
-            const eventData = events.map((e) => e.titre )
             this.setState({eventData: events})
         })
     }      

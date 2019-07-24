@@ -70,7 +70,7 @@ class Monthly extends React.Component {
     }
 
     renderCells() {
-        const { currentMonth, selectedDate } = this.state
+        const { currentMonth } = this.state
         const monthStart = moment(currentMonth).startOf('month') 
         const monthEnd = moment(monthStart).endOf('month') 
         const startDate = moment(monthStart).startOf('week') 
