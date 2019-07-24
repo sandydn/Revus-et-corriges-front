@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import "./ColorPicker.css"
+import "../components/css/ColorPicker.css"
 import { SketchPicker } from 'react-color';
 import axios from 'axios'
 
