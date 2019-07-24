@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import TableEvent from "../elements/TableEvent";
+import MaterialTable from 'material-table';
 
 class DisplayEvent extends Component {
   state = {
@@ -25,22 +26,63 @@ class DisplayEvent extends Component {
   componentDidMount() {
     this.getData()
   }
+  
+  handleDelete = async (id) => {
+    await this.delete(id)
+    this.getData()
+  }
+
+  columns = [
+    { title: 'Id', field: 'idevent' },
+    { title: 'Titre', field: 'titre' },
+    { title: 'Date', field: 'dateStart' },
+    { title: 'Description', field: 'description'}
+  ]
   render() {
     const { events } = this.state
     return (
       <div>
-        <p>Display Event</p>
+
+
+        {/* <p>Display Event</p>
         {events.map(event => (
           <div key={event.idevent}>
             <p>
               {event.titre}
-              {/* <Link to={`/edit/${event.idevent}`}> */}
+              <Link to={`/edit/${event.idevent}`}>
                 <input type="button" value="Delete" onClick={() => this.delete(event.idevent)}/>
-              {/* </Link> */}
+              </Link>
             </p>
           </div>
-        ))}
-        <TableEvent />
+        )
+        )
+        } */}
+
+
+
+         <MaterialTable
+        title="Editable Example"
+        columns={this.columns}
+        data={this.state.events}
+        id={this.state.events.idevent}
+        editable={{
+        // onRowDelete: this.delete()
+
+        onRowDelete: tuple => 
+        new Promise(resolve =>{
+          this.delete(tuple.idevent)
+          setTimeout(()=>{
+            resolve()
+            this.getData()
+            // this.handleDelete(tuple.idevent)
+          }, 600)
+        })
+
+        
+         
+     
+      }}
+      />
       </div>
     )
   }
