@@ -10,7 +10,8 @@ const styleBase = {
   },
   textarea: {
     padding: '10px',
-    borderRadius: '2px'
+    borderRadius: '2px',
+    width:'100%'
   }
 }
 

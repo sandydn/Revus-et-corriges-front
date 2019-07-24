@@ -4,7 +4,8 @@ const styleBase = {
   button: {
     cursor: 'pointer',
     lineHeight: '3em',
-    fontSize: '0.8em'
+    fontSize: '0.8em',
+    width: '100%'
   }
 }
 
