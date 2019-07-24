@@ -12,6 +12,7 @@
     "axios": "^0.19.0",
     "font-awesome": "^4.7.0",
     "font-picker-react": "^3.2.0",
+    "material-table": "^1.40.1",
     "mini-create-react-context": "^0.3.2",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",

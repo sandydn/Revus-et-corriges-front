@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import TableEvent from "../elements/TableEvent";
 
 class DisplayEvent extends Component {
   state = {
@@ -39,6 +40,7 @@ class DisplayEvent extends Component {
             </p>
           </div>
         ))}
+        <TableEvent />
       </div>
     )
   }
