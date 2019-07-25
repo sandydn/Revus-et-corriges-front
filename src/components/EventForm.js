@@ -53,7 +53,7 @@ class EventForm extends Component {
   }
 
   componentDidMount() {
-    const video = GetData('http://localhost:4000/a7/video')
+    const video = GetData('/a7/video')
     video.then((res) => {
       const data = Array.from(res.data)
       this.setState({allDataVideo: data})

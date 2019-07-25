@@ -9,7 +9,7 @@ class DisplayEvent extends Component {
   }
 
   getData = async () => {
-    const result = await axios.get("http://localhost:4000/a5/event")
+    const result = await axios.get("/a5/event")
     const reformatedData = []
 
     for (let i = 0; i<result.data.length; i++){
@@ -30,7 +30,7 @@ class DisplayEvent extends Component {
     console.log(id)
     const token = localStorage.getItem("token")
 
-    await axios.delete(`http://localhost:4000/a5/event/${id}`, 
+    await axios.delete(`/a5/event/${id}`, 
     {headers: {
       'x-access-token': `${token}`
       }

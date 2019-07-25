@@ -57,11 +57,7 @@ class VideoForm extends Component {
     }
     
     contact = () => {
-        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a2/contact'
-        if (process.env.NODE_ENV === 'production') {
-          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a2/contact'
-        }
-        const contact = GetData(pathApi)
+        const contact = GetData('/a2/contact')
         contact.then((res) => {
             const data = Array.from(res.data)
             this.setState({allDataContact: data})
@@ -71,11 +67,7 @@ class VideoForm extends Component {
     }
 
     componentDidMount() {
-        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a7/video'
-        if (process.env.NODE_ENV === 'production') {
-          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a7/video'
-        }
-        const video = GetData(pathApi)
+        const video = GetData('/a7/video')
         video.then((res) => {
             const data = Array.from(res.data)
             this.setState({allDataVideo: data})
