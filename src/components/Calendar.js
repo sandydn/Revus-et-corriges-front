@@ -10,7 +10,7 @@ import '../components/css/calendar.css'
 
 class Calendar extends Component {
 	state = {
-		monthToWeek: 'Go to Monthly',
+		monthToWeek: 'Vue mensuelle',
 		showButton: 'hidden'
 	}
 
