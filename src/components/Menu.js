@@ -15,8 +15,12 @@ state = {
 }
 
 getStyle = async () => {
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration'
+    }
     await axios
-    .get("http://localhost:4000/a4/decoration")
+    .get(pathApi)
     .then(results => {
         const exactDeco = results.data[0]
         this.setState({hoverStyle:exactDeco.textcolor})
