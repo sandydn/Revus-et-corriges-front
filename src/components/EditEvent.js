@@ -7,7 +7,7 @@ class EditEvent extends Component {
   }
   getData = async () => {
     const id = this.props.match.params.id
-    const results = await axios.get(`http://localhost:4000/a5/event/${id}`)
+    const results = await axios.get(`/a5/event/${id}`)
     console.log(results.data)
     this.setState({ dataEvents: results.data[0] })
   }
