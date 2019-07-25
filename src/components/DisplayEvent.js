@@ -27,7 +27,6 @@ class DisplayEvent extends Component {
   }
 
   delete = async (id) => {
-    console.log(id)
     const token = localStorage.getItem("token")
     await axios.delete(`/a5/event/${id}`, 
     {headers: {
