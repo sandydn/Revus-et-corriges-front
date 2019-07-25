@@ -17,12 +17,8 @@ class ModalSearch extends Component {
     }
 
     componentDidMount() {
-        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event'
-        if (process.env.NODE_ENV === 'production') {
-          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event'
-        }
         Modal.setAppElement(this.el)
-        const events = GetData(pathApi)
+        const events = GetData('http://localhost:4000/a5/event')
         events.then((res) => {
             const events = Array.from(res.data)
             this.setState({eventData: events})
