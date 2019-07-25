@@ -215,6 +215,8 @@ export const PostDataVideo = (objState) => {
  * @param {Number}      genre
  */
 export const PostDataContact = (objState) => {
+    
+    
     const {
         nom,
         prenom,
@@ -236,7 +238,7 @@ export const PostDataContact = (objState) => {
         'x-access-token': `${token}`
           }
         })
-        .then(console.log)
+        .then(console.log(('bonjour je suis posdatacontact')))
         .catch(console.log)
 }
 // ------------------------------------------------------ DB FILM

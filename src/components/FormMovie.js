@@ -46,6 +46,7 @@ class FormMovie extends Component {
     displayModalContact: false,
   }
 
+
   contact = () => {
     const contact = GetData('/a2/contact')
     contact.then((res) => {
@@ -81,7 +82,7 @@ class FormMovie extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     PostDataMovie(this.state) 
-    return this.notify('Le film est bien enregistrer !')   
+    return this.notify('Le film est bien enregistré !')   
   }
   
   upModalContact = () => {

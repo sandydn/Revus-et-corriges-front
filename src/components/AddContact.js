@@ -46,9 +46,11 @@ class AddContact extends Component {
     this.setState({ [keyState]: value })
   }
 
-  handleSubmit = (evt) => {
+  handleSubmit = async (evt) => {
     evt.preventDefault()
-    PostDataContact(this.state)
+    await PostDataContact(this.state)
+    console.log('adieu je me meurs');
+    
     this.props.close()
   }
 

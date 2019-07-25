@@ -137,7 +137,7 @@ class RegisterLogin extends React.Component {
 							fullWidth
 						>
 							{
-								(success && 'Compte crée.')
+								(success && 'Compte créé.')
 								|| (!success && 'Inscription')
 							}
 						</Button>

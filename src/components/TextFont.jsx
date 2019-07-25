@@ -58,7 +58,7 @@ class TextFont extends Component {
             })
           }
         />
-        <p className="apply-font">La police de ce texte sera appliquer sur le calendrier.</p>
+        <p className="apply-font">La police de ce texte sera appliquée sur le calendrier.</p>
         <button onClick={this.handleSubmit}>Envoyer</button>
       </div>
     )

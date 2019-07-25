@@ -116,19 +116,21 @@ class VideoForm extends Component {
 
     onChangeDate = dateStart => {
         if (moment(dateStart).isBefore(moment().startOf('day')))
-            return this.notify('La date de sortie ne peut être antérieur à la date du jour !')
+            return this.notify('La date de sortie ne peut être antérieure à la date du jour !')
             this.setState({dateStart})
     }
 
     handleSubmit = (evt) => {
         evt.preventDefault()
         PostDataCinema(this.state)
-        return this.notify('La sortie DVD/Blu-ray est bien enregistrer !')   
+        return this.notify('La sortie DVD/Blu-ray est bien enregistrée !')   
     }
 
     upModalContact = () => {
         const {displayModalContact} = this.state
         this.setState({displayModalContact: !displayModalContact})
+        console.log('upModal');
+        
         this.contact()
     }
 

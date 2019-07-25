@@ -29,7 +29,6 @@ class DisplayEvent extends Component {
   delete = async (id) => {
     console.log(id)
     const token = localStorage.getItem("token")
-
     await axios.delete(`/a5/event/${id}`, 
     {headers: {
       'x-access-token': `${token}`
@@ -58,7 +57,7 @@ class DisplayEvent extends Component {
       <div className='tableDeleteEvent'>
 
          <MaterialTable
-            title="Supprimer un evenement"
+            title="Supprimer un évènement"
             columns={this.columns}
             data={this.state.events}
             id={this.state.events.idevent}
