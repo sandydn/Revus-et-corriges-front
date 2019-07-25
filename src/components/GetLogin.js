@@ -7,7 +7,11 @@ class GetLogin extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:4242/auth/login`)
+        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/login'
+        if (process.env.NODE_ENV === 'production') {
+          pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/login'
+        }
+        axios.get(pathApi)
         .then(result => {
             this.setState({ auth: result.data })
         })
