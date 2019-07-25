@@ -46,12 +46,9 @@ class FormMovie extends Component {
     displayModalContact: false,
   }
 
+
   contact = () => {
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + 'a2/contact'
-    if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + 'a2/contact'
-    }
-    const contact = GetData(pathApi)
+    const contact = GetData('http://localhost:4000/a2/contact')
     contact.then((res) => {
         const data = Array.from(res.data)
         this.setState({allDataContact: data})
@@ -85,7 +82,7 @@ class FormMovie extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     PostDataMovie(this.state) 
-    return this.notify('Le film est bien enregistrer !')   
+    return this.notify('Le film est bien enregistré !')   
   }
   
   upModalContact = () => {

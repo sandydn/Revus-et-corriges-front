@@ -7,11 +7,7 @@ class EditEvent extends Component {
   }
   getData = async () => {
     const id = this.props.match.params.id
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + `a5/event/${id}`
-    if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + `a5/event/${id}`
-    }
-    const results = await axios.get(pathApi)
+    const results = await axios.get(`http://localhost:4000/a5/event/${id}`)
     console.log(results.data)
     this.setState({ dataEvents: results.data[0] })
   }

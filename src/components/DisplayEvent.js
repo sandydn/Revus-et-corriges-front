@@ -9,11 +9,7 @@ class DisplayEvent extends Component {
   }
 
   getData = async () => {
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event/'
-    if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event/'
-    }
-    const result = await axios.get(pathApi)
+    const result = await axios.get('http://localhost:4000/a5/event')
     const reformatedData = []
 
     for (let i = 0; i<result.data.length; i++){
@@ -33,12 +29,7 @@ class DisplayEvent extends Component {
   delete = async (id) => {
     console.log(id)
     const token = localStorage.getItem("token")
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + `/a5/events/${id}/`
-    if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + `/a5/events/${id}/`
-    }
-
-    await axios.delete(pathApi, 
+    await axios.delete(`http://localhost:4000/a5/event/${id}`, 
     {headers: {
       'x-access-token': `${token}`
       }
@@ -66,7 +57,7 @@ class DisplayEvent extends Component {
       <div className='tableDeleteEvent'>
 
          <MaterialTable
-            title="Supprimer un evenement"
+            title="Supprimer un évènement"
             columns={this.columns}
             data={this.state.events}
             id={this.state.events.idevent}

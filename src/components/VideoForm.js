@@ -57,11 +57,7 @@ class VideoForm extends Component {
     }
     
     contact = () => {
-        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a2/contact'
-        if (process.env.NODE_ENV === 'production') {
-          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a2/contact'
-        }
-        const contact = GetData(pathApi)
+        const contact = GetData('http://localhost:4000/a2/contact')
         contact.then((res) => {
             const data = Array.from(res.data)
             this.setState({allDataContact: data})
@@ -71,11 +67,7 @@ class VideoForm extends Component {
     }
 
     componentDidMount() {
-        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a7/video'
-        if (process.env.NODE_ENV === 'production') {
-          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a7/video'
-        }
-        const video = GetData(pathApi)
+        const video = GetData('http://localhost:4000/a7/video')
         video.then((res) => {
             const data = Array.from(res.data)
             this.setState({allDataVideo: data})
@@ -124,19 +116,21 @@ class VideoForm extends Component {
 
     onChangeDate = dateStart => {
         if (moment(dateStart).isBefore(moment().startOf('day')))
-            return this.notify('La date de sortie ne peut être antérieur à la date du jour !')
+            return this.notify('La date de sortie ne peut être antérieure à la date du jour !')
             this.setState({dateStart})
     }
 
     handleSubmit = (evt) => {
         evt.preventDefault()
         PostDataCinema(this.state)
-        return this.notify('La sortie DVD/Blu-ray est bien enregistrer !')   
+        return this.notify('La sortie DVD/Blu-ray est bien enregistrée !')   
     }
 
     upModalContact = () => {
         const {displayModalContact} = this.state
         this.setState({displayModalContact: !displayModalContact})
+        console.log('upModal');
+        
         this.contact()
     }
 

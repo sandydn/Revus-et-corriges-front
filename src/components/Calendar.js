@@ -88,12 +88,12 @@ class Calendar extends Component {
 		if (monthly.style.display === 'none') {
 			weekly.style.display = 'none'
 			monthly.style.display = 'block'
-			this.setState({ monthToWeek: 'Go to Weekly' })
+			this.setState({ monthToWeek: 'Vue hebdomadaire' })
 		}
 		else {
 			monthly.style.display = 'none'
 			weekly.style.display = 'flex'
-			this.setState({ monthToWeek: 'Go to Monthly' })
+			this.setState({ monthToWeek: 'Vue mensuelle' })
 		}
 	}
 	
@@ -113,7 +113,7 @@ class Calendar extends Component {
 
         monthly.style.display = 'none'
         weekly.style.display = 'flex'
-        this.setState({ monthToWeek: 'Go to Monthly' })
+        this.setState({ monthToWeek: 'Vue mensuelle' })
     }
 	
 	render() {
