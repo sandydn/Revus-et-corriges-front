@@ -53,7 +53,11 @@ class EventForm extends Component {
   }
 
   componentDidMount() {
-    const video = GetData('http://localhost:4000/a7/video')
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a7/video/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + 'a7/video/'
+    }
+    const video = GetData(pathApi)
     video.then((res) => {
       const data = Array.from(res.data)
       this.setState({allDataVideo: data})
