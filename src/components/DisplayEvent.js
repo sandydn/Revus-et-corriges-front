@@ -9,7 +9,11 @@ class DisplayEvent extends Component {
   }
 
   getData = async () => {
-    const result = await axios.get("/a5/event")
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event'
+    }
+    const result = await axios.get(pathApi)
     const reformatedData = []
 
     for (let i = 0; i<result.data.length; i++){
@@ -27,8 +31,12 @@ class DisplayEvent extends Component {
   }
 
   delete = async (id) => {
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + `/a5/event/${id}`
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + `/a5/event/${id}`
+    }
     const token = localStorage.getItem("token")
-    await axios.delete(`/a5/event/${id}`, 
+    await axios.delete(pathApi, 
     {headers: {
       'x-access-token': `${token}`
       }
