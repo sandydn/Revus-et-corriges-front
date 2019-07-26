@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 // brick
 import LinkForForms from '../components/LinkForForms'
 import Settings from './Settings'
@@ -9,18 +8,6 @@ class MenuAdmin extends Component {
 
   state={   
     displayModalSettings:false,
-  }
-
-  getevent() {
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event'
-    if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event'
-    }
-    axios
-      .get(pathApi)
-      .then(results => {
-        this.setState({ results: results.data, isLoading: true })
-      })
   }
 
   logout() {
