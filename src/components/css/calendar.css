@@ -137,6 +137,7 @@ i {
     background-size: cover;
     width: 81.4vw;
     justify-content: space-evenly;
+    background-size: cover !important;
 }
 
 .weeklyDisplayMobile{
@@ -195,6 +196,8 @@ i {
     margin-right: 4px;
     margin-left: 4px;
     margin-top: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .dayDesktop > .line {
@@ -293,11 +296,17 @@ i {
 .important{
     background: rgba(212, 77, 77, 0.418);
     border-radius: 15px;
+    order: 1;
 }
 
 .partner{
     background: rgba(187, 187, 187, 0.418);
     border-radius: 15px;
+    order: 2;
+}
+
+.regular{
+    order: 3;
 }
 
  /******************************

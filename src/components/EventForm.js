@@ -100,13 +100,14 @@ class EventForm extends Component {
   }
 
   onChangeDateStart = dateStart => {
-    if (moment(dateStart).isBefore(moment().startOf('day')))
-      return this.notify('La date de debut ne peut être inférieure à la date de fin !')
+    if (moment(dateStart).isBefore(moment().startOf(this.state.dateEnd)))
+      return this.notify('La date de debut ne peut être supérieur à la date de fin !')
     this.setState({ dateStart })
   }
 
   onChangeDateEnd = dateEnd => {
-    if (dateEnd < this.state.dateStart)
+    if (moment(dateEnd).isBefore(moment().startOf(this.state.dateStart)))
+      return this.notify('La date de fin ne peut être antérieure à la date de fin !')
     this.setState({ dateEnd })
   }
 
