@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import axios from 'axios'
+import moment from 'moment'
 import Menu from './Menu'
 import Monthly from './Monthly'
 import Weekly from "./Weekly"
@@ -12,7 +13,8 @@ import tardis from '../pictures/tardis.png'
 class Calendar extends Component {
 	state = {
 		monthToWeek: 'Vue mensuelle',
-		showButton: 'hidden'
+		showButton: 'hidden',
+		count: 0
 	}
 
 	handleClick = () => {
@@ -97,14 +99,21 @@ class Calendar extends Component {
 			this.setState({ monthToWeek: 'Vue mensuelle' })
 		}
 	}
+
 	
+	count = 0
+
 	handleMonthly2Weekly = async (e) => {
-		await this.setState({dateOnClick: e.target.id})
-		this.handleClick() 
+		const clickDate = e.target.id
+		this.count += 1
+		await this.count == 1 ? this.setState({dateOnClick: clickDate}) : this.setState({dateOnClick: moment(clickDate).subtract(1, 'days')})
+		await this.handleClick() 
     }
 
     handleSearch = async (e) => {
-        await this.setState({dateOnClick: e.target.id})
+        const clickDate = e.target.id
+		this.count += 1
+		await this.count == 1 ? this.setState({dateOnClick: clickDate}) : this.setState({dateOnClick: moment(clickDate).subtract(1, 'days')})
         this.handleClickForSearch() 
     }
 
