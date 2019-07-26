@@ -123,14 +123,13 @@ class Calendar extends Component {
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
-					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
         		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
 			<div>
-				<Link to='/login'>
+				<Link to='/menu-admin'>
 					<img src={tardis} alt="flèche" className='tardis' href='link'/>
 				</Link>
 			</div>

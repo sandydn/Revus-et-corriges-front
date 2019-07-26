@@ -10,20 +10,21 @@ class TextFont extends Component {
   handleSubmit = (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault()
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration'
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration/1/'
     if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration'
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration/1'
     }
     axios.put(pathApi, ({
       textfont: this.state.activeFontFamily,
     }),
-      {
-        headers: {
-          'x-access-token': `${token}`
+    {headers: {
+      'x-access-token': `${token}`
         }
-      }).then((res) => {
+      })
+      .then((res) => {
         alert("Police ajoutée !")
-      }).catch((err) => {
+      })
+      .catch((err) => {
       })
   }
 
@@ -37,7 +38,6 @@ class TextFont extends Component {
       .then(results => {
         const exactDeco = results.data[0]
         this.setState({ activeFontFamily : exactDeco.textfont })
-        console.log(this.state)
       })
   }
 
@@ -50,7 +50,7 @@ class TextFont extends Component {
       <div>
         <h3>Changer la police du calendrier</h3>
         <FontPicker
-          apiKey="AIzaSyA3zC4mK3VJCsyk_YC-oauL62U5HHQT1E8"
+          apiKey="AIzaSyA49kTyI5zOydULH_tQ2RbNtM_FC4qngAg"
           activeFontFamily={this.state.activeFontFamily}
           onChange={nextFont =>
             this.setState({

@@ -16,11 +16,11 @@ class BackgroundPicker extends Component {
   handleSubmit = (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault()
-    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/protected/'
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration/1/'
     if (process.env.NODE_ENV === 'production') {
-      pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/protected/'
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration/1'
     }
-    axios.post(pathApi, ({
+    axios.put(pathApi, ({
       background: this.state.background,
     }),
     {headers: {
@@ -28,7 +28,7 @@ class BackgroundPicker extends Component {
         }
       })
       .then((res) => {
-        alert("background ajouté !")
+        alert("Arrière-plan ajoutée !")
       })
       .catch((err) => {
       })
@@ -41,7 +41,7 @@ class BackgroundPicker extends Component {
         <h3>Changer le fond du calendrier</h3>
           <InputInLine
             keyState="background"
-            title="Background"
+            title="Arrière-plan"
             value={this.state.background}
             func={this.handleChangeInput}
           />
