@@ -12,6 +12,7 @@ import Moment from 'react-moment'
 
 class Weekly extends Component {
     state = {
+        results:[],
         days: [],
         dayEvent: [],
         dayDate: '',
@@ -19,7 +20,7 @@ class Weekly extends Component {
         monthForDisplay: moment( 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')
     }
 
-    getevent = async (type) => {
+    getevent = async () => {
         let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event'
         if (process.env.NODE_ENV === 'production') {
           pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event'
@@ -27,12 +28,12 @@ class Weekly extends Component {
         await axios
             .get(pathApi)
             .then(results => {
-                type(results.data)
+                this.setState({results : results.data})
             })
     }
     
 
-    createDateArrayNext = (datas) => {
+    createDateArrayNext = async (datas) => {
         let dateArr = []
         for (let i = 0; i < 5; i++) {
             const dataDay = datas.filter((data) => moment(data.dateStart).format('DD MMM YYYY') === this.state.date.format('DD MMM YYYY'))
@@ -41,31 +42,16 @@ class Weekly extends Component {
                 data: dataDay
             }
             dateArr.push(dayToPush)
-            this.setState({ date: moment(this.state.date).add(1, 'days') })
+            await this.setState({ date: moment(this.state.date).add(1, 'days') })
         }
         this.setState({ days: dateArr })
-        this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
-    }
-
-    createDateArrayPrev = (datas) => {
-        let dateArr = []
-        for (let i = 0; i < 5; i++) {
-            this.setState({ date: moment(this.state.date).subtract(1, 'days') })
-            const dataDay = datas.filter((data) => moment(data.dateStart).format('DD MMM YYYY') === this.state.date.format('DD MMM YYYY'))
-            const dayToPush = {
-                date: this.state.date.format('DD MMM YYYY'),
-                data: dataDay
-            }
-            dateArr.unshift(dayToPush)
-        }
-        this.setState({ days: dateArr })
-        this.setState({ date: moment(this.state.date).add(5, 'days') })
         this.setState({monthForDisplay: moment(this.state.date, 'YYYY MMM', 'fr').startOf('hour').format('MMMM YYYY')})
     }
 
     componentDidMount = async () => {
         await this.setState({ date: moment().startOf('hour') })
-        await this.getevent(this.createDateArrayNext)
+        await this.getevent()
+        this.createDateArrayNext(this.state.results)
         const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
         const selectDayTest = dayForSelect[0]
         this.selectDay(selectDayTest)
@@ -77,9 +63,9 @@ class Weekly extends Component {
 
     componentWillReceiveProps = async () => {
         if (this.props.dateOnClick) {
-            this.setState({ date: moment(this.props.dateOnClick) })
+            await this.setState({ date: moment(this.props.dateOnClick) })
             console.log(this.state.date)
-            await this.getevent(this.createDateArrayNext)
+            await this.createDateArrayNext(this.state.results)
             const dayForSelect = moment().startOf('hour').format('DD MMM YYYY')
             const selectDayTest = dayForSelect[0]
             this.selectDay(selectDayTest)
@@ -88,8 +74,6 @@ class Weekly extends Component {
     
     selectDay(i) {
         const day = this.state.days.filter((display) => display.date.includes(i))
-        console.log(this.state.days);
-        console.log(day);
         
         const dayArr = day[0]
         this.setState({ dayEvent: dayArr.data })
@@ -97,13 +81,13 @@ class Weekly extends Component {
     }
 
     previousDays = async () => {
-        await this.setState({ date: moment(this.state.date).subtract(5, 'days') })
-        await this.getevent(this.createDateArrayPrev)
+        await this.setState({ date: moment(this.state.date).subtract(10, 'days') })
+        this.createDateArrayNext(this.state.results)
         this.props.style()
     }
 
     nextDays = async () => {
-        await this.getevent(this.createDateArrayNext)
+        this.createDateArrayNext(this.state.results)
         this.props.style()
     }
 
