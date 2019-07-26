@@ -114,6 +114,7 @@ class Calendar extends Component {
 	
 	render() {
 		return (
+		<div>
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
@@ -123,6 +124,12 @@ class Calendar extends Component {
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
         		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
+			<div>
+				<Link to='/login'>
+					<img src={tardis} alt="flèche" className='tardis' href='link'/>
+				</Link>
+			</div>
+		</div>
 		)
 	}
 }
