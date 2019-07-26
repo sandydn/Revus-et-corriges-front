@@ -115,7 +115,8 @@ class Calendar extends Component {
         monthly.style.display = 'none'
         weekly.style.display = 'flex'
         this.setState({ monthToWeek: 'Vue mensuelle' })
-    }
+	}
+	
 	
 	render() {
 		return (
