@@ -61,7 +61,7 @@ class Weekly extends Component {
         this.displaySelector(this.state.dayDate)
     }
 
-    componentWillReceiveProps = async () => {
+    componentWillReceiveProps = async  () => {
         if (this.props.dateOnClick) {
             await this.setState({ date: moment(this.props.dateOnClick) })
             console.log(this.state.date)
