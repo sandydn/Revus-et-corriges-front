@@ -18,12 +18,12 @@ class ModalSearch extends Component {
 
     componentDidMount() {
         Modal.setAppElement(this.el)
-        const events = GetData('http://localhost:4000/a5/event')
+        const events = GetData('/a5/event')
         events.then((res) => {
             const events = Array.from(res.data)
             this.setState({eventData: events})
         })
-    }      
+    }     
 
     renderResults = () => {
         const results = this.state.searchResult.map((result) => <SearchResult titre={result.titre} date={moment(result.dateStart).format('DD MMM YYYY')} search={this.props.search}/>)

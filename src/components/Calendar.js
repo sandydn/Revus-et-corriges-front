@@ -10,7 +10,7 @@ import '../components/css/calendar.css'
 
 class Calendar extends Component {
 	state = {
-		monthToWeek: 'Go to Monthly',
+		monthToWeek: 'Vue mensuelle',
 		showButton: 'hidden'
 	}
 
@@ -30,8 +30,12 @@ class Calendar extends Component {
     }
 
 	getStyle = async () => {
+		let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration/'
+    }
 		await axios
-		.get("http://localhost:4000/a4/decoration")
+		.get(pathApi)
 		.then(results => {
 			const exactDeco = results.data[0]
 			const urlBackground = `url(${exactDeco.background})`
@@ -84,12 +88,12 @@ class Calendar extends Component {
 		if (monthly.style.display === 'none') {
 			weekly.style.display = 'none'
 			monthly.style.display = 'block'
-			this.setState({ monthToWeek: 'Go to Weekly' })
+			this.setState({ monthToWeek: 'Vue hebdomadaire' })
 		}
 		else {
 			monthly.style.display = 'none'
 			weekly.style.display = 'flex'
-			this.setState({ monthToWeek: 'Go to Monthly' })
+			this.setState({ monthToWeek: 'Vue mensuelle' })
 		}
 	}
 	
@@ -109,7 +113,7 @@ class Calendar extends Component {
 
         monthly.style.display = 'none'
         weekly.style.display = 'flex'
-        this.setState({ monthToWeek: 'Go to Monthly' })
+        this.setState({ monthToWeek: 'Vue mensuelle' })
     }
 	
 	render() {

@@ -10,7 +10,11 @@ class TextFont extends Component {
   handleSubmit = (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault()
-    axios.put(`http://localhost:4000/a4/decoration/1`, ({
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration'
+    }
+    axios.put(pathApi, ({
       textfont: this.state.activeFontFamily,
     }),
       {
@@ -24,8 +28,12 @@ class TextFont extends Component {
   }
 
   getStyle = async () => {
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration'
+    }
     await axios
-      .get("http://localhost:4000/a4/decoration")
+      .get(pathApi)
       .then(results => {
         const exactDeco = results.data[0]
         this.setState({ activeFontFamily : exactDeco.textfont })
@@ -50,7 +58,7 @@ class TextFont extends Component {
             })
           }
         />
-        <p className="apply-font">La police de ce texte sera appliquer sur le calendrier.</p>
+        <p className="apply-font">La police de ce texte sera appliquée sur le calendrier.</p>
         <button onClick={this.handleSubmit}>Envoyer</button>
       </div>
     )

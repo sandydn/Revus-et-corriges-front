@@ -16,7 +16,11 @@ class BackgroundPicker extends Component {
   handleSubmit = (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault()
-    axios.post(`http://localhost:4000/a4/decoration`, ({
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/protected/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/protected/'
+    }
+    axios.post(pathApi, ({
       background: this.state.background,
     }),
     {headers: {

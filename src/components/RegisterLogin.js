@@ -34,7 +34,11 @@ class RegisterLogin extends React.Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		axios.post(`http://localhost:4000/auth/register/`, {
+		let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/register'
+        if (process.env.NODE_ENV === 'production') {
+          pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/register'
+        }
+		axios.post(pathApi, {
 			name: event.target.name.value,
 			admin_email: event.target.email.value,
 			admin_password: event.target.password.value,
@@ -133,7 +137,7 @@ class RegisterLogin extends React.Component {
 							fullWidth
 						>
 							{
-								(success && 'Compte crée.')
+								(success && 'Compte créé.')
 								|| (!success && 'Inscription')
 							}
 						</Button>

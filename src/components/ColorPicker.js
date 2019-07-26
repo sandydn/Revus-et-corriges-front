@@ -21,7 +21,11 @@ class ColorPicker extends Component {
   handleSubmit = (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault()
-    axios.put(`http://localhost:4000/a4/decoration/1`, ({
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration/1/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration/1'
+    }
+    axios.put(pathApi, ({
       textcolor: this.state.color,
     }),
     {headers: {
