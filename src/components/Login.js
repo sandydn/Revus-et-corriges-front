@@ -85,7 +85,7 @@ class Login extends React.Component {
               fullWidth
             >
               {
-                (success && 'Vous êtes connécté.')
+                (success && 'Vous êtes connecté.')
                 || (!success && 'Connexion')
               }
             </Button>

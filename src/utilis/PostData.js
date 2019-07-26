@@ -51,8 +51,11 @@ export const PostDataEvent = (objState) => {
         idvideo
     }
     const token = localStorage.getItem("token")
-
-    axios.post('http://localhost:4000/a5/event', body,
+        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event'
+        if (process.env.NODE_ENV === 'production') {
+          pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event'
+        }
+    axios.post(pathApi, body,
         {headers: {
             'x-access-token': `${token}`
             }
@@ -125,8 +128,11 @@ export const PostDataCinema = (objState) => {
         genre
     }
     const token = localStorage.getItem("token")
-
-    axios.post('http://localhost:4000/a5/event-cinema', body,
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event-cinema'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event-cinema'
+    }
+    axios.post(pathApi, body,
         {headers: {
             'x-access-token': `${token}`
             }
@@ -188,8 +194,11 @@ export const PostDataVideo = (objState) => {
         genre
     }
     const token = localStorage.getItem("token")
-
-    axios.post('http://localhost:4000/a5/event-cinema', body,
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a5/event-cinema'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a5/event-cinema'
+    }
+    axios.post(pathApi, body,
         {headers: {
             'x-access-token': `${token}`
             }
@@ -206,6 +215,8 @@ export const PostDataVideo = (objState) => {
  * @param {Number}      genre
  */
 export const PostDataContact = (objState) => {
+    
+    
     const {
         nom,
         prenom,
@@ -218,13 +229,16 @@ export const PostDataContact = (objState) => {
         genre
     }
     const token = localStorage.getItem("token")
-
-    axios.post('http://localhost:4000/a2/contact', body,
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a2/contact'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a2/contact'
+    }
+    axios.post(pathApi, body,
         {headers: {
         'x-access-token': `${token}`
           }
         })
-        .then(console.log)
+        .then(console.log(('bonjour je suis posdatacontact')))
         .catch(console.log)
 }
 // ------------------------------------------------------ DB FILM
@@ -258,8 +272,11 @@ export const PostDataMovie = (objState) => {
         idcontact,
     }
     const token = localStorage.getItem("token")
-
-    axios.post('http://localhost:4000/a7/video', body,
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a7/video'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a7/video'
+    }
+    axios.post(pathApi, body,
         {headers: {
             'x-access-token': `${token}`
             }
