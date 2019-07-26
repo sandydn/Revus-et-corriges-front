@@ -7,6 +7,7 @@ import Monthly from './Monthly'
 import Weekly from "./Weekly"
 
 import '../components/css/calendar.css'
+import tardis from '../pictures/tardis.png'
 
 class Calendar extends Component {
 	state = {
@@ -118,6 +119,7 @@ class Calendar extends Component {
 	
 	render() {
 		return (
+		<div>
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
@@ -127,6 +129,12 @@ class Calendar extends Component {
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
         		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
+			<div>
+				<Link to='/login'>
+					<img src={tardis} alt="flèche" className='tardis' href='link'/>
+				</Link>
+			</div>
+		</div>
 		)
 	}
 }
