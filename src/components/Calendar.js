@@ -115,7 +115,8 @@ class Calendar extends Component {
         monthly.style.display = 'none'
         weekly.style.display = 'flex'
         this.setState({ monthToWeek: 'Vue mensuelle' })
-    }
+	}
+	
 	
 	render() {
 		return (
@@ -129,7 +130,7 @@ class Calendar extends Component {
         		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
 			</div>
 			<div>
-				<Link to='/menu-admin'>
+				<Link to='/login'>
 					<img src={tardis} alt="flèche" className='tardis' href='link'/>
 				</Link>
 			</div>
