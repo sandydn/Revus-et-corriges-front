@@ -7,10 +7,11 @@ import Monthly from './Monthly'
 import Weekly from "./Weekly"
 
 import '../components/css/calendar.css'
+import tardis from '../pictures/tardis.png'
 
 class Calendar extends Component {
 	state = {
-		monthToWeek: 'Go to Monthly',
+		monthToWeek: 'Vue mensuelle',
 		showButton: 'hidden'
 	}
 
@@ -30,8 +31,12 @@ class Calendar extends Component {
     }
 
 	getStyle = async () => {
+		let pathApi = process.env.REACT_APP_PATH_API_DEV + '/a4/decoration/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/a4/decoration/'
+    }
 		await axios
-		.get("http://localhost:4000/a4/decoration")
+		.get(pathApi)
 		.then(results => {
 			const exactDeco = results.data[0]
 			const urlBackground = `url(${exactDeco.background})`
@@ -84,12 +89,12 @@ class Calendar extends Component {
 		if (monthly.style.display === 'none') {
 			weekly.style.display = 'none'
 			monthly.style.display = 'block'
-			this.setState({ monthToWeek: 'Go to Weekly' })
+			this.setState({ monthToWeek: 'Vue hebdomadaire' })
 		}
 		else {
 			monthly.style.display = 'none'
 			weekly.style.display = 'flex'
-			this.setState({ monthToWeek: 'Go to Monthly' })
+			this.setState({ monthToWeek: 'Vue mensuelle' })
 		}
 	}
 	
@@ -109,7 +114,7 @@ class Calendar extends Component {
 
         monthly.style.display = 'none'
         weekly.style.display = 'flex'
-        this.setState({ monthToWeek: 'Go to Monthly' })
+        this.setState({ monthToWeek: 'Vue mensuelle' })
     }
 	
 	render() {
@@ -118,7 +123,6 @@ class Calendar extends Component {
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
-					<Link to="/menu-admin" id='buttonAdmin' ><input type="submit" value="Admin" /></Link>
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>

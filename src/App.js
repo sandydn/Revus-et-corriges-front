@@ -44,9 +44,15 @@ class App extends Component {
   }
 
   // ON SUBMIT - router on axios d'appel form
+  
+
   handleSubmit = event => {
     event.preventDefault()
-    axios.post(`http://localhost:4000/auth/login/`, {
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/login/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/login/'
+    }
+    axios.post(pathApi, {
       admin_email: event.target.email.value,
       admin_password: event.target.password.value
     })
@@ -63,9 +69,13 @@ class App extends Component {
   protectedRoute = () => {
     // Storage for token //
     const token = localStorage.getItem("token")
+    let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/protected/'
+    if (process.env.NODE_ENV === 'production') {
+      pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/protected/'
+    }
     axios({
       method: 'POST',
-      url: "http://localhost:4000/auth/protected",
+      url: pathApi,
       headers: {
         'Authorization': `Bearer ${token}`,
       },

@@ -53,7 +53,7 @@ class EventForm extends Component {
   }
 
   componentDidMount() {
-    const video = GetData('http://localhost:4000/a7/video')
+    const video = GetData('/a7/video')
     video.then((res) => {
       const data = Array.from(res.data)
       this.setState({allDataVideo: data})
@@ -101,7 +101,7 @@ class EventForm extends Component {
 
   onChangeDateStart = dateStart => {
     if (moment(dateStart).isBefore(moment().startOf('day')))
-      return this.notify('La date de debut ne peut être inférieur à la date de fin !')
+      return this.notify('La date de debut ne peut être inférieure à la date de fin !')
     this.setState({ dateStart })
   }
 
@@ -113,7 +113,7 @@ class EventForm extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     PostDataEvent(this.state)
-    return this.notify('L\'événement est bien enregistrer !')
+    return this.notify(`L'événement est bien enregistré !`)
   }
 
   render() {

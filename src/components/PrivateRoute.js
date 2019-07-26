@@ -16,10 +16,14 @@ class PrivateRoute extends Component {
     verifyToken() {
         // Getting localStorage data
         const token = localStorage.getItem("token")
+        let pathApi = process.env.REACT_APP_PATH_API_DEV + '/auth/verify'
+        if (process.env.NODE_ENV === 'production') {
+          pathApi = process.env.REACT_APP_PATH_API_PROD + '/auth/verify'
+        }
 
         axios({
             method: "Get",
-            url: `http://localhost:4000/auth/verify`,
+            url: pathApi,
             headers: {
                 "x-access-token": `${token}`
             }
