@@ -57,14 +57,19 @@ class VideoForm extends Component {
     }
     
     contact = () => {
-        const contact = GetData('/a2/contact')
+        setTimeout(_ => {
+              const contact = GetData('/a2/contact')
         contact.then((res) => {
             const data = Array.from(res.data)
             this.setState({allDataContact: data})
+            console.log(data)
             const nameContact = data.map(e => e.nom)
             this.setState({dataContact: nameContact})
         })
+      }, 1000) 
+    
     }
+    
 
     componentDidMount() {
         const video = GetData('/a7/video')
@@ -129,8 +134,6 @@ class VideoForm extends Component {
     upModalContact = () => {
         const {displayModalContact} = this.state
         this.setState({displayModalContact: !displayModalContact})
-        console.log('upModal');
-        
         this.contact()
     }
 
