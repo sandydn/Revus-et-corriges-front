@@ -32,6 +32,10 @@
     letter-spacing: .06em;
     line-height: 55px
 }
+.buttoncontainer{
+    display: flex;
+    justify-content: center;
+}
 
 .inputModal{
     border: none;
@@ -79,6 +83,7 @@
 .slide-pane__header{
     display: none;
 }
+
 
  /******************************
  *        WEEK/WEEKLY          *
@@ -328,7 +333,7 @@ i {
     }
 
     .buttonGoToMonthly{
-        display: none
+        display: none;
     }
 
     .buttonMenuAdminMonthly {
