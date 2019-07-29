@@ -34,7 +34,7 @@
 }
 .buttoncontainer{
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .inputModal{
