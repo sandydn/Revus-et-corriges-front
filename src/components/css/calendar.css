@@ -35,7 +35,9 @@
 .buttoncontainer{
     display: flex;
     padding: 22px;
+    margin-top: -48px;
 }
+
 
 .inputModal{
     border: none;
@@ -61,7 +63,13 @@
 .menuCss{
     color: rgb(0, 0, 0);
     list-style-type: none;
-    padding: 22px;
+    padding-top: 22px;
+}
+
+.containerlogo{
+    display: flex;
+    justify-content: center;
+    padding-top: 22px;
 }
 
 .modalWrapper{
@@ -143,6 +151,7 @@ i {
     width: 81.4vw;
     justify-content: space-evenly;
     background-size: cover !important;
+    box-shadow: 6px 0px 5px 0 rgba(0, 0, 0, 0.3) inset;
 }
 
 .weeklyDisplayMobile{
@@ -322,7 +331,7 @@ i {
     .menuCss  {
         color: rgb(0, 0, 0);
         list-style-type: none;
-        font-size: 2.8vh;
+        font-size: 2.6vh;
         padding: 22px;
     }
 }

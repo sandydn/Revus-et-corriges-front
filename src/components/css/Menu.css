@@ -21,7 +21,7 @@
 .menuCss  {
   color: rgb(0, 0, 0);
   list-style-type: none;
-  padding: 22px;
+  padding-top: 22px;
 }
 
 @media screen and (min-width: 10px) and (max-width: 1024px) {
