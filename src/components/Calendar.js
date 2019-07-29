@@ -133,7 +133,9 @@ class Calendar extends Component {
 			<div className='calendarScreen'> 
 				<div className='navbar'>
 					<Menu search={this.handleSearch}/>
+					<div className='buttoncontainer'>
 					<button className='buttonGoToMonthly' onClick={this.handleClick}>{this.state.monthToWeek}</button>
+					</div>
 				</div>
 				<Weekly dateOnClick = {this.state.dateOnClick} style={this.useStyle}/>
         		<Monthly monthly2Weekly = {this.handleMonthly2Weekly} />
