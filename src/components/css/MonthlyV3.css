@@ -162,7 +162,6 @@ main {
   position: relative;
   width: 81.4vw;
   background: rgba(212, 77, 77, 0.418);
-  border: 1px solid #eee;
 }
 
 .calendar .header {
@@ -312,7 +311,8 @@ main {
   background: url(/static/media/backg.57d5c861.png);
   background-size: cover !important;
   width: 81.4vw;
-  border: 1px solid #eee;
+  box-shadow: 6px 0px 5px 0 rgba(0, 0, 0, 0.3) inset;
+
 }
 
 .calendar .header {

@@ -50,7 +50,9 @@ render() {
         
         <div className='responsiveDisplay' >
             <MenuMobile/>
-           <img src={RC} alt="logo revus et corrigés" className='logo'/>
+            <div className="containerlogo">
+             <img src={RC} alt="logo revus et corrigés" className='logo'/>
+           </div>
             <ul className="menuCss" >
                 <li className='liDesckop'><a className='aLinkRC' href="https://revusetcorriges.net/la-revue/" id='linkOne' 
                 onMouseEnter={this.handleHoverIn} 
