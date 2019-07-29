@@ -34,7 +34,7 @@
 }
 .buttoncontainer{
     display: flex;
-    justify-content: start;
+    padding: 22px;
 }
 
 .inputModal{
