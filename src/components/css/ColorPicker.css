@@ -1,0 +1,35 @@
+.colorInput {
+  width: 220px;
+  height: 40px;
+}
+
+.displayColoPicker{
+  display: flex;
+  flex-direction: row;
+  flex-grow: initial;
+}
+
+.updatefontcolor {
+  display: flex;
+  flex-direction: column;
+  flex-grow: initial;
+}
+
+.view-color {
+  width: 220px;
+  height: 40px
+}
+
+.wheelButton{
+  height :7%;
+  width : 7%;
+  background-image: url("https://pngimage.net/wp-content/uploads/2018/06/logo-engrenage-png-5.png") no-repeat;
+}
+
+.wheelButton:hover{
+  cursor: pointer;  
+} 
+
+#colorPickerButton {
+  width: 220px;
+}
