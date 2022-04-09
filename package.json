@@ -14,7 +14,7 @@
     "font-picker-react": "^3.2.0",
     "material-table": "^1.40.1",
     "mini-create-react-context": "^0.3.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.25",
     "node-sass": "^4.12.0",
